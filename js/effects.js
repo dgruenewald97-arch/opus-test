@@ -43,6 +43,44 @@ export function initMarquee() {
   });
 }
 
+// Count-up for stat numbers, triggered when the band scrolls into view.
+export function initCounters({ reducedMotion }) {
+  const els = document.querySelectorAll("[data-count]");
+  if (!els.length) return;
+
+  const run = (el) => {
+    const target = parseFloat(el.getAttribute("data-count"));
+    const suffix = el.getAttribute("data-suffix") || "";
+    if (reducedMotion || isNaN(target)) {
+      el.textContent = target + suffix;
+      return;
+    }
+    const duration = 1200;
+    const start = performance.now();
+    const step = (now) => {
+      const p = Math.min(1, (now - start) / duration);
+      const eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.floor(eased * target) + suffix;
+      if (p < 1) requestAnimationFrame(step);
+      else el.textContent = target + suffix;
+    };
+    requestAnimationFrame(step);
+  };
+
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          run(entry.target);
+          io.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.5 }
+  );
+  els.forEach((el) => io.observe(el));
+}
+
 // Brutalist placeholder form: no real submission, just a buzzy success state.
 export function initForm({ COPY, onSuccess }) {
   const form = document.getElementById("contact-form");

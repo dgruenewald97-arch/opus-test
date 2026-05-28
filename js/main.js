@@ -1,7 +1,7 @@
 // GRELLWERK — orchestrator. Initializes modules in order with graceful fallbacks.
 import { loadEnhancements } from "./cdn.js";
 import { initCursor } from "./cursor.js";
-import { initScramble, initMarquee, initForm } from "./effects.js";
+import { initScramble, initMarquee, initForm, initCounters } from "./effects.js";
 import { initScroll } from "./scroll.js";
 import { initGuide } from "./guide.js";
 import { COPY } from "./config.js";
@@ -12,6 +12,7 @@ async function boot() {
   // Pure-vanilla effects first — these never depend on a CDN.
   initMarquee();
   initScramble({ reducedMotion });
+  initCounters({ reducedMotion });
 
   // Load optional CDN enhancements (GSAP / Lenis). Failures are swallowed.
   const { gsap, ScrollTrigger, Lenis } = await loadEnhancements();

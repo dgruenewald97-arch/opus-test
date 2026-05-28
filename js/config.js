@@ -16,12 +16,20 @@ export const GUIDE_STEPS = [
     text: "Das hier ist unser Versprechen: Lärm, der verkauft. Kein Blabla, nur Wirkung.",
   },
   {
+    selector: "#zahlen",
+    text: "Erstmal Fakten: 8 Jahre, 240+ Kampagnen, 17 Awards. Wir reden nicht — wir liefern.",
+  },
+  {
     selector: "#leistungen",
     text: "Das können wir. Fahr mit der Maus über die Zeilen — keine Angst, sie beißen nicht.",
   },
   {
     selector: "#arbeiten",
     text: "Zahlen lügen nicht. +312% ROAS sind +312% ROAS. Schau dir die Cases an.",
+  },
+  {
+    selector: "#manifest",
+    text: "Unser Manifest. Lies es — es meint genau dich.",
   },
   {
     selector: "#prozess",
@@ -36,6 +44,10 @@ export const GUIDE_STEPS = [
     text: "Glaub nicht uns — glaub denen, mit denen wir schon Krach gemacht haben.",
   },
   {
+    selector: "#faq",
+    text: "Noch Fragen? Hier die Antworten — bevor du überhaupt fragen musst.",
+  },
+  {
     selector: "#kontakt",
     text: "Genug geschaut. Schreib uns — wir beißen nur Wettbewerber. Klick mich an, wenn du mich nochmal brauchst!",
   },
@@ -43,7 +55,10 @@ export const GUIDE_STEPS = [
 
 // Passive quips shown when a section scrolls into view (guide inactive).
 export const QUIPS = {
+  zahlen: "Zahlen statt Buzzwords.",
   leistungen: "Sechs Disziplinen, ein Ziel: Krach.",
+  manifest: "Fünf Sätze. Kein Bullshit.",
+  faq: "Antworten ohne Drumherum.",
   arbeiten: "Echte Zahlen, keine Fake-Mockups.",
   prozess: "Vier Schritte. Null Bullshit.",
   crew: "Sieht harmlos aus. Ist es nicht.",
