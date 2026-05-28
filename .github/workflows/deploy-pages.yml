@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [main]
+    branches: [main, claude/website-builder-template-KTsfD]
   workflow_dispatch:
 
 # Permissions needed for the Pages deployment
