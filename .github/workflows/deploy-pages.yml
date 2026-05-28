@@ -35,6 +35,9 @@ jobs:
 
       - name: Build STUDIO SEIDE (Vite)
         working-directory: studio-seide
+        env:
+          # playwright is a dev-only verification tool; don't fetch browsers in CI
+          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: "1"
         run: |
           npm ci
           npm run build
