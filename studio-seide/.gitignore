@@ -1,0 +1,6 @@
+node_modules/
+dist/
+dist-standalone/
+screens/
+*.local
+.DS_Store
