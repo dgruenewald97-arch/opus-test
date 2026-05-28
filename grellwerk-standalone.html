@@ -1,0 +1,1703 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GRELLWERK — Lärm, der verkauft.</title>
+  <meta name="description" content="GRELLWERK ist die Anti-Agentur für Performance, Branding und Kampagnen, die anecken. Lärm, der verkauft." />
+  <meta property="og:title" content="GRELLWERK — Lärm, der verkauft." />
+  <meta property="og:description" content="Werbe- & Performance-Agentur. Wir designen den Krach." />
+  <meta property="og:image" content="assets/og-image.svg" />
+  <link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+CiAgPHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiBmaWxsPSIjMEEwQTBBIi8+CiAgPHJlY3QgeD0iNiIgeT0iNiIgd2lkdGg9IjUyIiBoZWlnaHQ9IjUyIiBmaWxsPSIjRDZGRjNCIi8+CiAgPHRleHQgeD0iMzIiIHk9IjQ2IiBmb250LWZhbWlseT0iSW1wYWN0LCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjQ0IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjMEEwQTBBIj5HPC90ZXh0Pgo8L3N2Zz4K" type="image/svg+xml" />
+
+  <!-- Fonts (graceful: system fallbacks defined in tokens.css) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <style>
+/* GRELLWERK — minimal modern reset */
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; }
+html { -webkit-text-size-adjust: 100%; }
+body { line-height: 1.4; -webkit-font-smoothing: antialiased; }
+img, picture, svg, video { display: block; max-width: 100%; }
+input, button, textarea, select { font: inherit; color: inherit; }
+button { background: none; border: none; cursor: pointer; }
+a { color: inherit; text-decoration: none; }
+ul, ol { list-style: none; padding: 0; }
+h1, h2, h3, h4, p { overflow-wrap: break-word; }
+:focus-visible { outline: 4px solid var(--electric); outline-offset: 3px; }
+
+/* GRELLWERK — design tokens */
+:root {
+  /* palette */
+  --ink: #0A0A0A;
+  --paper: #F2F0E9;
+  --acid: #D6FF3B;
+  --shock: #FF2E63;
+  --electric: #2D2DFF;
+  --warn: #FF6B00;
+
+  /* semantic */
+  --bg: var(--paper);
+  --fg: var(--ink);
+
+  /* typography */
+  --font-display: "Archivo Black", "Impact", "Haettenschweiler", sans-serif;
+  --font-ui: "Space Grotesk", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", "Courier New", monospace;
+
+  /* fluid type scale */
+  --step--1: clamp(0.78rem, 0.7rem + 0.4vw, 0.95rem);
+  --step-0:  clamp(1rem, 0.92rem + 0.4vw, 1.2rem);
+  --step-1:  clamp(1.4rem, 1.1rem + 1.4vw, 2.2rem);
+  --step-2:  clamp(2rem, 1.4rem + 3vw, 4rem);
+  --step-3:  clamp(2.6rem, 1.4rem + 6vw, 7rem);
+  --step-mega: clamp(3rem, 0.5rem + 13vw, 13rem);
+
+  /* spacing */
+  --gap: clamp(1rem, 0.5rem + 2vw, 2.5rem);
+  --pad-section: clamp(3.5rem, 2rem + 8vw, 9rem);
+  --container: 1440px;
+
+  /* structure */
+  --border: 4px;
+  --border-thick: 6px;
+  --shadow-block: 8px 8px 0 var(--ink);
+  --shadow-block-lg: 14px 14px 0 var(--ink);
+
+  /* z-index */
+  --z-grain: 9000;
+  --z-cursor: 9999;
+  --z-guide: 8000;
+  --z-nav: 7000;
+}
+
+/* GRELLWERK — base typography & layout primitives */
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-ui);
+  font-size: var(--step-0);
+  background: var(--bg);
+  color: var(--fg);
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* hide native cursor only where we have a real pointer */
+@media (hover: hover) and (pointer: fine) {
+  body.cursor-on, body.cursor-on a, body.cursor-on button { cursor: none; }
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
+h1 { font-size: var(--step-mega); }
+h2 { font-size: var(--step-3); }
+h3 { font-size: var(--step-1); }
+
+.mono { font-family: var(--font-mono); }
+.upper { text-transform: uppercase; }
+
+.container {
+  width: min(100% - 2.5rem, var(--container));
+  margin-inline: auto;
+}
+
+.section { padding-block: var(--pad-section); position: relative; }
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;
+  margin-bottom: 1.4rem;
+}
+.eyebrow::before {
+  content: "";
+  width: 2.5em;
+  height: var(--border);
+  background: var(--shock);
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--ink);
+  color: var(--acid);
+  padding: 1rem 1.5rem;
+  z-index: 99999;
+  font-family: var(--font-mono);
+}
+.skip-link:focus { left: 0; }
+
+.outline-text {
+  color: transparent;
+  -webkit-text-stroke: 2px var(--ink);
+  text-stroke: 2px var(--ink);
+}
+
+/* reveal-on-scroll (works without GSAP via IO + .is-visible) */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+[data-reveal].is-visible { opacity: 1; transform: none; }
+
+/* GRELLWERK — reusable components */
+
+/* ---- Grain overlay ---- */
+.grain {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-grain);
+  pointer-events: none;
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPgogIDxmaWx0ZXIgaWQ9ImdyYWluIj4KICAgIDxmZVR1cmJ1bGVuY2UgdHlwZT0iZnJhY3RhbE5vaXNlIiBiYXNlRnJlcXVlbmN5PSIwLjgiIG51bU9jdGF2ZXM9IjIiIHN0aXRjaFRpbGVzPSJzdGl0Y2giLz4KICAgIDxmZUNvbG9yTWF0cml4IHR5cGU9InNhdHVyYXRlIiB2YWx1ZXM9IjAiLz4KICA8L2ZpbHRlcj4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWx0ZXI9InVybCgjZ3JhaW4pIi8+Cjwvc3ZnPgo=");
+  background-size: 220px 220px;
+  opacity: 0.06;
+  mix-blend-mode: multiply;
+  animation: grain-shift 0.6s steps(2) infinite;
+}
+
+/* ---- Custom cursor ---- */
+.cursor {
+  position: fixed;
+  top: 0; left: 0;
+  width: 22px; height: 22px;
+  border: 3px solid var(--ink);
+  border-radius: 50%;
+  background: var(--acid);
+  mix-blend-mode: difference;
+  pointer-events: none;
+  z-index: var(--z-cursor);
+  transform: translate(-50%, -50%);
+  transition: width 0.18s ease, height 0.18s ease, background 0.18s ease;
+  will-change: transform;
+  display: none;
+}
+.cursor.is-active { display: block; }
+.cursor.is-hot { width: 60px; height: 60px; background: var(--shock); }
+
+/* ---- Buttons ---- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 1.1rem 2rem;
+  border: var(--border) solid var(--ink);
+  background: var(--acid);
+  color: var(--ink);
+  box-shadow: var(--shadow-block);
+  transition: transform 0.08s ease, box-shadow 0.12s ease, background 0.15s ease;
+  will-change: transform;
+}
+.btn:hover { background: var(--shock); }
+.btn:active { transform: translate(8px, 8px); box-shadow: 0 0 0 var(--ink); }
+.btn--ghost { background: transparent; }
+.btn--ghost:hover { background: var(--electric); color: var(--paper); }
+.btn--big { padding: 1.4rem 2.6rem; font-size: var(--step-1); }
+
+.magnetic { display: inline-block; }
+
+/* ---- Marquee ---- */
+.marquee {
+  display: flex;
+  overflow: hidden;
+  border-block: var(--border) solid var(--ink);
+  background: var(--ink);
+  color: var(--acid);
+  user-select: none;
+}
+.marquee__track {
+  display: flex;
+  flex-shrink: 0;
+  gap: 2rem;
+  padding: 0.8rem 1rem;
+  white-space: nowrap;
+  font-family: var(--font-display);
+  font-size: var(--step-1);
+  text-transform: uppercase;
+  animation: marquee-scroll 22s linear infinite;
+}
+.marquee:hover .marquee__track { animation-play-state: paused; }
+.marquee--rev { background: var(--acid); color: var(--ink); }
+.marquee--rev .marquee__track { animation-direction: reverse; animation-duration: 28s; }
+.marquee__track span { display: inline-flex; align-items: center; gap: 2rem; }
+.marquee__track span::after { content: "✦"; color: var(--shock); }
+.marquee--rev .marquee__track span::after { color: var(--electric); }
+
+/* ---- Card (generic brutalist block) ---- */
+.block {
+  border: var(--border) solid var(--ink);
+  background: var(--paper);
+  box-shadow: var(--shadow-block);
+}
+
+/* ---- Tag chips ---- */
+.tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+  text-transform: uppercase;
+  padding: 0.25em 0.7em;
+  border: 2px solid var(--ink);
+  background: var(--paper);
+}
+
+/* GRELLWERK — per-section layout */
+
+/* ===== NAV ===== */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-nav);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.9rem clamp(1rem, 3vw, 2.5rem);
+  background: var(--paper);
+  border-bottom: var(--border) solid var(--ink);
+  mix-blend-mode: normal;
+}
+.nav__logo {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: var(--step-0);
+  letter-spacing: 0.05em;
+}
+.nav__logo b { color: var(--shock); }
+.nav__links { display: flex; gap: clamp(0.8rem, 2vw, 2rem); align-items: center; }
+.nav__link {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  font-size: var(--step--1);
+  letter-spacing: 0.08em;
+  padding: 0.4rem 0;
+  border-bottom: 3px solid transparent;
+  transition: border-color 0.15s ease;
+}
+.nav__link:hover { border-color: var(--shock); }
+@media (max-width: 720px) {
+  .nav__links .nav__link:not(.nav__cta) { display: none; }
+}
+.nav__cta { animation: blink 1.6s steps(2) infinite; }
+
+/* ===== HERO ===== */
+.hero {
+  padding-top: clamp(2rem, 5vw, 5rem);
+  padding-bottom: 0;
+  position: relative;
+  overflow: hidden;
+}
+.hero__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--gap);
+  align-items: end;
+}
+.hero__headline { position: relative; z-index: 2; }
+.hero__headline .line { display: block; }
+.hero__headline .line--shift { margin-left: clamp(0px, 8vw, 14rem); }
+.hero__block {
+  position: absolute;
+  top: 18%;
+  right: -2%;
+  width: clamp(120px, 22vw, 340px);
+  aspect-ratio: 1;
+  background: var(--electric);
+  transform: rotate(-9deg);
+  z-index: 1;
+  mix-blend-mode: multiply;
+}
+.hero__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--gap);
+  margin-top: clamp(1.5rem, 4vw, 3rem);
+}
+.hero__sub { font-family: var(--font-mono); max-width: 36ch; font-size: var(--step-0); }
+.hero__ctas { display: flex; flex-wrap: wrap; gap: 1rem; }
+
+/* ===== STATS BAND ===== */
+.stats {
+  background: var(--acid);
+  border-bottom: var(--border) solid var(--ink);
+}
+.stats__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+.stat {
+  padding: clamp(1.5rem, 4vw, 2.8rem) clamp(1rem, 3vw, 2rem);
+  border-right: var(--border) solid var(--ink);
+}
+.stat:last-child { border-right: none; }
+.stat__num {
+  display: block;
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 6vw, 4.5rem);
+  line-height: 0.85;
+}
+.stat__label {
+  display: block;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  font-size: var(--step--1);
+  letter-spacing: 0.12em;
+  margin-top: 0.6rem;
+}
+@media (max-width: 760px) {
+  .stats__grid { grid-template-columns: 1fr 1fr; }
+  .stat { border-bottom: var(--border) solid var(--ink); }
+  .stat:nth-child(even) { border-right: none; }
+  .stat:nth-last-child(-n+2) { border-bottom: none; }
+}
+
+/* ===== MANIFEST ===== */
+.manifest { background: var(--ink); color: var(--paper); }
+.manifest .eyebrow { color: var(--paper); }
+.manifest__list { margin-top: var(--gap); }
+.manifest__item {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  font-size: var(--step-2);
+  line-height: 0.98;
+  padding: clamp(0.7rem, 2vw, 1.3rem) 0;
+  border-bottom: var(--border) solid var(--paper);
+  transition: padding-left 0.2s ease, color 0.2s ease;
+}
+.manifest__item:last-child { border-bottom: none; }
+.manifest__item span { color: var(--acid); }
+.manifest__item:hover { padding-left: 1.2rem; color: var(--acid); }
+.manifest__item:hover span { color: var(--shock); }
+
+/* ===== FAQ ===== */
+.faq__list { margin-top: var(--gap); border-top: var(--border) solid var(--ink); }
+.faq__item { border-bottom: var(--border) solid var(--ink); }
+.faq__q {
+  width: 100%;
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: clamp(1rem, 2.5vw, 1.6rem) 0.5rem;
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  font-size: var(--step-1);
+}
+.faq__q::-webkit-details-marker { display: none; }
+.faq__q:hover { color: var(--shock); }
+.faq__icon {
+  font-family: var(--font-mono);
+  font-size: var(--step-2);
+  line-height: 1;
+  transition: transform 0.2s ease;
+}
+.faq__item[open] .faq__icon { transform: rotate(45deg); color: var(--shock); }
+.faq__a {
+  padding: 0 0.5rem clamp(1rem, 2.5vw, 1.6rem);
+  font-family: var(--font-mono);
+  font-size: var(--step-0);
+  max-width: 64ch;
+}
+
+/* ===== SERVICES ===== */
+.services__list { border-top: var(--border) solid var(--ink); margin-top: var(--gap); }
+.service {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: clamp(1rem, 3vw, 3rem);
+  padding: clamp(1.2rem, 3vw, 2.4rem) 0.5rem;
+  border-bottom: var(--border) solid var(--ink);
+  transition: background 0.2s ease, color 0.2s ease, padding-left 0.2s ease;
+  position: relative;
+}
+.service__idx { font-family: var(--font-mono); font-size: var(--step-1); opacity: 0.5; }
+.service__name { font-family: var(--font-display); font-size: var(--step-2); text-transform: uppercase; }
+.service__desc {
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+  max-width: 30ch;
+  text-align: right;
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+}
+.service:hover {
+  background: var(--ink);
+  color: var(--acid);
+  padding-left: 1.6rem;
+}
+.service:hover .service__idx { opacity: 1; color: var(--shock); }
+.service:hover .service__desc { opacity: 1; color: var(--paper); }
+@media (max-width: 720px) {
+  .service { grid-template-columns: auto 1fr; }
+  .service__desc { grid-column: 1 / -1; text-align: left; }
+}
+
+/* ===== WORK / CASES ===== */
+.work__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: clamp(1.5rem, 4vw, 3rem);
+  margin-top: var(--gap);
+}
+.case {
+  border: var(--border) solid var(--ink);
+  background: var(--paper);
+  box-shadow: var(--shadow-block);
+  padding: 1.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+  will-change: transform;
+}
+.case:nth-child(odd) { transform: rotate(-1.4deg); }
+.case:nth-child(even) { transform: rotate(1.2deg); }
+.case:hover {
+  transform: rotate(0deg) scale(1.03) skewX(-1.5deg);
+  box-shadow: var(--shadow-block-lg);
+  z-index: 3;
+}
+.case__metric {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  line-height: 0.9;
+  color: var(--shock);
+  overflow-wrap: anywhere;
+  hyphens: none;
+}
+.case:nth-child(3n) .case__metric { color: var(--electric); }
+.case:nth-child(3n+1) .case__metric { color: var(--warn); }
+.case__client { font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; }
+.case__desc { font-size: var(--step--1); }
+.case__tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: auto; }
+
+/* ===== PROCESS ===== */
+.process__strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  margin-top: var(--gap);
+  border: var(--border) solid var(--ink);
+}
+.step {
+  padding: clamp(1.2rem, 3vw, 2rem);
+  border-right: var(--border) solid var(--ink);
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  background: var(--paper);
+}
+.step:last-child { border-right: none; }
+.step:nth-child(2) { background: var(--acid); }
+.step:nth-child(3) { background: var(--shock); color: var(--paper); }
+.step__num { font-family: var(--font-display); font-size: var(--step-3); line-height: 0.8; }
+.step__title { font-family: var(--font-mono); font-weight: 700; text-transform: uppercase; }
+.step__text { font-size: var(--step--1); }
+@media (max-width: 860px) {
+  .process__strip { grid-template-columns: 1fr; }
+  .step { border-right: none; border-bottom: var(--border) solid var(--ink); }
+  .step:last-child { border-bottom: none; }
+}
+
+/* ===== TEAM ===== */
+.team__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--gap);
+  margin-top: var(--gap);
+}
+.member { text-align: center; }
+.member__avatar {
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  border: var(--border) solid var(--ink);
+  font-family: var(--font-display);
+  font-size: var(--step-3);
+  background: var(--acid);
+  box-shadow: var(--shadow-block);
+  margin-bottom: 1rem;
+}
+.member:nth-child(2) .member__avatar { background: var(--electric); color: var(--paper); }
+.member:nth-child(3) .member__avatar { background: var(--shock); color: var(--paper); }
+.member:nth-child(4) .member__avatar { background: var(--warn); }
+.member__name { font-family: var(--font-mono); font-weight: 700; text-transform: uppercase; }
+.member__role { font-size: var(--step--1); opacity: 0.7; font-family: var(--font-mono); }
+
+/* ===== TESTIMONIALS ===== */
+.quotes__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--gap);
+  margin-top: var(--gap);
+}
+.quote {
+  position: relative;
+  padding: clamp(1.5rem, 4vw, 2.6rem);
+  border: var(--border) solid var(--ink);
+  background: var(--paper);
+}
+.quote:nth-child(2) { transform: rotate(-1.6deg); background: var(--acid); }
+.quote:nth-child(3) { transform: rotate(1.4deg); }
+.quote::before {
+  content: "“";
+  position: absolute;
+  top: -0.35em;
+  left: 0.1em;
+  font-family: var(--font-display);
+  font-size: clamp(5rem, 14vw, 11rem);
+  color: var(--shock);
+  line-height: 1;
+  pointer-events: none;
+}
+.quote__text { font-size: var(--step-1); position: relative; z-index: 1; padding-top: 1.5rem; }
+.quote__author { font-family: var(--font-mono); margin-top: 1.2rem; font-weight: 700; }
+
+/* ===== CONTACT ===== */
+.contact { background: var(--ink); color: var(--paper); }
+.contact h2 { color: var(--acid); }
+.contact .eyebrow { color: var(--paper); }
+.form {
+  display: grid;
+  gap: 1.2rem;
+  margin-top: var(--gap);
+  max-width: 640px;
+}
+.field { display: grid; gap: 0.4rem; }
+.field label { font-family: var(--font-mono); text-transform: uppercase; font-size: var(--step--1); letter-spacing: 0.1em; }
+.field input, .field textarea {
+  border: var(--border) solid var(--acid);
+  background: transparent;
+  color: var(--paper);
+  padding: 0.9rem 1rem;
+  font-family: var(--font-mono);
+}
+.field input:focus, .field textarea:focus { background: rgba(214,255,59,0.08); }
+.form__status { font-family: var(--font-mono); color: var(--acid); min-height: 1.4em; }
+
+/* ===== FOOTER ===== */
+.footer { background: var(--ink); color: var(--paper); padding-block: clamp(2.5rem, 6vw, 5rem); }
+.footer__top {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--gap);
+  align-items: flex-start;
+}
+.footer__logo { font-family: var(--font-display); font-size: var(--step-3); color: var(--acid); }
+.footer__col { display: grid; gap: 0.5rem; font-family: var(--font-mono); font-size: var(--step--1); }
+.footer__col a:hover { color: var(--acid); }
+.footer__bottom {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 2px solid var(--paper);
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+  opacity: 0.8;
+}
+.footer__bottom button { color: var(--acid); text-decoration: underline; }
+
+/* GRELLWERK — BRUMMER onboarding guide */
+
+.guide {
+  position: fixed;
+  z-index: var(--z-guide);
+  bottom: clamp(1rem, 3vw, 2rem);
+  right: clamp(1rem, 3vw, 2rem);
+  width: min(360px, calc(100vw - 2rem));
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.6rem;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+}
+.guide[hidden] { display: none; }
+
+/* fly-in state */
+.guide.is-entering { transform: translateY(140%) rotate(8deg); opacity: 0; }
+
+/* speech bubble */
+.guide__bubble {
+  position: relative;
+  width: 100%;
+  background: var(--paper);
+  color: var(--ink);
+  border: var(--border) solid var(--ink);
+  box-shadow: var(--shadow-block);
+  padding: 1.1rem 1.2rem 0.9rem;
+  order: 1;
+}
+.guide__bubble::after {
+  content: "";
+  position: absolute;
+  bottom: -16px;
+  right: 36px;
+  width: 24px;
+  height: 24px;
+  background: var(--paper);
+  border-right: var(--border) solid var(--ink);
+  border-bottom: var(--border) solid var(--ink);
+  transform: rotate(45deg);
+}
+.guide__step-count {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--shock);
+  display: block;
+  margin-bottom: 0.4rem;
+}
+.guide__text {
+  font-family: var(--font-mono);
+  font-size: 0.92rem;
+  line-height: 1.45;
+  min-height: 2.6em;
+}
+.guide__controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.9rem;
+}
+.guide__btn {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.74rem;
+  letter-spacing: 0.05em;
+  padding: 0.55rem 0.9rem;
+  border: 3px solid var(--ink);
+  background: var(--acid);
+  transition: transform 0.08s ease, background 0.15s ease;
+}
+.guide__btn:hover { background: var(--shock); color: var(--paper); }
+.guide__btn:active { transform: translate(3px, 3px); }
+.guide__btn--ghost { background: transparent; }
+.guide__btn--primary { background: var(--electric); color: var(--paper); }
+
+/* the mascot row */
+.guide__mascot {
+  order: 2;
+  align-self: flex-end;
+  width: 86px;
+  height: 86px;
+  filter: drop-shadow(4px 4px 0 var(--ink));
+}
+.guide__mascot svg { width: 100%; height: 100%; overflow: visible; }
+.brummer__wing { transform-origin: 50% 30%; animation: buzz 0.18s ease-in-out infinite alternate; }
+.brummer__body { transform-origin: 50% 50%; animation: hover-bob 2.4s ease-in-out infinite; }
+.brummer__antenna { transform-origin: bottom; animation: antenna-wobble 1.8s ease-in-out infinite; }
+
+/* minimized tab */
+.guide-tab {
+  position: fixed;
+  bottom: clamp(1rem, 3vw, 2rem);
+  right: clamp(1rem, 3vw, 2rem);
+  z-index: var(--z-guide);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+  padding: 0.7rem 1rem;
+  background: var(--acid);
+  border: var(--border) solid var(--ink);
+  box-shadow: var(--shadow-block);
+  transition: transform 0.08s ease, background 0.15s ease;
+}
+.guide-tab[hidden] { display: none; }
+.guide-tab:hover { background: var(--shock); color: var(--paper); }
+.guide-tab:active { transform: translate(4px, 4px); box-shadow: 0 0 0 var(--ink); }
+.guide-tab__dot {
+  width: 28px; height: 28px;
+  filter: drop-shadow(2px 2px 0 var(--ink));
+}
+
+/* highlight on targeted section */
+.guide-highlight {
+  outline: var(--border) dashed var(--shock);
+  outline-offset: 10px;
+  transition: outline-color 0.3s ease;
+}
+
+@media (max-width: 560px) {
+  .guide { width: calc(100vw - 1.5rem); }
+}
+
+/* GRELLWERK — keyframes & motion */
+
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@keyframes grain-shift {
+  0%   { background-position: 0 0; }
+  100% { background-position: 60px -40px; }
+}
+
+@keyframes blink {
+  0%, 50% { background: var(--acid); }
+  51%, 100% { background: var(--shock); color: var(--paper); }
+}
+
+/* glitch text */
+.glitch { position: relative; display: inline-block; }
+.glitch::before, .glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.glitch::before {
+  color: var(--shock);
+  clip-path: inset(0 0 55% 0);
+  animation: glitch-top 2.6s steps(2) infinite;
+}
+.glitch::after {
+  color: var(--electric);
+  clip-path: inset(55% 0 0 0);
+  animation: glitch-bottom 3.1s steps(2) infinite;
+}
+@keyframes glitch-top {
+  0%, 90%, 100% { transform: translate(0); }
+  92% { transform: translate(-5px, -3px); }
+  94% { transform: translate(4px, 2px); }
+  96% { transform: translate(-3px, 1px); }
+}
+@keyframes glitch-bottom {
+  0%, 88%, 100% { transform: translate(0); }
+  90% { transform: translate(5px, 3px); }
+  93% { transform: translate(-4px, -2px); }
+  95% { transform: translate(3px, -1px); }
+}
+
+/* mascot buzz */
+@keyframes buzz {
+  from { transform: rotate(-12deg) scaleY(0.9); }
+  to   { transform: rotate(12deg) scaleY(1.1); }
+}
+@keyframes hover-bob {
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  50%      { transform: translateY(-5px) rotate(2deg); }
+}
+@keyframes antenna-wobble {
+  0%, 100% { transform: rotate(-6deg); }
+  50%      { transform: rotate(6deg); }
+}
+
+/* ===== reduced motion ===== */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .grain { animation: none; }
+  .marquee__track { animation: none; transform: none; }
+  .nav__cta { animation: none; }
+  .glitch::before, .glitch::after { animation: none; display: none; }
+  .brummer__wing, .brummer__body, .brummer__antenna { animation: none; }
+  .guide.is-entering { transform: none; opacity: 1; }
+  [data-reveal] { opacity: 1; transform: none; transition: none; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+</style>
+
+  <!-- Importmap for optional CDN ESM libs (enhancement only) -->
+  
+</head>
+<body>
+  <a class="skip-link" href="#main">Zum Inhalt springen</a>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="cursor" aria-hidden="true"></div>
+
+  <!-- ===== NAV ===== -->
+  <header class="nav">
+    <a class="nav__logo" href="#top" aria-label="GRELLWERK Startseite">GRELL<b>//</b>WERK</a>
+    <nav class="nav__links" aria-label="Hauptnavigation">
+      <a class="nav__link" href="#leistungen" data-scramble>Leistungen</a>
+      <a class="nav__link" href="#arbeiten" data-scramble>Arbeiten</a>
+      <a class="nav__link" href="#prozess" data-scramble>Prozess</a>
+      <a class="nav__link" href="#crew" data-scramble>Crew</a>
+      <a class="nav__link nav__cta btn" href="#kontakt">Jetzt buchen</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <span id="top"></span>
+
+    <!-- ===== HERO ===== -->
+    <section class="section hero" id="hero" data-guide-step="hero">
+      <div class="container">
+        <div class="hero__block" aria-hidden="true"></div>
+        <div class="hero__grid">
+          <h1 class="hero__headline">
+            <span class="line">Wir machen</span>
+            <span class="line line--shift glitch" data-text="Lärm">Lärm</span>
+            <span class="line outline-text">der verkauft.</span>
+          </h1>
+        </div>
+        <div class="hero__meta">
+          <p class="hero__sub" data-reveal>
+            // GRELLWERK ist die Anti-Agentur. Kein Hochglanz-Blabla — nur
+            Kampagnen, die anecken und Zahlen, die knallen.
+          </p>
+          <div class="hero__ctas" data-reveal>
+            <a class="btn btn--big magnetic" href="#kontakt">Krach buchen →</a>
+            <a class="btn btn--ghost btn--big magnetic" href="#arbeiten">Arbeiten ansehen</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== MARQUEE BAND ===== -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__track">
+        <span>Performance</span><span>Branding</span><span>Social</span><span>Kampagnen</span><span>Content</span><span>Performance</span><span>Branding</span><span>Social</span><span>Kampagnen</span><span>Content</span>
+      </div>
+    </div>
+    <div class="marquee marquee--rev" aria-hidden="true">
+      <div class="marquee__track">
+        <span>Kold Brew Co.</span><span>Neontritt</span><span>Haferkraft</span><span>Blitzbank</span><span>Kold Brew Co.</span><span>Neontritt</span><span>Haferkraft</span><span>Blitzbank</span>
+      </div>
+    </div>
+
+    <!-- ===== STATS BAND ===== -->
+    <section class="stats" id="zahlen" data-guide-step="zahlen" aria-label="Zahlen, die zählen">
+      <div class="stats__grid">
+        <div class="stat">
+          <span class="stat__num" data-count="8">8</span>
+          <span class="stat__label">Jahre Krach</span>
+        </div>
+        <div class="stat">
+          <span class="stat__num" data-count="240" data-suffix="+">240+</span>
+          <span class="stat__label">Kampagnen gezündet</span>
+        </div>
+        <div class="stat">
+          <span class="stat__num">1,4&nbsp;Mrd.</span>
+          <span class="stat__label">Impressions geliefert</span>
+        </div>
+        <div class="stat">
+          <span class="stat__num" data-count="17">17</span>
+          <span class="stat__label">Awards eingesackt</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SERVICES ===== -->
+    <section class="section services" id="leistungen" data-guide-step="leistungen">
+      <div class="container">
+        <span class="eyebrow">Was wir können</span>
+        <h2 data-reveal>Leistungen</h2>
+        <div class="services__list">
+          <div class="service" data-reveal>
+            <span class="service__idx">00</span>
+            <span class="service__name">Performance Marketing</span>
+            <span class="service__desc">Paid Social, Google, ROAS-Obsession bis es weh tut.</span>
+          </div>
+          <div class="service" data-reveal>
+            <span class="service__idx">01</span>
+            <span class="service__name">Brand &amp; Identity</span>
+            <span class="service__desc">Markenstimmen, die anecken statt einschläfern.</span>
+          </div>
+          <div class="service" data-reveal>
+            <span class="service__idx">02</span>
+            <span class="service__name">Kreativ-Kampagnen</span>
+            <span class="service__desc">Ideen mit Sprengkraft. Wir designen den Krach.</span>
+          </div>
+          <div class="service" data-reveal>
+            <span class="service__idx">03</span>
+            <span class="service__name">Content &amp; Social</span>
+            <span class="service__desc">Reels und Hooks, die im Feed hängen bleiben.</span>
+          </div>
+          <div class="service" data-reveal>
+            <span class="service__idx">04</span>
+            <span class="service__name">Web &amp; Landingpages</span>
+            <span class="service__desc">Schnell, laut, conversion-stark. Wie diese hier.</span>
+          </div>
+          <div class="service" data-reveal>
+            <span class="service__idx">05</span>
+            <span class="service__name">Daten &amp; Optimierung</span>
+            <span class="service__desc">A/B-Tests, bis der Funnel glüht.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== WORK / CASES ===== -->
+    <section class="section work" id="arbeiten" data-guide-step="arbeiten">
+      <div class="container">
+        <span class="eyebrow">Zahlen lügen nicht</span>
+        <h2 data-reveal>Arbeiten</h2>
+        <div class="work__grid">
+          <article class="case magnetic" data-reveal>
+            <span class="case__metric">+312%<br>ROAS</span>
+            <span class="case__client">Kold Brew Co.</span>
+            <p class="case__desc">Von 0 auf Kult: Cold-Brew-Startup in 90 Tagen skaliert, 1,2&nbsp;Mio. Reel-Views.</p>
+            <div class="case__tags"><span class="tag">Performance</span><span class="tag">Social</span></div>
+          </article>
+          <article class="case magnetic" data-reveal>
+            <span class="case__metric">11&nbsp;Min</span>
+            <span class="case__client">Neontritt</span>
+            <p class="case__desc">Sneaker-Drop, der den Server killte: 48.000 Anmeldungen, ausverkauft in 11 Minuten.</p>
+            <div class="case__tags"><span class="tag">Kampagne</span><span class="tag">Hype</span></div>
+          </article>
+          <article class="case magnetic" data-reveal>
+            <span class="case__metric">+87%</span>
+            <span class="case__client">Haferkraft</span>
+            <p class="case__desc">Hafermilch-Rebrand: +87% Markenbekanntheit, Listung bei 3 Handelsketten.</p>
+            <div class="case__tags"><span class="tag">Branding</span><span class="tag">Retail</span></div>
+          </article>
+          <article class="case magnetic" data-reveal>
+            <span class="case__metric">−41%<br>CPA</span>
+            <span class="case__client">Blitzbank</span>
+            <p class="case__desc">Fintech-Performance: CPA um 41% gesenkt, 220.000 App-Installs.</p>
+            <div class="case__tags"><span class="tag">Fintech</span><span class="tag">Paid</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== MANIFEST ===== -->
+    <section class="section manifest" id="manifest" data-guide-step="manifest">
+      <div class="container">
+        <span class="eyebrow">Unser Manifest</span>
+        <div class="manifest__list">
+          <p class="manifest__item" data-reveal>Wir machen keine Werbung. Wir machen <span>Krach</span>.</p>
+          <p class="manifest__item" data-reveal>Langweilig ist das einzige <span>Tabu</span>.</p>
+          <p class="manifest__item" data-reveal>Wenn's keinem auffällt, war's <span>umsonst</span>.</p>
+          <p class="manifest__item" data-reveal>Bauchgefühl ist nett. <span>Daten</span> sind besser.</p>
+          <p class="manifest__item" data-reveal>Wir verkaufen keine Stunden. Wir verkaufen <span>Wirkung</span>.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PROCESS ===== -->
+    <section class="section process" id="prozess" data-guide-step="prozess">
+      <div class="container">
+        <span class="eyebrow">Wie wir arbeiten</span>
+        <h2 data-reveal>Vom Brief zum Knall</h2>
+        <div class="process__strip" data-reveal>
+          <div class="step">
+            <span class="step__num">01</span>
+            <span class="step__title">Reinhören</span>
+            <p class="step__text">Wir zerlegen dein Ziel, deine Zahlen und deine Zielgruppe.</p>
+          </div>
+          <div class="step">
+            <span class="step__num">02</span>
+            <span class="step__title">Idee zünden</span>
+            <p class="step__text">Konzept mit Sprengkraft — kein Templated-Einheitsbrei.</p>
+          </div>
+          <div class="step">
+            <span class="step__num">03</span>
+            <span class="step__title">Krach machen</span>
+            <p class="step__text">Produktion, Launch und Paid, das den Markt aufmischt.</p>
+          </div>
+          <div class="step">
+            <span class="step__num">04</span>
+            <span class="step__title">Nachlegen</span>
+            <p class="step__text">Daten lesen, optimieren, skalieren. Bis es brummt.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== TEAM ===== -->
+    <section class="section team" id="crew" data-guide-step="crew">
+      <div class="container">
+        <span class="eyebrow">Die Verrückten</span>
+        <h2 data-reveal>Crew</h2>
+        <div class="team__grid">
+          <div class="member" data-reveal>
+            <div class="member__avatar">MV</div>
+            <p class="member__name">Mara Vogt</p>
+            <p class="member__role">Gründerin · Chief Chaos Officer</p>
+          </div>
+          <div class="member" data-reveal>
+            <div class="member__avatar">JR</div>
+            <p class="member__name">Jonas Reh</p>
+            <p class="member__role">Kreativdirektor · Lärmbeauftragter</p>
+          </div>
+          <div class="member" data-reveal>
+            <div class="member__avatar">SA</div>
+            <p class="member__name">Selin Akar</p>
+            <p class="member__role">Head of Performance · ROAS-Jägerin</p>
+          </div>
+          <div class="member" data-reveal>
+            <div class="member__avatar">TK</div>
+            <p class="member__name">Tobias Klein</p>
+            <p class="member__role">Tech &amp; Web · Pixel-Schmied</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== TESTIMONIALS ===== -->
+    <section class="section quotes" id="stimmen" data-guide-step="stimmen">
+      <div class="container">
+        <span class="eyebrow">Glaub nicht uns</span>
+        <h2 data-reveal>Stimmen</h2>
+        <div class="quotes__grid">
+          <blockquote class="quote" data-reveal>
+            <p class="quote__text">Die haben unseren Laden in 90 Tagen umgekrempelt. Unbequem — und genau richtig.</p>
+            <footer class="quote__author">— Lena M., Kold Brew Co.</footer>
+          </blockquote>
+          <blockquote class="quote" data-reveal>
+            <p class="quote__text">Endlich eine Agentur, die nicht langweilt.</p>
+            <footer class="quote__author">— David R., Neontritt</footer>
+          </blockquote>
+          <blockquote class="quote" data-reveal>
+            <p class="quote__text">Zahlen statt Buzzwords. Hat gesessen.</p>
+            <footer class="quote__author">— Petra S., Blitzbank</footer>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FAQ ===== -->
+    <section class="section faq" id="faq" data-guide-step="faq">
+      <div class="container">
+        <span class="eyebrow">Bevor du fragst</span>
+        <h2 data-reveal>Häufige Fragen</h2>
+        <div class="faq__list" data-reveal>
+          <details class="faq__item">
+            <summary class="faq__q">Was kostet der Spaß? <span class="faq__icon" aria-hidden="true">+</span></summary>
+            <p class="faq__a">Projekte starten ab 5.000&nbsp;€, Retainer ab 3.500&nbsp;€/Monat. Aber ehrlich: Wir reden lieber über Ziele als über Tagessätze. Sag uns, was du erreichen willst.</p>
+          </details>
+          <details class="faq__item">
+            <summary class="faq__q">Arbeitet ihr auch mit kleinen Marken? <span class="faq__icon" aria-hidden="true">+</span></summary>
+            <p class="faq__a">Klar. Drei unserer lautesten Cases waren bei Start winzige Startups. Wichtiger als dein Budget ist, dass du wirklich auffallen willst.</p>
+          </details>
+          <details class="faq__item">
+            <summary class="faq__q">Wie schnell geht's los? <span class="faq__icon" aria-hidden="true">+</span></summary>
+            <p class="faq__a">Kickoff meist innerhalb von 10 Werktagen. Bei Drops und Launches auch schneller — wir mögen Deadlines, die wehtun.</p>
+          </details>
+          <details class="faq__item">
+            <summary class="faq__q">Macht ihr auch „seriös“ und leise? <span class="faq__icon" aria-hidden="true">+</span></summary>
+            <p class="faq__a">Können wir. Wollen wir selten. Wenn deine Marke Flüstern braucht, sind wir die Falschen — und sagen dir das ehrlich.</p>
+          </details>
+          <details class="faq__item">
+            <summary class="faq__q">Wem gehören die Ergebnisse? <span class="faq__icon" aria-hidden="true">+</span></summary>
+            <p class="faq__a">Dir. Alle Assets, Daten und Accounts gehen vollständig an dich. Keine Geiselhaft, keine versteckten Lizenzen.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section class="section contact" id="kontakt" data-guide-step="kontakt">
+      <div class="container">
+        <span class="eyebrow">Genug geschaut</span>
+        <h2 data-reveal>Lass uns Lärm machen</h2>
+        <form class="form" id="contact-form" data-reveal novalidate>
+          <div class="field">
+            <label for="f-name">Name</label>
+            <input id="f-name" name="name" type="text" autocomplete="name" required />
+          </div>
+          <div class="field">
+            <label for="f-email">E-Mail</label>
+            <input id="f-email" name="email" type="email" autocomplete="email" required />
+          </div>
+          <div class="field">
+            <label for="f-msg">Worum geht's?</label>
+            <textarea id="f-msg" name="message" rows="4" required></textarea>
+          </div>
+          <button class="btn btn--big magnetic" type="submit">Jetzt Krach buchen →</button>
+          <p class="form__status" id="form-status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__top">
+        <div class="footer__logo">GRELL//WERK</div>
+        <div class="footer__col">
+          <strong>Navigation</strong>
+          <a href="#leistungen">Leistungen</a>
+          <a href="#arbeiten">Arbeiten</a>
+          <a href="#prozess">Prozess</a>
+          <a href="#crew">Crew</a>
+        </div>
+        <div class="footer__col">
+          <strong>Kontakt</strong>
+          <span>Lärmstraße 1</span>
+          <span>50667 Köln</span>
+          <span>hallo@grellwerk.de</span>
+        </div>
+        <div class="footer__col">
+          <strong>Legal</strong>
+          <a href="#">Impressum</a>
+          <a href="#">Datenschutz</a>
+        </div>
+      </div>
+      <div class="marquee marquee--rev" aria-hidden="true" style="border:none; background:transparent; color:var(--acid);">
+        <div class="marquee__track">
+          <span>Lärm der verkauft</span><span>Lärm der verkauft</span><span>Lärm der verkauft</span><span>Lärm der verkauft</span>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>© 2026 GRELLWERK GmbH — fiktive Demo-Agentur</span>
+        <button type="button" id="replay-guide">Guide erneut starten ↻</button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== BRUMMER GUIDE ===== -->
+  <aside class="guide" id="guide" aria-label="Onboarding-Guide Brummer" hidden>
+    <div class="guide__bubble">
+      <span class="guide__step-count" id="guide-count">Schritt 1 / 8</span>
+      <p class="guide__text" id="guide-text" role="status" aria-live="polite">Servus!</p>
+      <div class="guide__controls">
+        <button class="guide__btn guide__btn--primary" id="guide-next" type="button">Weiter →</button>
+        <button class="guide__btn guide__btn--ghost" id="guide-skip" type="button">Überspringen</button>
+      </div>
+    </div>
+    <div class="guide__mascot" id="guide-mascot" aria-hidden="true">
+      <!-- BRUMMER: inline SVG bee/fly -->
+      <svg viewBox="0 0 100 100" role="img">
+        <g class="brummer__wing"><ellipse cx="32" cy="34" rx="14" ry="22" fill="#2D2DFF" opacity="0.6" stroke="#0A0A0A" stroke-width="3"/></g>
+        <g class="brummer__wing" style="animation-delay:-0.09s"><ellipse cx="68" cy="34" rx="14" ry="22" fill="#2D2DFF" opacity="0.6" stroke="#0A0A0A" stroke-width="3"/></g>
+        <g class="brummer__body">
+          <line class="brummer__antenna" x1="40" y1="40" x2="34" y2="22" stroke="#0A0A0A" stroke-width="3"/>
+          <line class="brummer__antenna" x1="60" y1="40" x2="66" y2="22" stroke="#0A0A0A" stroke-width="3" style="animation-delay:-0.6s"/>
+          <circle cx="34" cy="20" r="4" fill="#FF2E63"/>
+          <circle cx="66" cy="20" r="4" fill="#FF2E63"/>
+          <rect x="28" y="40" width="44" height="44" rx="10" fill="#D6FF3B" stroke="#0A0A0A" stroke-width="4"/>
+          <rect x="28" y="58" width="44" height="8" fill="#0A0A0A"/>
+          <rect x="28" y="72" width="44" height="6" fill="#0A0A0A"/>
+          <circle cx="42" cy="52" r="7" fill="#fff" stroke="#0A0A0A" stroke-width="2"/>
+          <circle cx="58" cy="52" r="7" fill="#fff" stroke="#0A0A0A" stroke-width="2"/>
+          <circle class="brummer__pupil" cx="42" cy="52" r="3" fill="#0A0A0A"/>
+          <circle class="brummer__pupil" cx="58" cy="52" r="3" fill="#0A0A0A"/>
+        </g>
+      </svg>
+    </div>
+  </aside>
+
+  <button class="guide-tab" id="guide-tab" type="button" hidden>
+    <span class="guide-tab__dot" aria-hidden="true">
+      <svg viewBox="0 0 100 100"><rect x="20" y="30" width="60" height="55" rx="12" fill="#D6FF3B" stroke="#0A0A0A" stroke-width="6"/><circle cx="40" cy="52" r="6" fill="#0A0A0A"/><circle cx="60" cy="52" r="6" fill="#0A0A0A"/></svg>
+    </span>
+    Brummer fragen?
+  </button>
+
+  <!-- ===== Scripts (ES modules, deferred by default) ===== -->
+  <script>
+(function(){
+// GRELLWERK — central config (copy + guide steps). Edit text here, not logic.
+const FLAGS = {
+  gsap: false,
+  lenis: false,
+};
+
+// BRUMMER guide steps. `selector` is scrolled into view + highlighted.
+const GUIDE_STEPS = [
+  {
+    selector: "#hero",
+    text: "Servus! Ich bin Brummer. Ich zeig dir kurz den Laden — oder du klickst dich selbst durch.",
+  },
+  {
+    selector: "#hero",
+    text: "Das hier ist unser Versprechen: Lärm, der verkauft. Kein Blabla, nur Wirkung.",
+  },
+  {
+    selector: "#zahlen",
+    text: "Erstmal Fakten: 8 Jahre, 240+ Kampagnen, 17 Awards. Wir reden nicht — wir liefern.",
+  },
+  {
+    selector: "#leistungen",
+    text: "Das können wir. Fahr mit der Maus über die Zeilen — keine Angst, sie beißen nicht.",
+  },
+  {
+    selector: "#arbeiten",
+    text: "Zahlen lügen nicht. +312% ROAS sind +312% ROAS. Schau dir die Cases an.",
+  },
+  {
+    selector: "#manifest",
+    text: "Unser Manifest. Lies es — es meint genau dich.",
+  },
+  {
+    selector: "#prozess",
+    text: "In vier Schritten von der Idee zum Knall. So einfach, so laut.",
+  },
+  {
+    selector: "#crew",
+    text: "Die Verrückten, die das alles bauen. Sag Hallo.",
+  },
+  {
+    selector: "#stimmen",
+    text: "Glaub nicht uns — glaub denen, mit denen wir schon Krach gemacht haben.",
+  },
+  {
+    selector: "#faq",
+    text: "Noch Fragen? Hier die Antworten — bevor du überhaupt fragen musst.",
+  },
+  {
+    selector: "#kontakt",
+    text: "Genug geschaut. Schreib uns — wir beißen nur Wettbewerber. Klick mich an, wenn du mich nochmal brauchst!",
+  },
+];
+
+// Passive quips shown when a section scrolls into view (guide inactive).
+const QUIPS = {
+  zahlen: "Zahlen statt Buzzwords.",
+  leistungen: "Sechs Disziplinen, ein Ziel: Krach.",
+  manifest: "Fünf Sätze. Kein Bullshit.",
+  faq: "Antworten ohne Drumherum.",
+  arbeiten: "Echte Zahlen, keine Fake-Mockups.",
+  prozess: "Vier Schritte. Null Bullshit.",
+  crew: "Sieht harmlos aus. Ist es nicht.",
+  stimmen: "Hör auf die, nicht auf uns.",
+  kontakt: "Na los, trau dich.",
+};
+const COPY = {
+  formSuccess: "Bzzz! Nachricht ist drin. Wir melden uns lauter als erwartet. 🐝",
+  formError: "Fast! Füll bitte alle Felder aus.",
+  storageKey: "grellwerk_guide_seen",
+};
+
+// GRELLWERK — custom cursor + magnetic buttons (pure vanilla, rAF-throttled).
+function initCursor({ reducedMotion, gsap }) {
+  const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+  if (!finePointer || reducedMotion) return;
+
+  const cursor = document.querySelector(".cursor");
+  if (!cursor) return;
+
+  document.body.classList.add("cursor-on");
+  cursor.classList.add("is-active");
+
+  let mx = window.innerWidth / 2, my = window.innerHeight / 2;
+  let cx = mx, cy = my;
+  let raf = null;
+
+  window.addEventListener("mousemove", (e) => {
+    mx = e.clientX; my = e.clientY;
+    if (!raf) raf = requestAnimationFrame(render);
+  });
+
+  function render() {
+    // lerp for trailing feel
+    cx += (mx - cx) * 0.22;
+    cy += (my - cy) * 0.22;
+    cursor.style.transform = `translate(${cx}px, ${cy}px) translate(-50%, -50%)`;
+    if (Math.abs(mx - cx) > 0.4 || Math.abs(my - cy) > 0.4) {
+      raf = requestAnimationFrame(render);
+    } else {
+      raf = null;
+    }
+  }
+
+  const hotSelector = "a, button, .magnetic, .service, .case, input, textarea";
+  document.addEventListener("mouseover", (e) => {
+    if (e.target.closest(hotSelector)) cursor.classList.add("is-hot");
+  });
+  document.addEventListener("mouseout", (e) => {
+    if (e.target.closest(hotSelector)) cursor.classList.remove("is-hot");
+  });
+
+  initMagnetic({ gsap });
+}
+
+function initMagnetic({ gsap }) {
+  const els = document.querySelectorAll(".magnetic");
+  els.forEach((el) => {
+    const strength = 0.35;
+    let setX, setY;
+    if (gsap) {
+      setX = gsap.quickTo(el, "x", { duration: 0.4, ease: "power3" });
+      setY = gsap.quickTo(el, "y", { duration: 0.4, ease: "power3" });
+    }
+    el.addEventListener("mousemove", (e) => {
+      const r = el.getBoundingClientRect();
+      const dx = (e.clientX - (r.left + r.width / 2)) * strength;
+      const dy = (e.clientY - (r.top + r.height / 2)) * strength;
+      if (gsap) { setX(dx); setY(dy); }
+      else el.style.transform = `translate(${dx}px, ${dy}px)`;
+    });
+    el.addEventListener("mouseleave", () => {
+      if (gsap) { setX(0); setY(0); }
+      else el.style.transform = "";
+    });
+  });
+}
+
+// GRELLWERK — text scramble + seamless marquee (pure vanilla, no libs needed).
+
+const CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ#%&!*/—";
+function initScramble({ reducedMotion }) {
+  if (reducedMotion) return;
+  const els = document.querySelectorAll("[data-scramble]");
+  els.forEach((el) => {
+    const finalText = el.textContent;
+    let frame = null;
+    el.addEventListener("mouseenter", () => {
+      let iteration = 0;
+      cancelAnimationFrame(frame);
+      const tick = () => {
+        el.textContent = finalText
+          .split("")
+          .map((ch, i) => {
+            if (ch === " ") return " ";
+            if (i < iteration) return finalText[i];
+            return CHARS[Math.floor(Math.random() * CHARS.length)];
+          })
+          .join("");
+        iteration += 1 / 2;
+        if (iteration < finalText.length) {
+          frame = requestAnimationFrame(tick);
+        } else {
+          el.textContent = finalText;
+        }
+      };
+      tick();
+    });
+    el.addEventListener("mouseleave", () => {
+      cancelAnimationFrame(frame);
+      el.textContent = finalText;
+    });
+  });
+}
+
+// Duplicate marquee content so the -50% loop is seamless regardless of width.
+function initMarquee() {
+  document.querySelectorAll(".marquee__track").forEach((track) => {
+    track.innerHTML += track.innerHTML;
+  });
+}
+
+// Count-up for stat numbers, triggered when the band scrolls into view.
+function initCounters({ reducedMotion }) {
+  const els = document.querySelectorAll("[data-count]");
+  if (!els.length) return;
+
+  const run = (el) => {
+    const target = parseFloat(el.getAttribute("data-count"));
+    const suffix = el.getAttribute("data-suffix") || "";
+    if (reducedMotion || isNaN(target)) {
+      el.textContent = target + suffix;
+      return;
+    }
+    const duration = 1200;
+    const start = performance.now();
+    const step = (now) => {
+      const p = Math.min(1, (now - start) / duration);
+      const eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.floor(eased * target) + suffix;
+      if (p < 1) requestAnimationFrame(step);
+      else el.textContent = target + suffix;
+    };
+    requestAnimationFrame(step);
+  };
+
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          run(entry.target);
+          io.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.5 }
+  );
+  els.forEach((el) => io.observe(el));
+}
+
+// Brutalist placeholder form: no real submission, just a buzzy success state.
+function initForm({ COPY, onSuccess }) {
+  const form = document.getElementById("contact-form");
+  const status = document.getElementById("form-status");
+  if (!form || !status) return;
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    if (!form.checkValidity()) {
+      status.textContent = COPY.formError;
+      return;
+    }
+    status.textContent = COPY.formSuccess;
+    form.reset();
+    if (typeof onSuccess === "function") onSuccess();
+  });
+}
+
+// GRELLWERK — smooth scroll (Lenis if available) + reveal animations.
+// Falls back to IntersectionObserver + CSS transitions when GSAP is absent.
+
+let lenisInstance = null;
+function initScroll({ reducedMotion, gsap, ScrollTrigger, Lenis }) {
+  // --- Smooth scroll ---
+  if (Lenis && !reducedMotion) {
+    try {
+      lenisInstance = new Lenis({ duration: 1.1, smoothWheel: true });
+      const raf = (time) => { lenisInstance.raf(time); requestAnimationFrame(raf); };
+      requestAnimationFrame(raf);
+      if (gsap && ScrollTrigger) {
+        lenisInstance.on("scroll", ScrollTrigger.update);
+      }
+    } catch (_) { lenisInstance = null; }
+  }
+
+  // --- Reveal on scroll ---
+  const revealEls = document.querySelectorAll("[data-reveal]");
+  if (reducedMotion) {
+    revealEls.forEach((el) => el.classList.add("is-visible"));
+    return;
+  }
+
+  if (gsap && ScrollTrigger) {
+    revealEls.forEach((el) => {
+      ScrollTrigger.create({
+        trigger: el,
+        start: "top 88%",
+        once: true,
+        onEnter: () => el.classList.add("is-visible"),
+      });
+    });
+  } else {
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            io.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.15, rootMargin: "0px 0px -8% 0px" }
+    );
+    revealEls.forEach((el) => io.observe(el));
+  }
+}
+
+// Shared smooth-scroll helper used by the guide.
+function scrollToEl(el) {
+  if (!el) return;
+  if (lenisInstance) {
+    lenisInstance.scrollTo(el, { offset: -80, duration: 1.0 });
+  } else {
+    const y = el.getBoundingClientRect().top + window.scrollY - 80;
+    window.scrollTo({ top: y, behavior: "smooth" });
+  }
+}
+
+// GRELLWERK — BRUMMER interactive onboarding guide (state machine).
+function initGuide({ reducedMotion }) {
+  const guide = document.getElementById("guide");
+  const tab = document.getElementById("guide-tab");
+  const textEl = document.getElementById("guide-text");
+  const countEl = document.getElementById("guide-count");
+  const nextBtn = document.getElementById("guide-next");
+  const skipBtn = document.getElementById("guide-skip");
+  const mascot = document.getElementById("guide-mascot");
+  if (!guide || !tab) return null;
+
+  const state = {
+    index: 0,
+    active: false,
+    lastHighlight: null,
+    quipCooldown: false,
+  };
+
+  const seen = () => {
+    try { return localStorage.getItem(COPY.storageKey) === "1"; }
+    catch (_) { return false; }
+  };
+  const markSeen = () => { try { localStorage.setItem(COPY.storageKey, "1"); } catch (_) {} };
+
+  function clearHighlight() {
+    if (state.lastHighlight) {
+      state.lastHighlight.classList.remove("guide-highlight");
+      state.lastHighlight = null;
+    }
+  }
+
+  function showStep(i) {
+    const step = GUIDE_STEPS[i];
+    if (!step) return finish();
+    state.index = i;
+    textEl.textContent = step.text;
+    countEl.textContent = `Schritt ${i + 1} / ${GUIDE_STEPS.length}`;
+    nextBtn.textContent = i === GUIDE_STEPS.length - 1 ? "Fertig ✓" : "Weiter →";
+
+    clearHighlight();
+    const target = document.querySelector(step.selector);
+    if (target) {
+      scrollToEl(target);
+      target.classList.add("guide-highlight");
+      state.lastHighlight = target;
+    }
+  }
+
+  function start() {
+    tab.hidden = true;
+    guide.hidden = false;
+    state.active = true;
+    if (!reducedMotion) {
+      guide.classList.add("is-entering");
+      requestAnimationFrame(() =>
+        requestAnimationFrame(() => guide.classList.remove("is-entering"))
+      );
+    }
+    showStep(0);
+  }
+
+  function next() {
+    if (state.index >= GUIDE_STEPS.length - 1) return finish();
+    showStep(state.index + 1);
+  }
+
+  function minimize() {
+    state.active = false;
+    clearHighlight();
+    guide.hidden = true;
+    tab.hidden = false;
+  }
+
+  function finish() { markSeen(); minimize(); }
+  function skip() { markSeen(); minimize(); }
+  function replay() { start(); }
+
+  // --- Eye tracking (pupils follow cursor) ---
+  if (!reducedMotion && mascot) {
+    const pupils = mascot.querySelectorAll(".brummer__pupil");
+    let raf = null, mx = 0, my = 0;
+    window.addEventListener("mousemove", (e) => {
+      mx = e.clientX; my = e.clientY;
+      if (!raf) raf = requestAnimationFrame(updateEyes);
+    });
+    function updateEyes() {
+      const r = mascot.getBoundingClientRect();
+      const cxp = r.left + r.width / 2;
+      const cyp = r.top + r.height / 2;
+      const ang = Math.atan2(my - cyp, mx - cxp);
+      const dx = Math.cos(ang) * 2.2;
+      const dy = Math.sin(ang) * 2.2;
+      pupils.forEach((p) => {
+        const bx = p.getAttribute("cx");
+        const by = p.getAttribute("cy");
+        p.setAttribute("transform", `translate(${dx} ${dy})`);
+        void bx; void by;
+      });
+      raf = null;
+    }
+  }
+
+  // --- Passive quips via IntersectionObserver ---
+  const sections = document.querySelectorAll("[data-guide-step]");
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        const key = entry.target.getAttribute("data-guide-step");
+        // guided mode keeps its own pointing; quips only when inactive + minimized
+        if (state.active || guide.hidden === false) return;
+        if (tab.hidden) return; // tab not shown yet (first visit auto-tour pending)
+        const quip = QUIPS[key];
+        if (quip && !state.quipCooldown) {
+          state.quipCooldown = true;
+          textEl.textContent = quip;
+          // briefly peek the bubble without full takeover
+          setTimeout(() => { state.quipCooldown = false; }, 6000);
+        }
+      });
+    },
+    { threshold: 0.45 }
+  );
+  sections.forEach((s) => io.observe(s));
+
+  // --- Controls ---
+  nextBtn.addEventListener("click", next);
+  skipBtn.addEventListener("click", skip);
+  tab.addEventListener("click", replay);
+  document.getElementById("replay-guide")?.addEventListener("click", replay);
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && state.active) skip();
+  });
+
+  // --- Boot ---
+  if (seen()) {
+    tab.hidden = false; // returning visitor: minimized, replayable
+  } else {
+    setTimeout(start, reducedMotion ? 200 : 900); // first visit: auto-tour
+  }
+
+  return { replay, start, minimize };
+}
+
+// GRELLWERK — orchestrator. Initializes modules in order with graceful fallbacks.
+
+
+
+
+
+
+const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+async function boot() {
+  // Pure-vanilla effects first — these never depend on a CDN.
+  initMarquee();
+  initScramble({ reducedMotion });
+  initCounters({ reducedMotion });
+
+  // Load optional CDN enhancements (GSAP / Lenis). Failures are swallowed.
+  const gsap = null, ScrollTrigger = null, Lenis = null; window.__FLAGS = { gsap: false, lenis: false, standalone: true };
+
+  initScroll({ reducedMotion, gsap, ScrollTrigger, Lenis });
+  initCursor({ reducedMotion, gsap });
+
+  const guide = initGuide({ reducedMotion });
+
+  initForm({
+    COPY,
+    onSuccess: () => guide?.replay?.(),
+  });
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", boot);
+} else {
+  boot();
+}
+
+})();
+</script>
+</body>
+</html>

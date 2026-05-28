@@ -19,7 +19,10 @@ export function initGuide({ reducedMotion }) {
     quipCooldown: false,
   };
 
-  const seen = () => localStorage.getItem(COPY.storageKey) === "1";
+  const seen = () => {
+    try { return localStorage.getItem(COPY.storageKey) === "1"; }
+    catch (_) { return false; }
+  };
   const markSeen = () => { try { localStorage.setItem(COPY.storageKey, "1"); } catch (_) {} };
 
   function clearHighlight() {
