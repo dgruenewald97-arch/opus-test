@@ -26,6 +26,36 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: studio-seide/package-lock.json
+
+      - name: Build STUDIO SEIDE (Vite)
+        working-directory: studio-seide
+        env:
+          # playwright is a dev-only verification tool; don't fetch browsers in CI
+          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: "1"
+        run: |
+          npm ci
+          npm run build
+
+      - name: Assemble Pages site
+        # Homepage = GRELLWERK (build-less, repo root).
+        # STUDIO SEIDE (Vite build) is served under /studio-seide/.
+        run: |
+          rm -rf _site
+          mkdir -p _site/studio-seide
+          # GRELLWERK at the root
+          cp -r index.html css js assets _site/
+          cp grellwerk-standalone.html _site/ 2>/dev/null || true
+          # Salon site (built with base: './', so it works under the sub-path)
+          cp -r studio-seide/dist/. _site/studio-seide/
+          # Skip Jekyll processing entirely
+          touch _site/.nojekyll
+
       - name: Configure Pages
         # enablement: true auto-enables Pages on first run if not yet configured
         uses: actions/configure-pages@v5
@@ -35,8 +65,7 @@ jobs:
       - name: Upload static site
         uses: actions/upload-pages-artifact@v3
         with:
-          # Build-less: the whole repo root is the site (index.html + css/js/assets)
-          path: "."
+          path: "_site"
 
       - name: Deploy to GitHub Pages
         id: deployment

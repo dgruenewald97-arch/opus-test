@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#f3efe6"/>
+  <g fill="none" stroke="#b14b3c" stroke-width="3" opacity="0.7">
+    <path d="M0,120 C300,200 320,360 600,400 C880,440 900,560 1200,560"/>
+    <path d="M0,180 C300,260 320,420 600,460 C880,500 900,600 1200,600" opacity="0.4"/>
+  </g>
+  <text x="80" y="250" font-family="Georgia, serif" font-size="40" letter-spacing="14" fill="#17120d">STUDIO SEIDE</text>
+  <text x="80" y="370" font-family="Georgia, serif" font-size="92" font-weight="600" fill="#17120d">Haar als</text>
+  <text x="80" y="470" font-family="Georgia, serif" font-style="italic" font-size="92" font-weight="600" fill="#b14b3c">Handwerk.</text>
+  <text x="80" y="560" font-family="monospace" font-size="24" letter-spacing="4" fill="#6f675a">HAUS FÜR HAAR &amp; BEAUTY · HAMBURG</text>
+</svg>

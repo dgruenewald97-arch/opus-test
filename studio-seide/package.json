@@ -1,0 +1,23 @@
+{
+  "name": "studio-seide",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "STUDIO SEIDE — editorial website for a fictional hair & beauty salon",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview --port 4173",
+    "build:standalone": "vite build --mode standalone"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.4",
+    "playwright": "^1.56.1",
+    "vite": "^5.4.11",
+    "vite-plugin-singlefile": "^2.0.3"
+  }
+}
