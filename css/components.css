@@ -1,0 +1,103 @@
+/* GRELLWERK — reusable components */
+
+/* ---- Grain overlay ---- */
+.grain {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-grain);
+  pointer-events: none;
+  background-image: url("../assets/noise.svg");
+  background-size: 220px 220px;
+  opacity: 0.06;
+  mix-blend-mode: multiply;
+  animation: grain-shift 0.6s steps(2) infinite;
+}
+
+/* ---- Custom cursor ---- */
+.cursor {
+  position: fixed;
+  top: 0; left: 0;
+  width: 22px; height: 22px;
+  border: 3px solid var(--ink);
+  border-radius: 50%;
+  background: var(--acid);
+  mix-blend-mode: difference;
+  pointer-events: none;
+  z-index: var(--z-cursor);
+  transform: translate(-50%, -50%);
+  transition: width 0.18s ease, height 0.18s ease, background 0.18s ease;
+  will-change: transform;
+  display: none;
+}
+.cursor.is-active { display: block; }
+.cursor.is-hot { width: 60px; height: 60px; background: var(--shock); }
+
+/* ---- Buttons ---- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 1.1rem 2rem;
+  border: var(--border) solid var(--ink);
+  background: var(--acid);
+  color: var(--ink);
+  box-shadow: var(--shadow-block);
+  transition: transform 0.08s ease, box-shadow 0.12s ease, background 0.15s ease;
+  will-change: transform;
+}
+.btn:hover { background: var(--shock); }
+.btn:active { transform: translate(8px, 8px); box-shadow: 0 0 0 var(--ink); }
+.btn--ghost { background: transparent; }
+.btn--ghost:hover { background: var(--electric); color: var(--paper); }
+.btn--big { padding: 1.4rem 2.6rem; font-size: var(--step-1); }
+
+.magnetic { display: inline-block; }
+
+/* ---- Marquee ---- */
+.marquee {
+  display: flex;
+  overflow: hidden;
+  border-block: var(--border) solid var(--ink);
+  background: var(--ink);
+  color: var(--acid);
+  user-select: none;
+}
+.marquee__track {
+  display: flex;
+  flex-shrink: 0;
+  gap: 2rem;
+  padding: 0.8rem 1rem;
+  white-space: nowrap;
+  font-family: var(--font-display);
+  font-size: var(--step-1);
+  text-transform: uppercase;
+  animation: marquee-scroll 22s linear infinite;
+}
+.marquee:hover .marquee__track { animation-play-state: paused; }
+.marquee--rev { background: var(--acid); color: var(--ink); }
+.marquee--rev .marquee__track { animation-direction: reverse; animation-duration: 28s; }
+.marquee__track span { display: inline-flex; align-items: center; gap: 2rem; }
+.marquee__track span::after { content: "✦"; color: var(--shock); }
+.marquee--rev .marquee__track span::after { color: var(--electric); }
+
+/* ---- Card (generic brutalist block) ---- */
+.block {
+  border: var(--border) solid var(--ink);
+  background: var(--paper);
+  box-shadow: var(--shadow-block);
+}
+
+/* ---- Tag chips ---- */
+.tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+  text-transform: uppercase;
+  padding: 0.25em 0.7em;
+  border: 2px solid var(--ink);
+  background: var(--paper);
+}

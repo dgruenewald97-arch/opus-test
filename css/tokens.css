@@ -1,0 +1,44 @@
+/* GRELLWERK — design tokens */
+:root {
+  /* palette */
+  --ink: #0A0A0A;
+  --paper: #F2F0E9;
+  --acid: #D6FF3B;
+  --shock: #FF2E63;
+  --electric: #2D2DFF;
+  --warn: #FF6B00;
+
+  /* semantic */
+  --bg: var(--paper);
+  --fg: var(--ink);
+
+  /* typography */
+  --font-display: "Archivo Black", "Impact", "Haettenschweiler", sans-serif;
+  --font-ui: "Space Grotesk", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", "Courier New", monospace;
+
+  /* fluid type scale */
+  --step--1: clamp(0.78rem, 0.7rem + 0.4vw, 0.95rem);
+  --step-0:  clamp(1rem, 0.92rem + 0.4vw, 1.2rem);
+  --step-1:  clamp(1.4rem, 1.1rem + 1.4vw, 2.2rem);
+  --step-2:  clamp(2rem, 1.4rem + 3vw, 4rem);
+  --step-3:  clamp(2.6rem, 1.4rem + 6vw, 7rem);
+  --step-mega: clamp(3rem, 0.5rem + 13vw, 13rem);
+
+  /* spacing */
+  --gap: clamp(1rem, 0.5rem + 2vw, 2.5rem);
+  --pad-section: clamp(3.5rem, 2rem + 8vw, 9rem);
+  --container: 1440px;
+
+  /* structure */
+  --border: 4px;
+  --border-thick: 6px;
+  --shadow-block: 8px 8px 0 var(--ink);
+  --shadow-block-lg: 14px 14px 0 var(--ink);
+
+  /* z-index */
+  --z-grain: 9000;
+  --z-cursor: 9999;
+  --z-guide: 8000;
+  --z-nav: 7000;
+}

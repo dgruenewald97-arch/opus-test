@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#0A0A0A"/>
+  <rect x="40" y="40" width="1120" height="550" fill="none" stroke="#D6FF3B" stroke-width="6"/>
+  <text x="80" y="280" font-family="Impact, sans-serif" font-size="150" fill="#F2F0E9">GRELLWERK</text>
+  <text x="84" y="400" font-family="monospace" font-size="52" fill="#D6FF3B">Lärm, der verkauft.</text>
+  <rect x="80" y="450" width="320" height="80" fill="#FF2E63"/>
+  <text x="110" y="505" font-family="monospace" font-size="38" fill="#0A0A0A">JETZT KRACH BUCHEN</text>
+</svg>

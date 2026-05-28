@@ -1,0 +1,129 @@
+/* GRELLWERK — BRUMMER onboarding guide */
+
+.guide {
+  position: fixed;
+  z-index: var(--z-guide);
+  bottom: clamp(1rem, 3vw, 2rem);
+  right: clamp(1rem, 3vw, 2rem);
+  width: min(360px, calc(100vw - 2rem));
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.6rem;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+}
+.guide[hidden] { display: none; }
+
+/* fly-in state */
+.guide.is-entering { transform: translateY(140%) rotate(8deg); opacity: 0; }
+
+/* speech bubble */
+.guide__bubble {
+  position: relative;
+  width: 100%;
+  background: var(--paper);
+  color: var(--ink);
+  border: var(--border) solid var(--ink);
+  box-shadow: var(--shadow-block);
+  padding: 1.1rem 1.2rem 0.9rem;
+  order: 1;
+}
+.guide__bubble::after {
+  content: "";
+  position: absolute;
+  bottom: -16px;
+  right: 36px;
+  width: 24px;
+  height: 24px;
+  background: var(--paper);
+  border-right: var(--border) solid var(--ink);
+  border-bottom: var(--border) solid var(--ink);
+  transform: rotate(45deg);
+}
+.guide__step-count {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--shock);
+  display: block;
+  margin-bottom: 0.4rem;
+}
+.guide__text {
+  font-family: var(--font-mono);
+  font-size: 0.92rem;
+  line-height: 1.45;
+  min-height: 2.6em;
+}
+.guide__controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.9rem;
+}
+.guide__btn {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.74rem;
+  letter-spacing: 0.05em;
+  padding: 0.55rem 0.9rem;
+  border: 3px solid var(--ink);
+  background: var(--acid);
+  transition: transform 0.08s ease, background 0.15s ease;
+}
+.guide__btn:hover { background: var(--shock); color: var(--paper); }
+.guide__btn:active { transform: translate(3px, 3px); }
+.guide__btn--ghost { background: transparent; }
+.guide__btn--primary { background: var(--electric); color: var(--paper); }
+
+/* the mascot row */
+.guide__mascot {
+  order: 2;
+  align-self: flex-end;
+  width: 86px;
+  height: 86px;
+  filter: drop-shadow(4px 4px 0 var(--ink));
+}
+.guide__mascot svg { width: 100%; height: 100%; overflow: visible; }
+.brummer__wing { transform-origin: 50% 30%; animation: buzz 0.18s ease-in-out infinite alternate; }
+.brummer__body { transform-origin: 50% 50%; animation: hover-bob 2.4s ease-in-out infinite; }
+.brummer__antenna { transform-origin: bottom; animation: antenna-wobble 1.8s ease-in-out infinite; }
+
+/* minimized tab */
+.guide-tab {
+  position: fixed;
+  bottom: clamp(1rem, 3vw, 2rem);
+  right: clamp(1rem, 3vw, 2rem);
+  z-index: var(--z-guide);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+  padding: 0.7rem 1rem;
+  background: var(--acid);
+  border: var(--border) solid var(--ink);
+  box-shadow: var(--shadow-block);
+  transition: transform 0.08s ease, background 0.15s ease;
+}
+.guide-tab[hidden] { display: none; }
+.guide-tab:hover { background: var(--shock); color: var(--paper); }
+.guide-tab:active { transform: translate(4px, 4px); box-shadow: 0 0 0 var(--ink); }
+.guide-tab__dot {
+  width: 28px; height: 28px;
+  filter: drop-shadow(2px 2px 0 var(--ink));
+}
+
+/* highlight on targeted section */
+.guide-highlight {
+  outline: var(--border) dashed var(--shock);
+  outline-offset: 10px;
+  transition: outline-color 0.3s ease;
+}
+
+@media (max-width: 560px) {
+  .guide { width: calc(100vw - 1.5rem); }
+}
