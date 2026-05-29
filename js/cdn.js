@@ -20,13 +20,11 @@ export async function loadEnhancements() {
     FLAGS.gsap = false;
   }
 
-  try {
-    const mod = await import("lenis");
-    Lenis = mod.default || mod.Lenis;
-    FLAGS.lenis = !!Lenis;
-  } catch (_) {
-    FLAGS.lenis = false;
-  }
+  // Lenis smooth-scroll is intentionally NOT loaded: smoothWheel interpolates
+  // every wheel/trackpad event over ~1s, which makes scrolling feel laggy.
+  // We use native scrolling instead (snappy, 1:1). GSAP/ScrollTrigger reveals
+  // and the guide's scrollTo still work fine on native scroll.
+  FLAGS.lenis = false;
 
   // expose for debugging / verification
   window.__FLAGS = { ...FLAGS };
