@@ -76,7 +76,8 @@ h1, h2, h3, h4, p { overflow-wrap: break-word; }
 }
 
 /* GRELLWERK — base typography & layout primitives */
-html { scroll-behavior: smooth; }
+/* No `scroll-behavior: smooth` here — it makes the browser interpolate every
+   wheel/trackpad scroll, which feels laggy. The guide scrolls smoothly via JS. */
 
 body {
   font-family: var(--font-ui);
@@ -1463,17 +1464,9 @@ function initForm({ COPY, onSuccess }) {
 
 let lenisInstance = null;
 function initScroll({ reducedMotion, gsap, ScrollTrigger, Lenis }) {
-  // --- Smooth scroll ---
-  if (Lenis && !reducedMotion) {
-    try {
-      lenisInstance = new Lenis({ duration: 1.1, smoothWheel: true });
-      const raf = (time) => { lenisInstance.raf(time); requestAnimationFrame(raf); };
-      requestAnimationFrame(raf);
-      if (gsap && ScrollTrigger) {
-        lenisInstance.on("scroll", ScrollTrigger.update);
-      }
-    } catch (_) { lenisInstance = null; }
-  }
+  // Smooth scroll (Lenis) is disabled on purpose — native scrolling feels
+  // snappier. `lenisInstance` stays null, so scrollToEl() below uses the
+  // native window.scrollTo fallback.
 
   // --- Reveal on scroll ---
   const revealEls = document.querySelectorAll("[data-reveal]");

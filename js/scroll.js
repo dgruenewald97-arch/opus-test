@@ -4,17 +4,9 @@
 let lenisInstance = null;
 
 export function initScroll({ reducedMotion, gsap, ScrollTrigger, Lenis }) {
-  // --- Smooth scroll ---
-  if (Lenis && !reducedMotion) {
-    try {
-      lenisInstance = new Lenis({ duration: 1.1, smoothWheel: true });
-      const raf = (time) => { lenisInstance.raf(time); requestAnimationFrame(raf); };
-      requestAnimationFrame(raf);
-      if (gsap && ScrollTrigger) {
-        lenisInstance.on("scroll", ScrollTrigger.update);
-      }
-    } catch (_) { lenisInstance = null; }
-  }
+  // Smooth scroll (Lenis) is disabled on purpose — native scrolling feels
+  // snappier. `lenisInstance` stays null, so scrollToEl() below uses the
+  // native window.scrollTo fallback.
 
   // --- Reveal on scroll ---
   const revealEls = document.querySelectorAll("[data-reveal]");

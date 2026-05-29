@@ -1,5 +1,6 @@
 /* GRELLWERK — base typography & layout primitives */
-html { scroll-behavior: smooth; }
+/* No `scroll-behavior: smooth` here — it makes the browser interpolate every
+   wheel/trackpad scroll, which feels laggy. The guide scrolls smoothly via JS. */
 
 body {
   font-family: var(--font-ui);
