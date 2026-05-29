@@ -601,6 +601,157 @@ h3 { font-size: var(--step-1); }
 .field input:focus, .field textarea:focus { background: rgba(214,255,59,0.08); }
 .form__status { font-family: var(--font-mono); color: var(--acid); min-height: 1.4em; }
 
+/* ===== KUNDEN / LOGO-WALL (klont .stats-Grid + .service-Hover) ===== */
+.clients__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin-top: var(--gap);
+  border-top: var(--border) solid var(--ink);
+  border-left: var(--border) solid var(--ink);
+}
+.client {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: clamp(5rem, 11vw, 7.5rem);
+  padding: 1rem;
+  border-right: var(--border) solid var(--ink);
+  border-bottom: var(--border) solid var(--ink);
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  font-size: var(--step-1);
+  line-height: 0.95;
+  transition: background 0.18s ease, color 0.18s ease;
+}
+.client:hover { background: var(--ink); color: var(--acid); }
+.clients__awards {
+  margin-top: var(--gap);
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  opacity: 0.7;
+}
+@media (max-width: 760px) {
+  .clients__grid { grid-template-columns: 1fr 1fr; }
+}
+
+/* ===== PAKETE / PREISE (klont .process__strip) ===== */
+.pricing__strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: var(--gap);
+  border: var(--border) solid var(--ink);
+}
+.tier {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  padding: clamp(1.5rem, 3vw, 2.2rem);
+  border-right: var(--border) solid var(--ink);
+  background: var(--paper);
+}
+.tier:last-child { border-right: none; }
+.tier--mid { background: var(--acid); }
+.tier__name { font-family: var(--font-display); text-transform: uppercase; font-size: var(--step-2); line-height: 0.85; }
+.tier__price { font-family: var(--font-display); font-size: var(--step-1); }
+.tier__cycle { font-family: var(--font-mono); font-size: var(--step--1); text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.6; }
+.tier__features { list-style: none; display: grid; gap: 0.5rem; margin-top: 0.4rem; }
+.tier__features li { font-family: var(--font-mono); font-size: var(--step--1); padding-left: 1.4em; position: relative; }
+.tier__features li::before { content: "→"; position: absolute; left: 0; }
+.tier__cta { margin-top: auto; justify-content: center; }
+.tier--mid .tier__cta { background: var(--ink); color: var(--acid); }
+.tier--mid .tier__cta:hover { background: var(--shock); color: var(--paper); }
+@media (max-width: 860px) {
+  .pricing__strip { grid-template-columns: 1fr; }
+  .tier { border-right: none; border-bottom: var(--border) solid var(--ink); }
+  .tier:last-child { border-bottom: none; }
+}
+
+/* ===== KRACH-KONFIGURATOR (klont .contact dunkles Panel) ===== */
+.config { background: var(--ink); color: var(--paper); }
+.config h2 { color: var(--acid); }
+.config .eyebrow { color: var(--paper); }
+.config__layout {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: var(--gap);
+  margin-top: var(--gap);
+  align-items: start;
+}
+.config__form { display: grid; gap: var(--gap); }
+.config__group { border: none; padding: 0; margin: 0; }
+.config__group legend {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: var(--step--1);
+  color: var(--acid);
+  margin-bottom: 0.8rem;
+  padding: 0;
+}
+.config__opts { display: flex; flex-wrap: wrap; gap: 0.7rem; }
+.config__opt {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  font-size: var(--step--1);
+  letter-spacing: 0.05em;
+  padding: 0.7em 1.1em;
+  border: 3px solid var(--acid);
+  background: transparent;
+  color: var(--paper);
+  cursor: pointer;
+  transition: background 0.12s ease, color 0.12s ease;
+}
+.config__opt:hover { background: rgba(214, 255, 59, 0.12); }
+.config__opt.is-active { background: var(--acid); color: var(--ink); }
+.config__result {
+  border: var(--border) solid var(--acid);
+  padding: clamp(1.5rem, 3vw, 2rem);
+  display: grid;
+  gap: 0.7rem;
+  align-content: start;
+}
+.config__label { font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.2em; font-size: var(--step--1); opacity: 0.7; }
+.config__paket { font-family: var(--font-display); text-transform: uppercase; font-size: var(--step-2); line-height: 0.85; color: var(--acid); }
+.config__lead { font-family: var(--font-mono); font-weight: 700; text-transform: uppercase; font-size: var(--step--1); }
+.config__why { font-family: var(--font-mono); font-size: var(--step--1); opacity: 0.85; }
+.config__cta { margin-top: 0.5rem; justify-content: center; }
+@media (max-width: 860px) {
+  .config__layout { grid-template-columns: 1fr; }
+}
+
+/* ===== LÄRM-JOURNAL (klont .work__grid + .case) ===== */
+.journal__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: clamp(1.5rem, 4vw, 3rem);
+  margin-top: var(--gap);
+}
+.post {
+  border: var(--border) solid var(--ink);
+  background: var(--paper);
+  box-shadow: var(--shadow-block);
+  padding: 1.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+  will-change: transform;
+}
+.post:nth-child(odd) { transform: rotate(-1.4deg); }
+.post:nth-child(even) { transform: rotate(1.2deg); }
+.post:hover {
+  transform: rotate(0deg) scale(1.03);
+  box-shadow: var(--shadow-block-lg);
+  z-index: 3;
+}
+.post__meta { display: flex; align-items: center; gap: 0.8rem; font-family: var(--font-mono); font-size: var(--step--1); text-transform: uppercase; letter-spacing: 0.06em; opacity: 0.85; }
+.post__title { font-family: var(--font-display); text-transform: uppercase; font-size: var(--step-1); line-height: 0.95; }
+.post__teaser { font-size: var(--step--1); }
+.post__more { font-family: var(--font-mono); font-weight: 700; text-transform: uppercase; font-size: var(--step--1); margin-top: auto; color: var(--shock); }
+
 /* ===== FOOTER ===== */
 .footer { background: var(--ink); color: var(--paper); padding-block: clamp(2.5rem, 6vw, 5rem); }
 .footer__top {
@@ -852,8 +1003,10 @@ h3 { font-size: var(--step-1); }
     <nav class="nav__links" aria-label="Hauptnavigation">
       <a class="nav__link" href="#leistungen" data-scramble>Leistungen</a>
       <a class="nav__link" href="#arbeiten" data-scramble>Arbeiten</a>
+      <a class="nav__link" href="#pakete" data-scramble>Pakete</a>
       <a class="nav__link" href="#prozess" data-scramble>Prozess</a>
       <a class="nav__link" href="#crew" data-scramble>Crew</a>
+      <a class="nav__link" href="#journal" data-scramble>Journal</a>
       <a class="nav__link nav__cta btn" href="#kontakt">Jetzt buchen</a>
     </nav>
   </header>
@@ -993,6 +1146,25 @@ h3 { font-size: var(--step-1); }
       </div>
     </section>
 
+    <!-- ===== KUNDEN / LOGO-WALL ===== -->
+    <section class="section clients" id="kunden" data-guide-step="kunden">
+      <div class="container">
+        <span class="eyebrow">Die uns vertrauen</span>
+        <h2 data-reveal>Kunden</h2>
+        <div class="clients__grid" data-reveal>
+          <span class="client">Kold Brew Co.</span>
+          <span class="client">Neontritt</span>
+          <span class="client">Haferkraft</span>
+          <span class="client">Blitzbank</span>
+          <span class="client">Volt&amp;Co</span>
+          <span class="client">Rauschgold</span>
+          <span class="client">Pixelhain</span>
+          <span class="client">Stadtwild</span>
+        </div>
+        <p class="clients__awards" data-reveal>ADC Bronze 2024 · Effie Shortlist 2025 · German Brand Award 2025 · Webby Honoree 2026</p>
+      </div>
+    </section>
+
     <!-- ===== MANIFEST ===== -->
     <section class="section manifest" id="manifest" data-guide-step="manifest">
       <div class="container">
@@ -1033,6 +1205,95 @@ h3 { font-size: var(--step-1); }
             <span class="step__title">Nachlegen</span>
             <p class="step__text">Daten lesen, optimieren, skalieren. Bis es brummt.</p>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PAKETE / PREISE ===== -->
+    <section class="section pricing" id="pakete" data-guide-step="pakete">
+      <div class="container">
+        <span class="eyebrow">Was es kostet</span>
+        <h2 data-reveal>Pakete</h2>
+        <div class="pricing__strip" data-reveal>
+          <div class="tier">
+            <span class="tier__name">Zünden</span>
+            <span class="tier__price">ab 5.000&nbsp;€</span>
+            <span class="tier__cycle">/ Projekt</span>
+            <ul class="tier__features">
+              <li>Kampagnen-Konzept mit Sprengkraft</li>
+              <li>Creative für 2 Kanäle</li>
+              <li>Setup Paid Social oder Google</li>
+              <li>4 Wochen Laufzeit</li>
+            </ul>
+            <a class="btn btn--ghost tier__cta" href="#kontakt">Zünden →</a>
+          </div>
+          <div class="tier tier--mid">
+            <span class="tier__name">Krachen</span>
+            <span class="tier__price">ab 3.500&nbsp;€</span>
+            <span class="tier__cycle">/ Monat · meist gebucht</span>
+            <ul class="tier__features">
+              <li>Always-on auf bis zu 4 Kanälen</li>
+              <li>Wöchentliche Creatives &amp; Hooks</li>
+              <li>A/B-Tests &amp; Funnel-Optimierung</li>
+              <li>Dedizierter Performance-Lead</li>
+            </ul>
+            <a class="btn tier__cta" href="#kontakt">Krachen →</a>
+          </div>
+          <div class="tier">
+            <span class="tier__name">Eskalieren</span>
+            <span class="tier__price">auf Anfrage</span>
+            <span class="tier__cycle">/ Vollgas</span>
+            <ul class="tier__features">
+              <li>Volle Crew, dedizierter Squad</li>
+              <li>Brand-Strategie &amp; Identity</li>
+              <li>Produktion Film, Foto &amp; Web</li>
+              <li>Omnichannel-Kampagnen</li>
+            </ul>
+            <a class="btn btn--ghost tier__cta" href="#kontakt">Eskalieren →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== KRACH-KONFIGURATOR ===== -->
+    <section class="section config" id="konfigurator" data-guide-step="konfigurator">
+      <div class="container">
+        <span class="eyebrow">Finde deinen Krach</span>
+        <h2 data-reveal>Konfigurator</h2>
+        <div class="config__layout" data-reveal>
+          <form class="config__form" id="config-form">
+            <fieldset class="config__group">
+              <legend>Was willst du erreichen?</legend>
+              <div class="config__opts">
+                <button type="button" class="config__opt" data-config-q="ziel" data-config-v="awareness">Bekannter werden</button>
+                <button type="button" class="config__opt" data-config-q="ziel" data-config-v="sales">Mehr verkaufen</button>
+                <button type="button" class="config__opt" data-config-q="ziel" data-config-v="launch">Etwas launchen</button>
+              </div>
+            </fieldset>
+            <fieldset class="config__group">
+              <legend>Wo steht deine Marke?</legend>
+              <div class="config__opts">
+                <button type="button" class="config__opt" data-config-q="phase" data-config-v="start">Frisch gestartet</button>
+                <button type="button" class="config__opt" data-config-q="phase" data-config-v="wachsen">Am Wachsen</button>
+                <button type="button" class="config__opt" data-config-q="phase" data-config-v="etabliert">Etabliert</button>
+              </div>
+            </fieldset>
+            <fieldset class="config__group">
+              <legend>Wie laut soll's werden?</legend>
+              <div class="config__opts">
+                <button type="button" class="config__opt" data-config-q="tempo" data-config-v="test">Erstmal testen</button>
+                <button type="button" class="config__opt" data-config-q="tempo" data-config-v="dauer">Dauerhaft dranbleiben</button>
+                <button type="button" class="config__opt" data-config-q="tempo" data-config-v="vollgas">Vollgas, alles</button>
+              </div>
+            </fieldset>
+          </form>
+          <aside class="config__result" id="config-result" aria-live="polite">
+            <span class="config__label">Deine Empfehlung</span>
+            <p class="config__paket" id="config-paket">Beantworte die Fragen →</p>
+            <p class="config__lead" id="config-lead"></p>
+            <p class="config__why" id="config-why">Tipp dich durch — ich stell dir das passende Paket und den richtigen Kopf aus der Crew zusammen.</p>
+            <a class="btn config__cta" id="config-cta" href="#kontakt" hidden>Krach buchen →</a>
+          </aside>
         </div>
       </div>
     </section>
@@ -1085,6 +1346,34 @@ h3 { font-size: var(--step-1); }
             <p class="quote__text">Zahlen statt Buzzwords. Hat gesessen.</p>
             <footer class="quote__author">— Petra S., Blitzbank</footer>
           </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== LÄRM-JOURNAL ===== -->
+    <section class="section journal" id="journal" data-guide-step="journal">
+      <div class="container">
+        <span class="eyebrow">Aus der Werkstatt</span>
+        <h2 data-reveal>Lärm-Journal</h2>
+        <div class="journal__grid">
+          <article class="post" data-reveal>
+            <div class="post__meta"><span class="tag">Performance</span><time datetime="2026-04-18">18. Apr 2026</time></div>
+            <h3 class="post__title">Warum dein ROAS lügt</h3>
+            <p class="post__teaser">Last-Click ist tot. Wie wir Kampagnen über inkrementellen Lift statt Vanity-Metriken steuern.</p>
+            <span class="post__more">Lesen →</span>
+          </article>
+          <article class="post" data-reveal>
+            <div class="post__meta"><span class="tag">Branding</span><time datetime="2026-02-27">27. Feb 2026</time></div>
+            <h3 class="post__title">Anecken als Strategie</h3>
+            <p class="post__teaser">Der Haferkraft-Rebrand: aus leiser Hafermilch eine Marke, über die man streitet. +87% Bekanntheit.</p>
+            <span class="post__more">Lesen →</span>
+          </article>
+          <article class="post" data-reveal>
+            <div class="post__meta"><span class="tag">Social</span><time datetime="2025-12-09">9. Dez 2025</time></div>
+            <h3 class="post__title">Der Hook in 3 Sekunden</h3>
+            <p class="post__teaser">48.000 Anmeldungen für einen Sneaker-Drop. Was den Neontritt-Reel zum Selbstläufer machte.</p>
+            <span class="post__more">Lesen →</span>
+          </article>
         </div>
       </div>
     </section>
@@ -1153,8 +1442,11 @@ h3 { font-size: var(--step-1); }
           <strong>Navigation</strong>
           <a href="#leistungen">Leistungen</a>
           <a href="#arbeiten">Arbeiten</a>
+          <a href="#pakete">Pakete</a>
+          <a href="#konfigurator">Konfigurator</a>
           <a href="#prozess">Prozess</a>
           <a href="#crew">Crew</a>
+          <a href="#journal">Journal</a>
         </div>
         <div class="footer__col">
           <strong>Kontakt</strong>
@@ -1251,6 +1543,10 @@ const GUIDE_STEPS = [
     text: "Zahlen lügen nicht. +312% ROAS sind +312% ROAS. Schau dir die Cases an.",
   },
   {
+    selector: "#kunden",
+    text: "Acht Marken, die uns vertrauen — und ein paar Awards im Regal. Kein Zufall.",
+  },
+  {
     selector: "#manifest",
     text: "Unser Manifest. Lies es — es meint genau dich.",
   },
@@ -1259,12 +1555,24 @@ const GUIDE_STEPS = [
     text: "In vier Schritten von der Idee zum Knall. So einfach, so laut.",
   },
   {
+    selector: "#pakete",
+    text: "Drei Pakete, ein Ziel: Krach. Vom ersten Knall bis Vollgas auf allen Kanälen.",
+  },
+  {
+    selector: "#konfigurator",
+    text: "Keine Lust zu rätseln? Klick dich durch — ich bau dir das passende Paket zusammen.",
+  },
+  {
     selector: "#crew",
     text: "Die Verrückten, die das alles bauen. Sag Hallo.",
   },
   {
     selector: "#stimmen",
     text: "Glaub nicht uns — glaub denen, mit denen wir schon Krach gemacht haben.",
+  },
+  {
+    selector: "#journal",
+    text: "Frischer Lärm aus der Werkstatt: wie wir denken, testen und skalieren.",
   },
   {
     selector: "#faq",
@@ -1280,13 +1588,57 @@ const GUIDE_STEPS = [
 const QUIPS = {
   zahlen: "Zahlen statt Buzzwords.",
   leistungen: "Sechs Disziplinen, ein Ziel: Krach.",
+  kunden: "Die vertrauen uns. Du auch?",
   manifest: "Fünf Sätze. Kein Bullshit.",
   faq: "Antworten ohne Drumherum.",
   arbeiten: "Echte Zahlen, keine Fake-Mockups.",
   prozess: "Vier Schritte. Null Bullshit.",
+  pakete: "Drei Stufen Lärm. Such dir was aus.",
+  konfigurator: "Zwei Klicks zur Empfehlung.",
   crew: "Sieht harmlos aus. Ist es nicht.",
   stimmen: "Hör auf die, nicht auf uns.",
+  journal: "Frischer Lärm zum Nachlesen.",
   kontakt: "Na los, trau dich.",
+};
+
+// Krach-Konfigurator: Antworten → Empfehlung. Paket-Namen identisch zur
+// #pakete-Sektion, Leads identisch zur #crew. Logik hier, nicht in der UI.
+const KONFIGURATOR = {
+  defaultLead: "Mara Vogt · Chief Chaos Officer",
+  recommend({ ziel, phase, tempo }) {
+    if (!ziel || !phase || !tempo) return null;
+
+    // Paket primär über Tempo, leicht angehoben je nach Phase.
+    let paket = "Krachen";
+    if (tempo === "test") paket = "Zünden";
+    else if (tempo === "vollgas") paket = "Eskalieren";
+    if (phase === "etabliert" && tempo === "dauer") paket = "Eskalieren";
+    if (phase === "start" && tempo === "vollgas") paket = "Krachen";
+
+    const leads = {
+      awareness: "Jonas Reh · Kreativdirektor",
+      sales: "Selin Akar · Head of Performance",
+      launch: "Tobias Klein · Tech & Web",
+    };
+    const lead = leads[ziel] || this.defaultLead;
+
+    const zielText = {
+      awareness: "Du willst auffallen",
+      sales: "Du willst Umsatz",
+      launch: "Du willst launchen",
+    }[ziel];
+    const tempoText = {
+      test: "erstmal antesten",
+      dauer: "dauerhaft dranbleiben",
+      vollgas: "Vollgas geben",
+    }[tempo];
+
+    return {
+      paket,
+      lead,
+      why: `${zielText} und ${tempoText}? Dann ist „${paket}" dein Lärmpegel — ${lead.split(" · ")[0]} übernimmt den Hut.`,
+    };
+  },
 };
 const COPY = {
   formSuccess: "Bzzz! Nachricht ist drin. Wir melden uns lauter als erwartet. 🐝",
@@ -1457,6 +1809,53 @@ function initForm({ COPY, onSuccess }) {
     form.reset();
     if (typeof onSuccess === "function") onSuccess();
   });
+}
+
+// GRELLWERK — Krach-Konfigurator. Pure-vanilla interactive recommender.
+// Reads option buttons, keeps a tiny answer state, re-renders the result panel.
+function initKonfigurator({ KONFIGURATOR }) {
+  const form = document.getElementById("config-form");
+  const paketEl = document.getElementById("config-paket");
+  const leadEl = document.getElementById("config-lead");
+  const whyEl = document.getElementById("config-why");
+  const ctaEl = document.getElementById("config-cta");
+  if (!form || !paketEl || !KONFIGURATOR) return;
+
+  const answers = { ziel: null, phase: null, tempo: null };
+
+  function render() {
+    const rec = KONFIGURATOR.recommend(answers);
+    if (!rec) {
+      const answered = Object.values(answers).filter(Boolean).length;
+      paketEl.textContent = "Beantworte die Fragen →";
+      leadEl.textContent = "";
+      whyEl.textContent = answered
+        ? `Noch ${3 - answered} Frage${3 - answered === 1 ? "" : "n"} bis zu deinem Krach.`
+        : "Tipp dich durch — ich stell dir das passende Paket und den richtigen Kopf aus der Crew zusammen.";
+      if (ctaEl) ctaEl.hidden = true;
+      return;
+    }
+    paketEl.textContent = rec.paket;
+    leadEl.textContent = rec.lead;
+    whyEl.textContent = rec.why;
+    if (ctaEl) ctaEl.hidden = false;
+  }
+
+  form.querySelectorAll(".config__opt").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const q = btn.getAttribute("data-config-q");
+      const v = btn.getAttribute("data-config-v");
+      if (!q) return;
+      answers[q] = v;
+      // toggle active state within this question group only
+      form
+        .querySelectorAll(`.config__opt[data-config-q="${q}"]`)
+        .forEach((el) => el.classList.toggle("is-active", el === btn));
+      render();
+    });
+  });
+
+  render();
 }
 
 // GRELLWERK — smooth scroll (Lenis if available) + reveal animations.
@@ -1662,6 +2061,7 @@ function initGuide({ reducedMotion }) {
 
 
 
+
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 async function boot() {
@@ -1669,6 +2069,7 @@ async function boot() {
   initMarquee();
   initScramble({ reducedMotion });
   initCounters({ reducedMotion });
+  initKonfigurator({ KONFIGURATOR });
 
   // Load optional CDN enhancements (GSAP / Lenis). Failures are swallowed.
   const gsap = null, ScrollTrigger = null, Lenis = null; window.__FLAGS = { gsap: false, lenis: false, standalone: true };

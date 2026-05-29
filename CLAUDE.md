@@ -29,6 +29,12 @@ Kurz-Doku für die Arbeit in diesem Repo. **Knapp halten, bei Änderungen mitpfl
 - Dev: `python3 -m http.server 8000` (Root) → http://localhost:8000
 - Standalone-Build: `node build-standalone.cjs` → `grellwerk-standalone.html`
 - Salon: in `studio-seide/`: `npm run dev` / `npm run build`
+- JS-Syntaxcheck: `node --check js/<datei>.js`
+
+## Verifikation
+Hier ist **kein Headless-Browser** verfügbar (Chromium-Download durch Netz-Allowlist
+geblockt). Visuelle Kontrolle läuft über den User: Standalone-Datei öffnen oder
+Pages-Preview. Vor dem Pushen: `node --check` + `node build-standalone.cjs`.
 
 ## Deploy
 GitHub Pages baut **nur aus `main`** (`.github/workflows/deploy-pages.yml`). GRELLWERK im

@@ -4,7 +4,8 @@ import { initCursor } from "./cursor.js";
 import { initScramble, initMarquee, initForm, initCounters } from "./effects.js";
 import { initScroll } from "./scroll.js";
 import { initGuide } from "./guide.js";
-import { COPY } from "./config.js";
+import { initKonfigurator } from "./konfigurator.js";
+import { COPY, KONFIGURATOR } from "./config.js";
 
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -13,6 +14,7 @@ async function boot() {
   initMarquee();
   initScramble({ reducedMotion });
   initCounters({ reducedMotion });
+  initKonfigurator({ KONFIGURATOR });
 
   // Load optional CDN enhancements (GSAP / Lenis). Failures are swallowed.
   const { gsap, ScrollTrigger, Lenis } = await loadEnhancements();

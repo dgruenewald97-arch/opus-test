@@ -46,8 +46,10 @@
     <nav class="nav__links" aria-label="Hauptnavigation">
       <a class="nav__link" href="#leistungen" data-scramble>Leistungen</a>
       <a class="nav__link" href="#arbeiten" data-scramble>Arbeiten</a>
+      <a class="nav__link" href="#pakete" data-scramble>Pakete</a>
       <a class="nav__link" href="#prozess" data-scramble>Prozess</a>
       <a class="nav__link" href="#crew" data-scramble>Crew</a>
+      <a class="nav__link" href="#journal" data-scramble>Journal</a>
       <a class="nav__link nav__cta btn" href="#kontakt">Jetzt buchen</a>
     </nav>
   </header>
@@ -187,6 +189,25 @@
       </div>
     </section>
 
+    <!-- ===== KUNDEN / LOGO-WALL ===== -->
+    <section class="section clients" id="kunden" data-guide-step="kunden">
+      <div class="container">
+        <span class="eyebrow">Die uns vertrauen</span>
+        <h2 data-reveal>Kunden</h2>
+        <div class="clients__grid" data-reveal>
+          <span class="client">Kold Brew Co.</span>
+          <span class="client">Neontritt</span>
+          <span class="client">Haferkraft</span>
+          <span class="client">Blitzbank</span>
+          <span class="client">Volt&amp;Co</span>
+          <span class="client">Rauschgold</span>
+          <span class="client">Pixelhain</span>
+          <span class="client">Stadtwild</span>
+        </div>
+        <p class="clients__awards" data-reveal>ADC Bronze 2024 · Effie Shortlist 2025 · German Brand Award 2025 · Webby Honoree 2026</p>
+      </div>
+    </section>
+
     <!-- ===== MANIFEST ===== -->
     <section class="section manifest" id="manifest" data-guide-step="manifest">
       <div class="container">
@@ -227,6 +248,95 @@
             <span class="step__title">Nachlegen</span>
             <p class="step__text">Daten lesen, optimieren, skalieren. Bis es brummt.</p>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PAKETE / PREISE ===== -->
+    <section class="section pricing" id="pakete" data-guide-step="pakete">
+      <div class="container">
+        <span class="eyebrow">Was es kostet</span>
+        <h2 data-reveal>Pakete</h2>
+        <div class="pricing__strip" data-reveal>
+          <div class="tier">
+            <span class="tier__name">Zünden</span>
+            <span class="tier__price">ab 5.000&nbsp;€</span>
+            <span class="tier__cycle">/ Projekt</span>
+            <ul class="tier__features">
+              <li>Kampagnen-Konzept mit Sprengkraft</li>
+              <li>Creative für 2 Kanäle</li>
+              <li>Setup Paid Social oder Google</li>
+              <li>4 Wochen Laufzeit</li>
+            </ul>
+            <a class="btn btn--ghost tier__cta" href="#kontakt">Zünden →</a>
+          </div>
+          <div class="tier tier--mid">
+            <span class="tier__name">Krachen</span>
+            <span class="tier__price">ab 3.500&nbsp;€</span>
+            <span class="tier__cycle">/ Monat · meist gebucht</span>
+            <ul class="tier__features">
+              <li>Always-on auf bis zu 4 Kanälen</li>
+              <li>Wöchentliche Creatives &amp; Hooks</li>
+              <li>A/B-Tests &amp; Funnel-Optimierung</li>
+              <li>Dedizierter Performance-Lead</li>
+            </ul>
+            <a class="btn tier__cta" href="#kontakt">Krachen →</a>
+          </div>
+          <div class="tier">
+            <span class="tier__name">Eskalieren</span>
+            <span class="tier__price">auf Anfrage</span>
+            <span class="tier__cycle">/ Vollgas</span>
+            <ul class="tier__features">
+              <li>Volle Crew, dedizierter Squad</li>
+              <li>Brand-Strategie &amp; Identity</li>
+              <li>Produktion Film, Foto &amp; Web</li>
+              <li>Omnichannel-Kampagnen</li>
+            </ul>
+            <a class="btn btn--ghost tier__cta" href="#kontakt">Eskalieren →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== KRACH-KONFIGURATOR ===== -->
+    <section class="section config" id="konfigurator" data-guide-step="konfigurator">
+      <div class="container">
+        <span class="eyebrow">Finde deinen Krach</span>
+        <h2 data-reveal>Konfigurator</h2>
+        <div class="config__layout" data-reveal>
+          <form class="config__form" id="config-form">
+            <fieldset class="config__group">
+              <legend>Was willst du erreichen?</legend>
+              <div class="config__opts">
+                <button type="button" class="config__opt" data-config-q="ziel" data-config-v="awareness">Bekannter werden</button>
+                <button type="button" class="config__opt" data-config-q="ziel" data-config-v="sales">Mehr verkaufen</button>
+                <button type="button" class="config__opt" data-config-q="ziel" data-config-v="launch">Etwas launchen</button>
+              </div>
+            </fieldset>
+            <fieldset class="config__group">
+              <legend>Wo steht deine Marke?</legend>
+              <div class="config__opts">
+                <button type="button" class="config__opt" data-config-q="phase" data-config-v="start">Frisch gestartet</button>
+                <button type="button" class="config__opt" data-config-q="phase" data-config-v="wachsen">Am Wachsen</button>
+                <button type="button" class="config__opt" data-config-q="phase" data-config-v="etabliert">Etabliert</button>
+              </div>
+            </fieldset>
+            <fieldset class="config__group">
+              <legend>Wie laut soll's werden?</legend>
+              <div class="config__opts">
+                <button type="button" class="config__opt" data-config-q="tempo" data-config-v="test">Erstmal testen</button>
+                <button type="button" class="config__opt" data-config-q="tempo" data-config-v="dauer">Dauerhaft dranbleiben</button>
+                <button type="button" class="config__opt" data-config-q="tempo" data-config-v="vollgas">Vollgas, alles</button>
+              </div>
+            </fieldset>
+          </form>
+          <aside class="config__result" id="config-result" aria-live="polite">
+            <span class="config__label">Deine Empfehlung</span>
+            <p class="config__paket" id="config-paket">Beantworte die Fragen →</p>
+            <p class="config__lead" id="config-lead"></p>
+            <p class="config__why" id="config-why">Tipp dich durch — ich stell dir das passende Paket und den richtigen Kopf aus der Crew zusammen.</p>
+            <a class="btn config__cta" id="config-cta" href="#kontakt" hidden>Krach buchen →</a>
+          </aside>
         </div>
       </div>
     </section>
@@ -279,6 +389,34 @@
             <p class="quote__text">Zahlen statt Buzzwords. Hat gesessen.</p>
             <footer class="quote__author">— Petra S., Blitzbank</footer>
           </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== LÄRM-JOURNAL ===== -->
+    <section class="section journal" id="journal" data-guide-step="journal">
+      <div class="container">
+        <span class="eyebrow">Aus der Werkstatt</span>
+        <h2 data-reveal>Lärm-Journal</h2>
+        <div class="journal__grid">
+          <article class="post" data-reveal>
+            <div class="post__meta"><span class="tag">Performance</span><time datetime="2026-04-18">18. Apr 2026</time></div>
+            <h3 class="post__title">Warum dein ROAS lügt</h3>
+            <p class="post__teaser">Last-Click ist tot. Wie wir Kampagnen über inkrementellen Lift statt Vanity-Metriken steuern.</p>
+            <span class="post__more">Lesen →</span>
+          </article>
+          <article class="post" data-reveal>
+            <div class="post__meta"><span class="tag">Branding</span><time datetime="2026-02-27">27. Feb 2026</time></div>
+            <h3 class="post__title">Anecken als Strategie</h3>
+            <p class="post__teaser">Der Haferkraft-Rebrand: aus leiser Hafermilch eine Marke, über die man streitet. +87% Bekanntheit.</p>
+            <span class="post__more">Lesen →</span>
+          </article>
+          <article class="post" data-reveal>
+            <div class="post__meta"><span class="tag">Social</span><time datetime="2025-12-09">9. Dez 2025</time></div>
+            <h3 class="post__title">Der Hook in 3 Sekunden</h3>
+            <p class="post__teaser">48.000 Anmeldungen für einen Sneaker-Drop. Was den Neontritt-Reel zum Selbstläufer machte.</p>
+            <span class="post__more">Lesen →</span>
+          </article>
         </div>
       </div>
     </section>
@@ -347,8 +485,11 @@
           <strong>Navigation</strong>
           <a href="#leistungen">Leistungen</a>
           <a href="#arbeiten">Arbeiten</a>
+          <a href="#pakete">Pakete</a>
+          <a href="#konfigurator">Konfigurator</a>
           <a href="#prozess">Prozess</a>
           <a href="#crew">Crew</a>
+          <a href="#journal">Journal</a>
         </div>
         <div class="footer__col">
           <strong>Kontakt</strong>
