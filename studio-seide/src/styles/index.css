@@ -46,7 +46,9 @@
 }
 html {
   -webkit-text-size-adjust: 100%;
-  scroll-behavior: smooth;
+  /* NOTE: no global `scroll-behavior: smooth` — it makes the browser
+     interpolate every wheel/trackpad scroll, which feels laggy/"delayed".
+     Smooth scrolling for nav clicks is handled in JS instead. */
 }
 body {
   background: var(--paper);
@@ -55,7 +57,6 @@ body {
   font-size: clamp(1rem, 0.96rem + 0.25vw, 1.075rem);
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
   overflow-x: hidden;
 }
 img,

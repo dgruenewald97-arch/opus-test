@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import Nav from './components/Nav.jsx'
 import ReadingProgress from './components/ReadingProgress.jsx'
 import Hero from './components/Hero.jsx'
@@ -12,6 +13,25 @@ import Kontakt from './components/Kontakt.jsx'
 import Footer from './components/Footer.jsx'
 
 export default function App() {
+  // Smooth-scroll ONLY for in-page anchor clicks (nav, CTAs, footer).
+  // Wheel/trackpad scrolling stays native 1:1 — no global scroll-behavior.
+  useEffect(() => {
+    const onClick = (e) => {
+      const a = e.target.closest('a[href^="#"]')
+      if (!a) return
+      const id = a.getAttribute('href').slice(1)
+      if (!id) return
+      const target = document.getElementById(id)
+      if (!target) return
+      e.preventDefault()
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      target.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' })
+      history.replaceState(null, '', `#${id}`)
+    }
+    document.addEventListener('click', onClick)
+    return () => document.removeEventListener('click', onClick)
+  }, [])
+
   return (
     <>
       <a className="skip-link" href="#main">
