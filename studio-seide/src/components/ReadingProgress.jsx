@@ -1,17 +1,23 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef } from 'react'
 
 // Thin top progress bar. Hidden entirely under prefers-reduced-motion (CSS).
+// Writes the scroll ratio straight to the element's --p custom property via a
+// ref so it never triggers a React re-render while scrolling (which would
+// reconcile 60x/second and cause jank).
 export default function ReadingProgress() {
-  const [p, setP] = useState(0)
+  const ref = useRef(null)
 
   useEffect(() => {
+    const el = ref.current
+    if (!el) return
     let raf = 0
     const onScroll = () => {
       cancelAnimationFrame(raf)
       raf = requestAnimationFrame(() => {
         const h = document.documentElement
         const max = h.scrollHeight - h.clientHeight
-        setP(max > 0 ? (h.scrollTop / max) * 100 : 0)
+        const ratio = max > 0 ? h.scrollTop / max : 0
+        el.style.setProperty('--p', ratio.toFixed(4))
       })
     }
     onScroll()
@@ -24,5 +30,5 @@ export default function ReadingProgress() {
     }
   }, [])
 
-  return <div className="progress" style={{ '--p': `${p}%` }} aria-hidden="true" />
+  return <div className="progress" ref={ref} aria-hidden="true" />
 }
