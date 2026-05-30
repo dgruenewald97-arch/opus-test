@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kontakt · GRELLWERK</title>
+  <meta name="description" content="Briefing, Budget, Bauchgefühl — schreib GRELLWERK, was ansteht. Antwort binnen 24 Stunden, von echten Menschen statt Auto-Reply." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;700&family=Space+Mono&display=swap" />
+
+  <link rel="stylesheet" href="css/tokens.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/sections.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Zum Inhalt springen</a>
+
+  <div class="scroll-progress" aria-hidden="true"></div>
+
+  <!-- ============ NAV ============ -->
+  <header class="site-header">
+    <nav class="nav container" aria-label="Hauptnavigation">
+      <a class="brand" href="index.html" data-scramble>GRELLWERK</a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Menü öffnen">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-menu" id="nav-menu">
+        <a href="arbeiten.html" data-scramble>Arbeiten</a>
+        <a href="leistungen.html" data-scramble>Leistungen</a>
+        <a href="ueber-uns.html" data-scramble>Über uns</a>
+        <a href="journal.html" data-scramble>Journal</a>
+        <a class="btn btn--ghost" href="kontakt.html" aria-current="page" data-scramble>Kontakt</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+    <!-- ============ HERO ============ -->
+    <section class="section page-hero" data-guide-step="kontakt-hero">
+      <div class="container">
+        <nav class="crumbs" aria-label="Brotkrumen">
+          <a href="index.html">Start</a> <span aria-hidden="true">/</span> <span>Kontakt</span>
+        </nav>
+        <p class="eyebrow">Kontakt</p>
+        <h1 class="page-title" data-reveal>Genug geflüstert.<br />Sag <span class="hl">Hallo</span>.</h1>
+        <p class="page-lead" data-reveal>Briefing, Budget, Bauchgefühl — schreib uns, was ansteht. Wir melden uns binnen 24 Stunden mit echten Menschen, nicht mit Auto-Reply.</p>
+      </div>
+    </section>
+
+    <!-- ============ KONTAKT ============ -->
+    <section
+      class="section contact"
+      id="kontakt"
+      data-guide-step="kontakt"
+      aria-labelledby="contact-title"
+    >
+      <div class="container">
+        <p class="eyebrow" data-reveal>Schreib uns</p>
+        <h2 id="contact-title" data-reveal>Erzähl uns vom Projekt.<br />Wir machen Lärm draus.</h2>
+
+        <div class="contact-layout">
+          <form class="contact-form" data-reveal action="#" method="post" novalidate>
+            <div class="field">
+              <label for="c-name">Name</label>
+              <input id="c-name" name="name" type="text" autocomplete="name" required />
+            </div>
+            <div class="field">
+              <label for="c-mail">E-Mail</label>
+              <input id="c-mail" name="email" type="email" autocomplete="email" required />
+            </div>
+            <div class="field">
+              <label for="c-company">Firma / Marke</label>
+              <input id="c-company" name="company" type="text" autocomplete="organization" />
+            </div>
+            <div class="field">
+              <label for="c-budget">Budgetrahmen</label>
+              <input id="c-budget" name="budget" type="text" placeholder="z. B. 20–50k" />
+            </div>
+            <div class="field field--full">
+              <label for="c-msg">Worum geht's?</label>
+              <textarea id="c-msg" name="message" rows="5" required></textarea>
+            </div>
+            <button class="btn btn--big" type="submit" data-scramble>Absenden</button>
+            <p class="contact-note">Mit dem Absenden ist noch nichts in Stein gemeißelt — erstmal reden wir.</p>
+          </form>
+
+          <aside class="contact-channels" data-reveal aria-label="Direkte Kontaktwege">
+            <div class="channel block">
+              <span class="channel-label">Direkter Draht</span>
+              <h3>Lieber kein Formular?</h3>
+              <p><a href="mailto:hallo@grellwerk.de">hallo@grellwerk.de</a></p>
+              <p><a href="tel:+493012345678">+49 30 123 456 78</a></p>
+            </div>
+            <div class="channel block">
+              <span class="channel-label">Studio</span>
+              <h3>Komm vorbei.</h3>
+              <p>Lärmgasse 7<br />10999 Berlin-Kreuzberg</p>
+              <p>Mo–Fr, 9–18 Uhr<br />(Kaffee laut, Meinung lauter.)</p>
+            </div>
+            <div class="channel block">
+              <span class="channel-label">Folg uns</span>
+              <h3>Wir sind laut, wo du bist.</h3>
+              <div class="channel-tags">
+                <span class="tag">Instagram</span>
+                <span class="tag">LinkedIn</span>
+                <span class="tag">Behance</span>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <span class="brand" data-scramble>GRELLWERK</span>
+        <p>Wir machen Marken, die man nicht überscrollt.</p>
+      </div>
+      <nav class="footer-nav" aria-label="Footer">
+        <a href="arbeiten.html" data-scramble>Arbeiten</a>
+        <a href="leistungen.html" data-scramble>Leistungen</a>
+        <a href="ueber-uns.html" data-scramble>Über uns</a>
+        <a href="journal.html" data-scramble>Journal</a>
+        <a href="kontakt.html" data-scramble>Kontakt</a>
+      </nav>
+      <div class="footer-meta">
+        <p>© <span data-year>2025</span> GRELLWERK. Alles erlaubt, nichts vergeben.</p>
+        <p>Made with noise in Berlin.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============ BRUMMER / GUIDE ============ -->
+  <aside class="guide" id="guide" hidden>
+    <div class="guide-panel">
+      <button class="guide-close" aria-label="Tour schließen">✕</button>
+      <p class="guide-step-count"><span data-guide-current>1</span> / <span data-guide-total>5</span></p>
+      <p class="guide-text" data-guide-text>…</p>
+      <div class="guide-actions">
+        <button class="btn btn--ghost" data-guide-prev>Zurück</button>
+        <button class="btn" data-guide-next>Weiter</button>
+      </div>
+    </div>
+    <button class="guide-tab" aria-label="Brummer öffnen">🐝 Brummer</button>
+  </aside>
+
+  <script src="js/config.js"></script>
+  <script src="js/effects.js"></script>
+  <script src="js/scroll.js"></script>
+  <script src="js/guide.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
