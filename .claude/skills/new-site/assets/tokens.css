@@ -1,0 +1,66 @@
+/* Design-Tokens — destilliert, marken-neutral. Werte hier ändern, nicht hardcoden.
+   Light/Dark via prefers-color-scheme; Toggle kann data-theme auf <html> setzen. */
+:root {
+  /* Farben (neutral, anpassen) */
+  --color-bg: #ffffff;
+  --color-surface: #f4f4f5;
+  --color-text: #18181b;
+  --color-muted: #52525b;
+  --color-border: #e4e4e7;
+  --color-accent: #2d2dff;
+  --color-accent-contrast: #ffffff;
+  --color-focus: #2d2dff;
+
+  /* Fluide Typo-Skala (clamp: mobil → desktop) */
+  --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, monospace;
+  --step--1: clamp(0.83rem, 0.79rem + 0.2vw, 0.94rem);
+  --step-0:  clamp(1rem, 0.93rem + 0.35vw, 1.19rem);
+  --step-1:  clamp(1.2rem, 1.08rem + 0.6vw, 1.5rem);
+  --step-2:  clamp(1.44rem, 1.25rem + 0.95vw, 1.9rem);
+  --step-3:  clamp(1.73rem, 1.45rem + 1.4vw, 2.4rem);
+  --step-4:  clamp(2.07rem, 1.66rem + 2.05vw, 3rem);
+
+  /* Spacing (fluide) */
+  --space-2xs: clamp(0.31rem, 0.3rem + 0.05vw, 0.34rem);
+  --space-xs:  clamp(0.56rem, 0.53rem + 0.15vw, 0.63rem);
+  --space-s:   clamp(0.75rem, 0.71rem + 0.2vw, 0.88rem);
+  --space-m:   clamp(1.13rem, 1.06rem + 0.35vw, 1.31rem);
+  --space-l:   clamp(1.5rem, 1.41rem + 0.45vw, 1.75rem);
+  --space-xl:  clamp(2.25rem, 2.11rem + 0.7vw, 2.63rem);
+  --space-2xl: clamp(3rem, 2.82rem + 0.9vw, 3.5rem);
+
+  /* Sonstiges */
+  --radius: 0.5rem;
+  --radius-lg: 1rem;
+  --shadow: 0 1px 2px rgba(0,0,0,.06), 0 4px 12px rgba(0,0,0,.08);
+  --border: 1px solid var(--color-border);
+  --container: 72rem;
+  --transition: 180ms ease;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #0a0a0b;
+    --color-surface: #18181b;
+    --color-text: #fafafa;
+    --color-muted: #a1a1aa;
+    --color-border: #27272a;
+    --color-accent: #7c7cff;
+    --color-accent-contrast: #0a0a0b;
+    --color-focus: #7c7cff;
+    --shadow: 0 1px 2px rgba(0,0,0,.4), 0 4px 12px rgba(0,0,0,.5);
+  }
+}
+
+/* Optionaler manueller Toggle: <html data-theme="dark|light"> überschreibt das System. */
+:root[data-theme="dark"] {
+  --color-bg: #0a0a0b; --color-surface: #18181b; --color-text: #fafafa;
+  --color-muted: #a1a1aa; --color-border: #27272a; --color-accent: #7c7cff;
+  --color-accent-contrast: #0a0a0b; --color-focus: #7c7cff;
+}
+:root[data-theme="light"] {
+  --color-bg: #ffffff; --color-surface: #f4f4f5; --color-text: #18181b;
+  --color-muted: #52525b; --color-border: #e4e4e7; --color-accent: #2d2dff;
+  --color-accent-contrast: #ffffff; --color-focus: #2d2dff;
+}

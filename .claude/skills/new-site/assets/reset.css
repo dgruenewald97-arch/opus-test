@@ -1,0 +1,45 @@
+/* Moderner, minimaler Reset (a11y-bewusst). Vor tokens.css/app-CSS laden. */
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; }
+
+html { -webkit-text-size-adjust: 100%; tab-size: 4; }
+html:focus-within { scroll-behavior: smooth; }
+
+body {
+  min-height: 100svh;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-family: var(--font-sans, system-ui, sans-serif);
+  background: var(--color-bg, #fff);
+  color: var(--color-text, #111);
+}
+
+h1, h2, h3, h4, h5, h6, button, input, label { line-height: 1.1; }
+h1, h2, h3, h4 { text-wrap: balance; }
+p, li, figcaption { text-wrap: pretty; max-width: 70ch; }
+
+img, picture, video, canvas, svg { display: block; max-width: 100%; height: auto; }
+input, button, textarea, select { font: inherit; color: inherit; }
+button { cursor: pointer; }
+
+a { color: inherit; text-decoration-skip-ink: auto; }
+
+ul[role="list"], ol[role="list"] { list-style: none; padding: 0; }
+
+:where(a, button, input, textarea, select, [tabindex]):focus-visible {
+  outline: 3px solid var(--color-focus, #2d2dff);
+  outline-offset: 2px;
+}
+
+#root, #app { isolation: isolate; }
+
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
