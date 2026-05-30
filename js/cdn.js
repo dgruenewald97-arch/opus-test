@@ -2,16 +2,25 @@
 // Everything here is enhancement-only; the site fully works if all imports fail.
 import { FLAGS } from "./config.js";
 
+// Reject if a dynamic import hangs (e.g. CDN blocked by a network allowlist),
+// so a stalled enhancement load never blocks the rest of boot().
+function withTimeout(promise, ms) {
+  return Promise.race([
+    promise,
+    new Promise((_, reject) => setTimeout(() => reject(new Error("timeout")), ms)),
+  ]);
+}
+
 export async function loadEnhancements() {
   let gsap = null;
   let ScrollTrigger = null;
   let Lenis = null;
 
   try {
-    const mod = await import("gsap");
+    const mod = await withTimeout(import("gsap"), 2500);
     gsap = mod.gsap || mod.default;
     try {
-      const stMod = await import("gsap/ScrollTrigger");
+      const stMod = await withTimeout(import("gsap/ScrollTrigger"), 2500);
       ScrollTrigger = stMod.ScrollTrigger || stMod.default;
       if (gsap && ScrollTrigger) gsap.registerPlugin(ScrollTrigger);
     } catch (_) { /* ScrollTrigger optional */ }

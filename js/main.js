@@ -17,18 +17,20 @@ async function boot() {
   initRotator({ reducedMotion });
   initKonfigurator({ KONFIGURATOR });
 
-  // Load optional CDN enhancements (GSAP / Lenis). Failures are swallowed.
-  const { gsap, ScrollTrigger, Lenis } = await loadEnhancements();
-
-  initScroll({ reducedMotion, gsap, ScrollTrigger, Lenis });
-  initCursor({ reducedMotion, gsap });
-
+  // BRUMMER + form are pure-vanilla and must NOT wait on the optional CDN load:
+  // a slow/blocked CDN would otherwise delay or drop the guide entirely (it was
+  // missing on some pages for exactly this reason). The guide uses native scroll.
   const guide = initGuide({ reducedMotion });
-
   initForm({
     COPY,
     onSuccess: () => guide?.replay?.(),
   });
+
+  // Load optional CDN enhancements (GSAP). Failures/timeouts are swallowed.
+  const { gsap, ScrollTrigger, Lenis } = await loadEnhancements();
+
+  initScroll({ reducedMotion, gsap, ScrollTrigger, Lenis });
+  initCursor({ reducedMotion, gsap });
 }
 
 if (document.readyState === "loading") {
