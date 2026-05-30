@@ -7,7 +7,9 @@ Kurz-Doku für die Arbeit in diesem Repo. **Knapp halten, bei Änderungen mitpfl
 - **GRELLWERK** (Repo-Root) = Hauptprojekt. Build-less Vanilla HTML/CSS/JS, brutalistische
   Fake-Agentur. **Mehrseitig:** `index.html` (Startseite) + Unterseiten im Root
   (`arbeiten.html`, `case-*.html`, `leistungen.html`, `leistung-*.html`, `ueber-uns.html`,
-  `journal.html`, `journal-*.html`), die sich `css/` + `js/` teilen.
+  `journal.html`, `journal-*.html`, `kontakt.html`), die sich `css/` + `js/` teilen.
+  Nav-CTA „Jetzt buchen" → `kontakt.html`; der Standalone-Build biegt ihn auf den
+  In-Page-Anker `#kontakt` zurück (Single-File).
 - **`studio-seide/`** = Nebenprojekt (Vite + React, Friseur-Salon). Nicht anfassen, außer
   ausdrücklich gewünscht.
 

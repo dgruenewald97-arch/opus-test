@@ -963,6 +963,32 @@ h3 { font-size: var(--step-1); }
 a.case, a.post { text-decoration: none; color: inherit; }
 a.case:focus-visible, a.post:focus-visible { outline: 4px solid var(--electric); outline-offset: 4px; }
 
+/* ===== KONTAKT-SEITE (Form + direkter Draht nebeneinander, im dunklen .contact-Panel) ===== */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: clamp(2rem, 5vw, 4rem);
+  margin-top: var(--gap);
+  align-items: start;
+}
+.contact-grid .form { margin-top: 0; max-width: none; }
+.contact-info { display: grid; gap: 1.6rem; align-content: start; }
+.contact-info__block strong {
+  display: block;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: var(--step--1);
+  color: var(--acid);
+  margin-bottom: 0.5rem;
+}
+.contact-info__block p { font-size: var(--step-0); line-height: 1.5; }
+.contact-info__block a { color: var(--acid); border-bottom: 3px solid var(--shock); }
+.contact-info__block a:hover { color: var(--paper); }
+@media (max-width: 760px) {
+  .contact-grid { grid-template-columns: 1fr; }
+}
+
 /* ===== FOOTER ===== */
 .footer { background: var(--ink); color: var(--paper); padding-block: clamp(2.5rem, 6vw, 5rem); }
 .footer__top {
@@ -1843,6 +1869,16 @@ const GUIDE_STEPS = [
     selector: "#article",
     text: "Viel Spaß beim Lesen. Wenn's brummt, weißt du ja, wo du uns findest.",
   },
+
+  // ===== Kontakt (kontakt.html) =====
+  {
+    selector: "#kontakt-hero",
+    text: "Hier wird's ernst: schreib uns, ruf an oder schnapp dir direkt den richtigen Kopf aus der Crew.",
+  },
+  {
+    selector: "#kontakt-form",
+    text: "Drei Felder, ein Knall. Füll aus — wir melden uns lauter als erwartet. Bzzz!",
+  },
 ];
 
 // Passive quips shown when a section scrolls into view (guide inactive).
@@ -1868,6 +1904,8 @@ const QUIPS = {
   "leistung-ergebnis": "Zahlen, keine Versprechen.",
   ueber: "Anti-Agentur seit 2018.",
   article: "Frischer Lärm, ausführlich.",
+  "kontakt-hero": "Na los, trau dich.",
+  "kontakt-form": "Drei Felder. Kein Drumherum.",
 };
 
 // Krach-Konfigurator: Antworten → Empfehlung. Paket-Namen identisch zur

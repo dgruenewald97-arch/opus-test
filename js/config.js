@@ -132,6 +132,16 @@ export const GUIDE_STEPS = [
     selector: "#article",
     text: "Viel Spaß beim Lesen. Wenn's brummt, weißt du ja, wo du uns findest.",
   },
+
+  // ===== Kontakt (kontakt.html) =====
+  {
+    selector: "#kontakt-hero",
+    text: "Hier wird's ernst: schreib uns, ruf an oder schnapp dir direkt den richtigen Kopf aus der Crew.",
+  },
+  {
+    selector: "#kontakt-form",
+    text: "Drei Felder, ein Knall. Füll aus — wir melden uns lauter als erwartet. Bzzz!",
+  },
 ];
 
 // Passive quips shown when a section scrolls into view (guide inactive).
@@ -157,6 +167,8 @@ export const QUIPS = {
   "leistung-ergebnis": "Zahlen, keine Versprechen.",
   ueber: "Anti-Agentur seit 2018.",
   article: "Frischer Lärm, ausführlich.",
+  "kontakt-hero": "Na los, trau dich.",
+  "kontakt-form": "Drei Felder. Kein Drumherum.",
 };
 
 // Krach-Konfigurator: Antworten → Empfehlung. Paket-Namen identisch zur

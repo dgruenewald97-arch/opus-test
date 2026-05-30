@@ -57,6 +57,14 @@ html = html.replace(
   `<script>\n${js}\n</script>`
 );
 
+// The standalone is a single file: cross-page links (kontakt.html etc.) are dead.
+// But the homepage keeps its inline #kontakt section, so point the nav CTA back
+// at that anchor so "Jetzt buchen" still works offline.
+html = html.replace(
+  /(nav__cta btn" href=")kontakt\.html(")/,
+  "$1#kontakt$2"
+);
+
 // Favicon/OG point at assets/ which won't exist standalone; harmless if missing,
 // but inline the favicon so the tab icon still works.
 const favDataUri =
