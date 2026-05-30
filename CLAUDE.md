@@ -53,3 +53,10 @@ Root, STUDIO SEIDE unter `/studio-seide/`. Feature-Branch wird nicht deployt —
 1. **Erst planen**, an obigen Konventionen orientieren, Ergebnis muss optisch zum Rest passen.
 2. Auf dem zugewiesenen Feature-Branch entwickeln; nicht ungefragt nach `main` pushen.
 3. **Diese Datei bei strukturellen Änderungen mitpflegen** — tokensparend, nur Fakten.
+4. **Tokens sparen:** Große Such-/Lese-/Bau-Aufgaben an Subagenten („Mitarbeiter": `Explore` /
+   `general-purpose`) delegieren — Haupt-Chat bleibt schlank. Nur benötigte Dateiteile lesen,
+   nicht ganze Dateien; Befehls-Output knapp halten.
+5. **Kommunikation:** Standardmäßig **knapp und auf Deutsch** antworten; keine langen
+   Erklärungen ohne Nachfrage.
+6. **Eingaben (User):** Anforderungen per **Multiple-Choice-Fragen** (`AskUserQuestion`) einholen
+   statt lange Prompts zu erwarten — User klickt, statt zu tippen.
