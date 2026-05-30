@@ -15,6 +15,11 @@
   51%, 100% { background: var(--shock); color: var(--paper); }
 }
 
+@keyframes proof-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: none; }
+}
+
 /* glitch text */
 .glitch { position: relative; display: inline-block; }
 .glitch::before, .glitch::after {

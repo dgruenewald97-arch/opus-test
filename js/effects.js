@@ -43,6 +43,22 @@ export function initMarquee() {
   });
 }
 
+// Rotating proof ticker: cycles the child spans one at a time (fade via CSS).
+export function initRotator({ reducedMotion }) {
+  document.querySelectorAll("[data-rotate]").forEach((box) => {
+    const items = Array.from(box.children);
+    if (!items.length) return;
+    items.forEach((el, i) => el.classList.toggle("is-on", i === 0));
+    if (reducedMotion || items.length < 2) return;
+    let i = 0;
+    setInterval(() => {
+      items[i].classList.remove("is-on");
+      i = (i + 1) % items.length;
+      items[i].classList.add("is-on");
+    }, 2400);
+  });
+}
+
 // Count-up for stat numbers, triggered when the band scrolls into view.
 export function initCounters({ reducedMotion }) {
   const els = document.querySelectorAll("[data-count]");
