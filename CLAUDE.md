@@ -1,6 +1,7 @@
 # CLAUDE.md
 
 Kurz-Doku für die Arbeit in diesem Repo. **Knapp halten, bei Änderungen mitpflegen.**
+→ **Vollständige Referenz** (Sektionen, Effekte, Rezepte, Gotchas): [`AGENTS.md`](AGENTS.md).
 
 ## Repo-Struktur
 - **GRELLWERK** (Repo-Root) = Hauptprojekt. Build-less Vanilla HTML/CSS/JS, brutalistische
