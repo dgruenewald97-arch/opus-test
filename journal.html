@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lärm-Journal | GRELLWERK</title>
+  <meta name="description" content="Aus der Werkstatt von GRELLWERK: wie wir denken, testen und skalieren. Performance, Branding und Social ohne Buzzword-Bingo." />
+  <meta property="og:title" content="Lärm-Journal | GRELLWERK" />
+  <meta property="og:description" content="Frischer Lärm zum Nachlesen." />
+  <meta property="og:image" content="assets/og-image.svg" />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+
+  <!-- Fonts (graceful: system fallbacks defined in tokens.css) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/tokens.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/sections.css" />
+  <link rel="stylesheet" href="css/guide.css" />
+  <link rel="stylesheet" href="css/motion.css" />
+
+  <!-- Importmap for optional CDN ESM libs (enhancement only) -->
+  <script type="importmap">
+  {
+    "imports": {
+      "gsap": "https://cdn.jsdelivr.net/npm/gsap@3.12.5/+esm",
+      "gsap/ScrollTrigger": "https://cdn.jsdelivr.net/npm/gsap@3.12.5/ScrollTrigger/+esm",
+      "lenis": "https://cdn.jsdelivr.net/npm/lenis@1.1.13/+esm"
+    }
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Zum Inhalt springen</a>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="cursor" aria-hidden="true"></div>
+
+  <!-- ===== NAV ===== -->
+  <header class="nav">
+    <a class="nav__logo" href="index.html" aria-label="GRELLWERK Startseite">GRELL<b>//</b>WERK</a>
+    <nav class="nav__links" aria-label="Hauptnavigation">
+      <a class="nav__link" href="index.html#leistungen" data-scramble>Leistungen</a>
+      <a class="nav__link" href="arbeiten.html" data-scramble>Arbeiten</a>
+      <a class="nav__link" href="ueber-uns.html" data-scramble>Über uns</a>
+      <a class="nav__link" href="journal.html" data-scramble>Journal</a>
+      <a class="nav__link" href="index.html#pakete" data-scramble>Pakete</a>
+      <a class="nav__link nav__cta btn" href="index.html#kontakt">Jetzt buchen</a>
+    </nav>
+  </header>
+
+  <main id="main">
+
+    <!-- ===== PAGE HERO ===== -->
+    <section class="section page-hero" id="journal-hero">
+      <div class="container">
+        <nav class="crumbs" aria-label="Brotkrumen">
+          <a href="index.html">Start</a><span>/</span>Journal
+        </nav>
+        <span class="eyebrow">Aus der Werkstatt</span>
+        <h1 class="page-hero__headline">Lärm-Journal</h1>
+        <p class="page-hero__lead">
+          Wie wir denken, testen und skalieren — ohne Buzzword-Bingo. Frischer Lärm
+          zum Nachlesen, direkt aus den Projekten.
+        </p>
+      </div>
+    </section>
+
+    <!-- ===== ARTICLE LIST ===== -->
+    <section class="section journal" id="journal-list" data-guide-step="journal">
+      <div class="container">
+        <span class="eyebrow">Alle Artikel</span>
+        <h2 data-reveal>Frischer Lärm</h2>
+        <div class="journal__grid">
+          <a class="post" href="journal-roas-luegt.html" data-reveal>
+            <div class="post__meta"><span class="tag">Performance</span><time datetime="2026-04-18">18. Apr 2026</time></div>
+            <h3 class="post__title">Warum dein ROAS lügt</h3>
+            <p class="post__teaser">Last-Click ist tot. Wie wir Kampagnen über inkrementellen Lift statt Vanity-Metriken steuern.</p>
+            <span class="post__more">Lesen →</span>
+          </a>
+          <a class="post" href="journal-anecken.html" data-reveal>
+            <div class="post__meta"><span class="tag">Branding</span><time datetime="2026-02-27">27. Feb 2026</time></div>
+            <h3 class="post__title">Anecken als Strategie</h3>
+            <p class="post__teaser">Der Haferkraft-Rebrand: aus leiser Hafermilch eine Marke, über die man streitet. +87% Bekanntheit.</p>
+            <span class="post__more">Lesen →</span>
+          </a>
+          <a class="post" href="journal-hook.html" data-reveal>
+            <div class="post__meta"><span class="tag">Social</span><time datetime="2025-12-09">9. Dez 2025</time></div>
+            <h3 class="post__title">Der Hook in 3 Sekunden</h3>
+            <p class="post__teaser">48.000 Anmeldungen für einen Sneaker-Drop. Was den Neontritt-Reel zum Selbstläufer machte.</p>
+            <span class="post__more">Lesen →</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CTA ===== -->
+    <section class="section cta-band" id="journal-cta">
+      <div class="container">
+        <span class="eyebrow">Genug gelesen?</span>
+        <h2 data-reveal>Lass uns Lärm machen</h2>
+        <div class="cta-band__row" data-reveal>
+          <a class="btn btn--big magnetic" href="index.html#kontakt">Krach buchen →</a>
+          <a class="btn btn--ghost btn--big magnetic" href="arbeiten.html">Arbeiten ansehen</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__top">
+        <div class="footer__logo">GRELL//WERK</div>
+        <div class="footer__col">
+          <strong>Navigation</strong>
+          <a href="index.html#leistungen">Leistungen</a>
+          <a href="arbeiten.html">Arbeiten</a>
+          <a href="ueber-uns.html">Über uns</a>
+          <a href="journal.html">Journal</a>
+          <a href="index.html#pakete">Pakete</a>
+        </div>
+        <div class="footer__col">
+          <strong>Kontakt</strong>
+          <span>Lärmstraße 1</span>
+          <span>50667 Köln</span>
+          <span>hallo@grellwerk.de</span>
+        </div>
+        <div class="footer__col">
+          <strong>Legal</strong>
+          <a href="#">Impressum</a>
+          <a href="#">Datenschutz</a>
+        </div>
+      </div>
+      <div class="marquee marquee--rev" aria-hidden="true" style="border:none; background:transparent; color:var(--acid);">
+        <div class="marquee__track">
+          <span>Lärm der verkauft</span><span>Lärm der verkauft</span><span>Lärm der verkauft</span><span>Lärm der verkauft</span>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>© 2026 GRELLWERK GmbH — fiktive Demo-Agentur</span>
+        <button type="button" id="replay-guide">Guide erneut starten ↻</button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== BRUMMER GUIDE ===== -->
+  <aside class="guide" id="guide" aria-label="Onboarding-Guide Brummer" hidden>
+    <div class="guide__bubble">
+      <span class="guide__step-count" id="guide-count">Schritt 1 / 1</span>
+      <p class="guide__text" id="guide-text" role="status" aria-live="polite">Servus!</p>
+      <div class="guide__controls">
+        <button class="guide__btn guide__btn--primary" id="guide-next" type="button">Weiter →</button>
+        <button class="guide__btn guide__btn--ghost" id="guide-skip" type="button">Überspringen</button>
+      </div>
+    </div>
+    <div class="guide__mascot" id="guide-mascot" aria-hidden="true">
+      <!-- BRUMMER: inline SVG bee/fly -->
+      <svg viewBox="0 0 100 100" role="img">
+        <g class="brummer__wing"><ellipse cx="32" cy="34" rx="14" ry="22" fill="#2D2DFF" opacity="0.6" stroke="#0A0A0A" stroke-width="3"/></g>
+        <g class="brummer__wing" style="animation-delay:-0.09s"><ellipse cx="68" cy="34" rx="14" ry="22" fill="#2D2DFF" opacity="0.6" stroke="#0A0A0A" stroke-width="3"/></g>
+        <g class="brummer__body">
+          <line class="brummer__antenna" x1="40" y1="40" x2="34" y2="22" stroke="#0A0A0A" stroke-width="3"/>
+          <line class="brummer__antenna" x1="60" y1="40" x2="66" y2="22" stroke="#0A0A0A" stroke-width="3" style="animation-delay:-0.6s"/>
+          <circle cx="34" cy="20" r="4" fill="#FF2E63"/>
+          <circle cx="66" cy="20" r="4" fill="#FF2E63"/>
+          <rect x="28" y="40" width="44" height="44" rx="10" fill="#D6FF3B" stroke="#0A0A0A" stroke-width="4"/>
+          <rect x="28" y="58" width="44" height="8" fill="#0A0A0A"/>
+          <rect x="28" y="72" width="44" height="6" fill="#0A0A0A"/>
+          <circle cx="42" cy="52" r="7" fill="#fff" stroke="#0A0A0A" stroke-width="2"/>
+          <circle cx="58" cy="52" r="7" fill="#fff" stroke="#0A0A0A" stroke-width="2"/>
+          <circle class="brummer__pupil" cx="42" cy="52" r="3" fill="#0A0A0A"/>
+          <circle class="brummer__pupil" cx="58" cy="52" r="3" fill="#0A0A0A"/>
+        </g>
+      </svg>
+    </div>
+  </aside>
+
+  <button class="guide-tab" id="guide-tab" type="button" hidden>
+    <span class="guide-tab__dot" aria-hidden="true">
+      <svg viewBox="0 0 100 100"><rect x="20" y="30" width="60" height="55" rx="12" fill="#D6FF3B" stroke="#0A0A0A" stroke-width="6"/><circle cx="40" cy="52" r="6" fill="#0A0A0A"/><circle cx="60" cy="52" r="6" fill="#0A0A0A"/></svg>
+    </span>
+    Brummer fragen?
+  </button>
+
+  <!-- ===== Scripts (ES modules, deferred by default) ===== -->
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

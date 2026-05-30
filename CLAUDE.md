@@ -5,7 +5,9 @@ Kurz-Doku für die Arbeit in diesem Repo. **Knapp halten, bei Änderungen mitpfl
 
 ## Repo-Struktur
 - **GRELLWERK** (Repo-Root) = Hauptprojekt. Build-less Vanilla HTML/CSS/JS, brutalistische
-  Fake-Agentur, eine Single-Page (`index.html`).
+  Fake-Agentur. **Mehrseitig:** `index.html` (Startseite) + Unterseiten im Root
+  (`arbeiten.html`, `case-*.html`, `ueber-uns.html`, `journal.html`, `journal-*.html`),
+  die sich `css/` + `js/` teilen.
 - **`studio-seide/`** = Nebenprojekt (Vite + React, Friseur-Salon). Nicht anfassen, außer
   ausdrücklich gewünscht.
 
@@ -21,7 +23,13 @@ Kurz-Doku für die Arbeit in diesem Repo. **Knapp halten, bei Änderungen mitpfl
 - **Effekte über `data-*`:** `data-reveal` (Fade-in), `data-scramble` (Nav-Hover),
   `data-count`/`data-suffix` (Zähler). Logik in `js/effects.js`, `js/scroll.js`.
 - **Inhalte/Tour zentral** in `js/config.js`: `GUIDE_STEPS`, `QUIPS`. Neue Sektion → dort
-  Eintrag ergänzen (Guide-Schrittzähler ist automatisch via `GUIDE_STEPS.length`).
+  Eintrag ergänzen. Brummer ist **seiten-tauglich**: `guide.js` filtert `GUIDE_STEPS` auf
+  Schritte, deren `selector` auf der aktuellen Seite existiert (Schrittzähler dynamisch) —
+  Unterseiten-Schritte in `GUIDE_STEPS` zusammenhängend + in Sichtreihenfolge gruppieren.
+- **Neue Unterseite** → vom Kopf/Fuß einer bestehenden Seite ableiten (Head, `nav`, `footer`,
+  Brummer-`<aside>`+Tab, `js/main.js` sind auf jeder Seite dupliziert). Layout über bestehende
+  Klassen + `page-hero`/`prose`/`cta-band`/`crumbs` in `css/sections.css`. Cross-Page-Links
+  relativ (`arbeiten.html`, `index.html#kontakt`). Deploy kopiert `*.html` automatisch.
 - **Neues JS-Modul** → in `js/main.js` `boot()` einbinden UND in `build-standalone.cjs`
   zur Concat-Liste hinzufügen, sonst fehlt es im Standalone-Build.
 - Graceful Degradation (System-Fonts, IO-Fallbacks) + `prefers-reduced-motion` respektieren.

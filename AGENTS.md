@@ -5,8 +5,9 @@
 > Änderungen mitpflegen (tokensparend, nur Fakten). Kurzfassung: `CLAUDE.md`.
 
 ## 1. Was ist das?
-**GRELLWERK** = fiktive brutalistische Werbe-/Performance-Agentur als **Single-Page**
-(`index.html`). Reines HTML + CSS + Vanilla-JS, **kein Build, keine Dependencies**.
+**GRELLWERK** = fiktive brutalistische Werbe-/Performance-Agentur, **mehrseitig**
+(Startseite `index.html` + Unterseiten im Root, siehe §8). Reines HTML + CSS + Vanilla-JS,
+**kein Build, keine Dependencies**.
 CDN-Libs (GSAP/Lenis/Google Fonts) sind reine Verbesserung und fallen *graceful* aus.
 Maskottchen **BRUMMER** führt als Onboarding-Guide durch die Seite. Tagline:
 „Lärm, der verkauft." Alle Inhalte sind Demo/fiktiv (Footer-Disclaimer behalten).
@@ -16,7 +17,11 @@ Nicht anfassen außer ausdrücklich gewünscht. Hat eigene Konventionen.
 
 ## 2. Verzeichnis-Struktur
 ```
-index.html              Single-Page, ALLE Sektionen + BRUMMER-Markup
+index.html              Startseite (Sektionen + BRUMMER-Markup)
+arbeiten.html           Cases-Übersicht
+case-*.html             4 Case-Detailseiten (kold-brew/neontritt/haferkraft/blitzbank)
+ueber-uns.html          Agentur-Story, Manifest, Crew, Stimmen
+journal.html            Blog-Übersicht  ·  journal-*.html  3 Artikel
 css/
   reset.css             minimaler Reset
   tokens.css            Design-Tokens (Farben, Fonts, Type-Scale, Spacing) — Quelle der Wahrheit
@@ -114,6 +119,17 @@ zur Concat-Liste hinzufügen (sonst fehlt es im Standalone). Aktuelle JS-Concat-
 
 **Reine Effekt-Funktion** (kein neues File): in `js/effects.js` ergänzen + in `main.js`
 aufrufen — effects.js ist bereits im Standalone-Bundle.
+
+**Neue Unterseite (Multipage):** GRELLWERK ist mehrseitig — Unterseiten als eigene
+`*.html` im Root (`arbeiten.html`, `case-*.html`, `ueber-uns.html`, `journal.html`,
+`journal-*.html`), die `css/`+`js/` teilen. (1) Kopf/Fuß einer bestehenden Seite klonen
+(Head, `nav`, `footer`, Brummer-`<aside>`+`#guide-tab`, `js/main.js` sind pro Seite
+dupliziert — kein HTML-Templating); (2) Layout über bestehende Klassen + die Sub-Page-Bausteine
+`page-hero`/`prose`/`lead`/`result__grid`/`bigquote`/`cta-band`/`crumbs`/`next-case` in
+`css/sections.css`; (3) Cross-Page-Links relativ (`arbeiten.html`, `index.html#kontakt`);
+(4) Brummer: `GUIDE_STEPS`/`QUIPS` in `config.js` ergänzen — `guide.js` filtert pro Seite
+auf vorhandene `selector`. **Standalone-Build bleibt single-page** (nur `index.html`);
+Mehrseitigkeit lebt auf Pages, Deploy kopiert `*.html`.
 
 ## 9. Befehle, Build, Deploy
 - **Dev:** `python3 -m http.server 8000` (Root) → http://localhost:8000

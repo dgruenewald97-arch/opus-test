@@ -48,9 +48,8 @@ jobs:
         run: |
           rm -rf _site
           mkdir -p _site/studio-seide
-          # GRELLWERK at the root
-          cp -r index.html css js assets _site/
-          cp grellwerk-standalone.html _site/ 2>/dev/null || true
+          # GRELLWERK at the root (all pages: index + cases + journal + sub-pages)
+          cp -r *.html css js assets _site/
           # Salon site (built with base: './', so it works under the sub-path)
           cp -r studio-seide/dist/. _site/studio-seide/
           # Skip Jekyll processing entirely

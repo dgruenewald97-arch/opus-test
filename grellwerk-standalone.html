@@ -806,6 +806,163 @@ h3 { font-size: var(--step-1); }
 .post__teaser { font-size: var(--step--1); }
 .post__more { font-family: var(--font-mono); font-weight: 700; text-transform: uppercase; font-size: var(--step--1); margin-top: auto; color: var(--shock); }
 
+/* ===== SUB-PAGES: shared building blocks ===== */
+/* Breadcrumb / back link, sits at the top of every sub-page */
+.crumbs {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: var(--step--1);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6em;
+}
+.crumbs a { border-bottom: 3px solid transparent; transition: border-color 0.15s ease; }
+.crumbs a:hover { border-color: var(--shock); }
+.crumbs span { opacity: 0.5; }
+
+/* Sub-page hero (used by arbeiten / ueber-uns / journal / case / article) */
+.page-hero { padding-top: clamp(2.2rem, 5vw, 4rem); position: relative; overflow: hidden; }
+.page-hero__headline { margin-top: 1.2rem; }
+.page-hero__lead {
+  font-family: var(--font-mono);
+  font-size: var(--step-0);
+  max-width: 52ch;
+  margin-top: var(--gap);
+}
+.page-hero__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 1.2rem;
+  margin-top: 1.4rem;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: var(--step--1);
+}
+.page-hero__meta .tag { background: var(--acid); }
+
+/* Case-detail hero: outsized metric block on the right */
+.case-hero__grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: var(--gap);
+  align-items: end;
+  margin-top: 1.2rem;
+}
+.case-hero__metric {
+  border: var(--border) solid var(--ink);
+  background: var(--acid);
+  box-shadow: var(--shadow-block);
+  padding: clamp(1.2rem, 3vw, 2rem);
+  text-align: center;
+  transform: rotate(1.6deg);
+}
+.case-hero__metric b {
+  display: block;
+  font-family: var(--font-display);
+  font-size: clamp(2.6rem, 8vw, 5rem);
+  line-height: 0.85;
+}
+.case-hero__metric span {
+  display: block;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: var(--step--1);
+  margin-top: 0.6rem;
+}
+@media (max-width: 760px) {
+  .case-hero__grid { grid-template-columns: 1fr; }
+  .case-hero__metric { justify-self: start; }
+}
+
+/* Lead paragraph that opens a story section */
+.lead {
+  font-family: var(--font-mono);
+  font-size: var(--step-0);
+  max-width: 60ch;
+  margin-top: var(--gap);
+}
+
+/* Readable prose column (case story + article body) */
+.prose { max-width: 68ch; margin-top: var(--gap); }
+.prose p { font-size: var(--step-0); margin-bottom: 1.1em; }
+.prose h3 { margin: 1.6em 0 0.6em; }
+.prose ul { list-style: none; display: grid; gap: 0.6rem; margin: 0.4rem 0 1.2em; }
+.prose ul li { font-family: var(--font-mono); font-size: var(--step--1); padding-left: 1.4em; position: relative; }
+.prose ul li::before { content: "→"; position: absolute; left: 0; color: var(--shock); }
+.prose strong { background: var(--acid); padding: 0 0.15em; }
+
+/* A row of result metrics on the case page (clones the .stats look, light) */
+.result__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  margin-top: var(--gap);
+  border-top: var(--border) solid var(--ink);
+  border-left: var(--border) solid var(--ink);
+}
+.result {
+  padding: clamp(1.2rem, 3vw, 2rem);
+  border-right: var(--border) solid var(--ink);
+  border-bottom: var(--border) solid var(--ink);
+}
+.result__num { display: block; font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3.4rem); line-height: 0.85; color: var(--shock); }
+.result__label { display: block; font-family: var(--font-mono); text-transform: uppercase; font-size: var(--step--1); letter-spacing: 0.1em; margin-top: 0.6rem; }
+
+/* Single big quote block (case + article close-out) */
+.bigquote {
+  border: var(--border) solid var(--ink);
+  background: var(--acid);
+  box-shadow: var(--shadow-block);
+  padding: clamp(1.5rem, 4vw, 2.8rem);
+  margin-top: var(--gap);
+  transform: rotate(-1deg);
+}
+.bigquote p { font-family: var(--font-display); text-transform: uppercase; font-size: var(--step-1); line-height: 1; }
+.bigquote footer { font-family: var(--font-mono); font-weight: 700; margin-top: 1rem; }
+
+/* Bottom CTA band shared across sub-pages */
+.cta-band { background: var(--ink); color: var(--paper); text-align: center; }
+.cta-band h2 { color: var(--acid); }
+.cta-band .eyebrow { color: var(--paper); justify-content: center; }
+.cta-band__row { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; margin-top: var(--gap); }
+
+/* "Next case" link strip */
+.next-case {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-top: var(--gap);
+  padding-top: 1.4rem;
+  border-top: var(--border) solid var(--ink);
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.next-case a { font-weight: 700; border-bottom: 3px solid var(--shock); }
+
+/* Article meta line */
+.article__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.8rem;
+  margin-top: 1.2rem;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: var(--step--1);
+  opacity: 0.85;
+}
+
+/* Make .case / .post whole-card clickable when wrapped in a link */
+a.case, a.post { text-decoration: none; color: inherit; }
+a.case:focus-visible, a.post:focus-visible { outline: 4px solid var(--electric); outline-offset: 4px; }
+
 /* ===== FOOTER ===== */
 .footer { background: var(--ink); color: var(--paper); padding-block: clamp(2.5rem, 6vw, 5rem); }
 .footer__top {
@@ -1061,11 +1218,10 @@ h3 { font-size: var(--step-1); }
     <a class="nav__logo" href="#top" aria-label="GRELLWERK Startseite">GRELL<b>//</b>WERK</a>
     <nav class="nav__links" aria-label="Hauptnavigation">
       <a class="nav__link" href="#leistungen" data-scramble>Leistungen</a>
-      <a class="nav__link" href="#arbeiten" data-scramble>Arbeiten</a>
+      <a class="nav__link" href="arbeiten.html" data-scramble>Arbeiten</a>
+      <a class="nav__link" href="ueber-uns.html" data-scramble>Über uns</a>
+      <a class="nav__link" href="journal.html" data-scramble>Journal</a>
       <a class="nav__link" href="#pakete" data-scramble>Pakete</a>
-      <a class="nav__link" href="#prozess" data-scramble>Prozess</a>
-      <a class="nav__link" href="#crew" data-scramble>Crew</a>
-      <a class="nav__link" href="#journal" data-scramble>Journal</a>
       <a class="nav__link nav__cta btn" href="#kontakt">Jetzt buchen</a>
     </nav>
   </header>
@@ -1188,50 +1344,34 @@ h3 { font-size: var(--step-1); }
         <span class="eyebrow">Zahlen lügen nicht</span>
         <h2 data-reveal>Arbeiten</h2>
         <div class="work__grid">
-          <article class="case magnetic" data-reveal>
+          <a class="case magnetic" href="case-kold-brew.html" data-reveal>
             <span class="case__metric">+312%<br>ROAS</span>
             <span class="case__client">Kold Brew Co.</span>
             <p class="case__desc">Von 0 auf Kult: Cold-Brew-Startup in 90 Tagen skaliert, 1,2&nbsp;Mio. Reel-Views.</p>
             <div class="case__tags"><span class="tag">Performance</span><span class="tag">Social</span></div>
-          </article>
-          <article class="case magnetic" data-reveal>
+          </a>
+          <a class="case magnetic" href="case-neontritt.html" data-reveal>
             <span class="case__metric">11&nbsp;Min</span>
             <span class="case__client">Neontritt</span>
             <p class="case__desc">Sneaker-Drop, der den Server killte: 48.000 Anmeldungen, ausverkauft in 11 Minuten.</p>
             <div class="case__tags"><span class="tag">Kampagne</span><span class="tag">Hype</span></div>
-          </article>
-          <article class="case magnetic" data-reveal>
+          </a>
+          <a class="case magnetic" href="case-haferkraft.html" data-reveal>
             <span class="case__metric">+87%</span>
             <span class="case__client">Haferkraft</span>
             <p class="case__desc">Hafermilch-Rebrand: +87% Markenbekanntheit, Listung bei 3 Handelsketten.</p>
             <div class="case__tags"><span class="tag">Branding</span><span class="tag">Retail</span></div>
-          </article>
-          <article class="case magnetic" data-reveal>
+          </a>
+          <a class="case magnetic" href="case-blitzbank.html" data-reveal>
             <span class="case__metric">−41%<br>CPA</span>
             <span class="case__client">Blitzbank</span>
             <p class="case__desc">Fintech-Performance: CPA um 41% gesenkt, 220.000 App-Installs.</p>
             <div class="case__tags"><span class="tag">Fintech</span><span class="tag">Paid</span></div>
-          </article>
+          </a>
         </div>
-      </div>
-    </section>
-
-    <!-- ===== KUNDEN / LOGO-WALL ===== -->
-    <section class="section clients" id="kunden" data-guide-step="kunden">
-      <div class="container">
-        <span class="eyebrow">Die uns vertrauen</span>
-        <h2 data-reveal>Kunden</h2>
-        <div class="clients__grid" data-reveal>
-          <span class="client">Kold Brew Co.</span>
-          <span class="client">Neontritt</span>
-          <span class="client">Haferkraft</span>
-          <span class="client">Blitzbank</span>
-          <span class="client">Volt&amp;Co</span>
-          <span class="client">Rauschgold</span>
-          <span class="client">Pixelhain</span>
-          <span class="client">Stadtwild</span>
+        <div class="hero__ctas" data-reveal style="margin-top: var(--gap);">
+          <a class="btn btn--ghost magnetic" href="arbeiten.html">Alle Arbeiten ansehen →</a>
         </div>
-        <p class="clients__awards" data-reveal>ADC Bronze 2024 · Effie Shortlist 2025 · German Brand Award 2025 · Webby Honoree 2026</p>
       </div>
     </section>
 
@@ -1395,27 +1535,8 @@ h3 { font-size: var(--step-1); }
             <p class="member__role">Tech &amp; Web · Pixel-Schmied</p>
           </div>
         </div>
-      </div>
-    </section>
-
-    <!-- ===== TESTIMONIALS ===== -->
-    <section class="section quotes" id="stimmen" data-guide-step="stimmen">
-      <div class="container">
-        <span class="eyebrow">Glaub nicht uns</span>
-        <h2 data-reveal>Stimmen</h2>
-        <div class="quotes__grid">
-          <blockquote class="quote" data-reveal>
-            <p class="quote__text">Die haben unseren Laden in 90 Tagen umgekrempelt. Unbequem — und genau richtig.</p>
-            <footer class="quote__author">— Lena M., Kold Brew Co.</footer>
-          </blockquote>
-          <blockquote class="quote" data-reveal>
-            <p class="quote__text">Endlich eine Agentur, die nicht langweilt.</p>
-            <footer class="quote__author">— David R., Neontritt</footer>
-          </blockquote>
-          <blockquote class="quote" data-reveal>
-            <p class="quote__text">Zahlen statt Buzzwords. Hat gesessen.</p>
-            <footer class="quote__author">— Petra S., Blitzbank</footer>
-          </blockquote>
+        <div class="hero__ctas" data-reveal style="margin-top: var(--gap);">
+          <a class="btn btn--ghost magnetic" href="ueber-uns.html">Mehr über uns →</a>
         </div>
       </div>
     </section>
@@ -1426,24 +1547,27 @@ h3 { font-size: var(--step-1); }
         <span class="eyebrow">Aus der Werkstatt</span>
         <h2 data-reveal>Lärm-Journal</h2>
         <div class="journal__grid">
-          <article class="post" data-reveal>
+          <a class="post" href="journal-roas-luegt.html" data-reveal>
             <div class="post__meta"><span class="tag">Performance</span><time datetime="2026-04-18">18. Apr 2026</time></div>
             <h3 class="post__title">Warum dein ROAS lügt</h3>
             <p class="post__teaser">Last-Click ist tot. Wie wir Kampagnen über inkrementellen Lift statt Vanity-Metriken steuern.</p>
             <span class="post__more">Lesen →</span>
-          </article>
-          <article class="post" data-reveal>
+          </a>
+          <a class="post" href="journal-anecken.html" data-reveal>
             <div class="post__meta"><span class="tag">Branding</span><time datetime="2026-02-27">27. Feb 2026</time></div>
             <h3 class="post__title">Anecken als Strategie</h3>
             <p class="post__teaser">Der Haferkraft-Rebrand: aus leiser Hafermilch eine Marke, über die man streitet. +87% Bekanntheit.</p>
             <span class="post__more">Lesen →</span>
-          </article>
-          <article class="post" data-reveal>
+          </a>
+          <a class="post" href="journal-hook.html" data-reveal>
             <div class="post__meta"><span class="tag">Social</span><time datetime="2025-12-09">9. Dez 2025</time></div>
             <h3 class="post__title">Der Hook in 3 Sekunden</h3>
             <p class="post__teaser">48.000 Anmeldungen für einen Sneaker-Drop. Was den Neontritt-Reel zum Selbstläufer machte.</p>
             <span class="post__more">Lesen →</span>
-          </article>
+          </a>
+        </div>
+        <div class="hero__ctas" data-reveal style="margin-top: var(--gap);">
+          <a class="btn btn--ghost magnetic" href="journal.html">Alle Artikel →</a>
         </div>
       </div>
     </section>
@@ -1511,12 +1635,11 @@ h3 { font-size: var(--step-1); }
         <div class="footer__col">
           <strong>Navigation</strong>
           <a href="#leistungen">Leistungen</a>
-          <a href="#arbeiten">Arbeiten</a>
+          <a href="arbeiten.html">Arbeiten</a>
+          <a href="ueber-uns.html">Über uns</a>
+          <a href="journal.html">Journal</a>
           <a href="#pakete">Pakete</a>
           <a href="#konfigurator">Konfigurator</a>
-          <a href="#prozess">Prozess</a>
-          <a href="#crew">Crew</a>
-          <a href="#journal">Journal</a>
         </div>
         <div class="footer__col">
           <strong>Kontakt</strong>
@@ -1591,7 +1714,10 @@ const FLAGS = {
 };
 
 // BRUMMER guide steps. `selector` is scrolled into view + highlighted.
+// Page-aware: guide.js keeps only steps whose selector exists on the current
+// page, in array order. So group sub-page steps contiguously + in visual order.
 const GUIDE_STEPS = [
+  // ===== Startseite (index.html) =====
   {
     selector: "#hero",
     text: "Servus! Ich bin Brummer. Ich zeig dir kurz den Laden — oder du klickst dich selbst durch.",
@@ -1610,11 +1736,7 @@ const GUIDE_STEPS = [
   },
   {
     selector: "#arbeiten",
-    text: "Zahlen lügen nicht. +312% ROAS sind +312% ROAS. Schau dir die Cases an.",
-  },
-  {
-    selector: "#kunden",
-    text: "Acht Marken, die uns vertrauen — und ein paar Awards im Regal. Kein Zufall.",
+    text: "Zahlen lügen nicht. Klick einen Case an — jeder hat seine eigene Lärm-Geschichte.",
   },
   {
     selector: "#manifest",
@@ -1634,11 +1756,7 @@ const GUIDE_STEPS = [
   },
   {
     selector: "#crew",
-    text: "Die Verrückten, die das alles bauen. Sag Hallo.",
-  },
-  {
-    selector: "#stimmen",
-    text: "Glaub nicht uns — glaub denen, mit denen wir schon Krach gemacht haben.",
+    text: "Die Verrückten, die das alles bauen. Mehr über uns gibt's auf der Über-uns-Seite.",
   },
   {
     selector: "#journal",
@@ -1651,6 +1769,56 @@ const GUIDE_STEPS = [
   {
     selector: "#kontakt",
     text: "Genug geschaut. Schreib uns — wir beißen nur Wettbewerber. Klick mich an, wenn du mich nochmal brauchst!",
+  },
+
+  // ===== Cases-Übersicht (arbeiten.html) =====
+  {
+    selector: "#arbeiten-all",
+    text: "Alle Cases an einem Ort. Klick dich rein — jeder Case erzählt, wie wir Krach gemacht haben.",
+  },
+  {
+    selector: "#kunden",
+    text: "Acht Marken, die uns vertrauen — und ein paar Awards im Regal. Kein Zufall.",
+  },
+
+  // ===== Case-Detail (case-*.html teilen diese Selektoren) =====
+  {
+    selector: "#case-hero",
+    text: "Ein Case zum Anfassen: Ausgangslage, Idee, Krach — und was am Ende rauskam.",
+  },
+  {
+    selector: "#case-krach",
+    text: "Hier wird's laut: so haben wir den Krach tatsächlich gebaut.",
+  },
+  {
+    selector: "#case-ergebnis",
+    text: "Und das kam dabei raus. Zahlen, keine Versprechen.",
+  },
+
+  // ===== Über uns (ueber-uns.html) =====
+  {
+    selector: "#ueber",
+    text: "Wer wir sind und warum wir lieber anecken als einschläfern.",
+  },
+  {
+    selector: "#ueber-crew",
+    text: "Die ganze Crew. Sieht harmlos aus — ist es nicht.",
+  },
+  {
+    selector: "#ueber-stimmen",
+    text: "Glaub nicht uns — glaub denen, mit denen wir schon Krach gemacht haben.",
+  },
+
+  // ===== Lärm-Journal (journal.html) =====
+  {
+    selector: "#journal-list",
+    text: "Frischer Lärm zum Nachlesen — such dir einen Artikel aus.",
+  },
+
+  // ===== Artikel (journal-*.html) =====
+  {
+    selector: "#article",
+    text: "Viel Spaß beim Lesen. Wenn's brummt, weißt du ja, wo du uns findest.",
   },
 ];
 
@@ -1669,6 +1837,10 @@ const QUIPS = {
   stimmen: "Hör auf die, nicht auf uns.",
   journal: "Frischer Lärm zum Nachlesen.",
   kontakt: "Na los, trau dich.",
+  // Sub-pages
+  case: "Ein Case zum Anfassen — von Brief bis Knall.",
+  ueber: "Anti-Agentur seit 2018.",
+  article: "Frischer Lärm, ausführlich.",
 };
 
 // Krach-Konfigurator: Antworten → Empfehlung. Paket-Namen identisch zur
@@ -2007,6 +2179,11 @@ function initGuide({ reducedMotion }) {
   const mascot = document.getElementById("guide-mascot");
   if (!guide || !tab) return null;
 
+  // Page-aware tour: keep only steps whose target exists on THIS page, in order.
+  // So the homepage runs the full tour while sub-pages get their own short one.
+  const steps = GUIDE_STEPS.filter((s) => document.querySelector(s.selector));
+  if (!steps.length) { guide.hidden = true; tab.hidden = true; return null; }
+
   const state = {
     index: 0,
     active: false,
@@ -2028,12 +2205,12 @@ function initGuide({ reducedMotion }) {
   }
 
   function showStep(i) {
-    const step = GUIDE_STEPS[i];
+    const step = steps[i];
     if (!step) return finish();
     state.index = i;
     textEl.textContent = step.text;
-    countEl.textContent = `Schritt ${i + 1} / ${GUIDE_STEPS.length}`;
-    nextBtn.textContent = i === GUIDE_STEPS.length - 1 ? "Fertig ✓" : "Weiter →";
+    countEl.textContent = `Schritt ${i + 1} / ${steps.length}`;
+    nextBtn.textContent = i === steps.length - 1 ? "Fertig ✓" : "Weiter →";
 
     clearHighlight();
     const target = document.querySelector(step.selector);
@@ -2058,7 +2235,7 @@ function initGuide({ reducedMotion }) {
   }
 
   function next() {
-    if (state.index >= GUIDE_STEPS.length - 1) return finish();
+    if (state.index >= steps.length - 1) return finish();
     showStep(state.index + 1);
   }
 

@@ -6,7 +6,10 @@ export const FLAGS = {
 };
 
 // BRUMMER guide steps. `selector` is scrolled into view + highlighted.
+// Page-aware: guide.js keeps only steps whose selector exists on the current
+// page, in array order. So group sub-page steps contiguously + in visual order.
 export const GUIDE_STEPS = [
+  // ===== Startseite (index.html) =====
   {
     selector: "#hero",
     text: "Servus! Ich bin Brummer. Ich zeig dir kurz den Laden — oder du klickst dich selbst durch.",
@@ -25,11 +28,7 @@ export const GUIDE_STEPS = [
   },
   {
     selector: "#arbeiten",
-    text: "Zahlen lügen nicht. +312% ROAS sind +312% ROAS. Schau dir die Cases an.",
-  },
-  {
-    selector: "#kunden",
-    text: "Acht Marken, die uns vertrauen — und ein paar Awards im Regal. Kein Zufall.",
+    text: "Zahlen lügen nicht. Klick einen Case an — jeder hat seine eigene Lärm-Geschichte.",
   },
   {
     selector: "#manifest",
@@ -49,11 +48,7 @@ export const GUIDE_STEPS = [
   },
   {
     selector: "#crew",
-    text: "Die Verrückten, die das alles bauen. Sag Hallo.",
-  },
-  {
-    selector: "#stimmen",
-    text: "Glaub nicht uns — glaub denen, mit denen wir schon Krach gemacht haben.",
+    text: "Die Verrückten, die das alles bauen. Mehr über uns gibt's auf der Über-uns-Seite.",
   },
   {
     selector: "#journal",
@@ -66,6 +61,56 @@ export const GUIDE_STEPS = [
   {
     selector: "#kontakt",
     text: "Genug geschaut. Schreib uns — wir beißen nur Wettbewerber. Klick mich an, wenn du mich nochmal brauchst!",
+  },
+
+  // ===== Cases-Übersicht (arbeiten.html) =====
+  {
+    selector: "#arbeiten-all",
+    text: "Alle Cases an einem Ort. Klick dich rein — jeder Case erzählt, wie wir Krach gemacht haben.",
+  },
+  {
+    selector: "#kunden",
+    text: "Acht Marken, die uns vertrauen — und ein paar Awards im Regal. Kein Zufall.",
+  },
+
+  // ===== Case-Detail (case-*.html teilen diese Selektoren) =====
+  {
+    selector: "#case-hero",
+    text: "Ein Case zum Anfassen: Ausgangslage, Idee, Krach — und was am Ende rauskam.",
+  },
+  {
+    selector: "#case-krach",
+    text: "Hier wird's laut: so haben wir den Krach tatsächlich gebaut.",
+  },
+  {
+    selector: "#case-ergebnis",
+    text: "Und das kam dabei raus. Zahlen, keine Versprechen.",
+  },
+
+  // ===== Über uns (ueber-uns.html) =====
+  {
+    selector: "#ueber",
+    text: "Wer wir sind und warum wir lieber anecken als einschläfern.",
+  },
+  {
+    selector: "#ueber-crew",
+    text: "Die ganze Crew. Sieht harmlos aus — ist es nicht.",
+  },
+  {
+    selector: "#ueber-stimmen",
+    text: "Glaub nicht uns — glaub denen, mit denen wir schon Krach gemacht haben.",
+  },
+
+  // ===== Lärm-Journal (journal.html) =====
+  {
+    selector: "#journal-list",
+    text: "Frischer Lärm zum Nachlesen — such dir einen Artikel aus.",
+  },
+
+  // ===== Artikel (journal-*.html) =====
+  {
+    selector: "#article",
+    text: "Viel Spaß beim Lesen. Wenn's brummt, weißt du ja, wo du uns findest.",
   },
 ];
 
@@ -84,6 +129,10 @@ export const QUIPS = {
   stimmen: "Hör auf die, nicht auf uns.",
   journal: "Frischer Lärm zum Nachlesen.",
   kontakt: "Na los, trau dich.",
+  // Sub-pages
+  case: "Ein Case zum Anfassen — von Brief bis Knall.",
+  ueber: "Anti-Agentur seit 2018.",
+  article: "Frischer Lärm, ausführlich.",
 };
 
 // Krach-Konfigurator: Antworten → Empfehlung. Paket-Namen identisch zur

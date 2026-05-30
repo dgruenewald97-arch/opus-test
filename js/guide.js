@@ -12,6 +12,11 @@ export function initGuide({ reducedMotion }) {
   const mascot = document.getElementById("guide-mascot");
   if (!guide || !tab) return null;
 
+  // Page-aware tour: keep only steps whose target exists on THIS page, in order.
+  // So the homepage runs the full tour while sub-pages get their own short one.
+  const steps = GUIDE_STEPS.filter((s) => document.querySelector(s.selector));
+  if (!steps.length) { guide.hidden = true; tab.hidden = true; return null; }
+
   const state = {
     index: 0,
     active: false,
@@ -33,12 +38,12 @@ export function initGuide({ reducedMotion }) {
   }
 
   function showStep(i) {
-    const step = GUIDE_STEPS[i];
+    const step = steps[i];
     if (!step) return finish();
     state.index = i;
     textEl.textContent = step.text;
-    countEl.textContent = `Schritt ${i + 1} / ${GUIDE_STEPS.length}`;
-    nextBtn.textContent = i === GUIDE_STEPS.length - 1 ? "Fertig ✓" : "Weiter →";
+    countEl.textContent = `Schritt ${i + 1} / ${steps.length}`;
+    nextBtn.textContent = i === steps.length - 1 ? "Fertig ✓" : "Weiter →";
 
     clearHighlight();
     const target = document.querySelector(step.selector);
@@ -63,7 +68,7 @@ export function initGuide({ reducedMotion }) {
   }
 
   function next() {
-    if (state.index >= GUIDE_STEPS.length - 1) return finish();
+    if (state.index >= steps.length - 1) return finish();
     showStep(state.index + 1);
   }
 

@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Neontritt — Case | GRELLWERK</title>
+  <meta name="description" content="Ein Sneaker-Drop, der den Server killte: 48.000 Anmeldungen, ausverkauft in 11 Minuten. So hat GRELLWERK den Hype gebaut." />
+  <meta property="og:title" content="Neontritt — Case | GRELLWERK" />
+  <meta property="og:description" content="Ausverkauft in 11 Minuten. Lärm, der verkauft." />
+  <meta property="og:image" content="assets/og-image.svg" />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+
+  <!-- Fonts (graceful: system fallbacks defined in tokens.css) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/tokens.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/sections.css" />
+  <link rel="stylesheet" href="css/guide.css" />
+  <link rel="stylesheet" href="css/motion.css" />
+
+  <!-- Importmap for optional CDN ESM libs (enhancement only) -->
+  <script type="importmap">
+  {
+    "imports": {
+      "gsap": "https://cdn.jsdelivr.net/npm/gsap@3.12.5/+esm",
+      "gsap/ScrollTrigger": "https://cdn.jsdelivr.net/npm/gsap@3.12.5/ScrollTrigger/+esm",
+      "lenis": "https://cdn.jsdelivr.net/npm/lenis@1.1.13/+esm"
+    }
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Zum Inhalt springen</a>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="cursor" aria-hidden="true"></div>
+
+  <!-- ===== NAV ===== -->
+  <header class="nav">
+    <a class="nav__logo" href="index.html" aria-label="GRELLWERK Startseite">GRELL<b>//</b>WERK</a>
+    <nav class="nav__links" aria-label="Hauptnavigation">
+      <a class="nav__link" href="index.html#leistungen" data-scramble>Leistungen</a>
+      <a class="nav__link" href="arbeiten.html" data-scramble>Arbeiten</a>
+      <a class="nav__link" href="ueber-uns.html" data-scramble>Über uns</a>
+      <a class="nav__link" href="journal.html" data-scramble>Journal</a>
+      <a class="nav__link" href="index.html#pakete" data-scramble>Pakete</a>
+      <a class="nav__link nav__cta btn" href="index.html#kontakt">Jetzt buchen</a>
+    </nav>
+  </header>
+
+  <main id="main">
+
+    <!-- ===== CASE HERO ===== -->
+    <section class="section page-hero" id="case-hero" data-guide-step="case">
+      <div class="container">
+        <nav class="crumbs" aria-label="Brotkrumen">
+          <a href="index.html">Start</a><span>/</span><a href="arbeiten.html">Arbeiten</a><span>/</span>Neontritt
+        </nav>
+        <span class="eyebrow">Fashion · Sneaker-Drop</span>
+        <h1 class="page-hero__headline">Neontritt</h1>
+        <div class="case-hero__grid">
+          <div>
+            <p class="page-hero__lead">
+              Ein limitierter Sneaker, ein Datum, ein Versprechen. Wir haben so viel
+              Lärm gemacht, dass der Server kapitulierte — und der Drop in elf Minuten
+              weg war.
+            </p>
+            <div class="page-hero__meta">
+              <span class="tag">Kampagne</span>
+              <span class="tag">Hype</span>
+              <span class="tag">Social</span>
+            </div>
+          </div>
+          <div class="case-hero__metric">
+            <b>11</b>
+            <span>Minuten bis ausverkauft</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== AUSGANGSLAGE ===== -->
+    <section class="section" id="case-challenge">
+      <div class="container">
+        <span class="eyebrow">Ausgangslage</span>
+        <h2 data-reveal>Ein Drop, den keiner erwartete</h2>
+        <div class="prose" data-reveal>
+          <p>
+            Neontritt wollte einen limitierten Sneaker launchen — 1.500 Paar, ein
+            Termin, kein Nachschub. Das Problem: <strong>kaum Reichweite</strong>, eine
+            Community von ein paar tausend Leuten und ein Wettbewerb, der seine Drops
+            mit sechsstelligen Budgets befeuert.
+          </p>
+          <p>
+            Ein normaler Launch hätte 200 Paar verkauft und wäre untergegangen. Wir
+            sollten aus einem kleinen Drop ein Ereignis machen.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== DER KRACH ===== -->
+    <section class="section manifest" id="case-krach">
+      <div class="container">
+        <span class="eyebrow">Der Krach</span>
+        <h2 data-reveal>Knappheit, laut inszeniert</h2>
+        <div class="prose" data-reveal>
+          <p>
+            Hype entsteht nicht durch Rabatt, sondern durch <strong>Verknappung plus
+            Lärm</strong>. Wir haben einen Countdown gebaut, der drei Wochen lang nicht
+            mehr aus dem Feed ging — und eine Warteliste, in die man rein wollte.
+          </p>
+          <h3>So haben wir's gebaut</h3>
+          <ul>
+            <li>Teaser-Serie: 3 Sekunden Hook, Gesicht zum Drop, klare Deadline</li>
+            <li>Warteliste mit Early-Access — FOMO als Anmelde-Motor</li>
+            <li>Micro-Creator statt Promis: 12 Stimmen aus der echten Szene</li>
+            <li>Launch-Tag: Live-Counter, der die Knappheit sichtbar machte</li>
+          </ul>
+          <p>
+            Kein Performance-Dauerfeuer — eine konzentrierte Kampagne mit einem
+            einzigen lauten Höhepunkt.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== TIMELINE ===== -->
+    <section class="section process" id="case-timeline">
+      <div class="container">
+        <span class="eyebrow">Vom Brief zum Knall</span>
+        <h2 data-reveal>Drei Wochen Anlauf, elf Minuten Knall</h2>
+        <div class="process__strip" data-reveal>
+          <div class="step">
+            <span class="step__num">01</span>
+            <span class="step__title">Reinhören</span>
+            <p class="step__text">Szene verstanden, Creator-Liste, Drop-Mechanik geplant.</p>
+          </div>
+          <div class="step">
+            <span class="step__num">02</span>
+            <span class="step__title">Idee zünden</span>
+            <p class="step__text">Countdown-Konzept, Warteliste, Teaser-Story gebaut.</p>
+          </div>
+          <div class="step">
+            <span class="step__num">03</span>
+            <span class="step__title">Krach machen</span>
+            <p class="step__text">3 Wochen Teaser, 12 Creator, steigender Druck.</p>
+          </div>
+          <div class="step">
+            <span class="step__num">04</span>
+            <span class="step__title">Nachlegen</span>
+            <p class="step__text">Drop-Tag live begleitet, Sold-out als Content recycelt.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== ERGEBNIS ===== -->
+    <section class="section" id="case-ergebnis">
+      <div class="container">
+        <span class="eyebrow">Ergebnis</span>
+        <h2 data-reveal>Zahlen, keine Versprechen</h2>
+        <div class="result__grid" data-reveal>
+          <div class="result">
+            <span class="result__num">11</span>
+            <span class="result__label">Min bis ausverkauft</span>
+          </div>
+          <div class="result">
+            <span class="result__num">48.000</span>
+            <span class="result__label">Anmeldungen</span>
+          </div>
+          <div class="result">
+            <span class="result__num">32×</span>
+            <span class="result__label">Nachfrage vs. Stück</span>
+          </div>
+          <div class="result">
+            <span class="result__num">0 €</span>
+            <span class="result__label">Rabatt nötig</span>
+          </div>
+        </div>
+        <blockquote class="bigquote" data-reveal>
+          <p>Endlich eine Agentur, die nicht langweilt.</p>
+          <footer>— David R., Neontritt</footer>
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- ===== CTA + NEXT ===== -->
+    <section class="section cta-band" id="case-cta">
+      <div class="container">
+        <span class="eyebrow">Dein Launch ist der nächste</span>
+        <h2 data-reveal>Lass uns Lärm machen</h2>
+        <div class="cta-band__row" data-reveal>
+          <a class="btn btn--big magnetic" href="index.html#kontakt">Krach buchen →</a>
+          <a class="btn btn--ghost btn--big magnetic" href="arbeiten.html">Alle Arbeiten</a>
+        </div>
+        <div class="next-case">
+          <span>Nächster Case</span>
+          <a href="case-haferkraft.html">Haferkraft — +87% Bekanntheit →</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__top">
+        <div class="footer__logo">GRELL//WERK</div>
+        <div class="footer__col">
+          <strong>Navigation</strong>
+          <a href="index.html#leistungen">Leistungen</a>
+          <a href="arbeiten.html">Arbeiten</a>
+          <a href="ueber-uns.html">Über uns</a>
+          <a href="journal.html">Journal</a>
+          <a href="index.html#pakete">Pakete</a>
+        </div>
+        <div class="footer__col">
+          <strong>Kontakt</strong>
+          <span>Lärmstraße 1</span>
+          <span>50667 Köln</span>
+          <span>hallo@grellwerk.de</span>
+        </div>
+        <div class="footer__col">
+          <strong>Legal</strong>
+          <a href="#">Impressum</a>
+          <a href="#">Datenschutz</a>
+        </div>
+      </div>
+      <div class="marquee marquee--rev" aria-hidden="true" style="border:none; background:transparent; color:var(--acid);">
+        <div class="marquee__track">
+          <span>Lärm der verkauft</span><span>Lärm der verkauft</span><span>Lärm der verkauft</span><span>Lärm der verkauft</span>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>© 2026 GRELLWERK GmbH — fiktive Demo-Agentur</span>
+        <button type="button" id="replay-guide">Guide erneut starten ↻</button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== BRUMMER GUIDE ===== -->
+  <aside class="guide" id="guide" aria-label="Onboarding-Guide Brummer" hidden>
+    <div class="guide__bubble">
+      <span class="guide__step-count" id="guide-count">Schritt 1 / 3</span>
+      <p class="guide__text" id="guide-text" role="status" aria-live="polite">Servus!</p>
+      <div class="guide__controls">
+        <button class="guide__btn guide__btn--primary" id="guide-next" type="button">Weiter →</button>
+        <button class="guide__btn guide__btn--ghost" id="guide-skip" type="button">Überspringen</button>
+      </div>
+    </div>
+    <div class="guide__mascot" id="guide-mascot" aria-hidden="true">
+      <!-- BRUMMER: inline SVG bee/fly -->
+      <svg viewBox="0 0 100 100" role="img">
+        <g class="brummer__wing"><ellipse cx="32" cy="34" rx="14" ry="22" fill="#2D2DFF" opacity="0.6" stroke="#0A0A0A" stroke-width="3"/></g>
+        <g class="brummer__wing" style="animation-delay:-0.09s"><ellipse cx="68" cy="34" rx="14" ry="22" fill="#2D2DFF" opacity="0.6" stroke="#0A0A0A" stroke-width="3"/></g>
+        <g class="brummer__body">
+          <line class="brummer__antenna" x1="40" y1="40" x2="34" y2="22" stroke="#0A0A0A" stroke-width="3"/>
+          <line class="brummer__antenna" x1="60" y1="40" x2="66" y2="22" stroke="#0A0A0A" stroke-width="3" style="animation-delay:-0.6s"/>
+          <circle cx="34" cy="20" r="4" fill="#FF2E63"/>
+          <circle cx="66" cy="20" r="4" fill="#FF2E63"/>
+          <rect x="28" y="40" width="44" height="44" rx="10" fill="#D6FF3B" stroke="#0A0A0A" stroke-width="4"/>
+          <rect x="28" y="58" width="44" height="8" fill="#0A0A0A"/>
+          <rect x="28" y="72" width="44" height="6" fill="#0A0A0A"/>
+          <circle cx="42" cy="52" r="7" fill="#fff" stroke="#0A0A0A" stroke-width="2"/>
+          <circle cx="58" cy="52" r="7" fill="#fff" stroke="#0A0A0A" stroke-width="2"/>
+          <circle class="brummer__pupil" cx="42" cy="52" r="3" fill="#0A0A0A"/>
+          <circle class="brummer__pupil" cx="58" cy="52" r="3" fill="#0A0A0A"/>
+        </g>
+      </svg>
+    </div>
+  </aside>
+
+  <button class="guide-tab" id="guide-tab" type="button" hidden>
+    <span class="guide-tab__dot" aria-hidden="true">
+      <svg viewBox="0 0 100 100"><rect x="20" y="30" width="60" height="55" rx="12" fill="#D6FF3B" stroke="#0A0A0A" stroke-width="6"/><circle cx="40" cy="52" r="6" fill="#0A0A0A"/><circle cx="60" cy="52" r="6" fill="#0A0A0A"/></svg>
+    </span>
+    Brummer fragen?
+  </button>
+
+  <!-- ===== Scripts (ES modules, deferred by default) ===== -->
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
