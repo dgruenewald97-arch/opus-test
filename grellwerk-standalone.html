@@ -1217,7 +1217,7 @@ a.case:focus-visible, a.post:focus-visible { outline: 4px solid var(--electric);
   <header class="nav">
     <a class="nav__logo" href="#top" aria-label="GRELLWERK Startseite">GRELL<b>//</b>WERK</a>
     <nav class="nav__links" aria-label="Hauptnavigation">
-      <a class="nav__link" href="#leistungen" data-scramble>Leistungen</a>
+      <a class="nav__link" href="leistungen.html" data-scramble>Leistungen</a>
       <a class="nav__link" href="arbeiten.html" data-scramble>Arbeiten</a>
       <a class="nav__link" href="ueber-uns.html" data-scramble>Über uns</a>
       <a class="nav__link" href="journal.html" data-scramble>Journal</a>
@@ -1334,6 +1334,9 @@ a.case:focus-visible, a.post:focus-visible { outline: 4px solid var(--electric);
             <span class="service__name">Daten &amp; Optimierung</span>
             <span class="service__desc">A/B-Tests, bis der Funnel glüht.</span>
           </div>
+        </div>
+        <div class="hero__ctas" data-reveal style="margin-top: var(--gap);">
+          <a class="btn btn--ghost magnetic" href="leistungen.html">Alle Leistungen ansehen →</a>
         </div>
       </div>
     </section>
@@ -1634,7 +1637,7 @@ a.case:focus-visible, a.post:focus-visible { outline: 4px solid var(--electric);
         <div class="footer__logo">GRELL//WERK</div>
         <div class="footer__col">
           <strong>Navigation</strong>
-          <a href="#leistungen">Leistungen</a>
+          <a href="leistungen.html">Leistungen</a>
           <a href="arbeiten.html">Arbeiten</a>
           <a href="ueber-uns.html">Über uns</a>
           <a href="journal.html">Journal</a>
@@ -1795,6 +1798,26 @@ const GUIDE_STEPS = [
     text: "Und das kam dabei raus. Zahlen, keine Versprechen.",
   },
 
+  // ===== Leistungen-Übersicht (leistungen.html) =====
+  {
+    selector: "#leistungen-all",
+    text: "Sechs Disziplinen, ein Ziel: Krach. Klick eine an — jede hat ihre eigene Lärm-Maschine.",
+  },
+
+  // ===== Leistung-Detail (leistung-*.html teilen diese Selektoren) =====
+  {
+    selector: "#leistung-hero",
+    text: "Eine Disziplin im Detail: das Problem, unsere Haltung, der Prozess — und was rauskommt.",
+  },
+  {
+    selector: "#leistung-prozess",
+    text: "So gehen wir vor: vier Schritte vom Brief zum Knall.",
+  },
+  {
+    selector: "#leistung-ergebnis",
+    text: "Und das springt dabei raus. Zahlen, keine Versprechen.",
+  },
+
   // ===== Über uns (ueber-uns.html) =====
   {
     selector: "#ueber",
@@ -1839,6 +1862,10 @@ const QUIPS = {
   kontakt: "Na los, trau dich.",
   // Sub-pages
   case: "Ein Case zum Anfassen — von Brief bis Knall.",
+  "leistungen-all": "Sechs Maschinen. Such dir Lärm aus.",
+  leistung: "Eine Disziplin, voll aufgedreht.",
+  "leistung-prozess": "Vier Schritte. Null Bullshit.",
+  "leistung-ergebnis": "Zahlen, keine Versprechen.",
   ueber: "Anti-Agentur seit 2018.",
   article: "Frischer Lärm, ausführlich.",
 };

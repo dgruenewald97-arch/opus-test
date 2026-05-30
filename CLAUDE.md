@@ -6,8 +6,8 @@ Kurz-Doku für die Arbeit in diesem Repo. **Knapp halten, bei Änderungen mitpfl
 ## Repo-Struktur
 - **GRELLWERK** (Repo-Root) = Hauptprojekt. Build-less Vanilla HTML/CSS/JS, brutalistische
   Fake-Agentur. **Mehrseitig:** `index.html` (Startseite) + Unterseiten im Root
-  (`arbeiten.html`, `case-*.html`, `ueber-uns.html`, `journal.html`, `journal-*.html`),
-  die sich `css/` + `js/` teilen.
+  (`arbeiten.html`, `case-*.html`, `leistungen.html`, `leistung-*.html`, `ueber-uns.html`,
+  `journal.html`, `journal-*.html`), die sich `css/` + `js/` teilen.
 - **`studio-seide/`** = Nebenprojekt (Vite + React, Friseur-Salon). Nicht anfassen, außer
   ausdrücklich gewünscht.
 

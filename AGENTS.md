@@ -20,6 +20,7 @@ Nicht anfassen außer ausdrücklich gewünscht. Hat eigene Konventionen.
 index.html              Startseite (Sektionen + BRUMMER-Markup)
 arbeiten.html           Cases-Übersicht
 case-*.html             4 Case-Detailseiten (kold-brew/neontritt/haferkraft/blitzbank)
+leistungen.html         Leistungs-Übersicht  ·  leistung-*.html  6 Disziplin-Detailseiten
 ueber-uns.html          Agentur-Story, Manifest, Crew, Stimmen
 journal.html            Blog-Übersicht  ·  journal-*.html  3 Artikel
 css/
@@ -121,8 +122,8 @@ zur Concat-Liste hinzufügen (sonst fehlt es im Standalone). Aktuelle JS-Concat-
 aufrufen — effects.js ist bereits im Standalone-Bundle.
 
 **Neue Unterseite (Multipage):** GRELLWERK ist mehrseitig — Unterseiten als eigene
-`*.html` im Root (`arbeiten.html`, `case-*.html`, `ueber-uns.html`, `journal.html`,
-`journal-*.html`), die `css/`+`js/` teilen. (1) Kopf/Fuß einer bestehenden Seite klonen
+`*.html` im Root (`arbeiten.html`, `case-*.html`, `leistungen.html`, `leistung-*.html`,
+`ueber-uns.html`, `journal.html`, `journal-*.html`), die `css/`+`js/` teilen. (1) Kopf/Fuß einer bestehenden Seite klonen
 (Head, `nav`, `footer`, Brummer-`<aside>`+`#guide-tab`, `js/main.js` sind pro Seite
 dupliziert — kein HTML-Templating); (2) Layout über bestehende Klassen + die Sub-Page-Bausteine
 `page-hero`/`prose`/`lead`/`result__grid`/`bigquote`/`cta-band`/`crumbs`/`next-case` in

@@ -87,6 +87,26 @@ export const GUIDE_STEPS = [
     text: "Und das kam dabei raus. Zahlen, keine Versprechen.",
   },
 
+  // ===== Leistungen-Übersicht (leistungen.html) =====
+  {
+    selector: "#leistungen-all",
+    text: "Sechs Disziplinen, ein Ziel: Krach. Klick eine an — jede hat ihre eigene Lärm-Maschine.",
+  },
+
+  // ===== Leistung-Detail (leistung-*.html teilen diese Selektoren) =====
+  {
+    selector: "#leistung-hero",
+    text: "Eine Disziplin im Detail: das Problem, unsere Haltung, der Prozess — und was rauskommt.",
+  },
+  {
+    selector: "#leistung-prozess",
+    text: "So gehen wir vor: vier Schritte vom Brief zum Knall.",
+  },
+  {
+    selector: "#leistung-ergebnis",
+    text: "Und das springt dabei raus. Zahlen, keine Versprechen.",
+  },
+
   // ===== Über uns (ueber-uns.html) =====
   {
     selector: "#ueber",
@@ -131,6 +151,10 @@ export const QUIPS = {
   kontakt: "Na los, trau dich.",
   // Sub-pages
   case: "Ein Case zum Anfassen — von Brief bis Knall.",
+  "leistungen-all": "Sechs Maschinen. Such dir Lärm aus.",
+  leistung: "Eine Disziplin, voll aufgedreht.",
+  "leistung-prozess": "Vier Schritte. Null Bullshit.",
+  "leistung-ergebnis": "Zahlen, keine Versprechen.",
   ueber: "Anti-Agentur seit 2018.",
   article: "Frischer Lärm, ausführlich.",
 };
