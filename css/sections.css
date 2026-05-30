@@ -388,6 +388,35 @@
 .field input:focus, .field textarea:focus { background: rgba(214,255,59,0.08); }
 .form__status { font-family: var(--font-mono); color: var(--acid); min-height: 1.4em; }
 
+/* Kontakt-Seite: Formular + Direktdrähte zweispaltig (klont .contact-Panel) */
+.contact__layout {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: var(--gap);
+  margin-top: var(--gap);
+  align-items: start;
+}
+.contact__layout .form { margin-top: 0; max-width: none; }
+.contact__direct { display: grid; gap: 1.6rem; align-content: start; }
+.contact__direct h3 {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  font-size: var(--step--1);
+  letter-spacing: 0.1em;
+  color: var(--acid);
+  margin-bottom: 0.4rem;
+}
+.contact__direct a {
+  color: var(--paper);
+  border-bottom: 3px solid var(--acid);
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+.contact__direct a:hover { color: var(--acid); border-color: var(--shock); }
+.contact__tags { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+@media (max-width: 860px) {
+  .contact__layout { grid-template-columns: 1fr; }
+}
+
 /* ===== KUNDEN / LOGO-WALL (klont .stats-Grid + .service-Hover) ===== */
 .clients__grid {
   display: grid;
