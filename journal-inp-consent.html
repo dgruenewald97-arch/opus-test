@@ -4,9 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Zwei Zahlen, die deine Daten zerlegen | Lärm-Journal | GRELLWERK</title>
-  <meta name="description" content="INP hat FID als Core Web Vital abgelöst — Pass-Raten fielen. Und ~67 % der Consent-Setups sind non-compliant. Zwei stille Stellschrauben, die 2026 dein Reporting brechen." />
+  <meta name="description" content="INP hat FID als Core Web Vital abgelöst und Pass-Raten gedrückt. ~67 % der Consent-Setups sind non-compliant. Zwei stille Stellschrauben, die 2026 deine Daten zerlegen." />
   <meta property="og:title" content="Zwei Zahlen, die deine Daten zerlegen | GRELLWERK" />
-  <meta property="og:description" content="INP und der Consent-Bruch: zwei unsichtbare Zahlen, die deine Daten 2026 zerlegen." />
+  <meta property="og:description" content="Die gefährlichsten Zahlen sind die, die leise kaputtgehen, während dein Dashboard noch grün zeigt. Über INP und den Consent-Bruch." />
   <meta property="og:image" content="assets/og-image.svg" />
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
   <link rel="canonical" href="https://dgruenewald97-arch.github.io/opus-test/journal-inp-consent.html" />
@@ -68,10 +68,12 @@
         </nav>
         <span class="eyebrow">Web</span>
         <h1 class="page-hero__headline">Zwei Zahlen, die deine Daten zerlegen</h1>
+        <p class="page-hero__lead">Zwei nüchterne Tech-Realitäten, über die niemand spricht, weil sie keine schöne Headline ergeben. Beide sind 2026 still scharfgeschaltet. Und beide brechen dein Reporting, während dein Dashboard noch grün leuchtet.</p>
         <div class="article__meta">
           <span class="tag">Web</span>
           <time datetime="2026-05-11">11. Mai 2026</time>
-          <span>· 3 Min Lesezeit</span>
+          <span>· 5 Min Lesezeit</span>
+          <span>· Tobias Klein · Tech & Web</span>
         </div>
       </div>
     </section>
@@ -80,16 +82,27 @@
     <section class="section" id="article" data-guide-step="article">
       <div class="container">
         <div class="prose" data-reveal>
-          <p>Zwei nüchterne Tech-Realitäten, die kaum jemand auf dem Schirm hat — und die beide gerade still scharfgeschaltet sind.</p>
-          <h3>1. INP hat FID abgelöst</h3>
-          <p>Seit März 2024 ist <strong>Interaction to Next Paint</strong> ein Core Web Vital. Weil INP alle Interaktionen misst statt nur der ersten, fielen die mobilen CWV-Pass-Raten branchenweit um rund 5 Prozentpunkte. Seiten, die sich „schnell" anfühlten, fallen plötzlich durch.</p>
-          <h3>2. Der Consent-Bruch</h3>
+          <p>Dieser Artikel hat keine sexy Headline, weil das Thema keine ist. Es geht um zwei technische Realitäten, die kaum jemand auf dem Schirm hat — und die beide gerade leise scharfgeschaltet sind. Beide haben gemeinsam: Sie brechen dir Performance und Daten weg, ohne dass irgendwo eine rote Lampe angeht.</p>
+          <h3>Zahl 1: INP hat FID abgelöst</h3>
+          <p>Seit März 2024 ist <strong>Interaction to Next Paint</strong> (INP) ein offizieller Core Web Vital und hat First Input Delay (FID) ersetzt. Der Unterschied ist gemein: FID maß nur die erste Interaktion und war fast immer „gut". INP misst <strong>alle</strong> Interaktionen über den gesamten Seitenbesuch — jeden Klick, jedes Tippen, jedes Aufklappen.</p>
+          <p>Die Folge war branchenweit messbar: Die mobilen Core-Web-Vitals-Pass-Raten fielen um rund 5 Prozentpunkte, als INP scharfgestellt wurde. Seiten, die sich subjektiv „schnell" anfühlten, fallen plötzlich durch — weil das schwere JavaScript, das beim dritten Klick ruckelt, jetzt zählt. Und CWV ist ein Ranking-Signal.</p>
+          <h3>Zahl 2: Der Consent-Bruch</h3>
+          <p>Die zweite Zahl betrifft deine Datenbasis selbst. Consent Mode v2 ist bei über 90 % der Advertiser im EWR eingeführt — klingt nach „erledigt". Ist es nicht:</p>
           <ul>
-            <li>Consent Mode v2 ist bei über 90 % der EEA-Advertiser eingeführt</li>
-            <li>Aber geschätzt ~67 % der Setups sind nicht compliant (Default auf „granted")</li>
-            <li>Durchschnittliche Opt-in-Rate ~51 % — rund die Hälfte der Daten fehlt strukturell</li>
+            <li>Geschätzt rund 67 % der Setups sind nicht sauber compliant (z. B. Default auf „granted" statt „denied")</li>
+            <li>Die durchschnittliche Opt-in-Rate liegt bei etwa 51 % — rund die Hälfte der Nutzer sagt Nein</li>
+            <li>Heißt: strukturell fehlt dir die halbe Datengrundlage, lange bevor irgendein Cookie „stirbt"</li>
           </ul>
-          <p>Beides zusammen heißt: Dein Performance-Reporting und deine Tracking-Basis bröckeln, ohne dass es jemand merkt. Wer seine Zahlen ernst nimmt, prüft beide Stellschrauben — bevor die nächste CNIL-Strafe oder der nächste Ranking-Rückgang es für ihn tut.</p>
+          <p>Ein non-compliantes Setup ist dabei das Schlimmste aus beiden Welten: Du riskierst Abmahnungen und CNIL-Strafen <strong>und</strong> deine Daten sind trotzdem unsauber, weil das Consent-Signal falsch verdrahtet ist.</p>
+          <h3>Warum beides zusammen gefährlich ist</h3>
+          <p>Einzeln sind das Tech-Fußnoten. Zusammen ergeben sie ein Reporting, das langsam und unbemerkt zerbröselt: Dein Ranking leidet an INP, das du nie gemessen hast, und deine Conversion-Zahlen basieren auf der Hälfte der Realität. Das Dashboard zeigt weiter grün — weil es genau die Lücken nicht anzeigt, die es nicht kennt.</p>
+          <h3>Was du Montag tust</h3>
+          <ul>
+            <li>INP im echten Feld messen (PageSpeed Insights / CrUX, nicht nur Lab) — der schlimmste Wert steckt meist im Third-Party-JavaScript</li>
+            <li>Consent-Setup auditieren: Steht der Default auf „denied"? Feuern Tags wirklich erst nach Zustimmung?</li>
+            <li>Akzeptier die ~50-%-Lücke beim Tracking und rechne mit Modellierung statt mit Scheingenauigkeit</li>
+            <li>Hol dir beide Themen ins Reporting, bevor die nächste Strafe oder der nächste Ranking-Knick es für dich tut</li>
+          </ul>
         </div>
         <blockquote class="bigquote" data-reveal>
           <p>Die gefährlichsten Zahlen sind die, die leise kaputtgehen, während dein Dashboard noch grün zeigt.</p>
