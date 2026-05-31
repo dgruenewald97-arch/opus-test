@@ -864,6 +864,110 @@ a.tag:hover { background: var(--ink); color: var(--acid); }
   .config__layout { grid-template-columns: 1fr; }
 }
 
+/* ===== KRACH-MASCHINE (KI Slogan-Generator) ===== */
+.slogan { background: var(--acid); color: var(--ink); }
+.slogan h2 { color: var(--ink); }
+.slogan__intro {
+  font-family: var(--font-mono);
+  font-size: var(--step-0);
+  max-width: 48ch;
+  margin-top: 0.6rem;
+}
+.slogan__tool {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: var(--gap);
+  margin-top: var(--gap);
+  align-items: start;
+}
+.slogan__form { display: grid; gap: 1.1rem; align-content: start; }
+.slogan__field { display: grid; gap: 0.5rem; }
+.slogan__fieldlabel {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: var(--step--1);
+  font-weight: 700;
+}
+.slogan__form input {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  font-size: var(--step-1);
+  padding: 0.6em 0.7em;
+  border: var(--border) solid var(--ink);
+  background: var(--paper);
+  color: var(--ink);
+  width: 100%;
+}
+.slogan__form input:focus-visible { outline: 4px solid var(--shock); outline-offset: 3px; }
+.slogan__tones { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+.slogan__tone {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: var(--step--1);
+  letter-spacing: 0.04em;
+  padding: 0.55em 0.9em;
+  border: 3px solid var(--ink);
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+  transition: background 0.12s ease, color 0.12s ease;
+}
+.slogan__tone:hover { background: rgba(10, 10, 10, 0.08); }
+.slogan__tone.is-active { background: var(--ink); color: var(--acid); }
+.slogan__go { background: var(--shock); color: var(--paper); border: var(--border) solid var(--ink); justify-content: center; }
+.slogan__go:hover { background: var(--ink); }
+
+.slogan__out { display: grid; gap: 0.9rem; align-content: start; }
+.slogan__hint {
+  font-family: var(--font-mono);
+  font-size: var(--step-0);
+  border: 3px dashed var(--ink);
+  padding: clamp(1.3rem, 3vw, 2rem);
+  opacity: 0.75;
+}
+.slogan__card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  background: var(--paper);
+  border: var(--border) solid var(--ink);
+  box-shadow: var(--shadow-block);
+  padding: clamp(1rem, 2.5vw, 1.4rem);
+  animation: slogan-pop 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.slogan__line {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  font-size: var(--step-1);
+  line-height: 0.95;
+}
+.slogan__copy {
+  flex: none;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: var(--step--1);
+  letter-spacing: 0.04em;
+  padding: 0.55em 0.9em;
+  border: 3px solid var(--ink);
+  background: var(--acid);
+  color: var(--ink);
+  cursor: pointer;
+  transition: background 0.12s ease, color 0.12s ease, transform 0.08s ease;
+}
+.slogan__copy:hover { background: var(--electric); color: var(--paper); }
+.slogan__copy:active { transform: translate(2px, 2px); }
+.slogan__copy.is-copied { background: var(--ink); color: var(--acid); }
+@keyframes slogan-pop { from { opacity: 0; transform: translateY(14px) rotate(-1deg); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .slogan__card { animation: none; } }
+@media (max-width: 860px) {
+  .slogan__tool { grid-template-columns: 1fr; }
+  .slogan__card { flex-direction: column; align-items: flex-start; }
+}
+
 /* ===== LÄRM-JOURNAL (klont .work__grid + .case) ===== */
 .journal__grid {
   display: grid;
@@ -1644,6 +1748,33 @@ a.case:focus-visible, a.post:focus-visible { outline: 4px solid var(--electric);
       </div>
     </section>
 
+    <!-- ===== KRACH-MASCHINE (KI Slogan-Generator) ===== -->
+    <section class="section slogan" id="slogan-lab" data-guide-step="slogan">
+      <div class="container">
+        <span class="eyebrow">Live aus dem Maschinenraum</span>
+        <h2 data-reveal>Die Krach-Maschine</h2>
+        <p class="slogan__intro" data-reveal>Tipp deine Marke ein. Unsere KI macht Lärm draus — in Echtzeit, gratis, ungefragt.</p>
+        <div class="slogan__tool" data-reveal>
+          <form class="slogan__form" id="slogan-form">
+            <label class="slogan__field">
+              <span class="slogan__fieldlabel">Deine Marke</span>
+              <input type="text" id="slogan-input" name="brand" placeholder="z. B. Haferkraft" maxlength="40" autocomplete="off" />
+            </label>
+            <div class="slogan__tones" id="slogan-tones" role="group" aria-label="Tonlage wählen">
+              <button type="button" class="slogan__tone is-active" data-ton="frech">Frech</button>
+              <button type="button" class="slogan__tone" data-ton="edgy">Edgy</button>
+              <button type="button" class="slogan__tone" data-ton="premium">Premium</button>
+              <button type="button" class="slogan__tone" data-ton="rebell">Rebellisch</button>
+            </div>
+            <button type="submit" class="btn btn--big slogan__go" id="slogan-go">Krach erzeugen ⚡</button>
+          </form>
+          <div class="slogan__out" id="slogan-out" aria-live="polite">
+            <p class="slogan__hint">Noch nix erzeugt. Drück den Knopf. →</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ===== TEAM ===== -->
     <section class="section team" id="crew" data-guide-step="crew">
       <div class="container">
@@ -1769,6 +1900,7 @@ a.case:focus-visible, a.post:focus-visible { outline: 4px solid var(--electric);
           <a href="#pakete">Pakete</a>
           <a href="kontakt.html">Kontakt</a>
           <a href="#konfigurator">Konfigurator</a>
+          <a href="#slogan-lab">Krach-Maschine</a>
         </div>
         <div class="footer__col">
           <strong>Kontakt</strong>
@@ -1884,6 +2016,10 @@ const GUIDE_STEPS = [
     text: "Keine Lust zu rätseln? Klick dich durch — ich bau dir das passende Paket zusammen.",
   },
   {
+    selector: "#slogan-lab",
+    text: "Spielzeug gefällig? Tipp deine Marke ein — meine KI macht dir live Slogans draus.",
+  },
+  {
     selector: "#crew",
     text: "Die Verrückten, die das alles bauen. Mehr über uns gibt's auf der Über-uns-Seite.",
   },
@@ -1984,6 +2120,7 @@ const QUIPS = {
   prozess: "Vier Schritte. Null Bullshit.",
   pakete: ["Drei Stufen Lärm. Such dir was aus.", "Vom Knall bis Vollgas."],
   konfigurator: "Zwei Klicks zur Empfehlung.",
+  slogan: ["Tipp deine Marke ein. Ich mach Krach draus.", "Gratis-Slogans, frisch aus der Maschine."],
   crew: ["Sieht harmlos aus. Ist es nicht.", "Sieben Köpfe, ein Krawall."],
   stimmen: "Hör auf die, nicht auf uns.",
   journal: "Frischer Lärm zum Nachlesen.",
@@ -2060,6 +2197,64 @@ const KONFIGURATOR = {
       lead,
       why: `${zielText} und ${tempoText}? Dann ist „${paket}" dein Lärmpegel — ${lead.split(" · ")[0]} übernimmt den Hut.`,
     };
+  },
+};
+
+// Krach-Maschine: Fake-KI Slogan-Generator. Reine Template-Kombinatorik, kein
+// Netz. `generate()` liefert n verschiedene Slogans für Marke + Ton.
+// Wortbänke + Templates hier pflegen; Logik bleibt aus der UI raus.
+const SLOGAN = {
+  fallbackBrand: "deine Marke",
+  tones: [
+    { id: "frech", label: "Frech" },
+    { id: "edgy", label: "Edgy" },
+    { id: "premium", label: "Premium" },
+    { id: "rebell", label: "Rebellisch" },
+  ],
+  _adj: {
+    frech: ["frech", "ungeniert", "vorlaut", "unverschämt", "respektlos"],
+    edgy: ["gnadenlos", "ungezähmt", "scharf", "kompromisslos", "wach"],
+    premium: ["unbezahlbar", "makellos", "unkopierbar", "erste Wahl", "edel"],
+    rebell: ["unbequem", "aufmüpfig", "systemwidrig", "laut", "ungehorsam"],
+  },
+  _noun: ["Krawall", "Statement", "Knall", "Ansage", "Wucht", "Frequenz", "Lärmpegel"],
+  _verb: ["knallt", "schreit", "trifft", "brennt", "wackelt", "liefert"],
+  _templates: [
+    "{BRAND} macht Lärm. Der Rest macht Pause.",
+    "Während andere flüstern, {verb} {BRAND}.",
+    "{BRAND}: {adj} oder gar nicht.",
+    "Kauf {BRAND}, bevor's dein Nachbar tut.",
+    "{BRAND} — {noun} mit Ansage.",
+    "Kein Budget für leise. {BRAND} {verb}.",
+    "{BRAND} ist {adj}. Gewöhn dich dran.",
+    "Stell dir vor, {BRAND} wär laut. Ist es.",
+    "{noun} heißt ab jetzt {BRAND}.",
+    "{BRAND}. Weil {adj} besser verkauft als nett.",
+    "Nett war gestern. Heute ist {BRAND}.",
+    "{BRAND} {verb} da, wo andere kuschen.",
+  ],
+  // Liefert `count` verschiedene Slogans. tone fällt auf "frech" zurück.
+  generate({ brand, ton } = {}, count = 3) {
+    const b = (brand || "").trim() || this.fallbackBrand;
+    const BRAND = b.toUpperCase();
+    const adj = this._adj[ton] || this._adj.frech;
+    const rnd = (arr) => arr[Math.floor(Math.random() * arr.length)];
+
+    // Templates ohne Wiederholung ziehen.
+    const pool = this._templates.slice();
+    const out = [];
+    const n = Math.min(count, pool.length);
+    for (let i = 0; i < n; i++) {
+      const tpl = pool.splice(Math.floor(Math.random() * pool.length), 1)[0];
+      out.push(
+        tpl
+          .replace(/\{BRAND\}/g, BRAND)
+          .replace(/\{adj\}/g, () => rnd(adj))
+          .replace(/\{noun\}/g, () => rnd(this._noun))
+          .replace(/\{verb\}/g, () => rnd(this._verb))
+      );
+    }
+    return out;
   },
 };
 const COPY = {
@@ -2319,6 +2514,79 @@ function initKonfigurator({ KONFIGURATOR }) {
   });
 
   render();
+}
+
+// GRELLWERK — Krach-Maschine. Pure-vanilla Fake-KI Slogan-Generator.
+// Liest Marke + Ton, lässt SLOGAN.generate() rechnen, rendert Karten mit
+// Copy-Button. Keine Abhängigkeiten, kein Netz.
+function initGenerator({ SLOGAN, reducedMotion }) {
+  const form = document.getElementById("slogan-form");
+  const input = document.getElementById("slogan-input");
+  const tonesEl = document.getElementById("slogan-tones");
+  const goBtn = document.getElementById("slogan-go");
+  const out = document.getElementById("slogan-out");
+  if (!form || !input || !out || !SLOGAN) return;
+
+  let ton = "frech";
+
+  // Ton-Chips: aktiven Zustand innerhalb der Gruppe umschalten.
+  tonesEl?.querySelectorAll(".slogan__tone").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      ton = btn.getAttribute("data-ton") || "frech";
+      tonesEl
+        .querySelectorAll(".slogan__tone")
+        .forEach((el) => el.classList.toggle("is-active", el === btn));
+    });
+  });
+
+  function copy(text, btn) {
+    const done = () => {
+      const label = btn.textContent;
+      btn.textContent = "Kopiert ✓";
+      btn.classList.add("is-copied");
+      setTimeout(() => { btn.textContent = label; btn.classList.remove("is-copied"); }, 1600);
+    };
+    if (navigator.clipboard?.writeText) {
+      navigator.clipboard.writeText(text).then(done).catch(done);
+    } else {
+      // Fallback ohne Clipboard-API (file://, alte Browser).
+      const ta = document.createElement("textarea");
+      ta.value = text; ta.setAttribute("readonly", ""); ta.style.position = "absolute";
+      ta.style.left = "-9999px"; document.body.appendChild(ta);
+      ta.select(); try { document.execCommand("copy"); } catch (_) {}
+      document.body.removeChild(ta); done();
+    }
+  }
+
+  function render(slogans) {
+    out.innerHTML = "";
+    slogans.forEach((text, i) => {
+      const card = document.createElement("div");
+      card.className = "slogan__card";
+      if (!reducedMotion) card.style.animationDelay = `${i * 70}ms`;
+
+      const p = document.createElement("p");
+      p.className = "slogan__line";
+      p.textContent = text;
+
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "slogan__copy";
+      btn.textContent = "Kopieren";
+      btn.addEventListener("click", () => copy(text, btn));
+
+      card.append(p, btn);
+      out.appendChild(card);
+    });
+  }
+
+  function generate() {
+    const slogans = SLOGAN.generate({ brand: input.value, ton });
+    goBtn.textContent = "Nochmal ⚡";
+    render(slogans);
+  }
+
+  form.addEventListener("submit", (e) => { e.preventDefault(); generate(); });
 }
 
 // GRELLWERK — smooth scroll (Lenis if available) + reveal animations.
@@ -2618,6 +2886,7 @@ function initGuide({ reducedMotion }) {
 
 
 
+
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 async function boot() {
@@ -2628,6 +2897,7 @@ async function boot() {
   initCounters({ reducedMotion });
   initRotator({ reducedMotion });
   initKonfigurator({ KONFIGURATOR });
+  initGenerator({ SLOGAN, reducedMotion });
 
   // BRUMMER + form are pure-vanilla and must NOT wait on the optional CDN load:
   // a slow/blocked CDN would otherwise delay or drop the guide entirely (it was

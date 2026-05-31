@@ -47,6 +47,10 @@ export const GUIDE_STEPS = [
     text: "Keine Lust zu rätseln? Klick dich durch — ich bau dir das passende Paket zusammen.",
   },
   {
+    selector: "#slogan-lab",
+    text: "Spielzeug gefällig? Tipp deine Marke ein — meine KI macht dir live Slogans draus.",
+  },
+  {
     selector: "#crew",
     text: "Die Verrückten, die das alles bauen. Mehr über uns gibt's auf der Über-uns-Seite.",
   },
@@ -147,6 +151,7 @@ export const QUIPS = {
   prozess: "Vier Schritte. Null Bullshit.",
   pakete: ["Drei Stufen Lärm. Such dir was aus.", "Vom Knall bis Vollgas."],
   konfigurator: "Zwei Klicks zur Empfehlung.",
+  slogan: ["Tipp deine Marke ein. Ich mach Krach draus.", "Gratis-Slogans, frisch aus der Maschine."],
   crew: ["Sieht harmlos aus. Ist es nicht.", "Sieben Köpfe, ein Krawall."],
   stimmen: "Hör auf die, nicht auf uns.",
   journal: "Frischer Lärm zum Nachlesen.",
@@ -223,6 +228,64 @@ export const KONFIGURATOR = {
       lead,
       why: `${zielText} und ${tempoText}? Dann ist „${paket}" dein Lärmpegel — ${lead.split(" · ")[0]} übernimmt den Hut.`,
     };
+  },
+};
+
+// Krach-Maschine: Fake-KI Slogan-Generator. Reine Template-Kombinatorik, kein
+// Netz. `generate()` liefert n verschiedene Slogans für Marke + Ton.
+// Wortbänke + Templates hier pflegen; Logik bleibt aus der UI raus.
+export const SLOGAN = {
+  fallbackBrand: "deine Marke",
+  tones: [
+    { id: "frech", label: "Frech" },
+    { id: "edgy", label: "Edgy" },
+    { id: "premium", label: "Premium" },
+    { id: "rebell", label: "Rebellisch" },
+  ],
+  _adj: {
+    frech: ["frech", "ungeniert", "vorlaut", "unverschämt", "respektlos"],
+    edgy: ["gnadenlos", "ungezähmt", "scharf", "kompromisslos", "wach"],
+    premium: ["unbezahlbar", "makellos", "unkopierbar", "erste Wahl", "edel"],
+    rebell: ["unbequem", "aufmüpfig", "systemwidrig", "laut", "ungehorsam"],
+  },
+  _noun: ["Krawall", "Statement", "Knall", "Ansage", "Wucht", "Frequenz", "Lärmpegel"],
+  _verb: ["knallt", "schreit", "trifft", "brennt", "wackelt", "liefert"],
+  _templates: [
+    "{BRAND} macht Lärm. Der Rest macht Pause.",
+    "Während andere flüstern, {verb} {BRAND}.",
+    "{BRAND}: {adj} oder gar nicht.",
+    "Kauf {BRAND}, bevor's dein Nachbar tut.",
+    "{BRAND} — {noun} mit Ansage.",
+    "Kein Budget für leise. {BRAND} {verb}.",
+    "{BRAND} ist {adj}. Gewöhn dich dran.",
+    "Stell dir vor, {BRAND} wär laut. Ist es.",
+    "{noun} heißt ab jetzt {BRAND}.",
+    "{BRAND}. Weil {adj} besser verkauft als nett.",
+    "Nett war gestern. Heute ist {BRAND}.",
+    "{BRAND} {verb} da, wo andere kuschen.",
+  ],
+  // Liefert `count` verschiedene Slogans. tone fällt auf "frech" zurück.
+  generate({ brand, ton } = {}, count = 3) {
+    const b = (brand || "").trim() || this.fallbackBrand;
+    const BRAND = b.toUpperCase();
+    const adj = this._adj[ton] || this._adj.frech;
+    const rnd = (arr) => arr[Math.floor(Math.random() * arr.length)];
+
+    // Templates ohne Wiederholung ziehen.
+    const pool = this._templates.slice();
+    const out = [];
+    const n = Math.min(count, pool.length);
+    for (let i = 0; i < n; i++) {
+      const tpl = pool.splice(Math.floor(Math.random() * pool.length), 1)[0];
+      out.push(
+        tpl
+          .replace(/\{BRAND\}/g, BRAND)
+          .replace(/\{adj\}/g, () => rnd(adj))
+          .replace(/\{noun\}/g, () => rnd(this._noun))
+          .replace(/\{verb\}/g, () => rnd(this._verb))
+      );
+    }
+    return out;
   },
 };
 
