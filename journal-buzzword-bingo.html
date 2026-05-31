@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lärm-Journal | GRELLWERK</title>
-  <meta name="description" content="Aus der Werkstatt von GRELLWERK: wie wir denken, testen und skalieren. Performance, Branding und Social ohne Buzzword-Bingo." />
-  <meta property="og:title" content="Lärm-Journal | GRELLWERK" />
-  <meta property="og:description" content="Frischer Lärm zum Nachlesen." />
+  <title>Buzzword-Bingo, das wir nie wieder hören wollen | Lärm-Journal | GRELLWERK</title>
+  <meta name="description" content="Synergie, ganzheitlich, disruptiv: Ein Klartext-Manifest gegen die Wörter, hinter denen sich Agenturen verstecken — und was wir stattdessen sagen." />
+  <meta property="og:title" content="Buzzword-Bingo | GRELLWERK" />
+  <meta property="og:description" content="Klartext-Manifest gegen die Wörter, hinter denen sich Agenturen verstecken." />
   <meta property="og:image" content="assets/og-image.svg" />
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
-  <link rel="canonical" href="https://dgruenewald97-arch.github.io/opus-test/journal.html" />
+  <link rel="canonical" href="https://dgruenewald97-arch.github.io/opus-test/journal-buzzword-bingo.html" />
 
   <!-- Fonts (graceful: system fallbacks defined in tokens.css) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -60,107 +60,70 @@
 
   <main id="main">
 
-    <!-- ===== PAGE HERO ===== -->
-    <section class="section page-hero" id="journal-hero">
+    <!-- ===== ARTICLE HERO ===== -->
+    <section class="section page-hero" id="article-hero">
       <div class="container">
         <nav class="crumbs" aria-label="Brotkrumen">
-          <a href="index.html">Start</a><span>/</span>Journal
+          <a href="index.html">Start</a><span>/</span><a href="journal.html">Journal</a><span>/</span>Buzzword-Bingo
         </nav>
-        <span class="eyebrow">Aus der Werkstatt</span>
-        <h1 class="page-hero__headline">Lärm-Journal</h1>
-        <p class="page-hero__lead">
-          Wie wir denken, testen und skalieren — ohne Buzzword-Bingo. Frischer Lärm
-          zum Nachlesen, direkt aus den Projekten.
-        </p>
-      </div>
-    </section>
-
-    <!-- ===== ARTICLE LIST ===== -->
-    <section class="section journal" id="journal-list" data-guide-step="journal">
-      <div class="container">
-        <span class="eyebrow">Alle Artikel</span>
-        <h2 data-reveal>Frischer Lärm</h2>
-
-        <!-- Kategorie-Filter (Vanilla JS, js/journal.js). Eine Kategorie + „Alle". -->
-        <div class="journal__filter" id="journal-filter" role="group" aria-label="Nach Kategorie filtern" data-reveal>
-          <button type="button" class="journal__chip is-active" data-filter="all" aria-pressed="true">Alle</button>
-          <button type="button" class="journal__chip" data-filter="performance" aria-pressed="false">Performance</button>
-          <button type="button" class="journal__chip" data-filter="branding" aria-pressed="false">Branding</button>
-          <button type="button" class="journal__chip" data-filter="social" aria-pressed="false">Social</button>
-          <button type="button" class="journal__chip" data-filter="daten" aria-pressed="false">Daten</button>
-          <button type="button" class="journal__chip" data-filter="web" aria-pressed="false">Web</button>
-          <button type="button" class="journal__chip" data-filter="meinung" aria-pressed="false">Meinung</button>
-        </div>
-
-        <p class="journal__empty" id="journal-empty" hidden>Noch kein Lärm in dieser Kategorie.</p>
-
-        <div class="journal__grid" id="journal-grid">
-          <a class="post" href="journal-cookie-tod.html" data-cat="daten" data-reveal>
-            <div class="post__meta"><span class="tag">Daten</span><time datetime="2026-05-28">28. Mai 2026</time></div>
-            <h3 class="post__title">Tracking nach dem Cookie-Tod</h3>
-            <p class="post__teaser">Third-Party stirbt. Wie wir mit First-Party-Daten und Server-Side weiter messen, was zählt — ohne Panik.</p>
-            <span class="post__more">Lesen →</span>
-          </a>
-          <a class="post" href="journal-creative-targeting.html" data-cat="performance" data-reveal>
-            <div class="post__meta"><span class="tag">Performance</span><time datetime="2026-05-21">21. Mai 2026</time></div>
-            <h3 class="post__title">Creative schlägt Targeting</h3>
-            <p class="post__teaser">Die Maschine macht das Targeting. Der größte Performance-Hebel sitzt heute in der Kreation.</p>
-            <span class="post__more">Lesen →</span>
-          </a>
-          <a class="post" href="journal-ladezeit.html" data-cat="web" data-reveal>
-            <div class="post__meta"><span class="tag">Web</span><time datetime="2026-05-14">14. Mai 2026</time></div>
-            <h3 class="post__title">Eine Sekunde entscheidet</h3>
-            <p class="post__teaser">Ladezeit ist kein Technik-Thema, sondern Umsatz. Core Web Vitals als unsichtbare Conversion-Steuer.</p>
-            <span class="post__more">Lesen →</span>
-          </a>
-          <a class="post" href="journal-logo-marke.html" data-cat="branding" data-reveal>
-            <div class="post__meta"><span class="tag">Branding</span><time datetime="2026-05-07">7. Mai 2026</time></div>
-            <h3 class="post__title">Dein Logo ist nicht deine Marke</h3>
-            <p class="post__teaser">Deck das Logo ab — erkennt dich noch jemand? Warum Haltung trägt, wo Kosmetik versagt.</p>
-            <span class="post__more">Lesen →</span>
-          </a>
-          <a class="post" href="journal-buzzword-bingo.html" data-cat="meinung" data-reveal>
-            <div class="post__meta"><span class="tag">Meinung</span><time datetime="2026-04-30">30. Apr 2026</time></div>
-            <h3 class="post__title">Buzzword-Bingo, das wir nie wieder hören wollen</h3>
-            <p class="post__teaser">Ganzheitlich, synergetisch, disruptiv: ein Klartext-Manifest gegen die Wörter, hinter denen sich Agenturen verstecken.</p>
-            <span class="post__more">Lesen →</span>
-          </a>
-          <a class="post" href="journal-reels.html" data-cat="social" data-reveal>
-            <div class="post__meta"><span class="tag">Social</span><time datetime="2026-04-23">23. Apr 2026</time></div>
-            <h3 class="post__title">Warum 90 % deiner Reels keiner sieht</h3>
-            <p class="post__teaser">Der Hook holt sie rein, die Retention hält sie. Warum die meisten Reels nach drei Sekunden sterben.</p>
-            <span class="post__more">Lesen →</span>
-          </a>
-          <a class="post" href="journal-roas-luegt.html" data-cat="performance" data-reveal>
-            <div class="post__meta"><span class="tag">Performance</span><time datetime="2026-04-18">18. Apr 2026</time></div>
-            <h3 class="post__title">Warum dein ROAS lügt</h3>
-            <p class="post__teaser">Last-Click ist tot. Wie wir Kampagnen über inkrementellen Lift statt Vanity-Metriken steuern.</p>
-            <span class="post__more">Lesen →</span>
-          </a>
-          <a class="post" href="journal-anecken.html" data-cat="branding" data-reveal>
-            <div class="post__meta"><span class="tag">Branding</span><time datetime="2026-02-27">27. Feb 2026</time></div>
-            <h3 class="post__title">Anecken als Strategie</h3>
-            <p class="post__teaser">Der Haferkraft-Rebrand: aus leiser Hafermilch eine Marke, über die man streitet. +87% Bekanntheit.</p>
-            <span class="post__more">Lesen →</span>
-          </a>
-          <a class="post" href="journal-hook.html" data-cat="social" data-reveal>
-            <div class="post__meta"><span class="tag">Social</span><time datetime="2025-12-09">9. Dez 2025</time></div>
-            <h3 class="post__title">Der Hook in 3 Sekunden</h3>
-            <p class="post__teaser">48.000 Anmeldungen für einen Sneaker-Drop. Was den Neontritt-Reel zum Selbstläufer machte.</p>
-            <span class="post__more">Lesen →</span>
-          </a>
+        <span class="eyebrow">Meinung</span>
+        <h1 class="page-hero__headline">Buzzword-Bingo, das wir nie wieder hören wollen</h1>
+        <div class="article__meta">
+          <span class="tag">Meinung</span>
+          <time datetime="2026-04-30">30. Apr 2026</time>
+          <span>· 3 Min Lesezeit</span>
         </div>
       </div>
     </section>
 
-    <!-- ===== CTA ===== -->
-    <section class="section cta-band" id="journal-cta">
+    <!-- ===== ARTICLE BODY ===== -->
+    <section class="section" id="article" data-guide-step="article">
       <div class="container">
-        <span class="eyebrow">Genug gelesen?</span>
+        <div class="prose" data-reveal>
+          <p>
+            Es gibt Wörter, die bedeuten alles und damit nichts. Sie klingen nach
+            Kompetenz und sagen in Wahrheit: „Wir haben keine klare Antwort." Hier ein
+            paar Favoriten — und was wir stattdessen sagen.
+          </p>
+          <h3>Die üblichen Verdächtigen</h3>
+          <ul>
+            <li><strong>„Ganzheitlich"</strong> — heißt meist: Wir machen alles ein bisschen, nichts richtig.</li>
+            <li><strong>„Synergien heben"</strong> — heißt: Wir haben zwei Folien, die zueinander passen sollen.</li>
+            <li><strong>„Disruptiv"</strong> — heißt: ein neuer Button in hellblau.</li>
+            <li><strong>„Wir denken in Zielgruppen"</strong> — heißt: Wir haben mit niemandem geredet.</li>
+            <li><strong>„Best Practice"</strong> — heißt: Das macht der Wettbewerb auch, also ist es safe.</li>
+          </ul>
+          <h3>Was wir stattdessen sagen</h3>
+          <p>
+            Statt „ganzheitlich" sagen wir, woran wir <em>nicht</em> arbeiten. Statt
+            „disruptiv" zeigen wir die Zahl, die sich bewegt hat. Klartext ist
+            unbequemer, weil man an ihm gemessen werden kann. Genau deshalb benutzen wir ihn.
+          </p>
+          <p>
+            Eine Marke, die sich hinter Buzzwords versteckt, hat meistens Angst vor einer
+            klaren Aussage. Wir nicht. Lieber ein Satz, der aneckt, als drei, die nichts
+            riskieren.
+          </p>
+        </div>
+        <blockquote class="bigquote" data-reveal>
+          <p>Wenn du ein Wort streichst und der Satz verliert keine Bedeutung — war es ein Buzzword.</p>
+          <footer>— Mara Vogt, Chief Chaos Officer</footer>
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- ===== CTA + BACK ===== -->
+    <section class="section cta-band" id="article-cta">
+      <div class="container">
+        <span class="eyebrow">Klingt nach deinem Problem?</span>
         <h2 data-reveal>Lass uns Lärm machen</h2>
         <div class="cta-band__row" data-reveal>
           <a class="btn btn--big magnetic" href="kontakt.html">Krach buchen →</a>
-          <a class="btn btn--ghost btn--big magnetic" href="arbeiten.html">Arbeiten ansehen</a>
+          <a class="btn btn--ghost btn--big magnetic" href="journal.html">Mehr aus dem Journal</a>
+        </div>
+        <div class="next-case">
+          <span>Weiterlesen</span>
+          <a href="journal-logo-marke.html">Dein Logo ist nicht deine Marke →</a>
         </div>
       </div>
     </section>

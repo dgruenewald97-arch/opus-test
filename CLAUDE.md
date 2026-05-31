@@ -41,6 +41,11 @@ Kurz-Doku für die Arbeit in diesem Repo. **Knapp halten, bei Änderungen mitpfl
   „Krach-Maschine" Slogan-Generator (→ `js/generator.js`). `SLOGAN.detect()` rät die
   Branche aus Marke+Branche-Feld (`SLOGAN.categories`, Keyword→Wortfarbe+Templates),
   `generate()` liefert `{ category, slogans }` — Kategorie wird als Badge angezeigt.
+- **Journal** (`journal.html` + `journal-*.html`): Übersicht hat Kategorie-Filter
+  (`#journal-filter` Chips + `.post[data-cat]`, Logik in `js/journal.js`, „eine + Alle").
+  Neuer Artikel → Seite vom Template ableiten (`<span class="tag">` + Eyebrow = Kategorie),
+  Karte mit passendem `data-cat` ins Grid (newest first), Filter-Chip ergänzen falls neue
+  Kategorie, Sitemap pflegen. Kategorien: Performance/Branding/Social/Daten/Web/Meinung.
 - **Neue Unterseite** → vom Kopf/Fuß einer bestehenden Seite ableiten (Head, `nav`, `footer`,
   Brummer-`<aside>`+Tab, `js/main.js` sind auf jeder Seite dupliziert). Layout über bestehende
   Klassen + `page-hero`/`prose`/`cta-band`/`crumbs` in `css/sections.css`. Cross-Page-Links
