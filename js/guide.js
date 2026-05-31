@@ -64,6 +64,31 @@ export function initGuide({ reducedMotion }) {
   qa.appendChild(tourChip);
   textEl.insertAdjacentElement("afterend", qa);
 
+  // Freies Eingabefeld: tippen → Keyword-Match → Antwort. Chips sind Vorschläge.
+  const askForm = document.createElement("form");
+  askForm.className = "guide__ask";
+  const askInput = document.createElement("input");
+  askInput.type = "text";
+  askInput.className = "guide__ask-input";
+  askInput.placeholder = BRUMMER.inputPlaceholder || "Frag Brummer …";
+  askInput.setAttribute("aria-label", "Frag Brummer");
+  askInput.maxLength = 80;
+  askInput.autocomplete = "off";
+  const askSend = document.createElement("button");
+  askSend.type = "submit";
+  askSend.className = "guide__ask-send";
+  askSend.textContent = "→";
+  askSend.setAttribute("aria-label", "Absenden");
+  askForm.append(askInput, askSend);
+  askForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const q = askInput.value.trim();
+    if (!q) return;
+    answer(BRUMMER.match(q));
+    askInput.value = "";
+  });
+  textEl.insertAdjacentElement("afterend", askForm);
+
   function showStep(i) {
     const step = steps[i];
     if (!step) return finish();
@@ -123,6 +148,7 @@ export function initGuide({ reducedMotion }) {
     tab.hidden = true;
     guide.hidden = false;
     textEl.textContent = BRUMMER.greet;
+    if (!reducedMotion) setTimeout(() => askInput.focus(), 120);
   }
 
   // Fake-KI: kurz „denken", dann antworten + optional zum Ziel scrollen.

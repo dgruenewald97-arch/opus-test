@@ -5,6 +5,7 @@
 export function initGenerator({ SLOGAN, reducedMotion }) {
   const form = document.getElementById("slogan-form");
   const input = document.getElementById("slogan-input");
+  const brancheEl = document.getElementById("slogan-branche");
   const tonesEl = document.getElementById("slogan-tones");
   const goBtn = document.getElementById("slogan-go");
   const out = document.getElementById("slogan-out");
@@ -41,8 +42,20 @@ export function initGenerator({ SLOGAN, reducedMotion }) {
     }
   }
 
-  function render(slogans) {
+  function render({ category, slogans }) {
     out.innerHTML = "";
+
+    // Branchen-Badge: macht die Keyword-Erkennung sichtbar ("versteht mich").
+    const badge = document.createElement("p");
+    badge.className = "slogan__detected";
+    if (category) {
+      badge.innerHTML = `Erkannt: <b>${category}</b> — Slogans drauf abgestimmt 🎯`;
+    } else {
+      badge.classList.add("slogan__detected--miss");
+      badge.textContent = "Branche nicht erkannt — generischer Krach. Tipp: nenn deine Branche.";
+    }
+    out.appendChild(badge);
+
     slogans.forEach((text, i) => {
       const card = document.createElement("div");
       card.className = "slogan__card";
@@ -64,9 +77,9 @@ export function initGenerator({ SLOGAN, reducedMotion }) {
   }
 
   function generate() {
-    const slogans = SLOGAN.generate({ brand: input.value, ton });
+    const result = SLOGAN.generate({ brand: input.value, branche: brancheEl?.value, ton });
     goBtn.textContent = "Nochmal ⚡";
-    render(slogans);
+    render(result);
   }
 
   form.addEventListener("submit", (e) => { e.preventDefault(); generate(); });

@@ -109,12 +109,46 @@
 .guide__chip--tour { background: var(--electric); color: var(--paper); width: 100%; }
 .guide__chip--tour:hover { background: var(--shock); }
 
-/* Modus-Umschaltung: Tour zeigt Schritt-Controls, Frag-Modus die Chips. */
+/* Frag-Brummer freies Eingabefeld */
+.guide__ask {
+  display: none;
+  gap: 0.4rem;
+  margin-top: 0.9rem;
+}
+.guide__ask-input {
+  flex: 1 1 auto;
+  min-width: 0;
+  font-family: var(--font-mono);
+  font-size: 0.84rem;
+  padding: 0.5rem 0.6rem;
+  border: 3px solid var(--ink);
+  background: var(--paper);
+  color: var(--ink);
+}
+.guide__ask-input:focus-visible { outline: 3px solid var(--shock); outline-offset: 2px; }
+.guide__ask-send {
+  flex: none;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 0 0.8rem;
+  border: 3px solid var(--ink);
+  background: var(--electric);
+  color: var(--paper);
+  cursor: pointer;
+  transition: background 0.12s ease;
+}
+.guide__ask-send:hover { background: var(--shock); }
+
+/* Modus-Umschaltung: Tour zeigt Schritt-Controls, Frag-Modus Eingabe + Chips. */
 .guide[data-mode="ask"] .guide__controls,
 .guide[data-mode="peek"] .guide__controls { display: none; }
 .guide[data-mode="ask"] .guide__step-count,
 .guide[data-mode="peek"] .guide__step-count { display: none; }
 .guide[data-mode="ask"] .guide__qa { display: flex; }
+.guide[data-mode="ask"] .guide__ask { display: flex; }
+.guide:not([data-mode="ask"]) .guide__ask { display: none; }
+.guide:not([data-mode="ask"]) .guide__qa { display: none; }
 .guide[data-mode="peek"] .guide__bubble { cursor: pointer; }
 
 /* the mascot row */
