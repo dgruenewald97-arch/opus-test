@@ -2864,7 +2864,9 @@ function initJournal() {
     posts.forEach((post) => {
       const show = cat === "all" || post.getAttribute("data-cat") === cat;
       post.hidden = !show;
-      if (show) visible++;
+      // Karten nutzen data-reveal (opacity:0 bis gescrollt). Beim Filtern sofort
+      // sichtbar machen, sonst bleiben eingeblendete Karten leer/unsichtbar.
+      if (show) { post.classList.add("is-visible"); visible++; }
     });
     if (empty) empty.hidden = visible > 0;
   }
@@ -2885,7 +2887,11 @@ function initJournal() {
       }
     });
     // Karten in neuer Reihenfolge wieder anhängen (Filter-/hidden-Status bleibt).
-    sorted.forEach((post) => grid.appendChild(post));
+    // Sichtbare zugleich enthüllen, falls sie nie ins Sichtfeld gescrollt wurden.
+    sorted.forEach((post) => {
+      grid.appendChild(post);
+      if (!post.hidden) post.classList.add("is-visible");
+    });
   }
 
   chips.forEach((chip) => {
