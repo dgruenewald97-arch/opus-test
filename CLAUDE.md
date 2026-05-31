@@ -25,10 +25,16 @@ Kurz-Doku für die Arbeit in diesem Repo. **Knapp halten, bei Änderungen mitpfl
   Layout pro Sektion in `css/sections.css` (Block-Kommentar-Stil beibehalten).
 - **Effekte über `data-*`:** `data-reveal` (Fade-in), `data-scramble` (Nav-Hover),
   `data-count`/`data-suffix` (Zähler). Logik in `js/effects.js`, `js/scroll.js`.
-- **Inhalte/Tour zentral** in `js/config.js`: `GUIDE_STEPS`, `QUIPS`. Neue Sektion → dort
-  Eintrag ergänzen. Brummer ist **seiten-tauglich**: `guide.js` filtert `GUIDE_STEPS` auf
-  Schritte, deren `selector` auf der aktuellen Seite existiert (Schrittzähler dynamisch) —
-  Unterseiten-Schritte in `GUIDE_STEPS` zusammenhängend + in Sichtreihenfolge gruppieren.
+- **Inhalte/Tour zentral** in `js/config.js`: `GUIDE_STEPS`, `QUIPS` (Werte String **oder**
+  Array → Zufallsauswahl), `BRUMMER` (Frag-Modus/Q&A/Idle), `SLOGAN` (Krach-Maschine),
+  `KONFIGURATOR`. Neue Sektion → dort Eintrag ergänzen. Brummer ist **seiten-tauglich**:
+  `guide.js` filtert `GUIDE_STEPS` auf Schritte, deren `selector` auf der aktuellen Seite
+  existiert (Schrittzähler dynamisch) — Unterseiten-Schritte in `GUIDE_STEPS` zusammenhängend
+  + in Sichtreihenfolge gruppieren. Brummer-Tab öffnet **Frag-Modus** (Chips, Fake-KI),
+  passive Quips „peeken" sichtbar, Idle-Nudge nach Inaktivität (`js/guide.js`).
+- **Interaktive Tools** (`index.html`, reine Vanilla-Fake-KI, Logik in `config.js`):
+  `#konfigurator` (→ `js/konfigurator.js`), `#slogan-lab` „Krach-Maschine" Slogan-Generator
+  (→ `js/generator.js`, Templates+Wortbänke in `SLOGAN`).
 - **Neue Unterseite** → vom Kopf/Fuß einer bestehenden Seite ableiten (Head, `nav`, `footer`,
   Brummer-`<aside>`+Tab, `js/main.js` sind auf jeder Seite dupliziert). Layout über bestehende
   Klassen + `page-hero`/`prose`/`cta-band`/`crumbs` in `css/sections.css`. Cross-Page-Links

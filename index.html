@@ -343,6 +343,33 @@
       </div>
     </section>
 
+    <!-- ===== KRACH-MASCHINE (KI Slogan-Generator) ===== -->
+    <section class="section slogan" id="slogan-lab" data-guide-step="slogan">
+      <div class="container">
+        <span class="eyebrow">Live aus dem Maschinenraum</span>
+        <h2 data-reveal>Die Krach-Maschine</h2>
+        <p class="slogan__intro" data-reveal>Tipp deine Marke ein. Unsere KI macht Lärm draus — in Echtzeit, gratis, ungefragt.</p>
+        <div class="slogan__tool" data-reveal>
+          <form class="slogan__form" id="slogan-form">
+            <label class="slogan__field">
+              <span class="slogan__fieldlabel">Deine Marke</span>
+              <input type="text" id="slogan-input" name="brand" placeholder="z. B. Haferkraft" maxlength="40" autocomplete="off" />
+            </label>
+            <div class="slogan__tones" id="slogan-tones" role="group" aria-label="Tonlage wählen">
+              <button type="button" class="slogan__tone is-active" data-ton="frech">Frech</button>
+              <button type="button" class="slogan__tone" data-ton="edgy">Edgy</button>
+              <button type="button" class="slogan__tone" data-ton="premium">Premium</button>
+              <button type="button" class="slogan__tone" data-ton="rebell">Rebellisch</button>
+            </div>
+            <button type="submit" class="btn btn--big slogan__go" id="slogan-go">Krach erzeugen ⚡</button>
+          </form>
+          <div class="slogan__out" id="slogan-out" aria-live="polite">
+            <p class="slogan__hint">Noch nix erzeugt. Drück den Knopf. →</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ===== TEAM ===== -->
     <section class="section team" id="crew" data-guide-step="crew">
       <div class="container">
@@ -468,6 +495,7 @@
           <a href="#pakete">Pakete</a>
           <a href="kontakt.html">Kontakt</a>
           <a href="#konfigurator">Konfigurator</a>
+          <a href="#slogan-lab">Krach-Maschine</a>
         </div>
         <div class="footer__col">
           <strong>Kontakt</strong>

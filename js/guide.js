@@ -1,6 +1,8 @@
 // GRELLWERK — BRUMMER interactive onboarding guide (state machine).
-import { GUIDE_STEPS, QUIPS, COPY } from "./config.js";
+import { GUIDE_STEPS, QUIPS, BRUMMER, COPY } from "./config.js";
 import { scrollToEl } from "./scroll.js";
+
+const pick = (v) => (Array.isArray(v) ? v[Math.floor(Math.random() * v.length)] : v);
 
 export function initGuide({ reducedMotion }) {
   const guide = document.getElementById("guide");
@@ -22,7 +24,12 @@ export function initGuide({ reducedMotion }) {
     active: false,
     lastHighlight: null,
     quipCooldown: false,
+    mode: "tour",     // "tour" | "ask" | "peek"
+    peekTimer: null,
+    idleTimer: null,
   };
+
+  const setMode = (m) => { state.mode = m; guide.dataset.mode = m; };
 
   const seen = () => {
     try { return localStorage.getItem(COPY.storageKey) === "1"; }
@@ -37,9 +44,30 @@ export function initGuide({ reducedMotion }) {
     }
   }
 
+  // --- Frag-Brummer UI (dynamisch, damit das duplizierte <aside> unangetastet
+  // bleibt). Chip-Leiste wird einmal in die Bubble gehängt, per Modus ein-/aus.
+  const qa = document.createElement("div");
+  qa.className = "guide__qa";
+  BRUMMER.qa.forEach((item) => {
+    const chip = document.createElement("button");
+    chip.type = "button";
+    chip.className = "guide__chip";
+    chip.textContent = item.q;
+    chip.addEventListener("click", () => answer(item));
+    qa.appendChild(chip);
+  });
+  const tourChip = document.createElement("button");
+  tourChip.type = "button";
+  tourChip.className = "guide__chip guide__chip--tour";
+  tourChip.textContent = BRUMMER.tourLabel;
+  tourChip.addEventListener("click", start);
+  qa.appendChild(tourChip);
+  textEl.insertAdjacentElement("afterend", qa);
+
   function showStep(i) {
     const step = steps[i];
     if (!step) return finish();
+    setMode("tour");
     state.index = i;
     textEl.textContent = step.text;
     countEl.textContent = `Schritt ${i + 1} / ${steps.length}`;
@@ -74,14 +102,67 @@ export function initGuide({ reducedMotion }) {
 
   function minimize() {
     state.active = false;
+    clearTimeout(state.peekTimer);
     clearHighlight();
     guide.hidden = true;
     tab.hidden = false;
+    scheduleIdle();
   }
 
   function finish() { markSeen(); minimize(); }
   function skip() { markSeen(); minimize(); }
   function replay() { start(); }
+
+  // --- Frag-Modus: Bubble mit Chips, ohne Tour-Schritte. ---
+  function openAsk() {
+    clearTimeout(state.idleTimer);
+    clearTimeout(state.peekTimer);
+    clearHighlight();
+    state.active = true;
+    setMode("ask");
+    tab.hidden = true;
+    guide.hidden = false;
+    textEl.textContent = BRUMMER.greet;
+  }
+
+  // Fake-KI: kurz „denken", dann antworten + optional zum Ziel scrollen.
+  function answer(item) {
+    clearTimeout(state.idleTimer);
+    setMode("ask");
+    textEl.textContent = pick(BRUMMER.thinking);
+    textEl.classList.add("is-thinking");
+    const delay = reducedMotion ? 250 : 650;
+    clearTimeout(state.peekTimer);
+    state.peekTimer = setTimeout(() => {
+      textEl.classList.remove("is-thinking");
+      textEl.textContent = item.a;
+      const target = item.go && document.querySelector(item.go);
+      if (target) {
+        clearHighlight();
+        scrollToEl(target);
+        target.classList.add("guide-highlight");
+        state.lastHighlight = target;
+      }
+    }, delay);
+  }
+
+  // Peek: Bubble kurz sichtbar (Quip/Idle), dann wieder zum Tab. Klick = Frag-Modus.
+  function peek(text) {
+    if (state.active) return;
+    clearTimeout(state.peekTimer);
+    setMode("peek");
+    textEl.textContent = text;
+    tab.hidden = true;
+    guide.hidden = false;
+    state.peekTimer = setTimeout(minimize, 5200);
+  }
+
+  function scheduleIdle() {
+    clearTimeout(state.idleTimer);
+    state.idleTimer = setTimeout(() => {
+      if (!state.active && !tab.hidden) peek(pick(BRUMMER.idle));
+    }, 32000);
+  }
 
   // --- Eye tracking (pupils follow cursor) ---
   if (!reducedMotion && mascot) {
@@ -121,9 +202,8 @@ export function initGuide({ reducedMotion }) {
         const quip = QUIPS[key];
         if (quip && !state.quipCooldown) {
           state.quipCooldown = true;
-          textEl.textContent = quip;
-          // briefly peek the bubble without full takeover
-          setTimeout(() => { state.quipCooldown = false; }, 6000);
+          peek(pick(quip)); // briefly show the bubble, then minimize again
+          setTimeout(() => { state.quipCooldown = false; }, 9000);
         }
       });
     },
@@ -134,15 +214,22 @@ export function initGuide({ reducedMotion }) {
   // --- Controls ---
   nextBtn.addEventListener("click", next);
   skipBtn.addEventListener("click", skip);
-  tab.addEventListener("click", replay);
+  tab.addEventListener("click", openAsk);      // Tab hält sein Versprechen: fragen, nicht Tour
+  guide.addEventListener("click", () => { if (state.mode === "peek") openAsk(); });
   document.getElementById("replay-guide")?.addEventListener("click", replay);
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape" && state.active) skip();
   });
 
+  // Idle-Timer bei jeder Aktivität zurücksetzen (nur wenn minimiert).
+  ["mousemove", "scroll", "keydown", "pointerdown"].forEach((ev) =>
+    window.addEventListener(ev, () => { if (!state.active) scheduleIdle(); }, { passive: true })
+  );
+
   // --- Boot ---
   if (seen()) {
     tab.hidden = false; // returning visitor: minimized, replayable
+    scheduleIdle();
   } else {
     setTimeout(start, reducedMotion ? 200 : 900); // first visit: auto-tour
   }

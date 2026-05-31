@@ -5,7 +5,8 @@ import { initNav, initScramble, initMarquee, initForm, initCounters, initRotator
 import { initScroll } from "./scroll.js";
 import { initGuide } from "./guide.js";
 import { initKonfigurator } from "./konfigurator.js";
-import { COPY, KONFIGURATOR } from "./config.js";
+import { initGenerator } from "./generator.js";
+import { COPY, KONFIGURATOR, SLOGAN } from "./config.js";
 
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -17,6 +18,7 @@ async function boot() {
   initCounters({ reducedMotion });
   initRotator({ reducedMotion });
   initKonfigurator({ KONFIGURATOR });
+  initGenerator({ SLOGAN, reducedMotion });
 
   // BRUMMER + form are pure-vanilla and must NOT wait on the optional CDN load:
   // a slow/blocked CDN would otherwise delay or drop the guide entirely (it was
