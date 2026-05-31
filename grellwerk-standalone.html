@@ -728,15 +728,14 @@ a.tag:hover { background: var(--ink); color: var(--acid); }
 }
 .contact__direct a:hover { color: var(--acid); border-color: var(--shock); }
 .contact__tags { display: flex; flex-wrap: wrap; gap: 0.6rem; }
-/* Social-Chips: nicht die .contact__direct-Link-Optik erben (sonst paper-auf-paper).
-   Dunkler Text auf hellem Chip = lesbarer Kontrast; Hover dreht auf ink/acid. */
+/* Social-Chips sitzen auf dem dunklen .contact-Panel: Ghost-Stil (transparent,
+   heller Text + Rand) statt hellem Chip-Block. Hover füllt acid auf ink. */
 .contact__tags a.tag {
-  color: var(--ink);
-  background: var(--paper);
-  border: 2px solid var(--ink);
-  border-bottom-width: 2px;
+  color: var(--paper);
+  background: transparent;
+  border: 2px solid var(--paper);
 }
-.contact__tags a.tag:hover { color: var(--acid); background: var(--ink); border-color: var(--ink); }
+.contact__tags a.tag:hover { color: var(--ink); background: var(--acid); border-color: var(--acid); }
 @media (max-width: 860px) {
   .contact__layout { grid-template-columns: 1fr; }
 }
