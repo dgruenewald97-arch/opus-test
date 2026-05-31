@@ -1146,6 +1146,19 @@ a.tag:hover { background: var(--ink); color: var(--acid); }
 .prose ul li { font-family: var(--font-mono); font-size: var(--step--1); padding-left: 1.4em; position: relative; }
 .prose ul li::before { content: "→"; position: absolute; left: 0; color: var(--shock); }
 .prose strong { background: var(--acid); color: var(--ink); padding: 0 0.15em; }
+.article__sources {
+  max-width: 68ch;
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 3px solid var(--ink);
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+  line-height: 1.7;
+  opacity: 0.85;
+}
+.article__sources strong { text-transform: uppercase; letter-spacing: 0.08em; }
+.article__sources a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
+.article__sources a:hover { color: var(--shock); }
 
 /* A row of result metrics on the case page (clones the .stats look, light) */
 .result__grid {
@@ -2871,7 +2884,7 @@ function initJournal() {
     if (empty) empty.hidden = visible > 0;
   }
 
-  function applySort(mode) {
+  function applySort(mode, reveal = true) {
     const sorted = posts.slice().sort((a, b) => {
       const A = meta.get(a);
       const B = meta.get(b);
@@ -2887,10 +2900,11 @@ function initJournal() {
       }
     });
     // Karten in neuer Reihenfolge wieder anhängen (Filter-/hidden-Status bleibt).
-    // Sichtbare zugleich enthüllen, falls sie nie ins Sichtfeld gescrollt wurden.
+    // `reveal` nur bei Nutzer-Interaktion: enthüllt sichtbare Karten sofort. Beim
+    // Init false lassen, damit die Scroll-Reveal-Animation auf Erstbesuch greift.
     sorted.forEach((post) => {
       grid.appendChild(post);
-      if (!post.hidden) post.classList.add("is-visible");
+      if (reveal && !post.hidden) post.classList.add("is-visible");
     });
   }
 
@@ -2915,6 +2929,10 @@ function initJournal() {
       applySort(chip.getAttribute("data-sort") || "date-desc");
     });
   });
+
+  // Default-Ordnung beim Laden garantieren (newest first), ohne die Reveal-
+  // Animation zu zerstören — unabhängig von der Karten-Reihenfolge im HTML.
+  applySort("date-desc", false);
 }
 
 // GRELLWERK — smooth scroll (Lenis if available) + reveal animations.

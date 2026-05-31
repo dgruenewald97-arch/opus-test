@@ -40,7 +40,7 @@ export function initJournal() {
     if (empty) empty.hidden = visible > 0;
   }
 
-  function applySort(mode) {
+  function applySort(mode, reveal = true) {
     const sorted = posts.slice().sort((a, b) => {
       const A = meta.get(a);
       const B = meta.get(b);
@@ -56,10 +56,11 @@ export function initJournal() {
       }
     });
     // Karten in neuer Reihenfolge wieder anhängen (Filter-/hidden-Status bleibt).
-    // Sichtbare zugleich enthüllen, falls sie nie ins Sichtfeld gescrollt wurden.
+    // `reveal` nur bei Nutzer-Interaktion: enthüllt sichtbare Karten sofort. Beim
+    // Init false lassen, damit die Scroll-Reveal-Animation auf Erstbesuch greift.
     sorted.forEach((post) => {
       grid.appendChild(post);
-      if (!post.hidden) post.classList.add("is-visible");
+      if (reveal && !post.hidden) post.classList.add("is-visible");
     });
   }
 
@@ -84,4 +85,8 @@ export function initJournal() {
       applySort(chip.getAttribute("data-sort") || "date-desc");
     });
   });
+
+  // Default-Ordnung beim Laden garantieren (newest first), ohne die Reveal-
+  // Animation zu zerstören — unabhängig von der Karten-Reihenfolge im HTML.
+  applySort("date-desc", false);
 }
