@@ -175,12 +175,14 @@ export const BRUMMER = {
   tourLabel: "Zeig mir den Laden ↻",
   inputPlaceholder: "Frag Brummer …",
   thinking: ["brummt kurz nach …", "sortiert die Flügel …", "lädt Krach …", "rechnet im Schwarm …"],
-  idle: [
-    "Eingeschlafen? Ich nicht.",
-    "Psst. Der Kontakt-Knopf wartet.",
-    "Noch da? Frag mich was.",
-    "Stille verkauft nichts. Klick mich.",
-  ],
+  // Einmaliger Kontakt-Stupser: erscheint EINMAL pro Besuch, wenn `after` in Sicht
+  // kommt (= nach den Cases). Nur dort, wo `after` + `go` existieren (Homepage).
+  nudge: {
+    after: "#manifest",
+    text: "Cases gesehen? Genau diesen Krach gibt's auch für dich. Trau dich.",
+    cta: "Zum Kontakt →",
+    go: "#kontakt",
+  },
   fallback: [
     "Versteh nur Lärm. Probier: Preis, Tempo, Zahlen — oder buchen.",
     "Gute Frage, schlechte Keywords. Frag konkreter, dann knallt's.",

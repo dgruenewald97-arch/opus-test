@@ -140,16 +140,39 @@
 }
 .guide__ask-send:hover { background: var(--shock); }
 
-/* Modus-Umschaltung: Tour zeigt Schritt-Controls, Frag-Modus Eingabe + Chips. */
-.guide[data-mode="ask"] .guide__controls,
-.guide[data-mode="peek"] .guide__controls { display: none; }
-.guide[data-mode="ask"] .guide__step-count,
-.guide[data-mode="peek"] .guide__step-count { display: none; }
-.guide[data-mode="ask"] .guide__qa { display: flex; }
+/* Kontakt-Stupser: Text + ein CTA-Button */
+.guide__nudge { display: none; margin-top: 0.9rem; }
+.guide__nudge .guide__btn { width: 100%; justify-content: center; }
+
+/* Schließen-Kreuz (X) oben rechts in der Bubble */
+.guide__close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 26px;
+  height: 26px;
+  display: grid;
+  place-items: center;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  line-height: 1;
+  border: 2px solid var(--ink);
+  background: var(--paper);
+  color: var(--ink);
+  cursor: pointer;
+  transition: background 0.12s ease, color 0.12s ease;
+}
+.guide__close:hover { background: var(--shock); color: var(--paper); }
+.guide__step-count { padding-right: 2rem; } /* Platz fürs X */
+
+/* Modus-Umschaltung: Tour = Schritt-Controls, Frag = Eingabe+Chips, Nudge = CTA. */
+.guide[data-mode="ask"] .guide__qa,
 .guide[data-mode="ask"] .guide__ask { display: flex; }
-.guide:not([data-mode="ask"]) .guide__ask { display: none; }
-.guide:not([data-mode="ask"]) .guide__qa { display: none; }
-.guide[data-mode="peek"] .guide__bubble { cursor: pointer; }
+.guide[data-mode="nudge"] .guide__nudge { display: block; }
+.guide[data-mode="ask"] .guide__controls,
+.guide[data-mode="nudge"] .guide__controls,
+.guide[data-mode="ask"] .guide__step-count,
+.guide[data-mode="nudge"] .guide__step-count { display: none; }
 
 /* the mascot row */
 .guide__mascot {

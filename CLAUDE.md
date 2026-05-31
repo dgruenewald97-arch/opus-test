@@ -26,14 +26,16 @@ Kurz-Doku für die Arbeit in diesem Repo. **Knapp halten, bei Änderungen mitpfl
 - **Effekte über `data-*`:** `data-reveal` (Fade-in), `data-scramble` (Nav-Hover),
   `data-count`/`data-suffix` (Zähler). Logik in `js/effects.js`, `js/scroll.js`.
 - **Inhalte/Tour zentral** in `js/config.js`: `GUIDE_STEPS`, `QUIPS` (Werte String **oder**
-  Array → Zufallsauswahl), `BRUMMER` (Frag-Modus/Q&A/Idle), `SLOGAN` (Krach-Maschine),
+  Array → Zufallsauswahl), `BRUMMER` (Frag-Modus/Q&A/Nudge), `SLOGAN` (Krach-Maschine),
   `KONFIGURATOR`. Neue Sektion → dort Eintrag ergänzen. Brummer ist **seiten-tauglich**:
   `guide.js` filtert `GUIDE_STEPS` auf Schritte, deren `selector` auf der aktuellen Seite
   existiert (Schrittzähler dynamisch) — Unterseiten-Schritte in `GUIDE_STEPS` zusammenhängend
-  + in Sichtreihenfolge gruppieren. Brummer-Tab öffnet **Frag-Modus** (Chips, Fake-KI),
-  passive Quips „peeken" sichtbar, Idle-Nudge nach Inaktivität (`js/guide.js`).
-  **Frag-Modus hat freie Texteingabe** → `BRUMMER.match()` (Keyword-Score auf
-  `qa[].keys`, sonst `fallback`). Chips bleiben als Vorschläge.
+  + in Sichtreihenfolge gruppieren. **Brummer startet immer minimiert als Tab — KEINE
+  Auto-Popups** (keine Scroll-Quips/Idle). Einzige Ausnahme: einmaliger Kontakt-Stupser
+  (`BRUMMER.nudge`, `sessionStorage`) wenn `nudge.after` in Sicht kommt + `nudge.go` existiert
+  (= Homepage, nach den Cases). Tab öffnet **Frag-Modus** (Chips + freie Texteingabe →
+  `BRUMMER.match()`, Keyword-Score auf `qa[].keys`, sonst `fallback`). Bubble hat ein
+  Schließen-**X** (`.guide__close`); Modi via `guide.dataset.mode` (`tour`/`ask`/`nudge`).
 - **Interaktive Tools** (`index.html`, reine Vanilla-Fake-KI = Keyword-Match, kein
   Netz, Logik in `config.js`): `#konfigurator` (→ `js/konfigurator.js`), `#slogan-lab`
   „Krach-Maschine" Slogan-Generator (→ `js/generator.js`). `SLOGAN.detect()` rät die
