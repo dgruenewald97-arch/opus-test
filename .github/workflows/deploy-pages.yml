@@ -50,6 +50,8 @@ jobs:
           mkdir -p _site/studio-seide
           # GRELLWERK at the root (all pages: index + cases + journal + sub-pages)
           cp -r *.html css js assets _site/
+          # SEO: robots + sitemap at the site root
+          cp robots.txt sitemap.xml _site/
           # Salon site (built with base: './', so it works under the sub-path)
           cp -r studio-seide/dist/. _site/studio-seide/
           # Skip Jekyll processing entirely

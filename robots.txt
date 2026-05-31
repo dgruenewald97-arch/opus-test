@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://dgruenewald97-arch.github.io/opus-test/sitemap.xml
