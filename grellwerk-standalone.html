@@ -2810,6 +2810,8 @@ function scrollToEl(el) {
 }
 
 // GRELLWERK — BRUMMER interactive onboarding guide (state machine).
+// Verhalten: KEINE automatischen Popups. Brummer bleibt minimiert als Tab und
+// öffnet sich ausschließlich auf Klick (Frag-Modus). Tour nur auf Wunsch.
 
 
 const pick = (v) => (Array.isArray(v) ? v[Math.floor(Math.random() * v.length)] : v);
@@ -2832,18 +2834,12 @@ function initGuide({ reducedMotion }) {
     index: 0,
     active: false,
     lastHighlight: null,
-    quipCooldown: false,
-    mode: "tour",     // "tour" | "ask" | "peek"
-    peekTimer: null,
-    idleTimer: null,
+    mode: "tour",     // "tour" | "ask"
+    thinkTimer: null,
   };
 
   const setMode = (m) => { state.mode = m; guide.dataset.mode = m; };
 
-  const seen = () => {
-    try { return localStorage.getItem(COPY.storageKey) === "1"; }
-    catch (_) { return false; }
-  };
   const markSeen = () => { try { localStorage.setItem(COPY.storageKey, "1"); } catch (_) {} };
 
   function clearHighlight() {
@@ -2936,11 +2932,10 @@ function initGuide({ reducedMotion }) {
 
   function minimize() {
     state.active = false;
-    clearTimeout(state.peekTimer);
+    clearTimeout(state.thinkTimer);
     clearHighlight();
     guide.hidden = true;
     tab.hidden = false;
-    scheduleIdle();
   }
 
   function finish() { markSeen(); minimize(); }
@@ -2949,8 +2944,7 @@ function initGuide({ reducedMotion }) {
 
   // --- Frag-Modus: Bubble mit Chips, ohne Tour-Schritte. ---
   function openAsk() {
-    clearTimeout(state.idleTimer);
-    clearTimeout(state.peekTimer);
+    clearTimeout(state.thinkTimer);
     clearHighlight();
     state.active = true;
     setMode("ask");
@@ -2962,13 +2956,12 @@ function initGuide({ reducedMotion }) {
 
   // Fake-KI: kurz „denken", dann antworten + optional zum Ziel scrollen.
   function answer(item) {
-    clearTimeout(state.idleTimer);
     setMode("ask");
     textEl.textContent = pick(BRUMMER.thinking);
     textEl.classList.add("is-thinking");
     const delay = reducedMotion ? 250 : 650;
-    clearTimeout(state.peekTimer);
-    state.peekTimer = setTimeout(() => {
+    clearTimeout(state.thinkTimer);
+    state.thinkTimer = setTimeout(() => {
       textEl.classList.remove("is-thinking");
       textEl.textContent = item.a;
       const target = item.go && document.querySelector(item.go);
@@ -2979,24 +2972,6 @@ function initGuide({ reducedMotion }) {
         state.lastHighlight = target;
       }
     }, delay);
-  }
-
-  // Peek: Bubble kurz sichtbar (Quip/Idle), dann wieder zum Tab. Klick = Frag-Modus.
-  function peek(text) {
-    if (state.active) return;
-    clearTimeout(state.peekTimer);
-    setMode("peek");
-    textEl.textContent = text;
-    tab.hidden = true;
-    guide.hidden = false;
-    state.peekTimer = setTimeout(minimize, 5200);
-  }
-
-  function scheduleIdle() {
-    clearTimeout(state.idleTimer);
-    state.idleTimer = setTimeout(() => {
-      if (!state.active && !tab.hidden) peek(pick(BRUMMER.idle));
-    }, 32000);
   }
 
   // --- Eye tracking (pupils follow cursor) ---
@@ -3024,50 +2999,18 @@ function initGuide({ reducedMotion }) {
     }
   }
 
-  // --- Passive quips via IntersectionObserver ---
-  const sections = document.querySelectorAll("[data-guide-step]");
-  const io = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        const key = entry.target.getAttribute("data-guide-step");
-        // guided mode keeps its own pointing; quips only when inactive + minimized
-        if (state.active || guide.hidden === false) return;
-        if (tab.hidden) return; // tab not shown yet (first visit auto-tour pending)
-        const quip = QUIPS[key];
-        if (quip && !state.quipCooldown) {
-          state.quipCooldown = true;
-          peek(pick(quip)); // briefly show the bubble, then minimize again
-          setTimeout(() => { state.quipCooldown = false; }, 9000);
-        }
-      });
-    },
-    { threshold: 0.45 }
-  );
-  sections.forEach((s) => io.observe(s));
-
   // --- Controls ---
   nextBtn.addEventListener("click", next);
   skipBtn.addEventListener("click", skip);
   tab.addEventListener("click", openAsk);      // Tab hält sein Versprechen: fragen, nicht Tour
-  guide.addEventListener("click", () => { if (state.mode === "peek") openAsk(); });
   document.getElementById("replay-guide")?.addEventListener("click", replay);
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape" && state.active) skip();
   });
 
-  // Idle-Timer bei jeder Aktivität zurücksetzen (nur wenn minimiert).
-  ["mousemove", "scroll", "keydown", "pointerdown"].forEach((ev) =>
-    window.addEventListener(ev, () => { if (!state.active) scheduleIdle(); }, { passive: true })
-  );
-
-  // --- Boot ---
-  if (seen()) {
-    tab.hidden = false; // returning visitor: minimized, replayable
-    scheduleIdle();
-  } else {
-    setTimeout(start, reducedMotion ? 200 : 900); // first visit: auto-tour
-  }
+  // --- Boot: immer minimiert als Tab. Keine Auto-Tour, keine Idle-/Scroll-Popups.
+  // Brummer wird nur aktiv, wenn der Tab geklickt wird.
+  tab.hidden = false;
 
   return { replay, start, minimize };
 }
