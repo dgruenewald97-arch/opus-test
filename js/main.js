@@ -1,7 +1,7 @@
 // GRELLWERK — orchestrator. Initializes modules in order with graceful fallbacks.
 import { loadEnhancements } from "./cdn.js";
 import { initCursor } from "./cursor.js";
-import { initScramble, initMarquee, initForm, initCounters, initRotator } from "./effects.js";
+import { initNav, initScramble, initMarquee, initForm, initCounters, initRotator } from "./effects.js";
 import { initScroll } from "./scroll.js";
 import { initGuide } from "./guide.js";
 import { initKonfigurator } from "./konfigurator.js";
@@ -11,6 +11,7 @@ const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matc
 
 async function boot() {
   // Pure-vanilla effects first — these never depend on a CDN.
+  initNav();
   initMarquee();
   initScramble({ reducedMotion });
   initCounters({ reducedMotion });

@@ -32,10 +32,58 @@
   transition: border-color 0.15s ease;
 }
 .nav__link:hover { border-color: var(--shock); }
-@media (max-width: 720px) {
-  .nav__links .nav__link:not(.nav__cta) { display: none; }
-}
+.nav__link[aria-current="page"] { border-color: var(--ink); }
 .nav__cta { animation: blink 1.6s steps(2) infinite; }
+.nav__cta[aria-current="page"] { border-color: var(--ink); }
+
+/* Hamburger toggle — hidden on desktop, shown on mobile */
+.nav__toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  padding: 0 9px;
+  border: var(--border) solid var(--ink);
+  background: var(--acid);
+  cursor: pointer;
+}
+.nav__toggle span {
+  display: block;
+  height: 3px;
+  background: var(--ink);
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+.nav[data-open="true"] .nav__toggle span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+.nav[data-open="true"] .nav__toggle span:nth-child(2) { opacity: 0; }
+.nav[data-open="true"] .nav__toggle span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+@media (max-width: 720px) {
+  .nav__toggle { display: flex; }
+  .nav__links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    background: var(--paper);
+    border-bottom: var(--border) solid var(--ink);
+    padding: 0.5rem clamp(1rem, 3vw, 2.5rem) 1.2rem;
+    box-shadow: var(--shadow-block);
+    display: none;
+  }
+  .nav[data-open="true"] .nav__links { display: flex; }
+  .nav__links .nav__link {
+    padding: 0.9rem 0;
+    border-bottom: 2px solid var(--ink);
+    border-top: none;
+    text-align: left;
+  }
+  .nav__links .nav__cta { margin-top: 0.9rem; text-align: center; justify-content: center; }
+}
 
 /* ===== HERO ===== */
 .hero {
@@ -693,6 +741,7 @@
 .cta-band h2 { color: var(--acid); }
 .cta-band .eyebrow { color: var(--paper); justify-content: center; }
 .cta-band__row { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; margin-top: var(--gap); }
+.cta-band__lead { max-width: 48ch; margin: 1rem auto 0; font-family: var(--font-mono); font-size: var(--step-0); }
 
 /* "Next case" link strip */
 .next-case {

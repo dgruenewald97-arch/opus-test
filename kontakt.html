@@ -43,7 +43,10 @@
   <!-- ===== NAV ===== -->
   <header class="nav">
     <a class="nav__logo" href="index.html" aria-label="GRELLWERK Startseite">GRELL<b>//</b>WERK</a>
-    <nav class="nav__links" aria-label="Hauptnavigation">
+      <button class="nav__toggle" aria-label="Menü öffnen" aria-controls="nav-menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    <nav class="nav__links" id="nav-menu" aria-label="Hauptnavigation">
       <a class="nav__link" href="leistungen.html" data-scramble>Leistungen</a>
       <a class="nav__link" href="arbeiten.html" data-scramble>Arbeiten</a>
       <a class="nav__link" href="ueber-uns.html" data-scramble>Über uns</a>
@@ -112,9 +115,9 @@
             <div>
               <h3>Folg uns</h3>
               <div class="contact__tags">
-                <span class="tag">Instagram</span>
-                <span class="tag">LinkedIn</span>
-                <span class="tag">Behance</span>
+                <a class="tag" href="https://instagram.com" target="_blank" rel="noopener">Instagram</a>
+                <a class="tag" href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn</a>
+                <a class="tag" href="https://behance.net" target="_blank" rel="noopener">Behance</a>
               </div>
             </div>
           </aside>
@@ -145,8 +148,8 @@
         </div>
         <div class="footer__col">
           <strong>Legal</strong>
-          <a href="#">Impressum</a>
-          <a href="#">Datenschutz</a>
+          <a href="impressum.html">Impressum</a>
+          <a href="datenschutz.html">Datenschutz</a>
         </div>
       </div>
       <div class="marquee marquee--rev" aria-hidden="true" style="border:none; background:transparent; color:var(--acid);">

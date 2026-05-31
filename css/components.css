@@ -101,3 +101,5 @@
   border: 2px solid var(--ink);
   background: var(--paper);
 }
+a.tag { transition: background 0.15s ease, color 0.15s ease; }
+a.tag:hover { background: var(--ink); color: var(--acid); }

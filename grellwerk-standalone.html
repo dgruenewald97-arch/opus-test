@@ -261,6 +261,8 @@ h3 { font-size: var(--step-1); }
   border: 2px solid var(--ink);
   background: var(--paper);
 }
+a.tag { transition: background 0.15s ease, color 0.15s ease; }
+a.tag:hover { background: var(--ink); color: var(--acid); }
 
 /* GRELLWERK — per-section layout */
 
@@ -296,10 +298,58 @@ h3 { font-size: var(--step-1); }
   transition: border-color 0.15s ease;
 }
 .nav__link:hover { border-color: var(--shock); }
-@media (max-width: 720px) {
-  .nav__links .nav__link:not(.nav__cta) { display: none; }
-}
+.nav__link[aria-current="page"] { border-color: var(--ink); }
 .nav__cta { animation: blink 1.6s steps(2) infinite; }
+.nav__cta[aria-current="page"] { border-color: var(--ink); }
+
+/* Hamburger toggle — hidden on desktop, shown on mobile */
+.nav__toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  padding: 0 9px;
+  border: var(--border) solid var(--ink);
+  background: var(--acid);
+  cursor: pointer;
+}
+.nav__toggle span {
+  display: block;
+  height: 3px;
+  background: var(--ink);
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+.nav[data-open="true"] .nav__toggle span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+.nav[data-open="true"] .nav__toggle span:nth-child(2) { opacity: 0; }
+.nav[data-open="true"] .nav__toggle span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+@media (max-width: 720px) {
+  .nav__toggle { display: flex; }
+  .nav__links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    background: var(--paper);
+    border-bottom: var(--border) solid var(--ink);
+    padding: 0.5rem clamp(1rem, 3vw, 2.5rem) 1.2rem;
+    box-shadow: var(--shadow-block);
+    display: none;
+  }
+  .nav[data-open="true"] .nav__links { display: flex; }
+  .nav__links .nav__link {
+    padding: 0.9rem 0;
+    border-bottom: 2px solid var(--ink);
+    border-top: none;
+    text-align: left;
+  }
+  .nav__links .nav__cta { margin-top: 0.9rem; text-align: center; justify-content: center; }
+}
 
 /* ===== HERO ===== */
 .hero {
@@ -957,6 +1007,7 @@ h3 { font-size: var(--step-1); }
 .cta-band h2 { color: var(--acid); }
 .cta-band .eyebrow { color: var(--paper); justify-content: center; }
 .cta-band__row { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; margin-top: var(--gap); }
+.cta-band__lead { max-width: 48ch; margin: 1rem auto 0; font-family: var(--font-mono); font-size: var(--step-0); }
 
 /* "Next case" link strip */
 .next-case {
@@ -1245,14 +1296,17 @@ a.case:focus-visible, a.post:focus-visible { outline: 4px solid var(--electric);
   <!-- ===== NAV ===== -->
   <header class="nav">
     <a class="nav__logo" href="#top" aria-label="GRELLWERK Startseite">GRELL<b>//</b>WERK</a>
-    <nav class="nav__links" aria-label="Hauptnavigation">
+      <button class="nav__toggle" aria-label="Menü öffnen" aria-controls="nav-menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    <nav class="nav__links" id="nav-menu" aria-label="Hauptnavigation">
       <a class="nav__link" href="leistungen.html" data-scramble>Leistungen</a>
       <a class="nav__link" href="arbeiten.html" data-scramble>Arbeiten</a>
       <a class="nav__link" href="ueber-uns.html" data-scramble>Über uns</a>
       <a class="nav__link" href="journal.html" data-scramble>Journal</a>
       <a class="nav__link" href="#pakete" data-scramble>Pakete</a>
       <a class="nav__link" href="kontakt.html" data-scramble>Kontakt</a>
-      <a class="nav__link nav__cta btn" href="#kontakt">Jetzt buchen</a>
+      <a class="nav__link nav__cta btn" href="kontakt.html">Jetzt buchen</a>
     </nav>
   </header>
 
@@ -1277,7 +1331,7 @@ a.case:focus-visible, a.post:focus-visible { outline: 4px solid var(--electric);
             Kampagnen, die anecken und Zahlen, die knallen.
           </p>
           <div class="hero__ctas" data-reveal>
-            <a class="btn btn--big magnetic" href="#kontakt">Krach buchen →</a>
+            <a class="btn btn--big magnetic" href="kontakt.html">Krach buchen →</a>
             <a class="btn btn--ghost btn--big magnetic" href="#arbeiten">Arbeiten ansehen</a>
           </div>
         </div>
@@ -1468,7 +1522,7 @@ a.case:focus-visible, a.post:focus-visible { outline: 4px solid var(--electric);
               <li>Setup Paid Social oder Google</li>
               <li>4 Wochen Laufzeit</li>
             </ul>
-            <a class="btn btn--ghost tier__cta" href="#kontakt">Zünden →</a>
+            <a class="btn btn--ghost tier__cta" href="kontakt.html">Zünden →</a>
           </div>
           <div class="tier tier--mid">
             <span class="tier__name">Krachen</span>
@@ -1480,7 +1534,7 @@ a.case:focus-visible, a.post:focus-visible { outline: 4px solid var(--electric);
               <li>A/B-Tests &amp; Funnel-Optimierung</li>
               <li>Dedizierter Performance-Lead</li>
             </ul>
-            <a class="btn tier__cta" href="#kontakt">Krachen →</a>
+            <a class="btn tier__cta" href="kontakt.html">Krachen →</a>
           </div>
           <div class="tier">
             <span class="tier__name">Eskalieren</span>
@@ -1492,7 +1546,7 @@ a.case:focus-visible, a.post:focus-visible { outline: 4px solid var(--electric);
               <li>Produktion Film, Foto &amp; Web</li>
               <li>Omnichannel-Kampagnen</li>
             </ul>
-            <a class="btn btn--ghost tier__cta" href="#kontakt">Eskalieren →</a>
+            <a class="btn btn--ghost tier__cta" href="kontakt.html">Eskalieren →</a>
           </div>
         </div>
       </div>
@@ -1535,7 +1589,7 @@ a.case:focus-visible, a.post:focus-visible { outline: 4px solid var(--electric);
             <p class="config__paket" id="config-paket">Beantworte die Fragen →</p>
             <p class="config__lead" id="config-lead"></p>
             <p class="config__why" id="config-why">Tipp dich durch — ich stell dir das passende Paket und den richtigen Kopf aus der Crew zusammen.</p>
-            <a class="btn config__cta" id="config-cta" href="#kontakt" hidden>Krach buchen →</a>
+            <a class="btn config__cta" id="config-cta" href="kontakt.html" hidden>Krach buchen →</a>
           </aside>
         </div>
       </div>
@@ -1635,27 +1689,19 @@ a.case:focus-visible, a.post:focus-visible { outline: 4px solid var(--electric);
       </div>
     </section>
 
-    <!-- ===== CONTACT ===== -->
-    <section class="section contact" id="kontakt" data-guide-step="kontakt">
+    <!-- ===== CONTACT (CTA-Band → kontakt.html) ===== -->
+    <section class="section cta-band" id="kontakt" data-guide-step="kontakt">
       <div class="container">
         <span class="eyebrow">Genug geschaut</span>
         <h2 data-reveal>Lass uns Lärm machen</h2>
-        <form class="form" id="contact-form" data-reveal novalidate>
-          <div class="field">
-            <label for="f-name">Name</label>
-            <input id="f-name" name="name" type="text" autocomplete="name" required />
-          </div>
-          <div class="field">
-            <label for="f-email">E-Mail</label>
-            <input id="f-email" name="email" type="email" autocomplete="email" required />
-          </div>
-          <div class="field">
-            <label for="f-msg">Worum geht's?</label>
-            <textarea id="f-msg" name="message" rows="4" required></textarea>
-          </div>
-          <button class="btn btn--big magnetic" type="submit">Jetzt Krach buchen →</button>
-          <p class="form__status" id="form-status" role="status" aria-live="polite"></p>
-        </form>
+        <p class="cta-band__lead" data-reveal>
+          Briefing, Budget, Bauchgefühl — schreib uns, was ansteht. Antwort binnen
+          24 Stunden, von echten Menschen statt Auto-Reply.
+        </p>
+        <div class="cta-band__row" data-reveal>
+          <a class="btn btn--big magnetic" href="kontakt.html">Krach buchen →</a>
+          <a class="btn btn--ghost btn--big magnetic" href="#pakete">Pakete ansehen</a>
+        </div>
       </div>
     </section>
   </main>
@@ -1683,8 +1729,8 @@ a.case:focus-visible, a.post:focus-visible { outline: 4px solid var(--electric);
         </div>
         <div class="footer__col">
           <strong>Legal</strong>
-          <a href="#">Impressum</a>
-          <a href="#">Datenschutz</a>
+          <a href="impressum.html">Impressum</a>
+          <a href="datenschutz.html">Datenschutz</a>
         </div>
       </div>
       <div class="marquee marquee--rev" aria-hidden="true" style="border:none; background:transparent; color:var(--acid);">
@@ -2015,6 +2061,31 @@ function initMagnetic({ gsap }) {
 // GRELLWERK — text scramble + seamless marquee (pure vanilla, no libs needed).
 
 const CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ#%&!*/—";
+
+// Mobile nav: hamburger toggle. No-op if markup is absent (graceful).
+function initNav() {
+  const nav = document.querySelector(".nav");
+  const toggle = nav && nav.querySelector(".nav__toggle");
+  const menu = nav && nav.querySelector(".nav__links");
+  if (!nav || !toggle || !menu) return;
+
+  const setOpen = (open) => {
+    nav.setAttribute("data-open", open ? "true" : "false");
+    toggle.setAttribute("aria-expanded", open ? "true" : "false");
+  };
+  setOpen(false);
+
+  toggle.addEventListener("click", () => {
+    setOpen(nav.getAttribute("data-open") !== "true");
+  });
+  // Close after tapping a link or pressing Escape.
+  menu.addEventListener("click", (e) => {
+    if (e.target.closest("a")) setOpen(false);
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") setOpen(false);
+  });
+}
 function initScramble({ reducedMotion }) {
   if (reducedMotion) return;
   const els = document.querySelectorAll("[data-scramble]");
@@ -2387,6 +2458,7 @@ const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matc
 
 async function boot() {
   // Pure-vanilla effects first — these never depend on a CDN.
+  initNav();
   initMarquee();
   initScramble({ reducedMotion });
   initCounters({ reducedMotion });

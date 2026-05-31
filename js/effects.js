@@ -2,6 +2,31 @@
 
 const CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ#%&!*/—";
 
+// Mobile nav: hamburger toggle. No-op if markup is absent (graceful).
+export function initNav() {
+  const nav = document.querySelector(".nav");
+  const toggle = nav && nav.querySelector(".nav__toggle");
+  const menu = nav && nav.querySelector(".nav__links");
+  if (!nav || !toggle || !menu) return;
+
+  const setOpen = (open) => {
+    nav.setAttribute("data-open", open ? "true" : "false");
+    toggle.setAttribute("aria-expanded", open ? "true" : "false");
+  };
+  setOpen(false);
+
+  toggle.addEventListener("click", () => {
+    setOpen(nav.getAttribute("data-open") !== "true");
+  });
+  // Close after tapping a link or pressing Escape.
+  menu.addEventListener("click", (e) => {
+    if (e.target.closest("a")) setOpen(false);
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") setOpen(false);
+  });
+}
+
 export function initScramble({ reducedMotion }) {
   if (reducedMotion) return;
   const els = document.querySelectorAll("[data-scramble]");
