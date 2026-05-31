@@ -92,6 +92,17 @@
           <button type="button" class="journal__chip" data-filter="meinung" aria-pressed="false">Meinung</button>
         </div>
 
+        <!-- Sortierung (js/journal.js). Eine Option aktiv, Default „Neueste". -->
+        <div class="journal__sortbar" data-reveal>
+          <span class="journal__sortlabel">Sortieren</span>
+          <div class="journal__sort" id="journal-sort" role="group" aria-label="Artikel sortieren">
+            <button type="button" class="journal__chip journal__chip--sort is-active" data-sort="date-desc" aria-pressed="true">Neueste</button>
+            <button type="button" class="journal__chip journal__chip--sort" data-sort="date-asc" aria-pressed="false">Älteste</button>
+            <button type="button" class="journal__chip journal__chip--sort" data-sort="title-asc" aria-pressed="false">Titel A–Z</button>
+            <button type="button" class="journal__chip journal__chip--sort" data-sort="category" aria-pressed="false">Kategorie</button>
+          </div>
+        </div>
+
         <p class="journal__empty" id="journal-empty" hidden>Noch kein Lärm in dieser Kategorie.</p>
 
         <div class="journal__grid" id="journal-grid">
