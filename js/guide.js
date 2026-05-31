@@ -33,6 +33,12 @@ export function initGuide({ reducedMotion }) {
 
   const markSeen = () => { try { localStorage.setItem(COPY.storageKey, "1"); } catch (_) {} };
 
+  // Kontakt-Stupser: einmal pro Besuch → sessionStorage (resettet beim Schließen
+  // des Tabs/der Sitzung, nicht dauerhaft wie der Tour-Flag).
+  const NUDGE_KEY = "grellwerk_kontakt_nudge";
+  const nudgeSeen = () => { try { return sessionStorage.getItem(NUDGE_KEY) === "1"; } catch (_) { return false; } };
+  const markNudgeSeen = () => { try { sessionStorage.setItem(NUDGE_KEY, "1"); } catch (_) {} };
+
   function clearHighlight() {
     if (state.lastHighlight) {
       state.lastHighlight.classList.remove("guide-highlight");
@@ -84,6 +90,36 @@ export function initGuide({ reducedMotion }) {
     askInput.value = "";
   });
   textEl.insertAdjacentElement("afterend", askForm);
+
+  // Kontakt-Stupser (einmal pro Besuch, nach den Cases): Text + ein CTA-Button.
+  const nudgeEl = document.createElement("div");
+  nudgeEl.className = "guide__nudge";
+  const nudgeCta = document.createElement("button");
+  nudgeCta.type = "button";
+  nudgeCta.className = "guide__btn guide__btn--primary";
+  nudgeCta.textContent = BRUMMER.nudge?.cta || "Zum Kontakt →";
+  nudgeCta.addEventListener("click", () => {
+    const t = BRUMMER.nudge?.go && document.querySelector(BRUMMER.nudge.go);
+    minimize();
+    if (t) {
+      scrollToEl(t);
+      clearHighlight();
+      t.classList.add("guide-highlight");
+      state.lastHighlight = t;
+      setTimeout(clearHighlight, 2400);
+    }
+  });
+  nudgeEl.appendChild(nudgeCta);
+  textEl.insertAdjacentElement("afterend", nudgeEl);
+
+  // Schließen-Kreuz (X): in jedem Modus sichtbar, macht Brummer zu.
+  const closeBtn = document.createElement("button");
+  closeBtn.type = "button";
+  closeBtn.className = "guide__close";
+  closeBtn.setAttribute("aria-label", "Brummer schließen");
+  closeBtn.textContent = "✕";
+  closeBtn.addEventListener("click", minimize);
+  guide.querySelector(".guide__bubble")?.appendChild(closeBtn);
 
   function showStep(i) {
     const step = steps[i];
@@ -165,6 +201,28 @@ export function initGuide({ reducedMotion }) {
     }, delay);
   }
 
+  // Einmaliger Kontakt-Stupser. Unterbricht nicht, wenn Brummer schon offen ist
+  // (Observer bleibt dann aktiv, bis es tatsächlich angezeigt werden konnte).
+  let nudgeObserver = null;
+  function showNudge() {
+    if (nudgeSeen()) { nudgeObserver?.disconnect(); return; }
+    if (state.active) return;
+    markNudgeSeen();
+    nudgeObserver?.disconnect();
+    clearHighlight();
+    state.active = true;
+    setMode("nudge");
+    tab.hidden = true;
+    guide.hidden = false;
+    textEl.textContent = BRUMMER.nudge.text;
+    if (!reducedMotion) {
+      guide.classList.add("is-entering");
+      requestAnimationFrame(() =>
+        requestAnimationFrame(() => guide.classList.remove("is-entering"))
+      );
+    }
+  }
+
   // --- Eye tracking (pupils follow cursor) ---
   if (!reducedMotion && mascot) {
     const pupils = mascot.querySelectorAll(".brummer__pupil");
@@ -199,9 +257,19 @@ export function initGuide({ reducedMotion }) {
     if (e.key === "Escape" && state.active) skip();
   });
 
-  // --- Boot: immer minimiert als Tab. Keine Auto-Tour, keine Idle-/Scroll-Popups.
-  // Brummer wird nur aktiv, wenn der Tab geklickt wird.
+  // --- Boot: immer minimiert als Tab. Keine Auto-Tour, keine Scroll-/Idle-Popups.
+  // EINZIGE Ausnahme: ein Kontakt-Stupser, einmal pro Besuch, sobald die Sektion
+  // nach den Cases in Sicht kommt — und nur, wenn Trigger + Ziel existieren (Home).
   tab.hidden = false;
+
+  const nudgeTrigger = BRUMMER.nudge && document.querySelector(BRUMMER.nudge.after);
+  const nudgeTarget = BRUMMER.nudge && document.querySelector(BRUMMER.nudge.go);
+  if (nudgeTrigger && nudgeTarget && !nudgeSeen() && "IntersectionObserver" in window) {
+    nudgeObserver = new IntersectionObserver((entries) => {
+      if (entries.some((e) => e.isIntersecting)) showNudge();
+    }, { threshold: 0.3 });
+    nudgeObserver.observe(nudgeTrigger);
+  }
 
   return { replay, start, minimize };
 }
