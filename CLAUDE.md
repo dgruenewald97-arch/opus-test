@@ -42,7 +42,11 @@ Kurz-Doku für die Arbeit in diesem Repo. **Knapp halten, bei Änderungen mitpfl
   Branche aus Marke+Branche-Feld (`SLOGAN.categories`, Keyword→Wortfarbe+Templates),
   `generate()` liefert `{ category, slogans }` — Kategorie wird als Badge angezeigt.
 - **Journal** (`journal.html` + `journal-*.html`): Übersicht hat Kategorie-Filter
-  (`#journal-filter` Chips + `.post[data-cat]`, Logik in `js/journal.js`, „eine + Alle").
+  (`#journal-filter` Chips + `.post[data-cat]`, „eine + Alle") **und Sortierung**
+  (`#journal-sort`: Datum/Titel/Kategorie) — Logik in `js/journal.js`, sortiert beim
+  Laden automatisch nach Datum. Karten nutzen `data-reveal`: Filter/Sort setzen sichtbare
+  Karten sofort auf `.is-visible` (sonst bleiben sie unsichtbar). Quellen je Artikel via
+  `.article__sources`.
   Neuer Artikel → Seite vom Template ableiten (`<span class="tag">` + Eyebrow = Kategorie),
   Karte mit passendem `data-cat` ins Grid (newest first), Filter-Chip ergänzen falls neue
   Kategorie, Sitemap pflegen. Kategorien: Performance/Branding/Social/Daten/Web/Meinung.
