@@ -135,20 +135,22 @@ export const GUIDE_STEPS = [
 ];
 
 // Passive quips shown when a section scrolls into view (guide inactive).
+// Werte dürfen String ODER Array sein — guide.js pickt bei Arrays zufällig,
+// damit Wiederbesuche frischer wirken. Neue Sektion → hier ergänzen.
 export const QUIPS = {
-  zahlen: "Zahlen statt Buzzwords.",
-  leistungen: "Sechs Disziplinen, ein Ziel: Krach.",
+  zahlen: ["Zahlen statt Buzzwords.", "Rechne nach. Wir warten.", "Keine geschönten Slides."],
+  leistungen: ["Sechs Disziplinen, ein Ziel: Krach.", "Such dir aus, wo's wehtun soll."],
   kunden: "Die vertrauen uns. Du auch?",
-  manifest: "Fünf Sätze. Kein Bullshit.",
+  manifest: ["Fünf Sätze. Kein Bullshit.", "Lies es laut. Es meint dich."],
   faq: "Antworten ohne Drumherum.",
-  arbeiten: "Echte Zahlen, keine Fake-Mockups.",
+  arbeiten: ["Echte Zahlen, keine Fake-Mockups.", "Jeder Case ein Tatort."],
   prozess: "Vier Schritte. Null Bullshit.",
-  pakete: "Drei Stufen Lärm. Such dir was aus.",
+  pakete: ["Drei Stufen Lärm. Such dir was aus.", "Vom Knall bis Vollgas."],
   konfigurator: "Zwei Klicks zur Empfehlung.",
-  crew: "Sieht harmlos aus. Ist es nicht.",
+  crew: ["Sieht harmlos aus. Ist es nicht.", "Sieben Köpfe, ein Krawall."],
   stimmen: "Hör auf die, nicht auf uns.",
   journal: "Frischer Lärm zum Nachlesen.",
-  kontakt: "Na los, trau dich.",
+  kontakt: ["Na los, trau dich.", "Der Knopf beißt nicht. Wir schon."],
   // Sub-pages
   case: "Ein Case zum Anfassen — von Brief bis Knall.",
   "leistungen-all": "Sechs Maschinen. Such dir Lärm aus.",
@@ -157,6 +159,31 @@ export const QUIPS = {
   "leistung-ergebnis": "Zahlen, keine Versprechen.",
   ueber: "Anti-Agentur seit 2018.",
   article: "Frischer Lärm, ausführlich.",
+};
+
+// BRUMMER „Frag-Modus" + Verhalten. Reine Fake-KI: feste Antworten, kein Netz.
+// `qa[].go` ist ein Selektor auf DIESER Seite — existiert er, scrollt Brummer
+// nach der Antwort hin (klappt v.a. auf index.html). Fehlt er (Unterseite),
+// bleibt's bei der Antwort. Texte hier pflegen, Logik in guide.js.
+export const BRUMMER = {
+  greet: "Frag mich was — oder lass dir den Laden zeigen.",
+  tourLabel: "Zeig mir den Laden ↻",
+  thinking: ["brummt kurz nach …", "sortiert die Flügel …", "lädt Krach …", "rechnet im Schwarm …"],
+  idle: [
+    "Eingeschlafen? Ich nicht.",
+    "Psst. Der Kontakt-Knopf wartet.",
+    "Noch da? Frag mich was.",
+    "Stille verkauft nichts. Klick mich.",
+  ],
+  qa: [
+    { q: "Was kostet das?", a: "Kommt drauf an, wie laut. Drei Pakete — vom ersten Knall bis Vollgas. Schau selbst.", go: "#pakete" },
+    { q: "Wie schnell knallt's?", a: "Vier Schritte von der Idee zum Lärm. Kein Quartals-Geschwafel.", go: "#prozess" },
+    { q: "Echte Zahlen?", a: "Jeder Case mit echten Werten. Keine hübschen Mockup-Lügen.", go: "#arbeiten" },
+    { q: "Welches Paket für mich?", a: "Zwei Klicks und ich bau dir die Empfehlung. Probier den Konfigurator.", go: "#konfigurator" },
+    { q: "Wer seid ihr?", a: "Sieben Köpfe, eine Mission: Lärm, der verkauft. Anti-Agentur seit 2018.", go: "#crew" },
+    { q: "Seid ihr nicht zu laut?", a: "Doch. Genau das ist der Plan. Leise gibt's woanders.", go: "#manifest" },
+    { q: "Buchen!", a: "Stark. Schreib uns — wir melden uns lauter als erwartet. 🐝", go: "#kontakt" },
+  ],
 };
 
 // Krach-Konfigurator: Antworten → Empfehlung. Paket-Namen identisch zur
