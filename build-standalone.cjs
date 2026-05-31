@@ -28,6 +28,7 @@ const cursor = stripModule(read("js/cursor.js"));
 const effects = stripModule(read("js/effects.js"));
 const konfigurator = stripModule(read("js/konfigurator.js"));
 const generator = stripModule(read("js/generator.js"));
+const journal = stripModule(read("js/journal.js"));
 const scroll = stripModule(read("js/scroll.js"));
 const guide = stripModule(read("js/guide.js"));
 
@@ -38,7 +39,7 @@ let main = stripModule(read("js/main.js"))
     "const gsap = null, ScrollTrigger = null, Lenis = null; window.__FLAGS = { gsap: false, lenis: false, standalone: true };"
   );
 
-const js = `(function(){\n${config}\n${cursor}\n${effects}\n${konfigurator}\n${generator}\n${scroll}\n${guide}\n${main}\n})();`;
+const js = `(function(){\n${config}\n${cursor}\n${effects}\n${konfigurator}\n${generator}\n${journal}\n${scroll}\n${guide}\n${main}\n})();`;
 
 // --- Assemble HTML from index.html, swapping in inline style + script ---
 let html = read("index.html");
