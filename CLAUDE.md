@@ -32,9 +32,13 @@ Kurz-Doku für die Arbeit in diesem Repo. **Knapp halten, bei Änderungen mitpfl
   existiert (Schrittzähler dynamisch) — Unterseiten-Schritte in `GUIDE_STEPS` zusammenhängend
   + in Sichtreihenfolge gruppieren. Brummer-Tab öffnet **Frag-Modus** (Chips, Fake-KI),
   passive Quips „peeken" sichtbar, Idle-Nudge nach Inaktivität (`js/guide.js`).
-- **Interaktive Tools** (`index.html`, reine Vanilla-Fake-KI, Logik in `config.js`):
-  `#konfigurator` (→ `js/konfigurator.js`), `#slogan-lab` „Krach-Maschine" Slogan-Generator
-  (→ `js/generator.js`, Templates+Wortbänke in `SLOGAN`).
+  **Frag-Modus hat freie Texteingabe** → `BRUMMER.match()` (Keyword-Score auf
+  `qa[].keys`, sonst `fallback`). Chips bleiben als Vorschläge.
+- **Interaktive Tools** (`index.html`, reine Vanilla-Fake-KI = Keyword-Match, kein
+  Netz, Logik in `config.js`): `#konfigurator` (→ `js/konfigurator.js`), `#slogan-lab`
+  „Krach-Maschine" Slogan-Generator (→ `js/generator.js`). `SLOGAN.detect()` rät die
+  Branche aus Marke+Branche-Feld (`SLOGAN.categories`, Keyword→Wortfarbe+Templates),
+  `generate()` liefert `{ category, slogans }` — Kategorie wird als Badge angezeigt.
 - **Neue Unterseite** → vom Kopf/Fuß einer bestehenden Seite ableiten (Head, `nav`, `footer`,
   Brummer-`<aside>`+Tab, `js/main.js` sind auf jeder Seite dupliziert). Layout über bestehende
   Klassen + `page-hero`/`prose`/`cta-band`/`crumbs` in `css/sections.css`. Cross-Page-Links

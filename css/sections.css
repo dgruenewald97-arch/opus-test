@@ -660,6 +660,18 @@
   padding: clamp(1.3rem, 3vw, 2rem);
   opacity: 0.75;
 }
+.slogan__detected {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: var(--step--1);
+  font-weight: 700;
+  background: var(--ink);
+  color: var(--acid);
+  border: 3px solid var(--ink);
+  padding: 0.55em 0.8em;
+}
+.slogan__detected--miss { background: transparent; color: var(--ink); border-style: dashed; font-weight: 400; text-transform: none; letter-spacing: 0; }
 .slogan__card {
   display: flex;
   align-items: center;

@@ -166,13 +166,14 @@ export const QUIPS = {
   article: "Frischer Lärm, ausführlich.",
 };
 
-// BRUMMER „Frag-Modus" + Verhalten. Reine Fake-KI: feste Antworten, kein Netz.
-// `qa[].go` ist ein Selektor auf DIESER Seite — existiert er, scrollt Brummer
-// nach der Antwort hin (klappt v.a. auf index.html). Fehlt er (Unterseite),
-// bleibt's bei der Antwort. Texte hier pflegen, Logik in guide.js.
+// BRUMMER „Frag-Modus" + Verhalten. Fake-KI: Keyword-Matching auf feste
+// Antworten, kein Netz. `qa[].keys` = Schlüsselwörter für freie Eingabe,
+// `qa[].go` = Selektor auf DIESER Seite (existiert er, scrollt Brummer hin).
+// `match()` wählt die beste Antwort, sonst ein Fallback. Texte hier pflegen.
 export const BRUMMER = {
-  greet: "Frag mich was — oder lass dir den Laden zeigen.",
+  greet: "Frag mich was — tipp's ein oder klick einen Vorschlag.",
   tourLabel: "Zeig mir den Laden ↻",
+  inputPlaceholder: "Frag Brummer …",
   thinking: ["brummt kurz nach …", "sortiert die Flügel …", "lädt Krach …", "rechnet im Schwarm …"],
   idle: [
     "Eingeschlafen? Ich nicht.",
@@ -180,15 +181,33 @@ export const BRUMMER = {
     "Noch da? Frag mich was.",
     "Stille verkauft nichts. Klick mich.",
   ],
-  qa: [
-    { q: "Was kostet das?", a: "Kommt drauf an, wie laut. Drei Pakete — vom ersten Knall bis Vollgas. Schau selbst.", go: "#pakete" },
-    { q: "Wie schnell knallt's?", a: "Vier Schritte von der Idee zum Lärm. Kein Quartals-Geschwafel.", go: "#prozess" },
-    { q: "Echte Zahlen?", a: "Jeder Case mit echten Werten. Keine hübschen Mockup-Lügen.", go: "#arbeiten" },
-    { q: "Welches Paket für mich?", a: "Zwei Klicks und ich bau dir die Empfehlung. Probier den Konfigurator.", go: "#konfigurator" },
-    { q: "Wer seid ihr?", a: "Sieben Köpfe, eine Mission: Lärm, der verkauft. Anti-Agentur seit 2018.", go: "#crew" },
-    { q: "Seid ihr nicht zu laut?", a: "Doch. Genau das ist der Plan. Leise gibt's woanders.", go: "#manifest" },
-    { q: "Buchen!", a: "Stark. Schreib uns — wir melden uns lauter als erwartet. 🐝", go: "#kontakt" },
+  fallback: [
+    "Versteh nur Lärm. Probier: Preis, Tempo, Zahlen — oder buchen.",
+    "Gute Frage, schlechte Keywords. Frag konkreter, dann knallt's.",
+    "Da passe ich — aber meine Menschen nicht. Schreib uns einfach.",
   ],
+  qa: [
+    { q: "Was kostet das?", a: "Kommt drauf an, wie laut. Drei Pakete — vom ersten Knall bis Vollgas. Schau selbst.", go: "#pakete", keys: ["kost", "preis", "teuer", "geld", "budget", "euro", "€", "zahl ich", "günstig", "guenstig", "tarif"] },
+    { q: "Wie schnell knallt's?", a: "Vier Schritte von der Idee zum Lärm. Kein Quartals-Geschwafel.", go: "#prozess", keys: ["schnell", "dauer", "wie lang", "wann", "tempo", "zeit", "deadline", "ablauf", "prozess"] },
+    { q: "Echte Zahlen?", a: "Jeder Case mit echten Werten. Keine hübschen Mockup-Lügen.", go: "#arbeiten", keys: ["zahl", "beweis", "case", "referenz", "ergebnis", "roi", "roas", "erfolg", "beispiel", "projekt"] },
+    { q: "Welches Paket für mich?", a: "Zwei Klicks und ich bau dir die Empfehlung. Probier den Konfigurator.", go: "#konfigurator", keys: ["paket", "empfehl", "passend", "welches", "konfigurat", "für mich", "fuer mich", "richtig"] },
+    { q: "Wer seid ihr?", a: "Sieben Köpfe, eine Mission: Lärm, der verkauft. Anti-Agentur seit 2018.", go: "#crew", keys: ["wer", "team", "crew", "ihr", "agentur", "über euch", "ueber euch", "gegründet", "leute"] },
+    { q: "Seid ihr nicht zu laut?", a: "Doch. Genau das ist der Plan. Leise gibt's woanders.", go: "#manifest", keys: ["laut", "leise", "schrei", "krach", "nervt", "aggressiv", "zu viel", "ruhig"] },
+    { q: "Buchen!", a: "Stark. Schreib uns — wir melden uns lauter als erwartet. 🐝", go: "#kontakt", keys: ["buch", "kontakt", "anfrage", "melde", "termin", "schreib", "los", "start", "zusammen", "anfangen", "kennenlernen"] },
+  ],
+
+  // Freie Eingabe → beste Antwort per Keyword-Score, sonst Fallback.
+  match(text) {
+    const t = (text || "").toLowerCase();
+    let best = null;
+    let bestScore = 0;
+    for (const item of this.qa) {
+      const score = (item.keys || []).reduce((s, k) => s + (t.includes(k) ? 1 : 0), 0);
+      if (score > bestScore) { bestScore = score; best = item; }
+    }
+    if (best) return best;
+    return { a: this.fallback[Math.floor(Math.random() * this.fallback.length)], go: null };
+  },
 };
 
 // Krach-Konfigurator: Antworten → Empfehlung. Paket-Namen identisch zur
@@ -231,9 +250,10 @@ export const KONFIGURATOR = {
   },
 };
 
-// Krach-Maschine: Fake-KI Slogan-Generator. Reine Template-Kombinatorik, kein
-// Netz. `generate()` liefert n verschiedene Slogans für Marke + Ton.
-// Wortbänke + Templates hier pflegen; Logik bleibt aus der UI raus.
+// Krach-Maschine: Fake-KI Slogan-Generator. Keyword-Erkennung statt echter KI —
+// `detect()` rät die Branche aus Marke+Branche-Text, `generate()` färbt Wortwahl
+// und Templates entsprechend ein und meldet die erkannte Kategorie zurück (das
+// macht den „versteht-mich"-Effekt). Reine Kombinatorik, kein Netz.
 export const SLOGAN = {
   fallbackBrand: "deine Marke",
   tones: [
@@ -242,6 +262,65 @@ export const SLOGAN = {
     { id: "premium", label: "Premium" },
     { id: "rebell", label: "Rebellisch" },
   ],
+  // Branchen-Erkennung: Keyword-Treffer → Kategorie mit eigener Wortfarbe +
+  // Extra-Templates. Reihenfolge = Priorität bei Mehrfachtreffern.
+  categories: {
+    food: {
+      label: "Food & Drink",
+      keys: ["kaffee", "café", "cafe", "müsli", "muesli", "hafer", "bio", "food", "essen", "snack", "getränk", "getraenk", "bier", "drink", "restaurant", "küche", "kueche", "schoko", "tee", "pizza", "burger", "vegan", "saft", "wein", "bäcker", "baecker", "eis", "limo"],
+      noun: ["Geschmack", "Rezept", "Zutat", "Aroma", "Portion Lärm"],
+      verb: ["schmeckt", "brodelt", "dampft", "knuspert"],
+      templates: [
+        "{BRAND} schmeckt nach Aufruhr.",
+        "Iss {BRAND}. Schmeck den Unterschied.",
+        "{BRAND} — {adj} auf der Zunge.",
+      ],
+    },
+    fitness: {
+      label: "Sport & Fitness",
+      keys: ["fitness", "gym", "sport", "training", "lauf", "yoga", "crossfit", "muskel", "workout", "studio", "abnehmen", "protein", "fahrrad", "bike"],
+      noun: ["Schweiß", "Wiederholung", "Puls", "Rekord"],
+      verb: ["pusht", "brennt", "pumpt", "treibt"],
+      templates: [
+        "Schwitz mit {BRAND}, nicht gegen dich.",
+        "{BRAND}: keine Ausreden, nur {noun}.",
+        "Letzter Satz? Von wegen. {BRAND} {verb}.",
+      ],
+    },
+    tech: {
+      label: "Tech & Software",
+      keys: ["software", "app", "ki", "ai", "saas", "tech", "code", "digital", "startup", "cloud", "daten", "plattform", "tool", "online", "web", " it ", "programm", "automat", "agentur"],
+      noun: ["Update", "Feature", "Deploy", "Algorithmus"],
+      verb: ["deployt", "skaliert", "rendert", "bootet"],
+      templates: [
+        "{BRAND} deployt Lärm. Zero Bugs.",
+        "Andere haben Roadmaps. {BRAND} hat {noun}.",
+        "{BRAND} skaliert lauter als dein Server.",
+      ],
+    },
+    mode: {
+      label: "Mode & Beauty",
+      keys: ["mode", "fashion", "beauty", "kosmetik", "schuh", "textil", "style", "klamotten", "kleid", "sneaker", "schmuck", "brille", "parfum", "make-up", "makeup"],
+      noun: ["Schnitt", "Statement", "Look", "Naht"],
+      verb: ["sitzt", "glänzt", "funkelt", "trägt"],
+      templates: [
+        "Trag {BRAND}. Oder trag das Risiko.",
+        "{BRAND} sitzt da, wo andere kneifen.",
+        "{noun} mit Ansage: {BRAND}.",
+      ],
+    },
+    finanz: {
+      label: "Finanzen",
+      keys: ["bank", "finanz", "geld", "krypto", "invest", "versicherung", "sparkasse", "kredit", "aktie", "fintech", "zahlung", "vermögen", "rente"],
+      noun: ["Rendite", "Zins", "Bilanz", "Konto"],
+      verb: ["rechnet", "zahlt", "wächst", "verzinst"],
+      templates: [
+        "{BRAND}: Rendite mit Radau.",
+        "Andere flüstern Zinsen. {BRAND} {verb} laut.",
+        "Dein Geld, {adj}. Mit {BRAND}.",
+      ],
+    },
+  },
   _adj: {
     frech: ["frech", "ungeniert", "vorlaut", "unverschämt", "respektlos"],
     edgy: ["gnadenlos", "ungezähmt", "scharf", "kompromisslos", "wach"],
@@ -264,28 +343,54 @@ export const SLOGAN = {
     "Nett war gestern. Heute ist {BRAND}.",
     "{BRAND} {verb} da, wo andere kuschen.",
   ],
-  // Liefert `count` verschiedene Slogans. tone fällt auf "frech" zurück.
-  generate({ brand, ton } = {}, count = 3) {
+
+  // Branche aus freiem Text raten. Gibt Kategorie-Id oder null.
+  detect(text) {
+    const t = ` ${(text || "").toLowerCase()} `;
+    for (const [id, c] of Object.entries(this.categories)) {
+      if (c.keys.some((k) => t.includes(k))) return id;
+    }
+    return null;
+  },
+
+  // Liefert { category, slogans }. Erkannte Branche färbt Wortwahl + Templates;
+  // ein Branchen-Template steht (falls erkannt) bevorzugt an erster Stelle.
+  generate({ brand, branche, ton } = {}, count = 3) {
     const b = (brand || "").trim() || this.fallbackBrand;
     const BRAND = b.toUpperCase();
     const adj = this._adj[ton] || this._adj.frech;
+    const catId = this.detect(`${brand || ""} ${branche || ""}`);
+    const cat = catId ? this.categories[catId] : null;
+    const nouns = cat ? cat.noun.concat(this._noun) : this._noun;
+    const verbs = cat ? cat.verb.concat(this._verb) : this._verb;
     const rnd = (arr) => arr[Math.floor(Math.random() * arr.length)];
+    const fill = (tpl) =>
+      tpl
+        .replace(/\{BRAND\}/g, BRAND)
+        .replace(/\{adj\}/g, () => rnd(adj))
+        .replace(/\{noun\}/g, () => rnd(nouns))
+        .replace(/\{verb\}/g, () => rnd(verbs));
 
-    // Templates ohne Wiederholung ziehen.
-    const pool = this._templates.slice();
-    const out = [];
+    const pool = (cat ? cat.templates : []).concat(this._templates);
+    const used = new Set();
+    const draw = (arr) => {
+      const cand = arr.filter((t) => !used.has(t));
+      if (!cand.length) return null;
+      const t = cand[Math.floor(Math.random() * cand.length)];
+      used.add(t);
+      return t;
+    };
+
+    const slogans = [];
     const n = Math.min(count, pool.length);
-    for (let i = 0; i < n; i++) {
-      const tpl = pool.splice(Math.floor(Math.random() * pool.length), 1)[0];
-      out.push(
-        tpl
-          .replace(/\{BRAND\}/g, BRAND)
-          .replace(/\{adj\}/g, () => rnd(adj))
-          .replace(/\{noun\}/g, () => rnd(this._noun))
-          .replace(/\{verb\}/g, () => rnd(this._verb))
-      );
+    while (slogans.length < n) {
+      // Erste Zeile bevorzugt aus der Branche, Rest aus dem ganzen Pool.
+      let tpl = cat && slogans.length === 0 ? draw(cat.templates) : null;
+      if (!tpl) tpl = draw(pool);
+      if (!tpl) break;
+      slogans.push(fill(tpl));
     }
-    return out;
+    return { category: cat ? cat.label : null, slogans };
   },
 };
 
