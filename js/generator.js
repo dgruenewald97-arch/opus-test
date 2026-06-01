@@ -19,7 +19,11 @@ export function initGenerator({ SLOGAN, reducedMotion }) {
       ton = btn.getAttribute("data-ton") || "frech";
       tonesEl
         .querySelectorAll(".slogan__tone")
-        .forEach((el) => el.classList.toggle("is-active", el === btn));
+        .forEach((el) => {
+          const on = el === btn;
+          el.classList.toggle("is-active", on);
+          el.setAttribute("aria-pressed", on ? "true" : "false");
+        });
     });
   });
 

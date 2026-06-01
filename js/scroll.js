@@ -41,12 +41,13 @@ export function initScroll({ reducedMotion, gsap, ScrollTrigger, Lenis }) {
 }
 
 // Shared smooth-scroll helper used by the guide.
-export function scrollToEl(el) {
+// reducedMotion=true springt ohne Animation (respektiert prefers-reduced-motion).
+export function scrollToEl(el, reducedMotion = false) {
   if (!el) return;
   if (lenisInstance) {
-    lenisInstance.scrollTo(el, { offset: -80, duration: 1.0 });
+    lenisInstance.scrollTo(el, { offset: -80, duration: reducedMotion ? 0 : 1.0 });
   } else {
     const y = el.getBoundingClientRect().top + window.scrollY - 80;
-    window.scrollTo({ top: y, behavior: "smooth" });
+    window.scrollTo({ top: y, behavior: reducedMotion ? "auto" : "smooth" });
   }
 }

@@ -10,3 +10,10 @@ a { color: inherit; text-decoration: none; }
 ul, ol { list-style: none; padding: 0; }
 h1, h2, h3, h4, p { overflow-wrap: break-word; }
 :focus-visible { outline: 4px solid var(--electric); outline-offset: 3px; }
+/* Fokus-Indikator braucht 3:1 (WCAG 1.4.11) — auf dunklen Sektionen ist Electric zu schwach,
+   daher dort Acid (hoher Kontrast auf --ink). */
+.contact :focus-visible,
+.config :focus-visible,
+.cta-band :focus-visible,
+.footer :focus-visible,
+.manifest :focus-visible { outline-color: var(--acid); }

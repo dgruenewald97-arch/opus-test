@@ -76,6 +76,8 @@
 .guide__btn:active { transform: translate(3px, 3px); }
 .guide__btn--ghost { background: transparent; }
 .guide__btn--primary { background: var(--electric); color: var(--paper); }
+/* Electric-Fokusring wäre auf Electric-BG unsichtbar (1:1) — Acid sticht heraus. */
+.guide__btn--primary:focus-visible { outline-color: var(--acid); }
 
 /* Fake-KI „denkt"-Zustand */
 .guide__text.is-thinking {

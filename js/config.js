@@ -152,7 +152,7 @@ export const QUIPS = {
   pakete: ["Drei Stufen Lärm. Such dir was aus.", "Vom Knall bis Vollgas."],
   konfigurator: "Zwei Klicks zur Empfehlung.",
   slogan: ["Tipp deine Marke ein. Ich mach Krach draus.", "Gratis-Slogans, frisch aus der Maschine."],
-  crew: ["Sieht harmlos aus. Ist es nicht.", "Sieben Köpfe, ein Krawall."],
+  crew: ["Sieht harmlos aus. Ist es nicht.", "Vier Köpfe, ein Krawall."],
   stimmen: "Hör auf die, nicht auf uns.",
   journal: "Frischer Lärm zum Nachlesen.",
   kontakt: ["Na los, trau dich.", "Der Knopf beißt nicht. Wir schon."],

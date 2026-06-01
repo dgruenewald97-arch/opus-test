@@ -38,7 +38,11 @@ export function initKonfigurator({ KONFIGURATOR }) {
       // toggle active state within this question group only
       form
         .querySelectorAll(`.config__opt[data-config-q="${q}"]`)
-        .forEach((el) => el.classList.toggle("is-active", el === btn));
+        .forEach((el) => {
+          const on = el === btn;
+          el.classList.toggle("is-active", on);
+          el.setAttribute("aria-pressed", on ? "true" : "false");
+        });
       render();
     });
   });

@@ -102,7 +102,7 @@ export function initGuide({ reducedMotion }) {
     const t = BRUMMER.nudge?.go && document.querySelector(BRUMMER.nudge.go);
     minimize();
     if (t) {
-      scrollToEl(t);
+      scrollToEl(t, reducedMotion);
       clearHighlight();
       t.classList.add("guide-highlight");
       state.lastHighlight = t;
@@ -133,7 +133,7 @@ export function initGuide({ reducedMotion }) {
     clearHighlight();
     const target = document.querySelector(step.selector);
     if (target) {
-      scrollToEl(target);
+      scrollToEl(target, reducedMotion);
       target.classList.add("guide-highlight");
       state.lastHighlight = target;
     }
@@ -194,7 +194,7 @@ export function initGuide({ reducedMotion }) {
       const target = item.go && document.querySelector(item.go);
       if (target) {
         clearHighlight();
-        scrollToEl(target);
+        scrollToEl(target, reducedMotion);
         target.classList.add("guide-highlight");
         state.lastHighlight = target;
       }

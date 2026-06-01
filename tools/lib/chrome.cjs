@@ -119,7 +119,7 @@ function head(opts) {
   <meta name="description" content="${opts.desc}" />
   <meta property="og:title" content="${opts.ogTitle} | GRELLWERK" />
   <meta property="og:description" content="${opts.ogDesc}" />
-  <meta property="og:image" content="assets/og-image.svg" />
+  <meta property="og:image" content="${CANON_BASE}/assets/og-image.svg" />
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
   <link rel="canonical" href="${CANON_BASE}/${opts.slug}.html" />
 

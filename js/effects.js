@@ -12,6 +12,7 @@ export function initNav() {
   const setOpen = (open) => {
     nav.setAttribute("data-open", open ? "true" : "false");
     toggle.setAttribute("aria-expanded", open ? "true" : "false");
+    toggle.setAttribute("aria-label", open ? "Menü schließen" : "Menü öffnen");
   };
   setOpen(false);
 

@@ -51,7 +51,7 @@ function bodyHtml(blocks) {
     }
   };
   for (const b of blocks) {
-    if (b.h) buf.push(`          <h3>${b.h}</h3>`);
+    if (b.h) buf.push(`          <h2>${b.h}</h2>`);
     else if (b.p) buf.push(`          <p>${b.p}</p>`);
     else if (b.ul) buf.push(`          <ul>\n${b.ul.map((li) => `            <li>${li}</li>`).join("\n")}\n          </ul>`);
     else if (b.fig) { flush(); out.push(figureHtml(b.fig)); }

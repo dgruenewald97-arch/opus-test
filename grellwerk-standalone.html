@@ -7,7 +7,7 @@
   <meta name="description" content="GRELLWERK ist die Anti-Agentur für Performance, Branding und Kampagnen, die anecken. Lärm, der verkauft." />
   <meta property="og:title" content="GRELLWERK — Lärm, der verkauft." />
   <meta property="og:description" content="Werbe- & Performance-Agentur. Wir designen den Krach." />
-  <meta property="og:image" content="assets/og-image.svg" />
+  <meta property="og:image" content="https://dgruenewald97-arch.github.io/opus-test/assets/og-image.svg" />
   <link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+CiAgPHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiBmaWxsPSIjMEEwQTBBIi8+CiAgPHJlY3QgeD0iNiIgeT0iNiIgd2lkdGg9IjUyIiBoZWlnaHQ9IjUyIiBmaWxsPSIjRDZGRjNCIi8+CiAgPHRleHQgeD0iMzIiIHk9IjQ2IiBmb250LWZhbWlseT0iSW1wYWN0LCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjQ0IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjMEEwQTBBIj5HPC90ZXh0Pgo8L3N2Zz4K" type="image/svg+xml" />
   <link rel="canonical" href="https://dgruenewald97-arch.github.io/opus-test/" />
 
@@ -30,6 +30,13 @@ a { color: inherit; text-decoration: none; }
 ul, ol { list-style: none; padding: 0; }
 h1, h2, h3, h4, p { overflow-wrap: break-word; }
 :focus-visible { outline: 4px solid var(--electric); outline-offset: 3px; }
+/* Fokus-Indikator braucht 3:1 (WCAG 1.4.11) — auf dunklen Sektionen ist Electric zu schwach,
+   daher dort Acid (hoher Kontrast auf --ink). */
+.contact :focus-visible,
+.config :focus-visible,
+.cta-band :focus-visible,
+.footer :focus-visible,
+.manifest :focus-visible { outline-color: var(--acid); }
 
 /* GRELLWERK — design tokens */
 :root {
@@ -1141,7 +1148,8 @@ a.tag:hover { background: var(--ink); color: var(--acid); }
 /* Readable prose column (case story + article body) */
 .prose { max-width: 68ch; margin-top: var(--gap); }
 .prose p { font-size: var(--step-0); margin-bottom: 1.1em; }
-.prose h3 { margin: 1.6em 0 0.6em; }
+/* Artikel-Abschnitte sind <h2> (saubere h1→h2-Hierarchie); Größe bleibt wie zuvor. */
+.prose h2, .prose h3 { font-size: var(--step-1); font-weight: 700; margin: 1.6em 0 0.6em; }
 .prose ul { list-style: none; display: grid; gap: 0.6rem; margin: 0.4rem 0 1.2em; }
 .prose ul li { font-family: var(--font-mono); font-size: var(--step--1); padding-left: 1.4em; position: relative; }
 .prose ul li::before { content: "→"; position: absolute; left: 0; color: var(--shock); }
@@ -1390,6 +1398,8 @@ a.case:focus-visible, a.post:focus-visible { outline: 4px solid var(--electric);
 .guide__btn:active { transform: translate(3px, 3px); }
 .guide__btn--ghost { background: transparent; }
 .guide__btn--primary { background: var(--electric); color: var(--paper); }
+/* Electric-Fokusring wäre auf Electric-BG unsichtbar (1:1) — Acid sticht heraus. */
+.guide__btn--primary:focus-visible { outline-color: var(--acid); }
 
 /* Fake-KI „denkt"-Zustand */
 .guide__text.is-thinking {
@@ -1902,25 +1912,25 @@ a.case:focus-visible, a.post:focus-visible { outline: 4px solid var(--electric);
             <fieldset class="config__group">
               <legend>Was willst du erreichen?</legend>
               <div class="config__opts">
-                <button type="button" class="config__opt" data-config-q="ziel" data-config-v="awareness">Bekannter werden</button>
-                <button type="button" class="config__opt" data-config-q="ziel" data-config-v="sales">Mehr verkaufen</button>
-                <button type="button" class="config__opt" data-config-q="ziel" data-config-v="launch">Etwas launchen</button>
+                <button type="button" aria-pressed="false" class="config__opt" data-config-q="ziel" data-config-v="awareness">Bekannter werden</button>
+                <button type="button" aria-pressed="false" class="config__opt" data-config-q="ziel" data-config-v="sales">Mehr verkaufen</button>
+                <button type="button" aria-pressed="false" class="config__opt" data-config-q="ziel" data-config-v="launch">Etwas launchen</button>
               </div>
             </fieldset>
             <fieldset class="config__group">
               <legend>Wo steht deine Marke?</legend>
               <div class="config__opts">
-                <button type="button" class="config__opt" data-config-q="phase" data-config-v="start">Frisch gestartet</button>
-                <button type="button" class="config__opt" data-config-q="phase" data-config-v="wachsen">Am Wachsen</button>
-                <button type="button" class="config__opt" data-config-q="phase" data-config-v="etabliert">Etabliert</button>
+                <button type="button" aria-pressed="false" class="config__opt" data-config-q="phase" data-config-v="start">Frisch gestartet</button>
+                <button type="button" aria-pressed="false" class="config__opt" data-config-q="phase" data-config-v="wachsen">Am Wachsen</button>
+                <button type="button" aria-pressed="false" class="config__opt" data-config-q="phase" data-config-v="etabliert">Etabliert</button>
               </div>
             </fieldset>
             <fieldset class="config__group">
               <legend>Wie laut soll's werden?</legend>
               <div class="config__opts">
-                <button type="button" class="config__opt" data-config-q="tempo" data-config-v="test">Erstmal testen</button>
-                <button type="button" class="config__opt" data-config-q="tempo" data-config-v="dauer">Dauerhaft dranbleiben</button>
-                <button type="button" class="config__opt" data-config-q="tempo" data-config-v="vollgas">Vollgas, alles</button>
+                <button type="button" aria-pressed="false" class="config__opt" data-config-q="tempo" data-config-v="test">Erstmal testen</button>
+                <button type="button" aria-pressed="false" class="config__opt" data-config-q="tempo" data-config-v="dauer">Dauerhaft dranbleiben</button>
+                <button type="button" aria-pressed="false" class="config__opt" data-config-q="tempo" data-config-v="vollgas">Vollgas, alles</button>
               </div>
             </fieldset>
           </form>
@@ -1952,10 +1962,10 @@ a.case:focus-visible, a.post:focus-visible { outline: 4px solid var(--electric);
               <input type="text" id="slogan-branche" name="branche" placeholder="z. B. Bio-Kaffee, Fitness-App, Krypto" maxlength="40" autocomplete="off" />
             </label>
             <div class="slogan__tones" id="slogan-tones" role="group" aria-label="Tonlage wählen">
-              <button type="button" class="slogan__tone is-active" data-ton="frech">Frech</button>
-              <button type="button" class="slogan__tone" data-ton="edgy">Edgy</button>
-              <button type="button" class="slogan__tone" data-ton="premium">Premium</button>
-              <button type="button" class="slogan__tone" data-ton="rebell">Rebellisch</button>
+              <button type="button" aria-pressed="true" class="slogan__tone is-active" data-ton="frech">Frech</button>
+              <button type="button" aria-pressed="false" class="slogan__tone" data-ton="edgy">Edgy</button>
+              <button type="button" aria-pressed="false" class="slogan__tone" data-ton="premium">Premium</button>
+              <button type="button" aria-pressed="false" class="slogan__tone" data-ton="rebell">Rebellisch</button>
             </div>
             <button type="submit" class="btn btn--big slogan__go" id="slogan-go">Krach erzeugen ⚡</button>
           </form>
@@ -2312,7 +2322,7 @@ const QUIPS = {
   pakete: ["Drei Stufen Lärm. Such dir was aus.", "Vom Knall bis Vollgas."],
   konfigurator: "Zwei Klicks zur Empfehlung.",
   slogan: ["Tipp deine Marke ein. Ich mach Krach draus.", "Gratis-Slogans, frisch aus der Maschine."],
-  crew: ["Sieht harmlos aus. Ist es nicht.", "Sieben Köpfe, ein Krawall."],
+  crew: ["Sieht harmlos aus. Ist es nicht.", "Vier Köpfe, ein Krawall."],
   stimmen: "Hör auf die, nicht auf uns.",
   journal: "Frischer Lärm zum Nachlesen.",
   kontakt: ["Na los, trau dich.", "Der Knopf beißt nicht. Wir schon."],
@@ -2641,6 +2651,7 @@ function initNav() {
   const setOpen = (open) => {
     nav.setAttribute("data-open", open ? "true" : "false");
     toggle.setAttribute("aria-expanded", open ? "true" : "false");
+    toggle.setAttribute("aria-label", open ? "Menü schließen" : "Menü öffnen");
   };
   setOpen(false);
 
@@ -2806,7 +2817,11 @@ function initKonfigurator({ KONFIGURATOR }) {
       // toggle active state within this question group only
       form
         .querySelectorAll(`.config__opt[data-config-q="${q}"]`)
-        .forEach((el) => el.classList.toggle("is-active", el === btn));
+        .forEach((el) => {
+          const on = el === btn;
+          el.classList.toggle("is-active", on);
+          el.setAttribute("aria-pressed", on ? "true" : "false");
+        });
       render();
     });
   });
@@ -2834,7 +2849,11 @@ function initGenerator({ SLOGAN, reducedMotion }) {
       ton = btn.getAttribute("data-ton") || "frech";
       tonesEl
         .querySelectorAll(".slogan__tone")
-        .forEach((el) => el.classList.toggle("is-active", el === btn));
+        .forEach((el) => {
+          const on = el === btn;
+          el.classList.toggle("is-active", on);
+          el.setAttribute("aria-pressed", on ? "true" : "false");
+        });
     });
   });
 
@@ -3034,13 +3053,14 @@ function initScroll({ reducedMotion, gsap, ScrollTrigger, Lenis }) {
 }
 
 // Shared smooth-scroll helper used by the guide.
-function scrollToEl(el) {
+// reducedMotion=true springt ohne Animation (respektiert prefers-reduced-motion).
+function scrollToEl(el, reducedMotion = false) {
   if (!el) return;
   if (lenisInstance) {
-    lenisInstance.scrollTo(el, { offset: -80, duration: 1.0 });
+    lenisInstance.scrollTo(el, { offset: -80, duration: reducedMotion ? 0 : 1.0 });
   } else {
     const y = el.getBoundingClientRect().top + window.scrollY - 80;
-    window.scrollTo({ top: y, behavior: "smooth" });
+    window.scrollTo({ top: y, behavior: reducedMotion ? "auto" : "smooth" });
   }
 }
 
@@ -3146,7 +3166,7 @@ function initGuide({ reducedMotion }) {
     const t = BRUMMER.nudge?.go && document.querySelector(BRUMMER.nudge.go);
     minimize();
     if (t) {
-      scrollToEl(t);
+      scrollToEl(t, reducedMotion);
       clearHighlight();
       t.classList.add("guide-highlight");
       state.lastHighlight = t;
@@ -3177,7 +3197,7 @@ function initGuide({ reducedMotion }) {
     clearHighlight();
     const target = document.querySelector(step.selector);
     if (target) {
-      scrollToEl(target);
+      scrollToEl(target, reducedMotion);
       target.classList.add("guide-highlight");
       state.lastHighlight = target;
     }
@@ -3238,7 +3258,7 @@ function initGuide({ reducedMotion }) {
       const target = item.go && document.querySelector(item.go);
       if (target) {
         clearHighlight();
-        scrollToEl(target);
+        scrollToEl(target, reducedMotion);
         target.classList.add("guide-highlight");
         state.lastHighlight = target;
       }
