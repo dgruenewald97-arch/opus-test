@@ -26,6 +26,23 @@ mitpflegen. Schneller Einstieg in jeder Session: **`/help-grellwerk`**.
 
 Slash-Command für den ganzen Ablauf: **`/neuer-artikel <thema>`**.
 
+### Die Crew (wer macht was)
+
+| Agent | Job | Tools |
+|---|---|---|
+| `projektmanager` | schlanker Orchestrator: zerlegt die Aufgabe, wählt Agenten, gibt Ein-Zeilen-Aufträge (kein Briefing-Roman) | Read, Bash, Grep |
+| `researcher` | Web-Recherche (Fakten+Quellen, Gegen-These, Rechenbeispiel, Framework, Checkliste); Fan-out: 2–4 parallel | WebSearch, WebFetch, Read |
+| `builder` | Journal-Artikel über den Generator bauen | Read, Write, Edit, Bash, Grep |
+| `seiten-builder` | neue Unterseiten (case-*, leistung-*, statisch) über `chrome.cjs`-Bausteine | Read, Write, Edit, Bash, Grep |
+| `lektor` | Ton/brutalistischer Voice, deutsche Typografie, `config.js`-Konsistenz | Read, Grep, Edit |
+| `seo-stratege` | Titel/Meta/OG/Canonical, interne Verlinkung, Sitemap-Vollständigkeit | Read, Bash, Grep |
+| `a11y-checker` | Tastatur/ARIA, `prefers-reduced-motion`, Fokus, Alt-Texte, Token-Kontraste | Read, Grep, Bash |
+| `reviewer` | Diff gegen Konventionen + Gate, letzte Instanz vor Commit | Read, Bash, Grep |
+
+Faustregel: **bauen** (builder/seiten-builder) → **prüfen** (lektor/seo-stratege/a11y-checker,
+parallel, da unabhängig) → **reviewer + Gate**. Der `projektmanager` orchestriert das, wenn eine
+Aufgabe mehrere Gewerke berührt; bei einem klaren Einzeljob direkt den passenden Agenten ziehen.
+
 ## Mehrwert-Anatomie eines Artikels
 
 Ein guter Journal-Artikel ist mehr als Text. Reihenfolge im Body:

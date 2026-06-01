@@ -23,8 +23,13 @@ Gib dem Nutzer eine kompakte Übersicht des GRELLWERK-AI-Systems aus. Lies bei B
 - `tools/content/articles/*.cjs` — je Artikel eine Daten-Datei (`_example.cjs` = Vorlage).
 
 ## Agenten (`.claude/agents/`)
+- **projektmanager** — schlanker Orchestrator: zerlegt die Aufgabe, wählt Agenten, gibt kurze Aufträge (kein Briefing-Roman).
 - **researcher** — Web-Recherche (Fakten+Quellen, Gegen-These, Rechenbeispiel, Framework, Checkliste).
-- **builder** — baut Seiten über den Generator (nie HTML klonen).
+- **builder** — baut Journal-Artikel über den Generator (nie HTML klonen).
+- **seiten-builder** — baut neue Unterseiten (case-*, leistung-*, statisch) über chrome.cjs-Bausteine.
+- **lektor** — Ton/brutalistischer Voice, deutsche Typografie, config.js-Konsistenz.
+- **seo-stratege** — Titel/Meta/OG/Canonical, interne Verlinkung, Sitemap-Vollständigkeit.
+- **a11y-checker** — Tastatur/ARIA, prefers-reduced-motion, Fokus, Alt-Texte, Token-Kontraste.
 - **reviewer** — prüft Diff gegen Konventionen + Verify-Gate.
 
 ## Playbook

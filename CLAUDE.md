@@ -68,7 +68,10 @@ Codifizierter Ablauf für KI-Sessions → **`/help-grellwerk`** (listet alles), 
   tote Links, Pflicht-Meta, Chrome-Drift, Journal/Sitemap-Konsistenz, Build. Läuft auch in CI
   (`.github/workflows/verify.yml`) + als Stop-Hook bei HTML/JS/CSS-Änderungen.
 - **Slash-Commands:** `/neuer-artikel`, `/seite-generieren`, `/verify`, `/help-grellwerk`.
-- **Agenten:** `researcher` (Recherche), `builder` (Bau), `reviewer` (Diff+Gate).
+- **Agenten:** `projektmanager` (schlanker Orchestrator), `researcher` (Recherche),
+  `builder` (Journal-Bau), `seiten-builder` (Unterseiten via chrome.cjs), `lektor` (Ton/Typo/
+  config.js), `seo-stratege` (Meta/Sitemap/Verlinkung), `a11y-checker` (ARIA/Motion/Kontrast),
+  `reviewer` (Diff+Gate).
 
 ## Befehle
 - Dev: `python3 -m http.server 8000` (Root) → http://localhost:8000
