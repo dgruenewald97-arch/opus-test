@@ -58,16 +58,30 @@ Kurz-Doku für die Arbeit in diesem Repo. **Knapp halten, bei Änderungen mitpfl
   zur Concat-Liste hinzufügen, sonst fehlt es im Standalone-Build.
 - Graceful Degradation (System-Fonts, IO-Fallbacks) + `prefers-reduced-motion` respektieren.
 
+## AI-Workflow & Tools
+Codifizierter Ablauf für KI-Sessions → **`/help-grellwerk`** (listet alles), Details in
+[`docs/AI-WORKFLOW.md`](docs/AI-WORKFLOW.md). Kurz:
+- **Generator statt Klonen:** neue Journal-Artikel als Daten-Datei in
+  `tools/content/articles/<slug>.cjs` (Vorlage `_example.cjs`), Diagramm aus
+  `tools/lib/figures.cjs`, Chrome aus `tools/lib/chrome.cjs` → `node tools/generate.cjs`.
+- **Verify-Gate (Pflicht vor Push):** `node tools/verify.cjs` prüft Meta-Attribute, rohe `<`,
+  tote Links, Pflicht-Meta, Chrome-Drift, Journal/Sitemap-Konsistenz, Build. Läuft auch in CI
+  (`.github/workflows/verify.yml`) + als Stop-Hook bei HTML/JS/CSS-Änderungen.
+- **Slash-Commands:** `/neuer-artikel`, `/seite-generieren`, `/verify`, `/help-grellwerk`.
+- **Agenten:** `researcher` (Recherche), `builder` (Bau), `reviewer` (Diff+Gate).
+
 ## Befehle
 - Dev: `python3 -m http.server 8000` (Root) → http://localhost:8000
 - Standalone-Build: `node build-standalone.cjs` → `grellwerk-standalone.html`
+- Verify-Gate: `node tools/verify.cjs` · Artikel generieren: `node tools/generate.cjs [slug…]`
 - Salon: in `studio-seide/`: `npm run dev` / `npm run build`
 - JS-Syntaxcheck: `node --check js/<datei>.js`
 
 ## Verifikation
 Hier ist **kein Headless-Browser** verfügbar (Chromium-Download durch Netz-Allowlist
 geblockt). Visuelle Kontrolle läuft über den User: Standalone-Datei öffnen oder
-Pages-Preview. Vor dem Pushen: `node --check` + `node build-standalone.cjs`.
+Pages-Preview. Vor dem Pushen: **`node tools/verify.cjs`** (deckt `node --check` +
+`build-standalone` mit ab).
 
 ## Deploy
 GitHub Pages baut **nur aus `main`** (`.github/workflows/deploy-pages.yml`). GRELLWERK im

@@ -1,0 +1,24 @@
+name: Verify GRELLWERK
+
+# Hartes Gate: läuft auf jeden Push (außer main, das deployt nur) und auf jede PR.
+# Schlägt verify.cjs fehl, wird die PR rot — die wiederkehrenden Bugs (kaputte Meta,
+# rohe <, tote Links, Chrome-Drift, Journal/Sitemap-Lücken) kommen so nicht nach main.
+on:
+  push:
+    branches-ignore: [main]
+  pull_request:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Verify-Gate
+        run: node tools/verify.cjs

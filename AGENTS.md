@@ -15,6 +15,19 @@ Maskottchen **BRUMMER** führt als Onboarding-Guide durch die Seite. Tagline:
 **`studio-seide/`** = eigenständiges Nebenprojekt (Vite + React, Friseur-Salon).
 Nicht anfassen außer ausdrücklich gewünscht. Hat eigene Konventionen.
 
+## 1b. AI-Workflow & Tools (codifiziert)
+Wie man mit KI hier das beste Ergebnis erzielt, ist als ausführbares System hinterlegt —
+Einstieg je Session: **`/help-grellwerk`**, vollständig in [`docs/AI-WORKFLOW.md`](docs/AI-WORKFLOW.md).
+- **`.claude/`**: Agenten (`researcher`/`builder`/`reviewer`), Commands (`/neuer-artikel`,
+  `/seite-generieren`, `/verify`, `/help-grellwerk`), Stop-Hook fürs Gate.
+- **`tools/`**: `verify.cjs` (das Gate), `generate.cjs` (Artikel-Generator),
+  `lib/chrome.cjs` (zentrale nav/footer/brummer/head), `lib/figures.cjs` (Diagramm-Bibliothek:
+  matrix/pyramid/layers/hbars/stackBar/funnel/triangle/curve), `content/articles/*.cjs` (Daten).
+- **Goldene Regel:** Journal-Artikel **generieren statt klonen** (Daten-Datei →
+  `node tools/generate.cjs`), danach **`node tools/verify.cjs`** (Pflicht, auch CI:
+  `.github/workflows/verify.yml`). Mehrwert-Anatomie: Hook → Framework-Diagramm →
+  Rechenbeispiel → Checkliste → Gegen-These → Quellen.
+
 ## 2. Verzeichnis-Struktur
 ```
 index.html              Startseite (Sektionen + BRUMMER-Markup)
