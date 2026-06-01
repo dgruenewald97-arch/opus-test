@@ -4,9 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Warum dein ROAS lügt | Lärm-Journal | GRELLWERK</title>
-  <meta name="description" content="Last-Click ist tot. Wie GRELLWERK Kampagnen über inkrementellen Lift statt Vanity-Metriken steuert — und warum dein ROAS dich anlügt." />
+  <meta name="description" content="Last-Click ist tot. Wie GRELLWERK Kampagnen über inkrementellen Lift statt Vanity-Metriken steuert — mit gemeldetem-vs-echtem-ROAS-Vergleich und Holdout-Rechnung." />
   <meta property="og:title" content="Warum dein ROAS lügt | GRELLWERK" />
-  <meta property="og:description" content="Last-Click ist tot. Steuere über inkrementellen Lift." />
+  <meta property="og:description" content="Ein ROAS ohne Inkrementalität ist eine Vanity-Metrik im Anzug." />
   <meta property="og:image" content="assets/og-image.svg" />
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
   <link rel="canonical" href="https://dgruenewald97-arch.github.io/opus-test/journal-roas-luegt.html" />
@@ -68,10 +68,12 @@
         </nav>
         <span class="eyebrow">Performance</span>
         <h1 class="page-hero__headline">Warum dein ROAS lügt</h1>
+        <p class="page-hero__lead">Dein Werbekonto meldet 6,0 ROAS und alle klopfen sich auf die Schulter. Das Problem: Dieser ROAS misst meistens nicht, was du denkst. Er misst, wem die Plattform den letzten Klick zuschreibt — fast nie dasselbe wie der zusätzliche Umsatz.</p>
         <div class="article__meta">
           <span class="tag">Performance</span>
           <time datetime="2026-04-18">18. Apr 2026</time>
           <span>· 4 Min Lesezeit</span>
+          <span>· Selin Akar · Head of Performance</span>
         </div>
       </div>
     </section>
@@ -80,38 +82,63 @@
     <section class="section" id="article" data-guide-step="article">
       <div class="container">
         <div class="prose" data-reveal>
-          <p>
-            Dein Werbekonto meldet 6,0 ROAS und alle klopfen sich auf die Schulter.
-            Das Problem: Dieser ROAS misst meistens nicht, was du denkst. Er misst, wem
-            die Plattform den letzten Klick zuschreibt — und das ist fast nie dasselbe
-            wie <strong>der zusätzliche Umsatz, den die Werbung wirklich erzeugt hat</strong>.
-          </p>
+          <p>Dein Werbekonto meldet 6,0 ROAS und alle klopfen sich auf die Schulter. Das Problem: Dieser ROAS misst meistens nicht, was du denkst. Er misst, wem die Plattform den letzten Klick zuschreibt — und das ist fast nie dasselbe wie der zusätzliche Umsatz, den die Werbung wirklich erzeugt hat.</p>
           <h3>Last-Click belohnt das Offensichtliche</h3>
-          <p>
-            Branded Search, Retargeting, Warenkorb-Abbrecher: Diese Kampagnen ernten
-            Käufe, die ohnehin passiert wären. Sie sehen großartig aus und skalieren
-            trotzdem nichts. Wer sein Budget nach plattform-gemeldetem ROAS verteilt,
-            füttert genau die Kanäle, die am wenigsten Neues bringen.
-          </p>
+          <p>Branded Search, Retargeting, Warenkorb-Abbrecher: Diese Kampagnen ernten Käufe, die ohnehin passiert wären. Sie sehen großartig aus und skalieren trotzdem nichts. Wer sein Budget nach plattform-gemeldetem ROAS verteilt, füttert genau die Kanäle, die am wenigsten Neues bringen.</p>
+          <h3>Das Modell: gemeldet vs. echt</h3>
+        </div>
+        <figure class="figure" data-reveal>
+          <div class="figure__frame">
+            <svg viewBox="0 0 460 300" role="img" aria-label="Gemeldeter ROAS gegen echten inkrementellen ROAS">
+            <rect width="460" height="300" fill="#F2F0E9"/>
+            <line x1="40" y1="260" x2="440" y2="260" stroke="#0A0A0A" stroke-width="3"/>
+            <rect x="60" y="60" width="70" height="200" fill="#FF2E63" stroke="#0A0A0A" stroke-width="4"/>
+            <text text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="700" fill="#0A0A0A"><tspan x="95" y="50.333333333333336">8x</tspan></text>
+            <text text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9.5" font-weight="400" fill="#0A0A0A"><tspan x="95" y="272.9166666666667">Brand</tspan><tspan x="95" y="285.4166666666667">Search</tspan></text>
+            <rect x="148" y="235" width="70" height="25" fill="#D6FF3B" stroke="#0A0A0A" stroke-width="4"/>
+            <text text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="700" fill="#0A0A0A"><tspan x="183" y="225.33333333333334">1x</tspan></text>
+            <text text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9.5" font-weight="400" fill="#0A0A0A"><tspan x="183" y="272.9166666666667">Brand</tspan><tspan x="183" y="285.4166666666667">echt</tspan></text>
+            <rect x="236" y="185" width="70" height="75" fill="#FF6B00" stroke="#0A0A0A" stroke-width="4"/>
+            <text text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="700" fill="#0A0A0A"><tspan x="271" y="175.33333333333334">3x</tspan></text>
+            <text text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9.5" font-weight="400" fill="#0A0A0A"><tspan x="271" y="272.9166666666667">Prospect.</tspan><tspan x="271" y="285.4166666666667">gemeldet</tspan></text>
+            <rect x="324" y="185" width="70" height="75" fill="#D6FF3B" stroke="#0A0A0A" stroke-width="4"/>
+            <text text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="700" fill="#0A0A0A"><tspan x="359" y="175.33333333333334">3x</tspan></text>
+            <text text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9.5" font-weight="400" fill="#0A0A0A"><tspan x="359" y="272.9166666666667">Prospect.</tspan><tspan x="359" y="285.4166666666667">echt</tspan></text>
+            </svg>
+          </div>
+          <figcaption class="figure__cap"><b>Wo der ROAS lügt.</b> Brand Search meldet traumhafte 8x — der echte inkrementelle Wert liegt nahe 1x (die Leute hätten ohnehin gekauft). Bei echtem Neukunden-Prospecting sind gemeldet und echt fast deckungsgleich. Genau die unscheinbaren Kanäle bringen das Neue.</figcaption>
+        </figure>
+        <div class="prose" data-reveal>
           <h3>Steuere über inkrementellen Lift</h3>
-          <p>
-            Die Frage ist nicht „Welcher Kanal bekommt die Conversion zugeschrieben?",
-            sondern „Was wäre ohne diese Ausgabe passiert?". Antworten liefern keine
-            Dashboards, sondern Tests:
-          </p>
+          <p>Die Frage ist nicht „Welcher Kanal bekommt die Conversion zugeschrieben?", sondern „Was wäre ohne diese Ausgabe passiert?". Antworten liefern keine Dashboards, sondern Tests:</p>
           <ul>
             <li>Geo-Holdouts: Regionen mit und ohne Kampagne vergleichen</li>
             <li>Conversion-Lift-Studien direkt in den Ad-Plattformen</li>
             <li>Saubere Baselines vor jedem Skalierungs-Schritt</li>
           </ul>
-          <p>
-            Klingt nach mehr Arbeit. Ist es auch. Aber es ist der Unterschied zwischen
-            einem ROAS, der gut <em>aussieht</em>, und einem, der gut <em>ist</em>.
-          </p>
+        </div>
+        <div class="calc" data-reveal>
+          <span class="calc__label">Holdout-Rechnung (illustrativ)</span>
+          <p>Brand Search meldet 8,0 ROAS auf 10.000€ → „80.000€ Umsatz".</p>
+          <p>Geo-Holdout zeigt: echter inkrementeller ROAS ~1,0 → real nur 10.000€ zusätzlich.</p>
+          <p>70.000€ wären auch ohne die Ads gekommen.</p>
+          <p class="calc__result">Budget umschichten kostet fast keinen echten Umsatz</p>
+        </div>
+        <div class="prose" data-reveal>
+          <h3>Was du Montag tust</h3>
+        </div>
+        <ul class="checklist" data-reveal>
+          <li>Setz EINEN Geo-Holdout auf deinem schönsten Kanal (meist Brand Search) auf — 4 Wochen, Region mit/ohne.</li>
+          <li>Stell gemeldeten ROAS und inkrementellen ROAS nebeneinander — die Lücke ist deine Selbsttäuschung.</li>
+          <li>Schichte einen Teil des Brand-Search-/Retargeting-Budgets in Prospecting und miss den echten Lift.</li>
+          <li>Mach saubere Baselines zur Pflicht VOR jedem Skalieren — nicht danach.</li>
+        </ul>
+        <div class="prose" data-reveal>
+          <p>Klingt nach mehr Arbeit. Ist es auch. Aber es ist der Unterschied zwischen einem ROAS, der gut aussieht, und einem, der gut ist.</p>
         </div>
         <blockquote class="bigquote" data-reveal>
           <p>Ein ROAS ohne Inkrementalität ist eine Vanity-Metrik im Anzug.</p>
-          <footer>— Selin Akar, Head of Performance</footer>
+          <footer>— Selin Akar · Head of Performance</footer>
         </blockquote>
       </div>
     </section>

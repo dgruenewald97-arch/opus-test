@@ -4,9 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tracking nach dem Cookie-Tod | Lärm-Journal | GRELLWERK</title>
-  <meta name="description" content="Third-Party-Cookies sterben. Wie GRELLWERK mit First-Party-Daten, Server-Side-Tracking und Consent-Realismus weiter misst, was zählt — ohne Panik." />
+  <meta name="description" content="Third-Party-Cookies sterben. Wie GRELLWERK mit First-Party-Daten, Server-Side-Tracking und Consent-Realismus weiter misst — mit Daten-Schichten-Modell und Recovery-Rechnung." />
   <meta property="og:title" content="Tracking nach dem Cookie-Tod | GRELLWERK" />
-  <meta property="og:description" content="First-Party statt Panik. So misst du nach dem Cookie weiter." />
+  <meta property="og:description" content="Wer erst beim Cookie-Tod über First-Party-Daten nachdenkt, denkt drei Jahre zu spät." />
   <meta property="og:image" content="assets/og-image.svg" />
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
   <link rel="canonical" href="https://dgruenewald97-arch.github.io/opus-test/journal-cookie-tod.html" />
@@ -68,10 +68,12 @@
         </nav>
         <span class="eyebrow">Daten</span>
         <h1 class="page-hero__headline">Tracking nach dem Cookie-Tod</h1>
+        <p class="page-hero__lead">Der Third-Party-Cookie liegt im Sterben, und halb Marketing-Deutschland tut so, als wäre Messen vorbei. Ist es nicht. Vorbei ist die Bequemlichkeit, fremde Daten gratis mitzunehmen, ohne je eine eigene Beziehung zum Kunden aufzubauen.</p>
         <div class="article__meta">
           <span class="tag">Daten</span>
           <time datetime="2026-05-28">28. Mai 2026</time>
-          <span>· 4 Min Lesezeit</span>
+          <span>· 5 Min Lesezeit</span>
+          <span>· Selin Akar · Head of Performance</span>
         </div>
       </div>
     </section>
@@ -80,38 +82,58 @@
     <section class="section" id="article" data-guide-step="article">
       <div class="container">
         <div class="prose" data-reveal>
-          <p>
-            Der Third-Party-Cookie liegt im Sterben, und halb Marketing-Deutschland
-            tut so, als wäre Messen damit vorbei. Ist es nicht. Was vorbei ist, ist die
-            <strong>Bequemlichkeit</strong>, fremde Daten gratis mitzunehmen, ohne je
-            eine eigene Beziehung zum Kunden aufzubauen.
-          </p>
+          <p>Der Third-Party-Cookie liegt im Sterben, und halb Marketing-Deutschland tut so, als wäre Messen damit vorbei. Ist es nicht. Was vorbei ist, ist die Bequemlichkeit, fremde Daten gratis mitzunehmen, ohne je eine eigene Beziehung zum Kunden aufzubauen.</p>
           <h3>First-Party ist kein Plan B</h3>
-          <p>
-            Die Daten, die wirklich tragen, gehören dir: Käufe, Logins, Newsletter,
-            Support-Tickets, Loyalty. Wer diese Signale sauber sammelt und verknüpft,
-            misst nach dem Cookie genauer als die meisten je mit ihm gemessen haben —
-            weil First-Party-Daten näher am echten Verhalten sitzen als jedes Pixel.
-          </p>
+          <p>Die Daten, die wirklich tragen, gehören dir: Käufe, Logins, Newsletter, Support-Tickets, Loyalty. Wer diese Signale sauber sammelt und verknüpft, misst nach dem Cookie genauer als die meisten je mit ihm gemessen haben — weil First-Party-Daten näher am echten Verhalten sitzen als jedes Pixel.</p>
+          <h3>Das Modell: vom Browser-Pixel zur eigenen Infrastruktur</h3>
+        </div>
+        <figure class="figure" data-reveal>
+          <div class="figure__frame">
+            <svg viewBox="0 0 440 300" role="img" aria-label="Daten-Schichten nach dem Cookie">
+            <rect width="440" height="300" fill="#F2F0E9"/>
+            <polygon points="160,26 280,26 310,76 130,76" fill="#F2F0E9" stroke="#0A0A0A" stroke-width="4"/>
+            <text text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="700" fill="#0A0A0A"><tspan x="220" y="55">3rd-Party-Pixel (stirbt)</tspan></text>
+            <polygon points="130,81 310,81 340,131 100,131" fill="#F2F0E9" stroke="#0A0A0A" stroke-width="4"/>
+            <text text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="700" fill="#0A0A0A"><tspan x="220" y="110">Consent-Realismus + Modeling</tspan></text>
+            <polygon points="100,136 340,136 370,186 70,186" fill="#D6FF3B" stroke="#0A0A0A" stroke-width="4"/>
+            <text text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="700" fill="#0A0A0A"><tspan x="220" y="165">Server-Side-Tracking (sGTM/CAPI)</tspan></text>
+            <polygon points="70,191 370,191 400,241 40,241" fill="#D6FF3B" stroke="#0A0A0A" stroke-width="4"/>
+            <text text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="700" fill="#0A0A0A"><tspan x="220" y="220">First-Party: Käufe, Logins, Loyalty</tspan></text>
+            </svg>
+          </div>
+          <figcaption class="figure__cap"><b>Worauf du baust.</b> Unten = robust und dir gehörend, oben = fremd und bröckelnd. Die meisten haben jahrelang oben gemessen. Nach dem Cookie zählt, was unten steht.</figcaption>
+        </figure>
+        <div class="prose" data-reveal>
           <h3>Server-Side schlägt Browser</h3>
-          <p>
-            Tracking im Browser ist ein Minenfeld aus Ad-Blockern, ITP und Consent-Bannern.
-            Server-Side-Tagging holt die Messung dahin zurück, wo sie kontrollierbar ist:
-            auf deine Infrastruktur. Sauberer, robuster, DSGVO-erklärbar.
-          </p>
+          <p>Tracking im Browser ist ein Minenfeld aus Ad-Blockern, ITP und Consent-Bannern. Server-Side-Tagging holt die Messung dahin zurück, wo sie kontrollierbar ist: auf deine Infrastruktur. Sauberer, robuster, DSGVO-erklärbar.</p>
           <ul>
             <li>First-Party-Events serverseitig erheben statt im Browser einsammeln</li>
             <li>Conversions-API / serverseitige Schnittstellen statt nur Pixel</li>
             <li>Consent ehrlich behandeln — Modelling füllt nur die echten Lücken</li>
           </ul>
-          <p>
-            Das Cookie-Ende ist kein Mess-Problem. Es ist ein Filter: Es trennt Marken,
-            die ihre Kunden kennen, von denen, die sie nur <em>geliehen</em> hatten.
-          </p>
+        </div>
+        <div class="calc" data-reveal>
+          <span class="calc__label">Recovery-Rechnung (illustrativ)</span>
+          <p>100.000 Sessions/Monat · 2% CR · 80€ = 160.000€ Umsatz.</p>
+          <p>Browser-Tracking verliert ~20% der Conversions → 32.000€/Monat unsichtbar.</p>
+          <p>Server-Side + CAPI holt ~20% davon zurück (konservativ):</p>
+          <p class="calc__result">≈ 6.400€/Monat wieder messbar — sonst falsche Budgets</p>
+        </div>
+        <div class="prose" data-reveal>
+          <h3>Was du Montag tust</h3>
+        </div>
+        <ul class="checklist" data-reveal>
+          <li>Dunkelziffer beziffern: Welche Conversions fehlen im Pixel gegenüber den echten Backend-Bestellungen?</li>
+          <li>Server-Side-Container (sGTM auf eigener Subdomain) + Conversions-API aufsetzen.</li>
+          <li>Eine neue First-Party-Quelle bauen: Account im Checkout, Newsletter mit Mehrwert oder Loyalty.</li>
+          <li>Consent sauber defaulten (auf „denied") und Modeling nur für die echten Lücken nutzen.</li>
+        </ul>
+        <div class="prose" data-reveal>
+          <p>Das Cookie-Ende ist kein Mess-Problem. Es ist ein Filter: Es trennt Marken, die ihre Kunden kennen, von denen, die sie nur geliehen hatten.</p>
         </div>
         <blockquote class="bigquote" data-reveal>
           <p>Wer erst beim Cookie-Tod über First-Party-Daten nachdenkt, denkt drei Jahre zu spät.</p>
-          <footer>— Selin Akar, Head of Performance</footer>
+          <footer>— Selin Akar · Head of Performance</footer>
         </blockquote>
       </div>
     </section>
