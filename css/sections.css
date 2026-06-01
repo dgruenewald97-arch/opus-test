@@ -893,6 +893,63 @@
 .article__sources a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
 .article__sources a:hover { color: var(--shock); }
 
+/* Article figure: brutalist inline SVG diagram + caption (Mehrwert-Illustration) */
+.figure {
+  max-width: 68ch;
+  margin: clamp(2rem, 5vw, 3rem) 0;
+  border: var(--border) solid var(--ink);
+  box-shadow: var(--shadow-block);
+  background: var(--paper);
+}
+.figure__frame { padding: clamp(1rem, 3vw, 1.8rem); }
+.figure svg { display: block; width: 100%; height: auto; }
+.figure__cap {
+  border-top: var(--border) solid var(--ink);
+  padding: 0.7rem 1rem;
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+  background: var(--ink);
+  color: var(--paper);
+  line-height: 1.5;
+}
+.figure__cap b { color: var(--acid); font-weight: 700; }
+
+/* Worked-example / Rechenbeispiel callout */
+.calc {
+  max-width: 68ch;
+  margin: clamp(1.8rem, 4vw, 2.6rem) 0;
+  border: var(--border) solid var(--ink);
+  box-shadow: var(--shadow-block);
+  background: var(--acid);
+  color: var(--ink);
+  padding: clamp(1.1rem, 3vw, 1.7rem);
+}
+.calc__label {
+  font-family: var(--font-mono); font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.08em; font-size: var(--step--1);
+  display: inline-block; margin-bottom: 0.8rem;
+  background: var(--ink); color: var(--acid); padding: 0.2em 0.55em;
+}
+.calc p { font-family: var(--font-mono); font-size: var(--step--1); line-height: 1.65; margin-bottom: 0.5em; }
+.calc p:last-child { margin-bottom: 0; }
+.calc b, .calc strong { background: var(--paper); padding: 0 0.2em; }
+.calc__result {
+  font-family: var(--font-display) !important; text-transform: uppercase;
+  font-size: var(--step-1) !important; line-height: 1.05; margin-top: 0.7rem !important;
+}
+
+/* Action checklist (Was du Montag tust) — distinct from prose ul */
+.checklist { max-width: 68ch; margin: 1.4rem 0; list-style: none; display: grid; gap: 0.7rem; }
+.checklist li {
+  font-family: var(--font-mono); font-size: var(--step--1); line-height: 1.5;
+  padding: 0.7rem 0.9rem 0.7rem 2.6rem; position: relative;
+  border: 3px solid var(--ink); background: var(--paper);
+}
+.checklist li::before {
+  content: "☐"; position: absolute; left: 0.7rem; top: 0.55rem;
+  font-size: 1.3em; color: var(--shock);
+}
+
 /* A row of result metrics on the case page (clones the .stats look, light) */
 .result__grid {
   display: grid;
