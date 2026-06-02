@@ -51,10 +51,10 @@ module.exports = {
         label: "Recovery-Rechnung (illustrativ)",
         lines: [
           "100.000 Sessions/Monat · 2% CR · 80€ = 160.000€ Umsatz.",
-          "Browser-Tracking verliert ca. 20% der Conversions → 32.000€/Monat unsichtbar.",
-          "Server-Side + CAPI holt ca. 20% davon zurück (konservativ):",
+          "Browser-Tracking verliert ~20% der Conversions → 32.000€/Monat unsichtbar.",
+          "Server-Side + CAPI holt ~20% davon zurück (konservativ):",
         ],
-        result: "ca. 6.400€/Monat wieder messbar — sonst falsche Budgets",
+        result: "≈ 6.400€/Monat wieder messbar — sonst falsche Budgets",
       },
     },
     { h: "Was du Montag tust" },

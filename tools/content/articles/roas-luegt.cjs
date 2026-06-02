@@ -4,6 +4,23 @@
 
 const F = require("../../lib/figures.cjs");
 
+const roasSvg = `<svg viewBox="0 0 460 300" role="img" aria-label="Gemeldeter ROAS gegen echten inkrementellen ROAS">
+<rect width="460" height="300" fill="${F.C.paper}"/>
+<line x1="40" y1="260" x2="440" y2="260" stroke="${F.C.ink}" stroke-width="3"/>
+<rect x="60" y="60" width="70" height="200" fill="${F.C.shock}" stroke="${F.C.ink}" stroke-width="4"/>
+<text text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="700" fill="${F.C.ink}"><tspan x="95" y="50.333333333333336">8x</tspan></text>
+<text text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9.5" font-weight="400" fill="${F.C.ink}"><tspan x="95" y="272.9166666666667">Brand</tspan><tspan x="95" y="285.4166666666667">Search</tspan></text>
+<rect x="148" y="235" width="70" height="25" fill="${F.C.acid}" stroke="${F.C.ink}" stroke-width="4"/>
+<text text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="700" fill="${F.C.ink}"><tspan x="183" y="225.33333333333334">1x</tspan></text>
+<text text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9.5" font-weight="400" fill="${F.C.ink}"><tspan x="183" y="272.9166666666667">Brand</tspan><tspan x="183" y="285.4166666666667">echt</tspan></text>
+<rect x="236" y="185" width="70" height="75" fill="${F.C.warn}" stroke="${F.C.ink}" stroke-width="4"/>
+<text text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="700" fill="${F.C.ink}"><tspan x="271" y="175.33333333333334">3x</tspan></text>
+<text text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9.5" font-weight="400" fill="${F.C.ink}"><tspan x="271" y="272.9166666666667">Prospect.</tspan><tspan x="271" y="285.4166666666667">gemeldet</tspan></text>
+<rect x="324" y="185" width="70" height="75" fill="${F.C.acid}" stroke="${F.C.ink}" stroke-width="4"/>
+<text text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="700" fill="${F.C.ink}"><tspan x="359" y="175.33333333333334">3x</tspan></text>
+<text text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9.5" font-weight="400" fill="${F.C.ink}"><tspan x="359" y="272.9166666666667">Prospect.</tspan><tspan x="359" y="285.4166666666667">echt</tspan></text>
+</svg>`;
+
 module.exports = {
   slug: "journal-roas-luegt",
   cat: "performance",
@@ -26,17 +43,7 @@ module.exports = {
     { h: "Das Modell: gemeldet vs. echt" },
     {
       fig: {
-        svg: F.hbars({
-          label: "Gemeldeter ROAS gegen echten inkrementellen ROAS",
-          unit: "x",
-          bars: [
-            { name: "Brand Search gemeldet", value: 8, fill: F.C.shock },
-            { name: "Brand Search echt", value: 1, fill: F.C.acid },
-            { name: "Prospecting gemeldet", value: 3, fill: F.C.warn },
-            { name: "Prospecting echt", value: 3, fill: F.C.acid },
-          ],
-          max: 8,
-        }),
+        svg: roasSvg,
         cap: "<b>Wo der ROAS lügt.</b> Brand Search meldet traumhafte 8x — der echte inkrementelle Wert liegt nahe 1x (die Leute hätten ohnehin gekauft). Bei echtem Neukunden-Prospecting sind gemeldet und echt fast deckungsgleich. Genau die unscheinbaren Kanäle bringen das Neue.",
       },
     },

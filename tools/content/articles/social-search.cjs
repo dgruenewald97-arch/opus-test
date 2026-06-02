@@ -19,7 +19,7 @@ module.exports = {
   author: "Mara Vogt · Chief Chaos Officer",
 
   body: [
-    { p: `Die berühmte „40 % der Gen Z googeln nicht mehr"-Zahl ist ein verzerrtes Zitat von 2022. Die belastbare Version: Laut Sprout Social (Q2 2025, mehr als 2.200 Nutzer) suchen <strong>41 % der Gen Z zuerst auf Social</strong> — vor Suchmaschinen (32 %) und KI-Chatbots (11 %). WARC × TikTok ergänzt: 86 % der Gen Z suchen wöchentlich auf TikTok, fast gleichauf mit klassischer Suche (90 %).` },
+    { p: `Die berühmte „40 % der Gen Z googeln nicht mehr"-Zahl ist ein verzerrtes Zitat von 2022. Die belastbare Version: Laut Sprout Social (Q2 2025, >2.200 Nutzer) suchen <strong>41 % der Gen Z zuerst auf Social</strong> — vor Suchmaschinen (32 %) und KI-Chatbots (11 %). WARC × TikTok ergänzt: 86 % der Gen Z suchen wöchentlich auf TikTok, fast gleichauf mit klassischer Suche (90 %).` },
     { p: `<em>(Transparenz: Die früher kursierende Zahl „nur 25 % finden die Ergebnisse effektiv" ließ sich nicht belegen und ist hier raus. Belegt sind: 61 % der TikTok-Sucher fühlen sich eher zum Handeln inspiriert, 90 % der Gen Z wurden in 6 Monaten von Social-Content zu einem Kauf beeinflusst.)</em>` },
     { h: "Die unbequeme These: ein Skript-Problem" },
     { p: `„Social-SEO" wird als Hashtag-Spiel missverstanden. Tatsächlich transkribieren TikTok und Instagram gesprochenes Audio und indexieren Captions wie Mini-Blogposts, während Hashtags an Gewicht verlieren. Folge: Wer schöne, aber stumme oder generisch betextete Videos produziert, ist für die Such-Hälfte des Funnels unsichtbar — und genau dort entscheidet die Gen Z.` },
@@ -44,7 +44,7 @@ module.exports = {
         lines: [
           "Zieh die 20 häufigsten Kunden-Suchphrasen (Sales, Support, Autocomplete).",
           "Pro Phrase 1 Video: Keyword gesprochen + on-screen in Sek 1–3, Caption front-geladen.",
-          "20 Phrasen × ca. 80€ Produktion = 1.600€.",
+          "20 Phrasen × ~80€ Produktion = 1.600€.",
         ],
         result: "20 Evergreen-Assets, die monatelang Suchtraffic abgreifen — statt 1 vergänglichem Ad-Burst",
       },

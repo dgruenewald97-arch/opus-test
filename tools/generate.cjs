@@ -65,9 +65,13 @@ function bodyHtml(blocks) {
 function page(a) {
   const label = CATEGORIES[a.cat];
   if (!label) throw new Error(`Unbekannte Kategorie "${a.cat}" in ${a.slug} (erlaubt: ${Object.keys(CATEGORIES).join(", ")})`);
-  const sources = a.sources
+  const sources = (a.sources || [])
     .map((s) => `<a href="${s.url}" target="_blank" rel="noopener">${s.label}</a>`)
     .join(" · ");
+  // Quellen-Zeile nur, wenn es welche gibt — sonst keine leere „Quellen:"-Zeile.
+  const sourcesLine = sources
+    ? `\n        <p class="article__sources" data-reveal><strong>Quellen:</strong> ${sources}</p>`
+    : "";
   const headHtml = head({
     title: a.title,
     desc: a.desc,
@@ -109,19 +113,18 @@ ${bodyHtml(a.body)}
         <blockquote class="bigquote" data-reveal>
           <p>${a.quote}</p>
           <footer>— ${a.author}</footer>
-        </blockquote>
-        <p class="article__sources" data-reveal><strong>Quellen:</strong> ${sources}</p>
+        </blockquote>${sourcesLine}
       </div>
     </section>
 
     <!-- ===== CTA + BACK ===== -->
     <section class="section cta-band" id="article-cta">
       <div class="container">
-        <span class="eyebrow">Klingt nach deinem Problem?</span>
+        <span class="eyebrow">${a.ctaEyebrow || "Klingt nach deinem Problem?"}</span>
         <h2 data-reveal>Lass uns Lärm machen</h2>
         <div class="cta-band__row" data-reveal>
           <a class="btn btn--big magnetic" href="kontakt.html">Krach buchen →</a>
-          <a class="btn btn--ghost btn--big magnetic" href="journal.html">Mehr aus dem Journal</a>
+          <a class="btn btn--ghost btn--big magnetic" href="${(a.ctaSecondary && a.ctaSecondary.href) || "journal.html"}">${(a.ctaSecondary && a.ctaSecondary.label) || "Mehr aus dem Journal"}</a>
         </div>
         <div class="next-case">
           <span>Weiterlesen</span>

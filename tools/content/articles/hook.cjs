@@ -73,6 +73,8 @@ module.exports = {
 
   quote: "Du konkurrierst nicht mit der Branche. Du konkurrierst mit dem Daumen.",
   sources: [],
+  ctaEyebrow: "Brauchst du bessere Hooks?",
+  ctaSecondary: { href: "case-neontritt.html", label: "Den Case lesen" },
   next: "journal-roas-luegt",
   nextLabel: "Warum dein ROAS lügt",
 };

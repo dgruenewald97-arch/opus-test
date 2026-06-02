@@ -24,7 +24,7 @@ module.exports = {
     { h: "Zahl 1: INP hat FID abgelöst" },
     { p: `Seit dem 12. März 2024 ist <strong>Interaction to Next Paint</strong> ein Core Web Vital. FID maß nur die erste Interaktion und war fast immer „gut". INP misst alle Interaktionen über den ganzen Besuch. Folge laut HTTP Archive: Mit FID hätten 48 % der Mobile-Sites „gute" CWV, mit INP nur 43 % — <strong>5 Prozentpunkte weg, ohne eine Zeile Code-Änderung</strong>. INP ist die am schwersten zu bestehende CWV-Metrik.` },
     { h: "Zahl 2: der Consent-Bruch" },
-    { p: `Consent Mode v2 ist bei mehr als 90 % der EWR-Advertiser eingeführt — klingt erledigt. Ist es nicht: ~67 % der Setups sind nicht sauber compliant (oft „granted" als Default vor der Wahl = Rechtsbruch), und die durchschnittliche Opt-in-Rate liegt bei ~51 %, in DE/FR oft unter 25 %.` },
+    { p: `Consent Mode v2 ist bei >90 % der EWR-Advertiser eingeführt — klingt erledigt. Ist es nicht: ~67 % der Setups sind nicht sauber compliant (oft „granted" als Default vor der Wahl = Rechtsbruch), und die durchschnittliche Opt-in-Rate liegt bei ~51 %, in DE/FR oft unter 25 %.` },
     {
       fig: {
         svg: `<svg viewBox="0 0 460 240" role="img" aria-label="Mess-Schrumpf durch Consent und INP">
@@ -43,7 +43,7 @@ module.exports = {
 <text text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="700" fill="#0A0A0A"><tspan x="402" y="74.33">43%</tspan></text>
 <text text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="400" fill="#0A0A0A"><tspan x="332" y="191.33">FID</tspan></text>
 <text text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="400" fill="#0A0A0A"><tspan x="402" y="191.33">INP</tspan></text>
-<text x="300" y="214" font-family="'JetBrains Mono', monospace" font-size="10" fill="#0A0A0A">−5 pp gut, ohne Code-Änderung</text>
+<text x="300" y="214" font-family="'JetBrains Mono', monospace" font-size="10" fill="#0A0A0A">−5 pp „gut", ohne Code-Änderung</text>
 </svg>`,
         cap: "<b>Zwei Schrumpf-Mechanismen.</b> Links: Consent filtert ~49 % der Sessions aus dem klassischen Tracking — der Rest ist nur modellierbar, nicht messbar. Rechts: INP drückt die mobile CWV-Pass-Rate um 5 pp. Beide 2024 eingeführt, beide unsichtbar im Dashboard.",
       },
@@ -65,7 +65,7 @@ module.exports = {
         `Consent-Mode-v2 auditieren: Wird vor der Wahl auf „denied" defaultet (compliant) oder „granted" (im 67%-Block)? Default zwingend auf „denied".`,
         "EWR-Reporting mit Consent-Korrektur lesen: Conversion-Modeling / serverseitiges GTM aktivieren, Pre/Post-März-2024-Vergleiche annotieren.",
         "INP auf Mobile mit Feld-Daten (CrUX/RUM, nicht nur Lighthouse-Lab) messen; schwerste Templates (viel JS bei Interaktion) zuerst.",
-        "Main-Thread entlasten: Event-Handler aufbrechen, Long Tasks unter 50 ms, damit kippelnde Templates unter 200 ms kommen.",
+        "Main-Thread entlasten: Event-Handler aufbrechen, Long Tasks &lt;50 ms, damit kippelnde Templates unter 200 ms kommen.",
       ],
     },
   ],

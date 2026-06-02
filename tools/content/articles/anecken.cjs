@@ -73,6 +73,8 @@ module.exports = {
 
   quote: "Wer von allen gemocht werden will, wird von niemandem erinnert.",
   sources: [],
+  ctaEyebrow: "Bereit, anzuecken?",
+  ctaSecondary: { href: "case-haferkraft.html", label: "Den Case lesen" },
   next: "journal-hook",
   nextLabel: "Der Hook in 3 Sekunden",
 };

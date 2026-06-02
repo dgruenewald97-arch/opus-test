@@ -45,7 +45,7 @@ module.exports = {
         label: "Re-Learning-Puffer",
         lines: [
           "Bisher: CPA 12€, Budget 30.000€/Monat → 2.500 Conversions.",
-          "Volatilitätsphase nach Reset: CPA schwankt ca. ±30–50% für 6–10 Wochen.",
+          "Volatilitätsphase nach Reset: CPA schwankt ~±30–50% für 6–10 Wochen.",
           "Bei CPA 18€ (+50%) und gleichem Budget: nur noch 1.667 Conversions.",
         ],
         result: "15% Budget (4.500€) als Test-Puffer · 4 Wochen Skalierungs-Freeze",

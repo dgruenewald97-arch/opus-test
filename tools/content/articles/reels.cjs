@@ -4,6 +4,22 @@
 
 const F = require("../../lib/figures.cjs");
 
+const retentionSvg = `<svg viewBox="0 0 460 280" role="img" aria-label="Retention-Kurve: Reel mit und ohne starke Mitte">
+<rect width="460" height="280" fill="${F.C.paper}"/>
+<line x1="50" y1="230" x2="440" y2="230" stroke="${F.C.ink}" stroke-width="3"/>
+<line x1="50" y1="30" x2="50" y2="230" stroke="${F.C.ink}" stroke-width="3"/>
+<text x="50" y="22" font-family="'JetBrains Mono', monospace" font-size="11" fill="${F.C.ink}">% noch dabei</text>
+<text x="300" y="252" font-family="'JetBrains Mono', monospace" font-size="11" fill="${F.C.ink}">Sekunden →</text>
+<polyline points="50,40 110,70 180,180 300,215 440,222" fill="none" stroke="${F.C.shock}" stroke-width="5"/>
+<polyline points="50,40 110,75 200,100 320,120 440,140" fill="none" stroke="${F.C.electric}" stroke-width="5" stroke-dasharray="2 0"/>
+<circle cx="110" cy="70" r="6" fill="${F.C.ink}"/>
+<text x="118" y="64" font-family="'JetBrains Mono', monospace" font-size="10" fill="${F.C.ink}">Hook endet (Sek 3)</text>
+<rect x="300" y="40" width="14" height="14" fill="${F.C.shock}" stroke="${F.C.ink}" stroke-width="2"/>
+<text x="320" y="51" font-family="'JetBrains Mono', monospace" font-size="10.5" fill="${F.C.ink}">durchhängende Mitte → gedrosselt</text>
+<rect x="300" y="60" width="14" height="14" fill="${F.C.electric}" stroke="${F.C.ink}" stroke-width="2"/>
+<text x="320" y="71" font-family="'JetBrains Mono', monospace" font-size="10.5" fill="${F.C.ink}">Spannung gehalten → weiter ausgespielt</text>
+</svg>`;
+
 module.exports = {
   slug: "journal-reels",
   cat: "social",
@@ -26,22 +42,7 @@ module.exports = {
     { h: "Das Modell: die Retention-Kurve" },
     {
       fig: {
-        svg: F.curve({
-          label: "Retention-Kurve: Reel mit und ohne starke Mitte",
-          xLabel: "Sekunden →",
-          series: [
-            {
-              name: "durchhängende Mitte → gedrosselt",
-              fill: F.C.shock,
-              points: [1.0, 0.85, 0.45, 0.18, 0.10],
-            },
-            {
-              name: "Spannung gehalten → weiter ausgespielt",
-              fill: F.C.electric,
-              points: [1.0, 0.88, 0.72, 0.60, 0.50],
-            },
-          ],
-        }),
+        svg: retentionSvg,
         cap: "<b>Wo Reels sterben.</b> Beide Videos starten mit demselben Hook. Das rote bricht in der Mitte ein → der Algorithmus drosselt es. Das blaue hält die Spannung → es wird weiter ausgespielt. Die meisten optimieren nur den Anfang und verlieren in der Mitte.",
       },
     },

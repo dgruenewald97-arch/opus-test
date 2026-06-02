@@ -8,7 +8,7 @@ module.exports = {
   slug: "journal-made-by-humans",
   cat: "meinung",
   title: "Made by Humans: Wenn Anti-KI zum Klischee wird",
-  desc: `Anti-KI-Backlash 2026: McDonald's, Aerie, Equinox. Wann „Made by Humans" Haltung ist und wann Pose — mit AI-Transparenz-Matrix und Slop-EV-Rechnung.`,
+  desc: `Anti-KI-Backlash 2026: McDonald's, Aerie, Equinox. Wann „Made by Humans“ Haltung ist und wann Pose — mit AI-Transparenz-Matrix und Slop-EV-Rechnung.`,
   ogDesc: `Made by Humans ist weniger Ethik als Positionierungs-Arbitrage: Wer menschengemacht besitzt, besitzt das knappe Gut.`,
 
   h1: "Made by Humans",
@@ -47,7 +47,7 @@ module.exports = {
         lines: [
           `McDonald's spart durch KI-Produktion grob 50–80% der Spotkosten — sagen wir 200.000€.`,
           "Dagegen: 3 Tage globaler Spott, Marken-Rückzug, Nachrichtenzyklus.",
-          "Regel: Ist die Ersparnis kleiner als der erwartete PR-Schaden bei Entdeckung, ist die KI-Abkürzung negativ-EV.",
+          "Regel: Ist die Ersparnis < dem erwarteten PR-Schaden bei Entdeckung, ist die KI-Abkürzung negativ-EV.",
         ],
         result: "Gegenprobe: Aeries No-AI-Pledge fiel mit +23% Comps zusammen",
       },
