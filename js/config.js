@@ -52,7 +52,7 @@ export const GUIDE_STEPS = [
   },
   {
     selector: "#crew",
-    text: "Die Verrückten, die das alles bauen. Mehr über uns gibt's auf der Über-uns-Seite.",
+    text: "Unser autonomer Agenten-Schwarm: 5 spezialisierte AI-Agents, die Hand in Hand arbeiten. Klick auf einen Agenten oder simuliere ein Briefing, um den Datenfluss zu sehen.",
   },
   {
     selector: "#journal",
@@ -118,7 +118,7 @@ export const GUIDE_STEPS = [
   },
   {
     selector: "#ueber-crew",
-    text: "Die ganze Crew. Sieht harmlos aus — ist es nicht.",
+    text: "Unser Agenten-Schwarm: 5 hochspezialisierte AI-Agents, die ohne Reibungsverluste und rund um die Uhr Lärm produzieren.",
   },
   {
     selector: "#ueber-stimmen",
@@ -152,7 +152,7 @@ export const QUIPS = {
   pakete: ["Drei Stufen Lärm. Such dir was aus.", "Vom Knall bis Vollgas."],
   konfigurator: "Zwei Klicks zur Empfehlung.",
   slogan: ["Tipp deine Marke ein. Ich mach Krach draus.", "Gratis-Slogans, frisch aus der Maschine."],
-  crew: ["Sieht harmlos aus. Ist es nicht.", "Sieben Köpfe, ein Krawall."],
+  crew: ["Fünf Agenten. Null Reibungsverluste.", "Unser Schwarm schläft nie.", "Code, Design, Performance — vollautomatisch."],
   stimmen: "Hör auf die, nicht auf uns.",
   journal: "Frischer Lärm zum Nachlesen.",
   kontakt: ["Na los, trau dich.", "Der Knopf beißt nicht. Wir schon."],
@@ -215,7 +215,7 @@ export const BRUMMER = {
 // Krach-Konfigurator: Antworten → Empfehlung. Paket-Namen identisch zur
 // #pakete-Sektion, Leads identisch zur #crew. Logik hier, nicht in der UI.
 export const KONFIGURATOR = {
-  defaultLead: "Mara Vogt · Chief Chaos Officer",
+  defaultLead: "AURA · Chief AI Orchestrator",
   recommend({ ziel, phase, tempo }) {
     if (!ziel || !phase || !tempo) return null;
 
@@ -227,9 +227,9 @@ export const KONFIGURATOR = {
     if (phase === "start" && tempo === "vollgas") paket = "Krachen";
 
     const leads = {
-      awareness: "Jonas Reh · Kreativdirektor",
-      sales: "Selin Akar · Head of Performance",
-      launch: "Tobias Klein · Tech & Web",
+      awareness: "PROMPT · Creative & Design Agent",
+      sales: "METRIC · Performance & ROAS Agent",
+      launch: "SYNTAX · Web & Developer Agent",
     };
     const lead = leads[ziel] || this.defaultLead;
 

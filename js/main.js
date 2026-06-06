@@ -7,6 +7,7 @@ import { initGuide } from "./guide.js";
 import { initKonfigurator } from "./konfigurator.js";
 import { initGenerator } from "./generator.js";
 import { initJournal } from "./journal.js";
+import { initWorkflow } from "./workflow.js";
 import { COPY, KONFIGURATOR, SLOGAN } from "./config.js";
 
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -21,6 +22,7 @@ async function boot() {
   initKonfigurator({ KONFIGURATOR });
   initGenerator({ SLOGAN, reducedMotion });
   initJournal();
+  initWorkflow();
 
   // BRUMMER + form are pure-vanilla and must NOT wait on the optional CDN load:
   // a slow/blocked CDN would otherwise delay or drop the guide entirely (it was

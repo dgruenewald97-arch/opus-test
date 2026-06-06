@@ -1,0 +1,53 @@
+{
+  "brand_name": "Kold Brew Co.",
+  "website": "https://koldbrew.co",
+  "industry": "Beverages / Premium Coffee",
+  "positioning": {
+    "elevator_pitch": "Der lauteste Cold Brew der Stadt. Zero Sugar, doppeltes Koffein, brutalistisches Dosen-Design für maximale Energie und Fokus.",
+    "unique_selling_propositions": [
+      "200 mg natürliches Koffein pro Dose (Doppel-Kick)",
+      "Zero Sugar und zuckerfreie Formulierung",
+      "Stilvolles, sammelbares Aluminium-Dosen-Design im Brutalist-Look"
+    ]
+  },
+  "target_audience": {
+    "primary": "Urbane Performer (Gen-Z & Millennials, 18-34 Jahre), Entwickler, Designer, Gründer und Fitness-Enthusiasten.",
+    "pain_points": [
+      "Nachmittags-Tief (Lethargie gegen 14:00 Uhr)",
+      "Zuckerschock bei klassischen Energy-Drinks",
+      "Wartezeiten und hohe Preise in traditionellen Coffee-Shops"
+    ]
+  },
+  "brand_voice": {
+    "style": "Kompromisslos direkt, laut, brutalistisch, humorvoll-frech",
+    "banned_words": [
+      "kuschelig",
+      "zeremoniell",
+      "nachhaltig angehaucht",
+      "Wohlfühl-Phrase",
+      "traditionell handgeröstet"
+    ],
+    "sample_phrases": [
+      "Lärm für deine Synapsen.",
+      "Schneller wach. Punkt.",
+      "Kein Händchenhalten, nur Fokus."
+    ]
+  },
+  "design_system": {
+    "colors": {
+      "primary": "#D6FF3B",
+      "secondary": "#FF2E63",
+      "background": "#F2F0E9",
+      "foreground": "#0A0A0A"
+    },
+    "typography": {
+      "headlines": "Archivo Black, Impact",
+      "body": "Space Grotesk, Arial",
+      "mono": "JetBrains Mono, Courier New"
+    }
+  },
+  "competitors": [
+    "Traditionelle Coffee-Shops",
+    "Klassische, zuckersüße Energy-Drinks"
+  ]
+}

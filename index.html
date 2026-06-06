@@ -374,35 +374,157 @@
       </div>
     </section>
 
-    <!-- ===== TEAM ===== -->
+    <!-- ===== TEAM / AGENT SHOWCASE ===== -->
     <section class="section team" id="crew" data-guide-step="crew">
       <div class="container">
-        <span class="eyebrow">Die Verrückten</span>
-        <h2 data-reveal>Crew</h2>
-        <div class="team__grid">
-          <div class="member" data-reveal>
-            <div class="member__avatar">MV</div>
-            <p class="member__name">Mara Vogt</p>
-            <p class="member__role">Gründerin · Chief Chaos Officer</p>
+        <span class="eyebrow">Autonomer Agenten-Schwarm</span>
+        <h2 data-reveal>Agenten-Crew</h2>
+        <p class="section-lead" data-reveal>
+          Bei GRELLWERK gibt es keine Meetings, keine Überstunden und keine menschlichen Reibungsverluste. 
+          Unsere vollautomatische Agentur wird von fünf hochspezialisierten AI-Agents betrieben, die in einer geschlossenen Schleife nahtlos zusammenarbeiten.
+        </p>
+
+        <!-- Interactive Flow Diagram -->
+        <div class="workflow" data-reveal>
+          <div class="workflow__simulation-bar">
+            <button type="button" class="btn btn--big workflow__simulate-btn" id="simulate-workflow-btn">
+              Briefing simulieren ⚡
+            </button>
+            <div class="workflow__sim-status" id="workflow-sim-status" aria-live="polite">
+              Klicke auf einen Agenten oder starte die Simulation.
+            </div>
           </div>
-          <div class="member" data-reveal>
-            <div class="member__avatar">JR</div>
-            <p class="member__name">Jonas Reh</p>
-            <p class="member__role">Kreativdirektor · Lärmbeauftragter</p>
+
+          <div class="workflow__diagram-container">
+            <!-- Node: Briefing -->
+            <div class="workflow__node workflow__node--start" id="node-start">
+              <span class="workflow__node-label">Briefing</span>
+            </div>
+
+            <!-- SVG connection lines -->
+            <svg class="workflow__svg-connections" viewBox="0 0 800 300" preserveAspectRatio="none">
+              <!-- Path from start to Aura -->
+              <path class="workflow__connection-line" id="line-start-aura" d="M 90 150 L 210 150" />
+              <!-- Aura to Prompt -->
+              <path class="workflow__connection-line" id="line-aura-prompt" d="M 270 110 L 390 60" />
+              <!-- Aura to Syntax -->
+              <path class="workflow__connection-line" id="line-aura-syntax" d="M 270 190 L 390 240" />
+              <!-- Prompt to Syntax -->
+              <path class="workflow__connection-line" id="line-prompt-syntax" d="M 430 100 L 430 200" />
+              <!-- Syntax to Verify -->
+              <path class="workflow__connection-line" id="line-syntax-verify" d="M 470 240 L 590 190" />
+              <!-- Prompt to Verify -->
+              <path class="workflow__connection-line" id="line-prompt-verify" d="M 470 60 L 590 110" />
+              <!-- Verify to Metric -->
+              <path class="workflow__connection-line" id="line-verify-metric" d="M 650 150 L 710 150" />
+            </svg>
+
+            <!-- Agent Nodes -->
+            <!-- Aura: Orchestrator -->
+            <button type="button" class="workflow__node workflow__node--agent" id="node-aura" data-agent="aura">
+              <div class="workflow__node-info-stack">
+                <span class="workflow__node-avatar">AURA</span>
+                <span class="workflow__node-name">Aura</span>
+                <span class="workflow__node-role">Orchestrator</span>
+              </div>
+            </button>
+
+            <!-- Prompt: Designer -->
+            <button type="button" class="workflow__node workflow__node--agent" id="node-prompt" data-agent="prompt">
+              <div class="workflow__node-info-stack">
+                <span class="workflow__node-avatar">PROMPT</span>
+                <span class="workflow__node-name">Prompt</span>
+                <span class="workflow__node-role">Creative</span>
+              </div>
+            </button>
+
+            <!-- Syntax: Developer -->
+            <button type="button" class="workflow__node workflow__node--agent" id="node-syntax" data-agent="syntax">
+              <div class="workflow__node-info-stack">
+                <span class="workflow__node-avatar">SYNTAX</span>
+                <span class="workflow__node-name">Syntax</span>
+                <span class="workflow__node-role">Developer</span>
+              </div>
+            </button>
+
+            <!-- Verify: QA -->
+            <button type="button" class="workflow__node workflow__node--agent" id="node-verify" data-agent="verify">
+              <div class="workflow__node-info-stack">
+                <span class="workflow__node-avatar">VERIFY</span>
+                <span class="workflow__node-name">Verify</span>
+                <span class="workflow__node-role">QA/Gate</span>
+              </div>
+            </button>
+
+            <!-- Metric: Performance -->
+            <button type="button" class="workflow__node workflow__node--agent" id="node-metric" data-agent="metric">
+              <div class="workflow__node-info-stack">
+                <span class="workflow__node-avatar">METRIC</span>
+                <span class="workflow__node-name">Metric</span>
+                <span class="workflow__node-role">Performance</span>
+              </div>
+            </button>
           </div>
-          <div class="member" data-reveal>
-            <div class="member__avatar">SA</div>
-            <p class="member__name">Selin Akar</p>
-            <p class="member__role">Head of Performance · ROAS-Jägerin</p>
+
+          <!-- Info Display Panel for clicked Agent -->
+          <div class="workflow__details" id="workflow-details-panel">
+            <div class="workflow__details-placeholder">
+              Klicke auf eine Agenten-Kachel, um System-Prompts, Fähigkeiten und Modelle anzuzeigen.
+            </div>
+            <div class="workflow__details-content" id="workflow-details-content" hidden>
+              <h3 class="workflow__details-title" id="agent-detail-name">AURA</h3>
+              <p class="workflow__details-role" id="agent-detail-role">Chief AI Orchestrator</p>
+              
+              <div class="workflow__details-grid">
+                <div>
+                  <strong>System-Prompt:</strong>
+                  <pre class="workflow__details-prompt" id="agent-detail-prompt">...</pre>
+                </div>
+                <div>
+                  <div style="margin-bottom: 1.2rem;">
+                    <strong>Fähigkeiten / Tools:</strong>
+                    <div class="workflow__details-tools" id="agent-detail-tools">
+                      <!-- tags -->
+                    </div>
+                  </div>
+                  <div>
+                    <strong>Modell / Gehirn:</strong>
+                    <div style="margin-top:0.4rem;">
+                      <span class="tag tag--acid" id="agent-detail-model" style="background:var(--acid); color:var(--ink);">Gemini 3.5 Pro</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="member" data-reveal>
-            <div class="member__avatar">TK</div>
-            <p class="member__name">Tobias Klein</p>
-            <p class="member__role">Tech &amp; Web · Pixel-Schmied</p>
+
+          <!-- Swarm Specialist Pool -->
+          <div class="specialist-swarm">
+            <div class="specialist-swarm__header">
+              <h3 class="specialist-swarm__title">Spezialisten-Pool</h3>
+              <p class="specialist-swarm__desc">
+                Unsere Kern-Pipeline greift bei Bedarf auf einen Pool aus 16 hochspezialisierten AI-Agents zurück. 
+                Dieser Schwarm skaliert je nach Traffic und Auslastung vollautomatisch auf über 60 parallele Instanzen.
+              </p>
+            </div>
+
+            <!-- Department Selector Tabs -->
+            <div class="department-tabs" role="tablist" aria-label="Agenten-Abteilungen">
+              <button type="button" class="department-tab is-active" role="tab" aria-selected="true" data-dept="strategy">Strategie &amp; Daten</button>
+              <button type="button" class="department-tab" role="tab" aria-selected="false" data-dept="creative">Kreation &amp; Content</button>
+              <button type="button" class="department-tab" role="tab" aria-selected="false" data-dept="tech">Web &amp; Tech</button>
+              <button type="button" class="department-tab" role="tab" aria-selected="false" data-dept="performance">Media &amp; Performance</button>
+            </div>
+
+            <!-- Specialist Grid Container -->
+            <div class="specialist-grid" id="specialist-swarm-grid" role="tabpanel">
+              <!-- Dynamically rendered via js/workflow.js -->
+            </div>
           </div>
         </div>
-        <div class="hero__ctas" data-reveal style="margin-top: var(--gap);">
-          <a class="btn btn--ghost magnetic" href="ueber-uns.html">Mehr über uns →</a>
+
+        <div class="hero__ctas" data-reveal style="margin-top: var(--gap); justify-content: center;">
+          <a class="btn btn--ghost magnetic" href="ueber-uns.html">Mehr über unseren Schwarm →</a>
         </div>
       </div>
     </section>

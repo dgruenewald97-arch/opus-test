@@ -9,6 +9,8 @@ Gib dem Nutzer eine kompakte Übersicht des GRELLWERK-AI-Systems aus. Lies bei B
 - **/help-grellwerk** — diese Übersicht.
 - **/neuer-artikel** `<thema>` — voller Orchestrierungs-Ablauf: parallele Recherche → Daten →
   Generator → Grid/Sitemap → Verify. Erzeugt einen Journal-Artikel mit Mehrwert.
+- **/neue-kampagne** `<briefing.md>` — Kampagnen-Orchestrierung: liest Briefing → Strategie & Insights → Kreation (Copy & Hooks) → Tech (Landingpage) → QA & Compliance (Verify) → Report.
+- **/neuer-kunde** `<kunde> <website>` — Onboarding-Orchestrierung: liest/scraped Website → extrahiert Brand DNA (USPs, Tonalität, Farben) → erzeugt `tools/content/brands/<kunde>.json`.
 - **/seite-generieren** `[slug…]` — rendert Artikel-Seiten aus vorhandenen Daten in
   `tools/content/articles/` neu (Generator-Lauf).
 - **/verify** — führt das Verify-Gate aus und fasst das Ergebnis zusammen.

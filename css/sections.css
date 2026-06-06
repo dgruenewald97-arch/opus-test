@@ -1044,3 +1044,522 @@ a.case:focus-visible, a.post:focus-visible { outline: 4px solid var(--electric);
   opacity: 0.8;
 }
 .footer__bottom button { color: var(--acid); text-decoration: underline; }
+
+/* ===== AGENT WORKFLOW DIAGRAM ===== */
+.section-lead {
+  font-family: var(--font-mono);
+  font-size: var(--step-0);
+  max-width: 60ch;
+  margin-top: 0.6rem;
+  margin-bottom: var(--gap);
+}
+
+.workflow {
+  margin-top: var(--gap);
+  border: var(--border) solid var(--ink);
+  background: var(--paper);
+  box-shadow: var(--shadow-block);
+  padding: clamp(1.2rem, 3vw, 2.4rem);
+}
+
+.workflow__simulation-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-bottom: 1.5rem;
+  border-bottom: var(--border) dashed var(--ink);
+  margin-bottom: 2rem;
+}
+
+.workflow__simulate-btn {
+  background: var(--shock);
+  color: var(--paper);
+  border: var(--border) solid var(--ink);
+  cursor: pointer;
+}
+.workflow__simulate-btn:hover {
+  background: var(--ink);
+  color: var(--acid);
+}
+
+.workflow__sim-status {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: var(--step--1);
+  letter-spacing: 0.08em;
+  color: var(--electric);
+}
+
+.workflow__diagram-container {
+  position: relative;
+  width: 100%;
+  height: 360px;
+  margin-bottom: 2rem;
+  user-select: none;
+}
+
+/* Node styles */
+.workflow__node {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border: var(--border) solid var(--ink);
+  background: var(--paper);
+  box-shadow: var(--shadow-block);
+  padding: 0.8rem;
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, background-color 0.3s ease;
+  cursor: pointer;
+  z-index: 5;
+}
+
+.workflow__node--start {
+  width: 110px;
+  height: 60px;
+  left: 2%;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--paper);
+  cursor: default;
+  box-shadow: 4px 4px 0px var(--ink);
+}
+
+.workflow__node--start .workflow__node-label {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  font-size: var(--step--1);
+}
+
+.workflow__node--agent {
+  width: 140px;
+  height: 120px;
+}
+
+.workflow__node--agent:hover {
+  transform: scale(1.04);
+  box-shadow: var(--shadow-block-lg);
+  z-index: 6;
+}
+
+.workflow__node--agent.is-selected {
+  background: var(--acid);
+  border-color: var(--ink);
+}
+
+/* Agent Node Positions on Desktop */
+#node-aura {
+  left: 22%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+#node-aura:hover, #node-aura.is-selected {
+  transform: translateY(-50%) scale(1.04);
+}
+
+#node-prompt {
+  left: 48%;
+  top: 20%;
+  transform: translateY(-50%);
+}
+#node-prompt:hover, #node-prompt.is-selected {
+  transform: translateY(-50%) scale(1.04);
+}
+
+#node-syntax {
+  left: 48%;
+  top: 80%;
+  transform: translateY(-50%);
+}
+#node-syntax:hover, #node-syntax.is-selected {
+  transform: translateY(-50%) scale(1.04);
+}
+
+#node-verify {
+  left: 74%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+#node-verify:hover, #node-verify.is-selected {
+  transform: translateY(-50%) scale(1.04);
+}
+
+#node-metric {
+  left: 98%;
+  top: 50%;
+  transform: translate(-100%, -50%);
+}
+#node-metric:hover, #node-metric.is-selected {
+  transform: translate(-100%, -50%) scale(1.04);
+}
+
+/* Node inner content styling */
+.workflow__node-avatar {
+  display: block;
+  font-family: var(--font-display);
+  font-size: var(--step-0);
+  margin-bottom: 0.3rem;
+  color: var(--shock);
+}
+
+#node-aura .workflow__node-avatar { color: var(--electric); }
+#node-verify .workflow__node-avatar { color: var(--warn); }
+#node-metric .workflow__node-avatar { color: var(--ink); }
+
+.workflow__node-name {
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.workflow__node-role {
+  font-size: 0.75rem;
+  opacity: 0.7;
+}
+
+/* SVG Connection Lines */
+.workflow__svg-connections {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.workflow__connection-line {
+  stroke: var(--ink);
+  stroke-width: 4px;
+  stroke-dasharray: 8;
+  fill: none;
+  transition: stroke 0.3s ease, stroke-width 0.3s ease;
+}
+
+.workflow__connection-line.is-active {
+  stroke: var(--shock);
+  stroke-width: 6px;
+  animation: workflow-flow 1s linear infinite;
+}
+
+@keyframes workflow-flow {
+  to {
+    stroke-dashoffset: -20;
+  }
+}
+
+/* Animation Pulses for Active Nodes */
+.workflow__node.is-active-pulse {
+  background: var(--acid);
+  box-shadow: 0 0 20px var(--acid);
+  transform: scale(1.08) !important;
+  z-index: 10;
+}
+
+#node-aura.is-active-pulse {
+  background: var(--electric);
+  color: var(--paper);
+  box-shadow: 0 0 20px var(--electric);
+}
+
+#node-verify.is-active-pulse {
+  background: var(--warn);
+  color: var(--ink);
+  box-shadow: 0 0 20px var(--warn);
+}
+
+/* Details Panel */
+.workflow__details {
+  border: var(--border) solid var(--ink);
+  background: var(--paper);
+  padding: 1.5rem;
+  min-height: 140px;
+}
+
+.workflow__details-placeholder {
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+  text-align: center;
+  color: var(--ink);
+  opacity: 0.6;
+  padding-block: 1rem;
+}
+
+.workflow__details-title {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  font-size: var(--step-2);
+  margin-bottom: 0.2rem;
+}
+
+.workflow__details-role {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  font-size: var(--step--1);
+  font-weight: 700;
+  color: var(--shock);
+  margin-bottom: 1.2rem;
+}
+
+.workflow__details-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: var(--gap);
+}
+
+.workflow__details-prompt {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  white-space: pre-wrap;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 1rem;
+  border-left: 6px solid var(--acid);
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.workflow__details-tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.4rem;
+}
+
+.workflow__details-tools .tag {
+  background: var(--paper);
+  border: 2px solid var(--ink);
+}
+
+/* Responsive Rules for mobile devices */
+@media (max-width: 860px) {
+  .workflow__diagram-container {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+    padding-top: 1rem;
+  }
+
+  .workflow__svg-connections {
+    display: none;
+  }
+
+  .workflow__node {
+    position: relative;
+    transform: none !important;
+    width: 100%;
+    max-width: 340px;
+    height: auto;
+    min-height: 70px;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 1rem;
+    padding: 1rem;
+    left: auto !important;
+    top: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+  }
+
+  .workflow__node--start {
+    box-shadow: var(--shadow-block);
+  }
+
+  .workflow__node-avatar {
+    margin-bottom: 0;
+    font-size: var(--step-0);
+  }
+
+  /* Add indicator between stacked nodes in CSS */
+  .workflow__node--agent::before {
+    content: "↓";
+    position: absolute;
+    top: -1.4rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--shock);
+  }
+
+  .workflow__details-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===== SPECIALIST SWARM COMPONENT ===== */
+.specialist-swarm {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: var(--border) dashed var(--ink);
+}
+
+.specialist-swarm__header {
+  margin-bottom: 1.5rem;
+}
+
+.specialist-swarm__title {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  font-size: var(--step-1);
+  margin-bottom: 0.4rem;
+}
+
+.specialist-swarm__desc {
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+  max-width: 68ch;
+  opacity: 0.8;
+}
+
+.department-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  border-bottom: var(--border) solid var(--ink);
+  padding-bottom: 0px;
+  margin-bottom: 1.5rem;
+}
+
+.department-tab {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: var(--step--1);
+  letter-spacing: 0.05em;
+  padding: 0.7em 1.2em;
+  border: var(--border) solid var(--ink);
+  border-bottom: none;
+  background: var(--paper);
+  color: var(--ink);
+  cursor: pointer;
+  transition: background 0.12s ease, color 0.12s ease;
+  position: relative;
+  top: var(--border); /* sit flush on border */
+  z-index: 2;
+}
+
+.department-tab:hover {
+  background: rgba(10, 10, 10, 0.06);
+}
+
+.department-tab.is-active {
+  background: var(--ink);
+  color: var(--acid);
+}
+
+.specialist-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.specialist-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.9rem;
+  border: var(--border) solid var(--ink);
+  background: var(--paper);
+  box-shadow: var(--shadow-block);
+  text-align: left;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.2s ease;
+  user-select: none;
+}
+
+.specialist-card:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: var(--shadow-block-lg);
+}
+
+.specialist-card:active {
+  transform: translate(0px, 0px);
+  box-shadow: var(--shadow-block);
+}
+
+.specialist-card.is-selected {
+  background: var(--acid);
+}
+
+.specialist-card__avatar {
+  flex: none;
+  width: 46px;
+  height: 46px;
+  border: 2px solid var(--ink);
+  display: grid;
+  place-items: center;
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  background: var(--electric);
+  color: var(--paper);
+  font-weight: 700;
+}
+
+.specialist-card:nth-child(3n) .specialist-card__avatar {
+  background: var(--shock);
+  color: var(--paper);
+}
+
+.specialist-card:nth-child(3n+1) .specialist-card__avatar {
+  background: var(--warn);
+  color: var(--ink);
+}
+
+.specialist-card:nth-child(3n+2) .specialist-card__avatar {
+  background: var(--electric);
+  color: var(--paper);
+}
+
+.specialist-card__content {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.specialist-card__title {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: var(--step--1);
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.specialist-card__role {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  opacity: 0.75;
+  margin: 0.15rem 0 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@media (max-width: 860px) {
+  .department-tabs {
+    flex-direction: column;
+    border-bottom: none;
+    gap: 0.5rem;
+  }
+
+  .department-tab {
+    border-bottom: var(--border) solid var(--ink);
+    top: 0;
+    width: 100%;
+    text-align: center;
+  }
+}

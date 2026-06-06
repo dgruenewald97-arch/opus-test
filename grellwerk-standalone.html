@@ -8,7 +8,7 @@
   <meta property="og:title" content="GRELLWERK — Lärm, der verkauft." />
   <meta property="og:description" content="Werbe- & Performance-Agentur. Wir designen den Krach." />
   <meta property="og:image" content="assets/og-image.svg" />
-  <link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+CiAgPHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiBmaWxsPSIjMEEwQTBBIi8+CiAgPHJlY3QgeD0iNiIgeT0iNiIgd2lkdGg9IjUyIiBoZWlnaHQ9IjUyIiBmaWxsPSIjRDZGRjNCIi8+CiAgPHRleHQgeD0iMzIiIHk9IjQ2IiBmb250LWZhbWlseT0iSW1wYWN0LCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjQ0IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjMEEwQTBBIj5HPC90ZXh0Pgo8L3N2Zz4K" type="image/svg+xml" />
+  <link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+DQogIDxyZWN0IHdpZHRoPSI2NCIgaGVpZ2h0PSI2NCIgZmlsbD0iIzBBMEEwQSIvPg0KICA8cmVjdCB4PSI2IiB5PSI2IiB3aWR0aD0iNTIiIGhlaWdodD0iNTIiIGZpbGw9IiNENkZGM0IiLz4NCiAgPHRleHQgeD0iMzIiIHk9IjQ2IiBmb250LWZhbWlseT0iSW1wYWN0LCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjQ0IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjMEEwQTBBIj5HPC90ZXh0Pg0KPC9zdmc+DQo=" type="image/svg+xml" />
   <link rel="canonical" href="https://dgruenewald97-arch.github.io/opus-test/" />
 
   <!-- Fonts (graceful: system fallbacks defined in tokens.css) -->
@@ -167,7 +167,7 @@ h3 { font-size: var(--step-1); }
   inset: 0;
   z-index: var(--z-grain);
   pointer-events: none;
-  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPgogIDxmaWx0ZXIgaWQ9ImdyYWluIj4KICAgIDxmZVR1cmJ1bGVuY2UgdHlwZT0iZnJhY3RhbE5vaXNlIiBiYXNlRnJlcXVlbmN5PSIwLjgiIG51bU9jdGF2ZXM9IjIiIHN0aXRjaFRpbGVzPSJzdGl0Y2giLz4KICAgIDxmZUNvbG9yTWF0cml4IHR5cGU9InNhdHVyYXRlIiB2YWx1ZXM9IjAiLz4KICA8L2ZpbHRlcj4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWx0ZXI9InVybCgjZ3JhaW4pIi8+Cjwvc3ZnPgo=");
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPg0KICA8ZmlsdGVyIGlkPSJncmFpbiI+DQogICAgPGZlVHVyYnVsZW5jZSB0eXBlPSJmcmFjdGFsTm9pc2UiIGJhc2VGcmVxdWVuY3k9IjAuOCIgbnVtT2N0YXZlcz0iMiIgc3RpdGNoVGlsZXM9InN0aXRjaCIvPg0KICAgIDxmZUNvbG9yTWF0cml4IHR5cGU9InNhdHVyYXRlIiB2YWx1ZXM9IjAiLz4NCiAgPC9maWx0ZXI+DQogIDxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbHRlcj0idXJsKCNncmFpbikiLz4NCjwvc3ZnPg0K");
   background-size: 220px 220px;
   opacity: 0.06;
   mix-blend-mode: multiply;
@@ -1312,6 +1312,525 @@ a.case:focus-visible, a.post:focus-visible { outline: 4px solid var(--electric);
 }
 .footer__bottom button { color: var(--acid); text-decoration: underline; }
 
+/* ===== AGENT WORKFLOW DIAGRAM ===== */
+.section-lead {
+  font-family: var(--font-mono);
+  font-size: var(--step-0);
+  max-width: 60ch;
+  margin-top: 0.6rem;
+  margin-bottom: var(--gap);
+}
+
+.workflow {
+  margin-top: var(--gap);
+  border: var(--border) solid var(--ink);
+  background: var(--paper);
+  box-shadow: var(--shadow-block);
+  padding: clamp(1.2rem, 3vw, 2.4rem);
+}
+
+.workflow__simulation-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-bottom: 1.5rem;
+  border-bottom: var(--border) dashed var(--ink);
+  margin-bottom: 2rem;
+}
+
+.workflow__simulate-btn {
+  background: var(--shock);
+  color: var(--paper);
+  border: var(--border) solid var(--ink);
+  cursor: pointer;
+}
+.workflow__simulate-btn:hover {
+  background: var(--ink);
+  color: var(--acid);
+}
+
+.workflow__sim-status {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: var(--step--1);
+  letter-spacing: 0.08em;
+  color: var(--electric);
+}
+
+.workflow__diagram-container {
+  position: relative;
+  width: 100%;
+  height: 360px;
+  margin-bottom: 2rem;
+  user-select: none;
+}
+
+/* Node styles */
+.workflow__node {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border: var(--border) solid var(--ink);
+  background: var(--paper);
+  box-shadow: var(--shadow-block);
+  padding: 0.8rem;
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, background-color 0.3s ease;
+  cursor: pointer;
+  z-index: 5;
+}
+
+.workflow__node--start {
+  width: 110px;
+  height: 60px;
+  left: 2%;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--paper);
+  cursor: default;
+  box-shadow: 4px 4px 0px var(--ink);
+}
+
+.workflow__node--start .workflow__node-label {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  font-size: var(--step--1);
+}
+
+.workflow__node--agent {
+  width: 140px;
+  height: 120px;
+}
+
+.workflow__node--agent:hover {
+  transform: scale(1.04);
+  box-shadow: var(--shadow-block-lg);
+  z-index: 6;
+}
+
+.workflow__node--agent.is-selected {
+  background: var(--acid);
+  border-color: var(--ink);
+}
+
+/* Agent Node Positions on Desktop */
+#node-aura {
+  left: 22%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+#node-aura:hover, #node-aura.is-selected {
+  transform: translateY(-50%) scale(1.04);
+}
+
+#node-prompt {
+  left: 48%;
+  top: 20%;
+  transform: translateY(-50%);
+}
+#node-prompt:hover, #node-prompt.is-selected {
+  transform: translateY(-50%) scale(1.04);
+}
+
+#node-syntax {
+  left: 48%;
+  top: 80%;
+  transform: translateY(-50%);
+}
+#node-syntax:hover, #node-syntax.is-selected {
+  transform: translateY(-50%) scale(1.04);
+}
+
+#node-verify {
+  left: 74%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+#node-verify:hover, #node-verify.is-selected {
+  transform: translateY(-50%) scale(1.04);
+}
+
+#node-metric {
+  left: 98%;
+  top: 50%;
+  transform: translate(-100%, -50%);
+}
+#node-metric:hover, #node-metric.is-selected {
+  transform: translate(-100%, -50%) scale(1.04);
+}
+
+/* Node inner content styling */
+.workflow__node-avatar {
+  display: block;
+  font-family: var(--font-display);
+  font-size: var(--step-0);
+  margin-bottom: 0.3rem;
+  color: var(--shock);
+}
+
+#node-aura .workflow__node-avatar { color: var(--electric); }
+#node-verify .workflow__node-avatar { color: var(--warn); }
+#node-metric .workflow__node-avatar { color: var(--ink); }
+
+.workflow__node-name {
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.workflow__node-role {
+  font-size: 0.75rem;
+  opacity: 0.7;
+}
+
+/* SVG Connection Lines */
+.workflow__svg-connections {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.workflow__connection-line {
+  stroke: var(--ink);
+  stroke-width: 4px;
+  stroke-dasharray: 8;
+  fill: none;
+  transition: stroke 0.3s ease, stroke-width 0.3s ease;
+}
+
+.workflow__connection-line.is-active {
+  stroke: var(--shock);
+  stroke-width: 6px;
+  animation: workflow-flow 1s linear infinite;
+}
+
+@keyframes workflow-flow {
+  to {
+    stroke-dashoffset: -20;
+  }
+}
+
+/* Animation Pulses for Active Nodes */
+.workflow__node.is-active-pulse {
+  background: var(--acid);
+  box-shadow: 0 0 20px var(--acid);
+  transform: scale(1.08) !important;
+  z-index: 10;
+}
+
+#node-aura.is-active-pulse {
+  background: var(--electric);
+  color: var(--paper);
+  box-shadow: 0 0 20px var(--electric);
+}
+
+#node-verify.is-active-pulse {
+  background: var(--warn);
+  color: var(--ink);
+  box-shadow: 0 0 20px var(--warn);
+}
+
+/* Details Panel */
+.workflow__details {
+  border: var(--border) solid var(--ink);
+  background: var(--paper);
+  padding: 1.5rem;
+  min-height: 140px;
+}
+
+.workflow__details-placeholder {
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+  text-align: center;
+  color: var(--ink);
+  opacity: 0.6;
+  padding-block: 1rem;
+}
+
+.workflow__details-title {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  font-size: var(--step-2);
+  margin-bottom: 0.2rem;
+}
+
+.workflow__details-role {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  font-size: var(--step--1);
+  font-weight: 700;
+  color: var(--shock);
+  margin-bottom: 1.2rem;
+}
+
+.workflow__details-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: var(--gap);
+}
+
+.workflow__details-prompt {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  white-space: pre-wrap;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 1rem;
+  border-left: 6px solid var(--acid);
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.workflow__details-tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.4rem;
+}
+
+.workflow__details-tools .tag {
+  background: var(--paper);
+  border: 2px solid var(--ink);
+}
+
+/* Responsive Rules for mobile devices */
+@media (max-width: 860px) {
+  .workflow__diagram-container {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+    padding-top: 1rem;
+  }
+
+  .workflow__svg-connections {
+    display: none;
+  }
+
+  .workflow__node {
+    position: relative;
+    transform: none !important;
+    width: 100%;
+    max-width: 340px;
+    height: auto;
+    min-height: 70px;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 1rem;
+    padding: 1rem;
+    left: auto !important;
+    top: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+  }
+
+  .workflow__node--start {
+    box-shadow: var(--shadow-block);
+  }
+
+  .workflow__node-avatar {
+    margin-bottom: 0;
+    font-size: var(--step-0);
+  }
+
+  /* Add indicator between stacked nodes in CSS */
+  .workflow__node--agent::before {
+    content: "↓";
+    position: absolute;
+    top: -1.4rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--shock);
+  }
+
+  .workflow__details-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===== SPECIALIST SWARM COMPONENT ===== */
+.specialist-swarm {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: var(--border) dashed var(--ink);
+}
+
+.specialist-swarm__header {
+  margin-bottom: 1.5rem;
+}
+
+.specialist-swarm__title {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  font-size: var(--step-1);
+  margin-bottom: 0.4rem;
+}
+
+.specialist-swarm__desc {
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+  max-width: 68ch;
+  opacity: 0.8;
+}
+
+.department-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  border-bottom: var(--border) solid var(--ink);
+  padding-bottom: 0px;
+  margin-bottom: 1.5rem;
+}
+
+.department-tab {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: var(--step--1);
+  letter-spacing: 0.05em;
+  padding: 0.7em 1.2em;
+  border: var(--border) solid var(--ink);
+  border-bottom: none;
+  background: var(--paper);
+  color: var(--ink);
+  cursor: pointer;
+  transition: background 0.12s ease, color 0.12s ease;
+  position: relative;
+  top: var(--border); /* sit flush on border */
+  z-index: 2;
+}
+
+.department-tab:hover {
+  background: rgba(10, 10, 10, 0.06);
+}
+
+.department-tab.is-active {
+  background: var(--ink);
+  color: var(--acid);
+}
+
+.specialist-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.specialist-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.9rem;
+  border: var(--border) solid var(--ink);
+  background: var(--paper);
+  box-shadow: var(--shadow-block);
+  text-align: left;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.2s ease;
+  user-select: none;
+}
+
+.specialist-card:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: var(--shadow-block-lg);
+}
+
+.specialist-card:active {
+  transform: translate(0px, 0px);
+  box-shadow: var(--shadow-block);
+}
+
+.specialist-card.is-selected {
+  background: var(--acid);
+}
+
+.specialist-card__avatar {
+  flex: none;
+  width: 46px;
+  height: 46px;
+  border: 2px solid var(--ink);
+  display: grid;
+  place-items: center;
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  background: var(--electric);
+  color: var(--paper);
+  font-weight: 700;
+}
+
+.specialist-card:nth-child(3n) .specialist-card__avatar {
+  background: var(--shock);
+  color: var(--paper);
+}
+
+.specialist-card:nth-child(3n+1) .specialist-card__avatar {
+  background: var(--warn);
+  color: var(--ink);
+}
+
+.specialist-card:nth-child(3n+2) .specialist-card__avatar {
+  background: var(--electric);
+  color: var(--paper);
+}
+
+.specialist-card__content {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.specialist-card__title {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: var(--step--1);
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.specialist-card__role {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  opacity: 0.75;
+  margin: 0.15rem 0 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@media (max-width: 860px) {
+  .department-tabs {
+    flex-direction: column;
+    border-bottom: none;
+    gap: 0.5rem;
+  }
+
+  .department-tab {
+    border-bottom: var(--border) solid var(--ink);
+    top: 0;
+    width: 100%;
+    text-align: center;
+  }
+}
+
 /* GRELLWERK — BRUMMER onboarding guide */
 
 .guide {
@@ -1966,35 +2485,157 @@ a.case:focus-visible, a.post:focus-visible { outline: 4px solid var(--electric);
       </div>
     </section>
 
-    <!-- ===== TEAM ===== -->
+    <!-- ===== TEAM / AGENT SHOWCASE ===== -->
     <section class="section team" id="crew" data-guide-step="crew">
       <div class="container">
-        <span class="eyebrow">Die Verrückten</span>
-        <h2 data-reveal>Crew</h2>
-        <div class="team__grid">
-          <div class="member" data-reveal>
-            <div class="member__avatar">MV</div>
-            <p class="member__name">Mara Vogt</p>
-            <p class="member__role">Gründerin · Chief Chaos Officer</p>
+        <span class="eyebrow">Autonomer Agenten-Schwarm</span>
+        <h2 data-reveal>Agenten-Crew</h2>
+        <p class="section-lead" data-reveal>
+          Bei GRELLWERK gibt es keine Meetings, keine Überstunden und keine menschlichen Reibungsverluste. 
+          Unsere vollautomatische Agentur wird von fünf hochspezialisierten AI-Agents betrieben, die in einer geschlossenen Schleife nahtlos zusammenarbeiten.
+        </p>
+
+        <!-- Interactive Flow Diagram -->
+        <div class="workflow" data-reveal>
+          <div class="workflow__simulation-bar">
+            <button type="button" class="btn btn--big workflow__simulate-btn" id="simulate-workflow-btn">
+              Briefing simulieren ⚡
+            </button>
+            <div class="workflow__sim-status" id="workflow-sim-status" aria-live="polite">
+              Klicke auf einen Agenten oder starte die Simulation.
+            </div>
           </div>
-          <div class="member" data-reveal>
-            <div class="member__avatar">JR</div>
-            <p class="member__name">Jonas Reh</p>
-            <p class="member__role">Kreativdirektor · Lärmbeauftragter</p>
+
+          <div class="workflow__diagram-container">
+            <!-- Node: Briefing -->
+            <div class="workflow__node workflow__node--start" id="node-start">
+              <span class="workflow__node-label">Briefing</span>
+            </div>
+
+            <!-- SVG connection lines -->
+            <svg class="workflow__svg-connections" viewBox="0 0 800 300" preserveAspectRatio="none">
+              <!-- Path from start to Aura -->
+              <path class="workflow__connection-line" id="line-start-aura" d="M 90 150 L 210 150" />
+              <!-- Aura to Prompt -->
+              <path class="workflow__connection-line" id="line-aura-prompt" d="M 270 110 L 390 60" />
+              <!-- Aura to Syntax -->
+              <path class="workflow__connection-line" id="line-aura-syntax" d="M 270 190 L 390 240" />
+              <!-- Prompt to Syntax -->
+              <path class="workflow__connection-line" id="line-prompt-syntax" d="M 430 100 L 430 200" />
+              <!-- Syntax to Verify -->
+              <path class="workflow__connection-line" id="line-syntax-verify" d="M 470 240 L 590 190" />
+              <!-- Prompt to Verify -->
+              <path class="workflow__connection-line" id="line-prompt-verify" d="M 470 60 L 590 110" />
+              <!-- Verify to Metric -->
+              <path class="workflow__connection-line" id="line-verify-metric" d="M 650 150 L 710 150" />
+            </svg>
+
+            <!-- Agent Nodes -->
+            <!-- Aura: Orchestrator -->
+            <button type="button" class="workflow__node workflow__node--agent" id="node-aura" data-agent="aura">
+              <div class="workflow__node-info-stack">
+                <span class="workflow__node-avatar">AURA</span>
+                <span class="workflow__node-name">Aura</span>
+                <span class="workflow__node-role">Orchestrator</span>
+              </div>
+            </button>
+
+            <!-- Prompt: Designer -->
+            <button type="button" class="workflow__node workflow__node--agent" id="node-prompt" data-agent="prompt">
+              <div class="workflow__node-info-stack">
+                <span class="workflow__node-avatar">PROMPT</span>
+                <span class="workflow__node-name">Prompt</span>
+                <span class="workflow__node-role">Creative</span>
+              </div>
+            </button>
+
+            <!-- Syntax: Developer -->
+            <button type="button" class="workflow__node workflow__node--agent" id="node-syntax" data-agent="syntax">
+              <div class="workflow__node-info-stack">
+                <span class="workflow__node-avatar">SYNTAX</span>
+                <span class="workflow__node-name">Syntax</span>
+                <span class="workflow__node-role">Developer</span>
+              </div>
+            </button>
+
+            <!-- Verify: QA -->
+            <button type="button" class="workflow__node workflow__node--agent" id="node-verify" data-agent="verify">
+              <div class="workflow__node-info-stack">
+                <span class="workflow__node-avatar">VERIFY</span>
+                <span class="workflow__node-name">Verify</span>
+                <span class="workflow__node-role">QA/Gate</span>
+              </div>
+            </button>
+
+            <!-- Metric: Performance -->
+            <button type="button" class="workflow__node workflow__node--agent" id="node-metric" data-agent="metric">
+              <div class="workflow__node-info-stack">
+                <span class="workflow__node-avatar">METRIC</span>
+                <span class="workflow__node-name">Metric</span>
+                <span class="workflow__node-role">Performance</span>
+              </div>
+            </button>
           </div>
-          <div class="member" data-reveal>
-            <div class="member__avatar">SA</div>
-            <p class="member__name">Selin Akar</p>
-            <p class="member__role">Head of Performance · ROAS-Jägerin</p>
+
+          <!-- Info Display Panel for clicked Agent -->
+          <div class="workflow__details" id="workflow-details-panel">
+            <div class="workflow__details-placeholder">
+              Klicke auf eine Agenten-Kachel, um System-Prompts, Fähigkeiten und Modelle anzuzeigen.
+            </div>
+            <div class="workflow__details-content" id="workflow-details-content" hidden>
+              <h3 class="workflow__details-title" id="agent-detail-name">AURA</h3>
+              <p class="workflow__details-role" id="agent-detail-role">Chief AI Orchestrator</p>
+              
+              <div class="workflow__details-grid">
+                <div>
+                  <strong>System-Prompt:</strong>
+                  <pre class="workflow__details-prompt" id="agent-detail-prompt">...</pre>
+                </div>
+                <div>
+                  <div style="margin-bottom: 1.2rem;">
+                    <strong>Fähigkeiten / Tools:</strong>
+                    <div class="workflow__details-tools" id="agent-detail-tools">
+                      <!-- tags -->
+                    </div>
+                  </div>
+                  <div>
+                    <strong>Modell / Gehirn:</strong>
+                    <div style="margin-top:0.4rem;">
+                      <span class="tag tag--acid" id="agent-detail-model" style="background:var(--acid); color:var(--ink);">Gemini 3.5 Pro</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="member" data-reveal>
-            <div class="member__avatar">TK</div>
-            <p class="member__name">Tobias Klein</p>
-            <p class="member__role">Tech &amp; Web · Pixel-Schmied</p>
+
+          <!-- Swarm Specialist Pool -->
+          <div class="specialist-swarm">
+            <div class="specialist-swarm__header">
+              <h3 class="specialist-swarm__title">Spezialisten-Pool</h3>
+              <p class="specialist-swarm__desc">
+                Unsere Kern-Pipeline greift bei Bedarf auf einen Pool aus 16 hochspezialisierten AI-Agents zurück. 
+                Dieser Schwarm skaliert je nach Traffic und Auslastung vollautomatisch auf über 60 parallele Instanzen.
+              </p>
+            </div>
+
+            <!-- Department Selector Tabs -->
+            <div class="department-tabs" role="tablist" aria-label="Agenten-Abteilungen">
+              <button type="button" class="department-tab is-active" role="tab" aria-selected="true" data-dept="strategy">Strategie &amp; Daten</button>
+              <button type="button" class="department-tab" role="tab" aria-selected="false" data-dept="creative">Kreation &amp; Content</button>
+              <button type="button" class="department-tab" role="tab" aria-selected="false" data-dept="tech">Web &amp; Tech</button>
+              <button type="button" class="department-tab" role="tab" aria-selected="false" data-dept="performance">Media &amp; Performance</button>
+            </div>
+
+            <!-- Specialist Grid Container -->
+            <div class="specialist-grid" id="specialist-swarm-grid" role="tabpanel">
+              <!-- Dynamically rendered via js/workflow.js -->
+            </div>
           </div>
         </div>
-        <div class="hero__ctas" data-reveal style="margin-top: var(--gap);">
-          <a class="btn btn--ghost magnetic" href="ueber-uns.html">Mehr über uns →</a>
+
+        <div class="hero__ctas" data-reveal style="margin-top: var(--gap); justify-content: center;">
+          <a class="btn btn--ghost magnetic" href="ueber-uns.html">Mehr über unseren Schwarm →</a>
         </div>
       </div>
     </section>
@@ -2159,16 +2800,14 @@ a.case:focus-visible, a.post:focus-visible { outline: 4px solid var(--electric);
   <!-- ===== Scripts (ES modules, deferred by default) ===== -->
   <script>
 (function(){
-// GRELLWERK — central config (copy + guide steps). Edit text here, not logic.
-const FLAGS = {
+// GRELLWERK — central config (copy + guide steps). Edit text here, not logic.const FLAGS = {
   gsap: false,
   lenis: false,
 };
 
 // BRUMMER guide steps. `selector` is scrolled into view + highlighted.
 // Page-aware: guide.js keeps only steps whose selector exists on the current
-// page, in array order. So group sub-page steps contiguously + in visual order.
-const GUIDE_STEPS = [
+// page, in array order. So group sub-page steps contiguously + in visual order.const GUIDE_STEPS = [
   // ===== Startseite (index.html) =====
   {
     selector: "#hero",
@@ -2212,7 +2851,7 @@ const GUIDE_STEPS = [
   },
   {
     selector: "#crew",
-    text: "Die Verrückten, die das alles bauen. Mehr über uns gibt's auf der Über-uns-Seite.",
+    text: "Unser autonomer Agenten-Schwarm: 5 spezialisierte AI-Agents, die Hand in Hand arbeiten. Klick auf einen Agenten oder simuliere ein Briefing, um den Datenfluss zu sehen.",
   },
   {
     selector: "#journal",
@@ -2278,7 +2917,7 @@ const GUIDE_STEPS = [
   },
   {
     selector: "#ueber-crew",
-    text: "Die ganze Crew. Sieht harmlos aus — ist es nicht.",
+    text: "Unser Agenten-Schwarm: 5 hochspezialisierte AI-Agents, die ohne Reibungsverluste und rund um die Uhr Lärm produzieren.",
   },
   {
     selector: "#ueber-stimmen",
@@ -2300,8 +2939,7 @@ const GUIDE_STEPS = [
 
 // Passive quips shown when a section scrolls into view (guide inactive).
 // Werte dürfen String ODER Array sein — guide.js pickt bei Arrays zufällig,
-// damit Wiederbesuche frischer wirken. Neue Sektion → hier ergänzen.
-const QUIPS = {
+// damit Wiederbesuche frischer wirken. Neue Sektion → hier ergänzen.const QUIPS = {
   zahlen: ["Zahlen statt Buzzwords.", "Rechne nach. Wir warten.", "Keine geschönten Slides."],
   leistungen: ["Sechs Disziplinen, ein Ziel: Krach.", "Such dir aus, wo's wehtun soll."],
   kunden: "Die vertrauen uns. Du auch?",
@@ -2312,7 +2950,7 @@ const QUIPS = {
   pakete: ["Drei Stufen Lärm. Such dir was aus.", "Vom Knall bis Vollgas."],
   konfigurator: "Zwei Klicks zur Empfehlung.",
   slogan: ["Tipp deine Marke ein. Ich mach Krach draus.", "Gratis-Slogans, frisch aus der Maschine."],
-  crew: ["Sieht harmlos aus. Ist es nicht.", "Sieben Köpfe, ein Krawall."],
+  crew: ["Fünf Agenten. Null Reibungsverluste.", "Unser Schwarm schläft nie.", "Code, Design, Performance — vollautomatisch."],
   stimmen: "Hör auf die, nicht auf uns.",
   journal: "Frischer Lärm zum Nachlesen.",
   kontakt: ["Na los, trau dich.", "Der Knopf beißt nicht. Wir schon."],
@@ -2329,8 +2967,7 @@ const QUIPS = {
 // BRUMMER „Frag-Modus" + Verhalten. Fake-KI: Keyword-Matching auf feste
 // Antworten, kein Netz. `qa[].keys` = Schlüsselwörter für freie Eingabe,
 // `qa[].go` = Selektor auf DIESER Seite (existiert er, scrollt Brummer hin).
-// `match()` wählt die beste Antwort, sonst ein Fallback. Texte hier pflegen.
-const BRUMMER = {
+// `match()` wählt die beste Antwort, sonst ein Fallback. Texte hier pflegen.const BRUMMER = {
   greet: "Frag mich was — tipp's ein oder klick einen Vorschlag.",
   tourLabel: "Zeig mir den Laden ↻",
   inputPlaceholder: "Frag Brummer …",
@@ -2373,9 +3010,8 @@ const BRUMMER = {
 };
 
 // Krach-Konfigurator: Antworten → Empfehlung. Paket-Namen identisch zur
-// #pakete-Sektion, Leads identisch zur #crew. Logik hier, nicht in der UI.
-const KONFIGURATOR = {
-  defaultLead: "Mara Vogt · Chief Chaos Officer",
+// #pakete-Sektion, Leads identisch zur #crew. Logik hier, nicht in der UI.const KONFIGURATOR = {
+  defaultLead: "AURA · Chief AI Orchestrator",
   recommend({ ziel, phase, tempo }) {
     if (!ziel || !phase || !tempo) return null;
 
@@ -2387,9 +3023,9 @@ const KONFIGURATOR = {
     if (phase === "start" && tempo === "vollgas") paket = "Krachen";
 
     const leads = {
-      awareness: "Jonas Reh · Kreativdirektor",
-      sales: "Selin Akar · Head of Performance",
-      launch: "Tobias Klein · Tech & Web",
+      awareness: "PROMPT · Creative & Design Agent",
+      sales: "METRIC · Performance & ROAS Agent",
+      launch: "SYNTAX · Web & Developer Agent",
     };
     const lead = leads[ziel] || this.defaultLead;
 
@@ -2415,8 +3051,7 @@ const KONFIGURATOR = {
 // Krach-Maschine: Fake-KI Slogan-Generator. Keyword-Erkennung statt echter KI —
 // `detect()` rät die Branche aus Marke+Branche-Text, `generate()` färbt Wortwahl
 // und Templates entsprechend ein und meldet die erkannte Kategorie zurück (das
-// macht den „versteht-mich"-Effekt). Reine Kombinatorik, kein Netz.
-const SLOGAN = {
+// macht den „versteht-mich"-Effekt). Reine Kombinatorik, kein Netz.const SLOGAN = {
   fallbackBrand: "deine Marke",
   tones: [
     { id: "frech", label: "Frech" },
@@ -2554,15 +3189,13 @@ const SLOGAN = {
     }
     return { category: cat ? cat.label : null, slogans };
   },
-};
-const COPY = {
+};const COPY = {
   formSuccess: "Bzzz! Nachricht ist drin. Wir melden uns lauter als erwartet. 🐝",
   formError: "Fast! Füll bitte alle Felder aus.",
   storageKey: "grellwerk_guide_seen",
 };
 
-// GRELLWERK — custom cursor + magnetic buttons (pure vanilla, rAF-throttled).
-function initCursor({ reducedMotion, gsap }) {
+// GRELLWERK — custom cursor + magnetic buttons (pure vanilla, rAF-throttled).function initCursor({ reducedMotion, gsap }) {
   const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
   if (!finePointer || reducedMotion) return;
 
@@ -2631,8 +3264,7 @@ function initMagnetic({ gsap }) {
 
 const CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ#%&!*/—";
 
-// Mobile nav: hamburger toggle. No-op if markup is absent (graceful).
-function initNav() {
+// Mobile nav: hamburger toggle. No-op if markup is absent (graceful).function initNav() {
   const nav = document.querySelector(".nav");
   const toggle = nav && nav.querySelector(".nav__toggle");
   const menu = nav && nav.querySelector(".nav__links");
@@ -2654,8 +3286,7 @@ function initNav() {
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") setOpen(false);
   });
-}
-function initScramble({ reducedMotion }) {
+}function initScramble({ reducedMotion }) {
   if (reducedMotion) return;
   const els = document.querySelectorAll("[data-scramble]");
   els.forEach((el) => {
@@ -2689,15 +3320,13 @@ function initScramble({ reducedMotion }) {
   });
 }
 
-// Duplicate marquee content so the -50% loop is seamless regardless of width.
-function initMarquee() {
+// Duplicate marquee content so the -50% loop is seamless regardless of width.function initMarquee() {
   document.querySelectorAll(".marquee__track").forEach((track) => {
     track.innerHTML += track.innerHTML;
   });
 }
 
-// Rotating proof ticker: cycles the child spans one at a time (fade via CSS).
-function initRotator({ reducedMotion }) {
+// Rotating proof ticker: cycles the child spans one at a time (fade via CSS).function initRotator({ reducedMotion }) {
   document.querySelectorAll("[data-rotate]").forEach((box) => {
     const items = Array.from(box.children);
     if (!items.length) return;
@@ -2712,8 +3341,7 @@ function initRotator({ reducedMotion }) {
   });
 }
 
-// Count-up for stat numbers, triggered when the band scrolls into view.
-function initCounters({ reducedMotion }) {
+// Count-up for stat numbers, triggered when the band scrolls into view.function initCounters({ reducedMotion }) {
   const els = document.querySelectorAll("[data-count]");
   if (!els.length) return;
 
@@ -2750,8 +3378,7 @@ function initCounters({ reducedMotion }) {
   els.forEach((el) => io.observe(el));
 }
 
-// Brutalist placeholder form: no real submission, just a buzzy success state.
-function initForm({ COPY, onSuccess }) {
+// Brutalist placeholder form: no real submission, just a buzzy success state.function initForm({ COPY, onSuccess }) {
   const form = document.getElementById("contact-form");
   const status = document.getElementById("form-status");
   if (!form || !status) return;
@@ -2768,8 +3395,7 @@ function initForm({ COPY, onSuccess }) {
 }
 
 // GRELLWERK — Krach-Konfigurator. Pure-vanilla interactive recommender.
-// Reads option buttons, keeps a tiny answer state, re-renders the result panel.
-function initKonfigurator({ KONFIGURATOR }) {
+// Reads option buttons, keeps a tiny answer state, re-renders the result panel.function initKonfigurator({ KONFIGURATOR }) {
   const form = document.getElementById("config-form");
   const paketEl = document.getElementById("config-paket");
   const leadEl = document.getElementById("config-lead");
@@ -2816,8 +3442,7 @@ function initKonfigurator({ KONFIGURATOR }) {
 
 // GRELLWERK — Krach-Maschine. Pure-vanilla Fake-KI Slogan-Generator.
 // Liest Marke + Ton, lässt SLOGAN.generate() rechnen, rendert Karten mit
-// Copy-Button. Keine Abhängigkeiten, kein Netz.
-function initGenerator({ SLOGAN, reducedMotion }) {
+// Copy-Button. Keine Abhängigkeiten, kein Netz.function initGenerator({ SLOGAN, reducedMotion }) {
   const form = document.getElementById("slogan-form");
   const input = document.getElementById("slogan-input");
   const brancheEl = document.getElementById("slogan-branche");
@@ -2902,8 +3527,7 @@ function initGenerator({ SLOGAN, reducedMotion }) {
 
 // GRELLWERK — Journal-Kategoriefilter + Sortierung. Pure-vanilla, läuft nur auf
 // journal.html. Filter: eine Kategorie + „Alle" (blendet `.post` per data-cat
-// ein/aus). Sortierung: ordnet die Karten im Grid um (Datum/Titel/Kategorie).
-function initJournal() {
+// ein/aus). Sortierung: ordnet die Karten im Grid um (Datum/Titel/Kategorie).function initJournal() {
   const filter = document.getElementById("journal-filter");
   const grid = document.getElementById("journal-grid");
   const empty = document.getElementById("journal-empty");
@@ -2992,11 +3616,452 @@ function initJournal() {
   applySort("date-desc", false);
 }
 
+// GRELLWERK — Agent Workflow & Specialist Swarm Interactivity
+
+const CORE_AGENT_DATA = {
+  aura: {
+    name: "Aura",
+    role: "Chief AI Orchestrator",
+    model: "Gemini 3.5 Pro (High)",
+    tools: ["Task-Decomposer", "Agent-Router", "Client-Interface", "Sitemap-Reader"],
+    prompt: "Du bist das Gehirn der Agentur. Zerlege Kundenbriefings in präzise Teilaufgaben. Weise diese den Spezialisten-Agenten PROMPT und SYNTAX zu. Überwache den Workflow, koordiniere Iterationen und veranlasse die finale Freigabe vor dem Deployment."
+  },
+  prompt: {
+    name: "Prompt",
+    role: "Creative & Design Agent",
+    model: "Imagen 3 / Gemini 3.5 Flash",
+    tools: ["Asset-Generator", "Color-Palette-Selector", "Copywriting-Engine", "SVG-Builder"],
+    prompt: "Du bist der kreative Geist. Generiere aufmerksamkeitsstarke Werbetexte, zündende Slogans, visuelle Layout-Konzepte und Marken-Assets. Arbeite eng mit SYNTAX zusammen, um Design-Tokens und kreative Bausteine direkt bereitzustellen."
+  },
+  syntax: {
+    name: "Syntax",
+    role: "Web & Developer Agent",
+    model: "Gemini 3.5 Pro (High)",
+    tools: ["HTML5-Compiler", "CSS-Utility-Pack", "JS-Bundler", "AST-Parser"],
+    prompt: "Du bist das technische Rückgrat. Übersetze Wireframes, Figma-Design-Tokens und Werbetexte in fehlerfreies, hochperformantes HTML, CSS und Vanilla-JavaScript. Respektiere streng das responsive Layout und die Code-Konventionen des Repositories."
+  },
+  verify: {
+    name: "Verify",
+    role: "QA & Security Gatekeeper",
+    model: "Gemini 3.5 Flash (Medium)",
+    tools: ["Linter-Labyrinth", "Link-Checker", "Smoke-Tester", "Canonical-Audit"],
+    prompt: "Du bist die letzte Bastion vor dem Release. Scanne allen generierten Code auf Syntaxfehler, defekte HTML-Tags, unescapete Sonderzeichen, tote Links, fehlende Meta-Tags und Abweichungen von den Nav/Footer-Vorgaben. Gib die Kampagne nur bei 100% grünem Gate frei."
+  },
+  metric: {
+    name: "Metric",
+    role: "Performance & ROAS Agent",
+    model: "Gemini 3.5 Flash (Medium)",
+    tools: ["ROAS-Tracker", "A/B-Optimizer", "Ad-Manager-Scraper", "Funnel-Analyzer"],
+    prompt: "Du bist der ROI-Jäger. Analysiere Live-Performance-Daten, Klickraten (CTR) und CPAs. Empfiehl automatische A/B-Tests für Überschriften, CTAs und Werbemittel. Passe Budgetallokationen in Echtzeit an, um den ROAS der Kampagnen zu maximieren."
+  }
+};
+
+const SPECIALIST_DATA = {
+  strategy: [
+    {
+      id: "spy",
+      name: "SPY",
+      role: "Competitor Intelligence Agent",
+      model: "Gemini 3.5 Flash",
+      tools: ["Scrape-Master", "AdLibrary-Scraper", "Keyword-Analyzer", "Trend-Radar"],
+      prompt: "Analysiere Mitbewerber-Kampagnen, organische Keywords und Social-Ad-Hooks. Erstelle eine detaillierte Wettbewerber-Matrix mit Hebeln und Gegen-Thesen für die Kreation."
+    },
+    {
+      id: "model",
+      name: "MODEL",
+      role: "Media Mix Forecaster",
+      model: "Gemini 3.5 Pro",
+      tools: ["ROI-Calculator", "Attribution-Modeler", "Budget-Allocator"],
+      prompt: "Prognostiziere und simuliere die Performance verschiedener Budget-Szenarien. Berechne inkrementellen Lift und optimiere den Cross-Channel-Mediamix mathematisch."
+    },
+    {
+      id: "target",
+      name: "TARGET",
+      role: "Audience Segmenter",
+      model: "Gemini 3.5 Flash",
+      tools: ["Cohort-Builder", "Interest-Spy", "Lookalike-Synthesizer"],
+      prompt: "Identifiziere profitable Zielgruppen-Nischen und Demografien. Generiere detaillierte Personas und übersetze diese in Facebook-Interessen und Google-Targeting-Kriterien."
+    },
+    {
+      id: "survey",
+      name: "SURVEY",
+      role: "Sentiment Miner",
+      model: "Gemini 3.5 Flash",
+      tools: ["Reddit-Reader", "Review-Miner", "Emotion-Classifier"],
+      prompt: "Scanne Kundenbewertungen, Reddit-Threads und Foren nach echten Schmerzpunkten (Pain Points) und Ängsten der Zielgruppe. Formuliere emotionale Kaufmotive."
+    },
+    {
+      id: "scout",
+      name: "SCOUT",
+      role: "Influencer & UGC Matcher",
+      model: "Gemini 3.5 Flash",
+      tools: ["Channel-Scraper", "Engagement-Calculator", "Briefing-Synthesizer", "Demographic-Auditor"],
+      prompt: "Scanne Instagram, TikTok und YouTube nach passenden UGC-Creatoren und Micro-Influencern. Berechne Engagement-Raten, analysiere Zielgruppendemografien und entwirfe optimierte Creator-Briefings."
+    }
+  ],
+  creative: [
+    {
+      id: "voice",
+      name: "VOICE",
+      role: "Brand Voice Copywriter",
+      model: "Gemini 3.5 Pro",
+      tools: ["Styleguide-Matcher", "Rhyme-Generator", "Hook-Builder"],
+      prompt: "Verfasse Anzeigentexte, Headlines und Landingpage-Copy. Stelle sicher, dass die Tonalität exakt dem frechen, brutalistischen GRELLWERK-Stil oder der Kundenmarke entspricht."
+    },
+    {
+      id: "hook",
+      name: "HOOK",
+      role: "Social Video Ideator",
+      model: "Gemini 3.5 Flash",
+      tools: ["Sound-Scraper", "Soundbite-Generator", "TikTok-Trend-Radar"],
+      prompt: "Konzipiere die ersten 3 Sekunden für Reels und TikToks. Entwickle 5 verschiedene Hook-Varianten pro Creative, um die ThruPlay-Rate zu maximieren."
+    },
+    {
+      id: "motion",
+      name: "MOTION",
+      role: "Storyboard Artist",
+      model: "Imagen 3 / Gemini 3.5 Flash",
+      tools: ["Frame-Layout-Builder", "Video-Briefing-Generator", "Prompt-Director"],
+      prompt: "Generiere visuelle Storyboards und detaillierte Regieanweisungen für Creator. Definiere Kameraperspektiven, Schnitte, Texteinblenden und Sound-Effekte."
+    },
+    {
+      id: "visual",
+      name: "VISUAL",
+      role: "Ad-Asset Designer",
+      model: "Imagen 3",
+      tools: ["Vector-Stylist", "Image-Generator", "Aspect-Ratio-Resizer"],
+      prompt: "Erstelle aufmerksamkeitsstarke Bild-Creatives, Grid-Grafiken und Social-Assets. Setze gezielt brutalistische Typografie, Neon-Akzente und Blockschatten ein."
+    },
+    {
+      id: "brief",
+      name: "BRIEF",
+      role: "Concept & Pitch Director",
+      model: "Gemini 3.5 Pro",
+      tools: ["Concept-Visualizer", "Pitchdeck-Architect", "Angle-Selector"],
+      prompt: "Analysiere Kundenbriefings und strategische Vorgaben. Entwickle daraus kreative Leitideen, visuelle Leitlinien und Kampagnen-Angles, die echten Krach im Markt erzeugen."
+    }
+  ],
+  tech: [
+    {
+      id: "front",
+      name: "FRONT",
+      role: "UI Component Builder",
+      model: "Gemini 3.5 Pro",
+      tools: ["HTML5-Lego", "Tailwind-Parser", "Vanilla-JS-Generator"],
+      prompt: "Bringe UI-Designs in semantisches, barrierefreies HTML und CSS. Optimiere Grids, Hover-Effekte und Mikro-Animationen für maximale visuelle Dynamik."
+    },
+    {
+      id: "speed",
+      name: "SPEED",
+      role: "LCP & Performance Specialist",
+      model: "Gemini 3.5 Pro",
+      tools: ["Image-Minifier", "Script-Deferrer", "Core-Web-Vitals-Auditor"],
+      prompt: "Komprimiere Assets, eliminiere renderblockierende Skripte und optimiere die kritischen CSS-Pfade. Erreiche 100/100 Punkte im PageSpeed-Score."
+    },
+    {
+      id: "watchdog",
+      name: "WATCHDOG",
+      role: "Link & Uptime Auditor",
+      model: "Gemini 3.5 Flash",
+      tools: ["SSL-Checker", "DeadLink-Scanner", "Console-Logger"],
+      prompt: "Überwache kontinuierlich die Verfügbarkeit aller Landingpages. Scanne nach toten Links (404), Javascript-Konsolenfehlern und abgelaufenen Zertifikaten."
+    },
+    {
+      id: "form",
+      name: "FORM",
+      role: "Lead & Integration Mapper",
+      model: "Gemini 3.5 Flash",
+      tools: ["Zapier-Connector", "Webhook-Tester", "Sanitizer"],
+      prompt: "Sichere das Formular-Handling ab. Validiere und bereinige User-Inputs, verbinde Webhooks mit CRMs und stelle sicher, dass Leads in Millisekunden verarbeitet werden."
+    },
+    {
+      id: "comply",
+      name: "COMPLY",
+      role: "Ad-Policy & Legal Auditor",
+      model: "Gemini 3.5 Flash",
+      tools: ["GDPR-Sanitizer", "Ad-Policy-Scanner", "Cookie-Watchdog", "Trademark-Guard"],
+      prompt: "Überprüfe Werbemittel, Landingpages und Datenschutzerklärungen. Scanne nach DSGVO-Verstößen, Markenrechtsproblemen und Abweichungen von den Werberichtlinien (Meta/Google Ad Policies) zur Vermeidung von Kontosperren."
+    }
+  ],
+  performance: [
+    {
+      id: "meta",
+      name: "META",
+      role: "Paid Social Buyer",
+      model: "Gemini 3.5 Flash",
+      tools: ["AdsManager-API", "CBO-Allocator", "Bid-Manager"],
+      prompt: "Verwalte Meta- und TikTok-Werbebudgets. Schalte Kampagnen, optimiere Advantage+ Kampagnen und justiere die Gebote täglich nach Cost-per-Acquisition (CPA)."
+    },
+    {
+      id: "search",
+      name: "SEARCH",
+      role: "Google Ads Specialist",
+      model: "Gemini 3.5 Flash",
+      tools: ["Keyword-Bid-Manager", "Quality-Score-Optimizer"],
+      prompt: "Erstelle und optimiere Google Search und Performance Max Kampagnen. Optimiere Anzeigentitel und passe Gebote basierend auf dem Suchvolumen an."
+    },
+    {
+      id: "nudge",
+      name: "NUDGE",
+      role: "Retention & Email Flow Builder",
+      model: "Gemini 3.5 Pro",
+      tools: ["Klaviyo-Architect", "Newsletter-Builder", "Cart-Tracker"],
+      prompt: "Konzipiere und implementiere E-Mail-Strecken für Warenkorb-Abbrecher, Willkommens-Flows und Reaktivierungs-Kampagnen mit hohem Engagement."
+    },
+    {
+      id: "cro",
+      name: "CRO",
+      role: "A/B Testing Specialist",
+      model: "Gemini 3.5 Flash",
+      tools: ["AB-Test-Setup", "Statistical-Confidence-Calculator"],
+      prompt: "Konzipiere A/B-Tests für Landingpages. Vergleiche verschiedene Value Propositions, Button-Farben und Hero-Bilder auf statistische Signifikanz."
+    },
+    {
+      id: "finance",
+      name: "FINANCE",
+      role: "Billing & Budget Guard",
+      model: "Gemini 3.5 Flash",
+      tools: ["Invoice-Generator", "Limit-Watchdog", "Overspend-Alert", "Stripe-Connector"],
+      prompt: "Überwache Werbebudgets und Kampagnen-Spendings in Echtzeit. Löse automatische Warnungen bei Budget-Spikes aus, pausiere Anzeigen bei Budgetüberschreitung und erstelle Monatsabrechnungen."
+    }
+  ]
+};
+function initWorkflow() {
+  const container = document.querySelector(".workflow");
+  if (!container) return;
+
+  const btnSimulate = document.getElementById("simulate-workflow-btn");
+  const simStatus = document.getElementById("workflow-sim-status");
+  const detailsPlaceholder = container.querySelector(".workflow__details-placeholder");
+  const detailsContent = document.getElementById("workflow-details-content");
+  
+  // Detail elements
+  const detailName = document.getElementById("agent-detail-name");
+  const detailRole = document.getElementById("agent-detail-role");
+  const detailPrompt = document.getElementById("agent-detail-prompt");
+  const detailTools = document.getElementById("agent-detail-tools");
+  const detailModel = document.getElementById("agent-detail-model");
+
+  const nodes = container.querySelectorAll(".workflow__node--agent");
+  const lines = container.querySelectorAll(".workflow__connection-line");
+
+  // Show agent data in detail panel
+  function displayAgentDetails(data) {
+    // Show panel contents
+    detailsPlaceholder.setAttribute("hidden", "");
+    detailsContent.removeAttribute("hidden");
+
+    // Populate text
+    detailName.textContent = data.name.toUpperCase();
+    detailRole.textContent = data.role;
+    detailPrompt.textContent = data.prompt;
+    detailModel.textContent = data.model;
+
+    // Populate tools
+    detailTools.innerHTML = "";
+    data.tools.forEach(tool => {
+      const span = document.createElement("span");
+      span.className = "tag";
+      span.textContent = tool;
+      detailTools.appendChild(span);
+    });
+  }
+
+  // Handle core agent click / selection
+  nodes.forEach(node => {
+    node.addEventListener("click", () => {
+      const agentKey = node.getAttribute("data-agent");
+      const data = CORE_AGENT_DATA[agentKey];
+      if (!data) return;
+
+      // Update active class on core nodes and clear specialist selection
+      nodes.forEach(n => n.classList.remove("is-selected"));
+      container.querySelectorAll(".specialist-card").forEach(c => c.classList.remove("is-selected"));
+      node.classList.add("is-selected");
+
+      displayAgentDetails(data);
+    });
+  });
+
+  // Briefing simulation animation flow
+  let isRunning = false;
+  if (btnSimulate) {
+    btnSimulate.addEventListener("click", () => {
+      if (isRunning) return;
+      isRunning = true;
+      btnSimulate.disabled = true;
+      btnSimulate.textContent = "Simulation läuft... ⚡";
+
+      // Clear previous active states
+      nodes.forEach(n => {
+        n.classList.remove("is-active-pulse");
+        n.classList.remove("is-selected");
+      });
+      container.querySelectorAll(".specialist-card").forEach(c => c.classList.remove("is-selected"));
+      lines.forEach(l => l.classList.remove("is-active"));
+      
+      // Hide details panel placeholder to focus on simulation
+      detailsPlaceholder.removeAttribute("hidden");
+      detailsContent.setAttribute("hidden", "");
+
+      const steps = [
+        {
+          delay: 0,
+          action: () => {
+            simStatus.textContent = "Briefing empfangen. Übertrage an AURA...";
+            document.getElementById("line-start-aura")?.classList.add("is-active");
+            document.getElementById("node-start")?.classList.add("is-active-pulse");
+          }
+        },
+        {
+          delay: 1000,
+          action: () => {
+            document.getElementById("node-start")?.classList.remove("is-active-pulse");
+            simStatus.textContent = "AURA analysiert Briefing und verteilt Tasks...";
+            document.getElementById("node-aura")?.classList.add("is-active-pulse");
+            document.getElementById("line-aura-prompt")?.classList.add("is-active");
+            document.getElementById("line-aura-syntax")?.classList.add("is-active");
+          }
+        },
+        {
+          delay: 2500,
+          action: () => {
+            document.getElementById("node-aura")?.classList.remove("is-active-pulse");
+            simStatus.textContent = "PROMPT entwirft Branding | SYNTAX baut Code...";
+            document.getElementById("node-prompt")?.classList.add("is-active-pulse");
+            document.getElementById("node-syntax")?.classList.add("is-active-pulse");
+            document.getElementById("line-prompt-syntax")?.classList.add("is-active");
+          }
+        },
+        {
+          delay: 4500,
+          action: () => {
+            document.getElementById("node-prompt")?.classList.remove("is-active-pulse");
+            document.getElementById("node-syntax")?.classList.remove("is-active-pulse");
+            simStatus.textContent = "SYNTAX & PROMPT senden Arbeitsstand an VERIFY...";
+            document.getElementById("line-prompt-verify")?.classList.add("is-active");
+            document.getElementById("line-syntax-verify")?.classList.add("is-active");
+          }
+        },
+        {
+          delay: 5800,
+          action: () => {
+            simStatus.textContent = "VERIFY prüft Syntax, Links, Bilder & SEO-Metadaten...";
+            document.getElementById("node-verify")?.classList.add("is-active-pulse");
+          }
+        },
+        {
+          delay: 7500,
+          action: () => {
+            document.getElementById("node-verify")?.classList.remove("is-active-pulse");
+            simStatus.textContent = "Prüfung erfolgreich! Freigabe an METRIC...";
+            document.getElementById("line-verify-metric")?.classList.add("is-active");
+          }
+        },
+        {
+          delay: 8500,
+          action: () => {
+            simStatus.textContent = "METRIC schaltet Kampagne live & startet A/B-Testing...";
+            document.getElementById("node-metric")?.classList.add("is-active-pulse");
+          }
+        },
+        {
+          delay: 10500,
+          action: () => {
+            document.getElementById("node-metric")?.classList.remove("is-active-pulse");
+            simStatus.textContent = "Kampagne live! +312% ROAS generiert. Schwarm bereit. ⚡";
+            
+            // Clean up lines
+            lines.forEach(l => l.classList.remove("is-active"));
+            
+            // Highlight success state
+            isRunning = false;
+            btnSimulate.disabled = false;
+            btnSimulate.textContent = "Erneut simulieren ⚡";
+          }
+        }
+      ];
+
+      steps.forEach(step => {
+        setTimeout(step.action, step.delay);
+      });
+    });
+  }
+
+  // --- SPECIALIST SWARM COMPONENT LOGIC ---
+  const tabContainer = document.querySelector(".department-tabs");
+  const gridContainer = document.getElementById("specialist-swarm-grid");
+
+  if (tabContainer && gridContainer) {
+    const tabs = tabContainer.querySelectorAll(".department-tab");
+
+    function renderDepartment(deptKey) {
+      const agents = SPECIALIST_DATA[deptKey] || [];
+      gridContainer.innerHTML = "";
+
+      agents.forEach(agent => {
+        // Create card element
+        const card = document.createElement("button");
+        card.type = "button";
+        card.className = "specialist-card";
+        card.setAttribute("data-agent-id", agent.id);
+
+        card.innerHTML = `
+          <div class="specialist-card__avatar">${agent.name}</div>
+          <div class="specialist-card__content">
+            <h4 class="specialist-card__title">${agent.name}</h4>
+            <p class="specialist-card__role">${agent.role}</p>
+          </div>
+        `;
+
+        // Click event on specialist card
+        card.addEventListener("click", () => {
+          // Clear active core nodes and other specialist cards
+          nodes.forEach(n => n.classList.remove("is-selected"));
+          gridContainer.querySelectorAll(".specialist-card").forEach(c => c.classList.remove("is-selected"));
+          
+          card.classList.add("is-selected");
+
+          // Display data in unified details panel
+          displayAgentDetails({
+            name: agent.name,
+            role: agent.role,
+            model: agent.model,
+            tools: agent.tools,
+            prompt: agent.prompt
+          });
+
+          // Scroll detail panel into view smoothly
+          document.getElementById("workflow-details-panel")?.scrollIntoView({ behavior: "smooth", block: "nearest" });
+        });
+
+        gridContainer.appendChild(card);
+      });
+    }
+
+    // Set up tab click listeners
+    tabs.forEach(tab => {
+      tab.addEventListener("click", () => {
+        tabs.forEach(t => t.classList.remove("is-active"));
+        tab.classList.add("is-active");
+
+        const dept = tab.getAttribute("data-dept");
+        renderDepartment(dept);
+      });
+    });
+
+    // Render first department by default
+    const activeTab = tabContainer.querySelector(".department-tab.is-active");
+    if (activeTab) {
+      renderDepartment(activeTab.getAttribute("data-dept"));
+    }
+  }
+}
+
 // GRELLWERK — smooth scroll (Lenis if available) + reveal animations.
 // Falls back to IntersectionObserver + CSS transitions when GSAP is absent.
 
-let lenisInstance = null;
-function initScroll({ reducedMotion, gsap, ScrollTrigger, Lenis }) {
+let lenisInstance = null;function initScroll({ reducedMotion, gsap, ScrollTrigger, Lenis }) {
   // Smooth scroll (Lenis) is disabled on purpose — native scrolling feels
   // snappier. `lenisInstance` stays null, so scrollToEl() below uses the
   // native window.scrollTo fallback.
@@ -3033,8 +4098,7 @@ function initScroll({ reducedMotion, gsap, ScrollTrigger, Lenis }) {
   }
 }
 
-// Shared smooth-scroll helper used by the guide.
-function scrollToEl(el) {
+// Shared smooth-scroll helper used by the guide.function scrollToEl(el) {
   if (!el) return;
   if (lenisInstance) {
     lenisInstance.scrollTo(el, { offset: -80, duration: 1.0 });
@@ -3047,10 +4111,7 @@ function scrollToEl(el) {
 // GRELLWERK — BRUMMER interactive onboarding guide (state machine).
 // Verhalten: KEINE automatischen Popups. Brummer bleibt minimiert als Tab und
 // öffnet sich ausschließlich auf Klick (Frag-Modus). Tour nur auf Wunsch.
-
-
-const pick = (v) => (Array.isArray(v) ? v[Math.floor(Math.random() * v.length)] : v);
-function initGuide({ reducedMotion }) {
+const pick = (v) => (Array.isArray(v) ? v[Math.floor(Math.random() * v.length)] : v);function initGuide({ reducedMotion }) {
   const guide = document.getElementById("guide");
   const tab = document.getElementById("guide-tab");
   const textEl = document.getElementById("guide-text");
@@ -3319,15 +4380,6 @@ function initGuide({ reducedMotion }) {
 }
 
 // GRELLWERK — orchestrator. Initializes modules in order with graceful fallbacks.
-
-
-
-
-
-
-
-
-
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 async function boot() {
@@ -3340,6 +4392,7 @@ async function boot() {
   initKonfigurator({ KONFIGURATOR });
   initGenerator({ SLOGAN, reducedMotion });
   initJournal();
+  initWorkflow();
 
   // BRUMMER + form are pure-vanilla and must NOT wait on the optional CDN load:
   // a slow/blocked CDN would otherwise delay or drop the guide entirely (it was
