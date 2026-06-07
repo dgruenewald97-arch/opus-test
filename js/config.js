@@ -186,14 +186,14 @@ export const BRUMMER = {
   fallback: [
     "Versteh nur Lärm. Probier: Preis, Tempo, Zahlen — oder buchen.",
     "Gute Frage, schlechte Keywords. Frag konkreter, dann knallt's.",
-    "Da passe ich — aber meine Menschen nicht. Schreib uns einfach.",
+    "Da passe ich — aber der Schwarm nicht. Schreib uns einfach.",
   ],
   qa: [
     { q: "Was kostet das?", a: "Kommt drauf an, wie laut. Drei Pakete — vom ersten Knall bis Vollgas. Schau selbst.", go: "#pakete", keys: ["kost", "preis", "teuer", "geld", "budget", "euro", "€", "zahl ich", "günstig", "guenstig", "tarif"] },
     { q: "Wie schnell knallt's?", a: "Vier Schritte von der Idee zum Lärm. Kein Quartals-Geschwafel.", go: "#prozess", keys: ["schnell", "dauer", "wie lang", "wann", "tempo", "zeit", "deadline", "ablauf", "prozess"] },
     { q: "Echte Zahlen?", a: "Jeder Case mit echten Werten. Keine hübschen Mockup-Lügen.", go: "#arbeiten", keys: ["zahl", "beweis", "case", "referenz", "ergebnis", "roi", "roas", "erfolg", "beispiel", "projekt"] },
     { q: "Welches Paket für mich?", a: "Zwei Klicks und ich bau dir die Empfehlung. Probier den Konfigurator.", go: "#konfigurator", keys: ["paket", "empfehl", "passend", "welches", "konfigurat", "für mich", "fuer mich", "richtig"] },
-    { q: "Wer seid ihr?", a: "Sieben Köpfe, eine Mission: Lärm, der verkauft. Anti-Agentur seit 2018.", go: "#crew", keys: ["wer", "team", "crew", "ihr", "agentur", "über euch", "ueber euch", "gegründet", "leute"] },
+    { q: "Wer seid ihr?", a: "Fünf Kern-Agenten plus Spezialisten-Schwarm, eine Mission: Lärm, der verkauft. Vollautomatische Anti-Agentur.", go: "#crew", keys: ["wer", "team", "crew", "ihr", "agentur", "über euch", "ueber euch", "gegründet", "leute", "agent", "ki", "schwarm"] },
     { q: "Seid ihr nicht zu laut?", a: "Doch. Genau das ist der Plan. Leise gibt's woanders.", go: "#manifest", keys: ["laut", "leise", "schrei", "krach", "nervt", "aggressiv", "zu viel", "ruhig"] },
     { q: "Buchen!", a: "Stark. Schreib uns — wir melden uns lauter als erwartet. 🐝", go: "#kontakt", keys: ["buch", "kontakt", "anfrage", "melde", "termin", "schreib", "los", "start", "zusammen", "anfangen", "kennenlernen"] },
   ],
