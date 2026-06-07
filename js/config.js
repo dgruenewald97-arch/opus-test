@@ -39,6 +39,10 @@ export const GUIDE_STEPS = [
     text: "In vier Schritten von der Idee zum Knall. So einfach, so laut.",
   },
   {
+    selector: "#crew",
+    text: "Unser autonomer Agenten-Schwarm: fünf AI-Agents, die Hand in Hand arbeiten. Den ganzen Schwarm gibt's live auf der Über-uns-Seite.",
+  },
+  {
     selector: "#pakete",
     text: "Drei Pakete, ein Ziel: Krach. Vom ersten Knall bis Vollgas auf allen Kanälen.",
   },
@@ -49,10 +53,6 @@ export const GUIDE_STEPS = [
   {
     selector: "#slogan-lab",
     text: "Spielzeug gefällig? Tipp deine Marke ein — meine KI macht dir live Slogans draus.",
-  },
-  {
-    selector: "#crew",
-    text: "Unser autonomer Agenten-Schwarm: 5 spezialisierte AI-Agents, die Hand in Hand arbeiten. Klick auf einen Agenten oder simuliere ein Briefing, um den Datenfluss zu sehen.",
   },
   {
     selector: "#journal",
