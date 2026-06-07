@@ -1,0 +1,32 @@
+{
+  "schema": 1,
+  "session": {
+    "id": "sess_sample",
+    "title": "Beispiel-Session (statischer Snapshot)",
+    "model": "claude-opus-4-8",
+    "startedAt": 1733570000000,
+    "updatedAt": 1733570192000,
+    "status": "done",
+    "phase": "Fertig",
+    "now": "Aufgabe erledigt — bereit fürs Review",
+    "sub": "Dies ist ein Beispiel-Snapshot. Ein echter Agent überschreibt diese Datei live."
+  },
+  "tasks": [
+    { "id": "t1", "label": "Anforderung verstehen", "status": "done" },
+    { "id": "t2", "label": "Umsetzung", "status": "done" },
+    { "id": "t3", "label": "Prüfen", "status": "done" }
+  ],
+  "events": [
+    { "id": "e1", "ts": 1733570003000, "type": "thought", "title": "Plane das Vorgehen", "detail": "Erst lesen, dann ändern." },
+    { "id": "e2", "ts": 1733570020000, "type": "tool", "title": "Read", "detail": "README.md", "status": "ok", "ms": 80 },
+    { "id": "e3", "ts": 1733570060000, "type": "file", "title": "src/index.js", "detail": "+12 −2", "op": "edit" },
+    { "id": "e4", "ts": 1733570150000, "type": "tool", "title": "Bash", "detail": "npm test · 12 grün", "status": "ok", "ms": 1840 },
+    { "id": "e5", "ts": 1733570190000, "type": "message", "title": "Erledigt", "detail": "Änderung steht und ist getestet." }
+  ],
+  "files": [
+    { "op": "read", "path": "README.md" },
+    { "op": "edit", "path": "src/index.js" }
+  ],
+  "metrics": { "tools": 3, "files": 2 },
+  "awaiting": null
+}

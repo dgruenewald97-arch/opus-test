@@ -11,7 +11,9 @@
       "Bash(git diff:*)",
       "Bash(git log:*)",
       "Bash(git add:*)",
-      "Bash(git checkout:*)"
+      "Bash(git checkout:*)",
+      "Bash(node agent-lens/bridge/emit.cjs:*)",
+      "Bash(node agent-lens/bridge/serve.cjs)"
     ]
   },
   "hooks": {
@@ -19,6 +21,14 @@
       {
         "hooks": [
           { "type": "command", "command": "bash .claude/hooks/verify-gate.sh" }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "*",
+        "hooks": [
+          { "type": "command", "command": "node agent-lens/bridge/hook.cjs" }
         ]
       }
     ]
