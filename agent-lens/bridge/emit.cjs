@@ -19,6 +19,15 @@ const fs = require("fs");
 const path = require("path");
 
 const DATA = path.join(__dirname, "..", "data", "session.json");
+// Sentinel: nur wenn diese Datei existiert, erfasst der PostToolUse-Hook.
+const SENTINEL = path.join(__dirname, "..", "data", ".live");
+
+function isLive() { return fs.existsSync(SENTINEL); }
+function setLive(on) {
+  fs.mkdirSync(path.dirname(SENTINEL), { recursive: true });
+  if (on) fs.writeFileSync(SENTINEL, String(Date.now()));
+  else if (fs.existsSync(SENTINEL)) fs.unlinkSync(SENTINEL);
+}
 
 function load() {
   try {
@@ -134,7 +143,7 @@ function apply(s, cmd, args) {
   return s;
 }
 
-module.exports = { load, save, apply, fresh };
+module.exports = { load, save, apply, fresh, isLive, setLive, SENTINEL };
 
 // --- als CLI ausgeführt -------------------------------------------------
 if (require.main === module) {
@@ -143,9 +152,18 @@ if (require.main === module) {
     console.error("Befehl fehlt. Siehe Kommentar in emit.cjs für Beispiele.");
     process.exit(1);
   }
-  const s = load();
   try {
+    // Schalter für die Hook-Erfassung
+    if (cmd === "on") { setLive(true); console.log("live: an (Hook erfasst jetzt)"); process.exit(0); }
+    if (cmd === "off") {
+      setLive(false);
+      const s = load(); s.session.status = "done"; if (!s.session.now) s.session.now = "Session beendet"; save(s);
+      console.log("live: aus");
+      process.exit(0);
+    }
+    const s = load();
     apply(s, cmd, args);
+    if (cmd === "reset") setLive(true); // neue Session = Hook scharf schalten
     save(s);
     console.log("ok: " + cmd + (args.length ? " " + args.join(" ") : ""));
   } catch (e) {

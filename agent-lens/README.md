@@ -54,7 +54,27 @@ Drei Wege, alle schreiben dieselbe `data/session.json`:
 3. **Datei direkt schreiben:** `data/session.json` nach dem Schema unten erzeugen/überschreiben.
 
 Für Claude Code bietet sich (1) an — der Agent ruft `emit.cjs` als ganz normalen Befehl auf,
-während er arbeitet. Optional via einem `PostToolUse`-Hook automatisieren.
+während er arbeitet. Oder vollautomatisch über den Hook (siehe unten).
+
+---
+
+## Automatik: Claude-Code-Hook
+
+Ein `PostToolUse`-Hook (`bridge/hook.cjs`, eingetragen in `.claude/settings.json`) übersetzt
+**jeden Tool-Aufruf von Claude automatisch** in ein Agent-Lens-Event — Read/Edit/Write/Grep/
+Bash/Task/Web… landen als Schritte, `TodoWrite` füllt den Plan. Kein manuelles Tippen nötig.
+
+Der Hook ist **opt-in**: Er schreibt nur, solange eine Live-Session läuft (Sentinel
+`data/.live`). Ohne dieses Flag ist er komplett inert und stört normale Sessions nicht.
+
+```bash
+node agent-lens/bridge/serve.cjs            # UI starten → http://localhost:4173/?mode=live
+node agent-lens/bridge/emit.cjs reset "Was ich gerade tue"   # Live scharf schalten (.live an)
+#   … jetzt in Claude arbeiten — die Ansicht füllt sich von selbst …
+node agent-lens/bridge/emit.cjs off          # Live-Erfassung beenden (.live weg)
+```
+
+`reset` legt eine frische Session an UND aktiviert den Hook; `on`/`off` schalten nur das Flag.
 
 ---
 
