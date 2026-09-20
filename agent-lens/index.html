@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Agent Lens — sieh, was deine KI gerade tut</title>
+    <meta
+      name="description"
+      content="Eine ruhige, visuelle Live-Ansicht der Agent-Arbeit. Du steuerst in Claude, Agent Lens zeigt in Echtzeit, was gerade passiert."
+    />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='34' fill='none' stroke='%230a84ff' stroke-width='10'/><circle cx='50' cy='50' r='9' fill='%230a84ff'/></svg>" />
+    <link rel="stylesheet" href="css/lens.css" />
+  </head>
+  <body data-status="idle" data-mode="demo">
+    <!-- ============================ Top-Leiste ============================ -->
+    <header class="topbar">
+      <div class="topbar__brand">
+        <span class="logo" aria-hidden="true"></span>
+        <span class="topbar__name">Agent&nbsp;Lens</span>
+      </div>
+
+      <div class="topbar__session">
+        <span class="session-title" id="session-title">Keine Session</span>
+        <span class="chip chip--model" id="session-model" hidden></span>
+      </div>
+
+      <div class="topbar__right">
+        <span class="status-pill" id="status-pill">
+          <span class="status-pill__dot" aria-hidden="true"></span>
+          <span class="status-pill__label" id="status-label">Bereit</span>
+        </span>
+        <div class="seg" role="tablist" aria-label="Datenquelle">
+          <button class="seg__btn is-active" id="mode-demo" role="tab" aria-selected="true">Demo</button>
+          <button class="seg__btn" id="mode-live" role="tab" aria-selected="false">Live</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="stage">
+      <!-- ===================== „Jetzt" — der Kern ===================== -->
+      <section class="now" aria-live="polite" aria-label="Was der Agent gerade tut">
+        <div class="now__halo" aria-hidden="true">
+          <span class="orb"></span>
+          <span class="ring ring--1"></span>
+          <span class="ring ring--2"></span>
+          <span class="ring ring--3"></span>
+        </div>
+        <p class="now__eyebrow" id="now-phase">Im Leerlauf</p>
+        <h1 class="now__line" id="now-line">Bereit, wenn du es bist.</h1>
+        <p class="now__sub" id="now-sub">
+          Starte eine Aufgabe in Claude — hier siehst du in Echtzeit, was passiert.
+        </p>
+      </section>
+
+      <div class="grid">
+        <!-- ===================== Live-Verlauf ===================== -->
+        <section class="panel feed" aria-label="Verlauf">
+          <div class="panel__head">
+            <h2 class="panel__title">Verlauf</h2>
+            <span class="panel__hint" id="feed-count">0 Schritte</span>
+          </div>
+          <ol class="feed__list" id="feed"></ol>
+          <p class="feed__empty" id="feed-empty">Noch nichts passiert.</p>
+        </section>
+
+        <!-- ===================== Seiten-Schiene ===================== -->
+        <aside class="rail">
+          <section class="panel plan" aria-label="Plan">
+            <div class="panel__head">
+              <h2 class="panel__title">Plan</h2>
+              <span class="panel__hint" id="plan-progress">0 / 0</span>
+            </div>
+            <div class="plan__bar"><span class="plan__fill" id="plan-fill"></span></div>
+            <ul class="plan__list" id="plan"></ul>
+          </section>
+
+          <section class="panel stats" aria-label="Kennzahlen">
+            <div class="stat">
+              <span class="stat__num" id="stat-elapsed">0:00</span>
+              <span class="stat__cap">Laufzeit</span>
+            </div>
+            <div class="stat">
+              <span class="stat__num" id="stat-tools">0</span>
+              <span class="stat__cap">Aktionen</span>
+            </div>
+            <div class="stat">
+              <span class="stat__num" id="stat-files">0</span>
+              <span class="stat__cap">Dateien</span>
+            </div>
+          </section>
+
+          <section class="panel files" aria-label="Berührte Dateien">
+            <div class="panel__head"><h2 class="panel__title">Dateien</h2></div>
+            <ul class="files__list" id="files"></ul>
+            <p class="files__empty" id="files-empty">Keine Dateien berührt.</p>
+          </section>
+        </aside>
+      </div>
+    </main>
+
+    <!-- ===================== Eingabe / Feedback ===================== -->
+    <footer class="composer" id="composer">
+      <div class="composer__ask" id="ask" hidden>
+        <span class="composer__ask-q" id="ask-q"></span>
+        <div class="composer__ask-opts" id="ask-opts"></div>
+      </div>
+      <form class="composer__form" id="composer-form" autocomplete="off">
+        <input
+          class="composer__input"
+          id="composer-input"
+          type="text"
+          placeholder="Nachricht oder Feedback an den Agent …"
+          aria-label="Nachricht an den Agent"
+        />
+        <button class="composer__send" id="composer-send" type="submit" aria-label="Senden">
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+            <path d="M4 12h14M12 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </form>
+      <p class="composer__note" id="composer-note"></p>
+    </footer>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script src="js/demo.js"></script>
+    <script src="js/lens.js"></script>
+  </body>
+</html>
