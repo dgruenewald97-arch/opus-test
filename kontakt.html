@@ -1,210 +1,37 @@
 <!DOCTYPE html>
-<html lang="de">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kontakt — Sag Hallo | GRELLWERK</title>
-  <meta name="description" content="Briefing, Budget, Bauchgefühl — schreib GRELLWERK, was ansteht. Antwort in Stunden statt Wochen — der Schwarm schläft nie." />
-  <meta property="og:title" content="Kontakt — Sag Hallo | GRELLWERK" />
-  <meta property="og:description" content="Erzähl uns vom Projekt. Wir machen Lärm draus." />
-  <meta property="og:image" content="assets/og-image.svg" />
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
-  <link rel="canonical" href="https://dgruenewald97-arch.github.io/opus-test/kontakt.html" />
-
-  <!-- Fonts (graceful: system fallbacks defined in tokens.css) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
-
-  <!-- Styles -->
-  <link rel="stylesheet" href="css/reset.css" />
-  <link rel="stylesheet" href="css/tokens.css" />
-  <link rel="stylesheet" href="css/base.css" />
-  <link rel="stylesheet" href="css/components.css" />
-  <link rel="stylesheet" href="css/sections.css" />
-  <link rel="stylesheet" href="css/guide.css" />
-  <link rel="stylesheet" href="css/motion.css" />
-
-  <!-- Importmap for optional CDN ESM libs (enhancement only) -->
-  <script type="importmap">
-  {
-    "imports": {
-      "gsap": "https://cdn.jsdelivr.net/npm/gsap@3.12.5/+esm",
-      "gsap/ScrollTrigger": "https://cdn.jsdelivr.net/npm/gsap@3.12.5/ScrollTrigger/+esm",
-      "lenis": "https://cdn.jsdelivr.net/npm/lenis@1.1.13/+esm"
-    }
-  }
-  </script>
-</head>
-<body>
-  <a class="skip-link" href="#main">Zum Inhalt springen</a>
-  <div class="grain" aria-hidden="true"></div>
-  <div class="cursor" aria-hidden="true"></div>
-
-  <!-- ===== NAV ===== -->
-  <header class="nav">
-    <a class="nav__logo" href="index.html" aria-label="GRELLWERK Startseite">GRELL<b>//</b>WERK</a>
-      <button class="nav__toggle" aria-label="Menü öffnen" aria-controls="nav-menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-    <nav class="nav__links" id="nav-menu" aria-label="Hauptnavigation">
-      <a class="nav__link" href="leistungen.html" data-scramble>Leistungen</a>
-      <a class="nav__link" href="arbeiten.html" data-scramble>Arbeiten</a>
-      <a class="nav__link" href="ueber-uns.html" data-scramble>Über uns</a>
-      <a class="nav__link" href="journal.html" data-scramble>Journal</a>
-      <a class="nav__link" href="index.html#pakete" data-scramble>Pakete</a>
-      <a class="nav__link" href="kontakt.html" aria-current="page" data-scramble>Kontakt</a>
-      <a class="nav__link nav__cta btn" href="kontakt.html">Jetzt buchen</a>
-    </nav>
-  </header>
-
-  <main id="main">
-
-    <!-- ===== PAGE HERO ===== -->
-    <section class="section page-hero" id="kontakt-hero">
-      <div class="container">
-        <nav class="crumbs" aria-label="Brotkrumen">
-          <a href="index.html">Start</a><span>/</span>Kontakt
-        </nav>
-        <span class="eyebrow">Sag Hallo</span>
-        <h1 class="page-hero__headline">Kontakt</h1>
-        <p class="page-hero__lead">
-          Briefing, Budget, Bauchgefühl — schreib uns, was ansteht. Wir melden uns
-          in Stunden statt Wochen — der Schwarm schläft nie.
-        </p>
-      </div>
-    </section>
-
-    <!-- ===== KONTAKT ===== -->
-    <section class="section contact" id="kontakt" data-guide-step="kontakt">
-      <div class="container">
-        <span class="eyebrow">Erzähl uns vom Projekt</span>
-        <h2 data-reveal>Wir machen Lärm draus</h2>
-        <div class="contact__layout">
-          <form class="form" id="contact-form" data-reveal novalidate>
-            <div class="field">
-              <label for="f-name">Name</label>
-              <input id="f-name" name="name" type="text" autocomplete="name" required />
-            </div>
-            <div class="field">
-              <label for="f-email">E-Mail</label>
-              <input id="f-email" name="email" type="email" autocomplete="email" required />
-            </div>
-            <div class="field">
-              <label for="f-company">Firma / Marke</label>
-              <input id="f-company" name="company" type="text" autocomplete="organization" />
-            </div>
-            <div class="field">
-              <label for="f-msg">Worum geht's?</label>
-              <textarea id="f-msg" name="message" rows="5" required></textarea>
-            </div>
-            <button class="btn btn--big magnetic" type="submit">Jetzt Krach buchen →</button>
-            <p class="form__status" id="form-status" role="status" aria-live="polite"></p>
-          </form>
-
-          <aside class="contact__direct" data-reveal aria-label="Direkte Kontaktwege">
-            <div>
-              <h3>Direkter Draht</h3>
-              <p><a href="mailto:hallo@grellwerk.de">hallo@grellwerk.de</a></p>
-              <p><a href="tel:+4922112345678">+49 221 123 456 78</a></p>
-            </div>
-            <div>
-              <h3>Studio</h3>
-              <p>Lärmstraße 1<br />50667 Köln</p>
-              <p>Mo–Fr, 9–18 Uhr<br />Kaffee laut, Meinung lauter.</p>
-            </div>
-            <div>
-              <h3>Folg uns</h3>
-              <div class="contact__tags">
-                <a class="tag" href="https://instagram.com" target="_blank" rel="noopener">Instagram</a>
-                <a class="tag" href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn</a>
-                <a class="tag" href="https://behance.net" target="_blank" rel="noopener">Behance</a>
-              </div>
-            </div>
-          </aside>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- ===== FOOTER ===== -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer__top">
-        <div class="footer__logo">GRELL//WERK</div>
-        <div class="footer__col">
-          <strong>Navigation</strong>
-          <a href="leistungen.html">Leistungen</a>
-          <a href="arbeiten.html">Arbeiten</a>
-          <a href="ueber-uns.html">Über uns</a>
-          <a href="journal.html">Journal</a>
-          <a href="index.html#pakete">Pakete</a>
-          <a href="kontakt.html">Kontakt</a>
-        </div>
-        <div class="footer__col">
-          <strong>Kontakt</strong>
-          <span>Lärmstraße 1</span>
-          <span>50667 Köln</span>
-          <span>hallo@grellwerk.de</span>
-        </div>
-        <div class="footer__col">
-          <strong>Legal</strong>
-          <a href="impressum.html">Impressum</a>
-          <a href="datenschutz.html">Datenschutz</a>
-        </div>
-      </div>
-      <div class="marquee marquee--rev" aria-hidden="true" style="border:none; background:transparent; color:var(--acid);">
-        <div class="marquee__track">
-          <span>Lärm der verkauft</span><span>Lärm der verkauft</span><span>Lärm der verkauft</span><span>Lärm der verkauft</span>
-        </div>
-      </div>
-      <div class="footer__bottom">
-        <span>© 2026 GRELLWERK GmbH — fiktive Demo-Agentur</span>
-        <button type="button" id="replay-guide">Guide erneut starten ↻</button>
-      </div>
-    </div>
-  </footer>
-
-  <!-- ===== BRUMMER GUIDE ===== -->
-  <aside class="guide" id="guide" aria-label="Onboarding-Guide Brummer" hidden>
-    <div class="guide__bubble">
-      <span class="guide__step-count" id="guide-count">Schritt 1 / 3</span>
-      <p class="guide__text" id="guide-text" role="status" aria-live="polite">Servus!</p>
-      <div class="guide__controls">
-        <button class="guide__btn guide__btn--primary" id="guide-next" type="button">Weiter →</button>
-        <button class="guide__btn guide__btn--ghost" id="guide-skip" type="button">Überspringen</button>
-      </div>
-    </div>
-    <div class="guide__mascot" id="guide-mascot" aria-hidden="true">
-      <!-- BRUMMER: inline SVG bee/fly -->
-      <svg viewBox="0 0 100 100" role="img">
-        <g class="brummer__wing"><ellipse cx="32" cy="34" rx="14" ry="22" fill="#2D2DFF" opacity="0.6" stroke="#0A0A0A" stroke-width="3"/></g>
-        <g class="brummer__wing" style="animation-delay:-0.09s"><ellipse cx="68" cy="34" rx="14" ry="22" fill="#2D2DFF" opacity="0.6" stroke="#0A0A0A" stroke-width="3"/></g>
-        <g class="brummer__body">
-          <line class="brummer__antenna" x1="40" y1="40" x2="34" y2="22" stroke="#0A0A0A" stroke-width="3"/>
-          <line class="brummer__antenna" x1="60" y1="40" x2="66" y2="22" stroke="#0A0A0A" stroke-width="3" style="animation-delay:-0.6s"/>
-          <circle cx="34" cy="20" r="4" fill="#FF2E63"/>
-          <circle cx="66" cy="20" r="4" fill="#FF2E63"/>
-          <rect x="28" y="40" width="44" height="44" rx="10" fill="#D6FF3B" stroke="#0A0A0A" stroke-width="4"/>
-          <rect x="28" y="58" width="44" height="8" fill="#0A0A0A"/>
-          <rect x="28" y="72" width="44" height="6" fill="#0A0A0A"/>
-          <circle cx="42" cy="52" r="7" fill="#fff" stroke="#0A0A0A" stroke-width="2"/>
-          <circle cx="58" cy="52" r="7" fill="#fff" stroke="#0A0A0A" stroke-width="2"/>
-          <circle class="brummer__pupil" cx="42" cy="52" r="3" fill="#0A0A0A"/>
-          <circle class="brummer__pupil" cx="58" cy="52" r="3" fill="#0A0A0A"/>
-        </g>
-      </svg>
-    </div>
-  </aside>
-
-  <button class="guide-tab" id="guide-tab" type="button" hidden>
-    <span class="guide-tab__dot" aria-hidden="true">
-      <svg viewBox="0 0 100 100"><rect x="20" y="30" width="60" height="55" rx="12" fill="#D6FF3B" stroke="#0A0A0A" stroke-width="6"/><circle cx="40" cy="52" r="6" fill="#0A0A0A"/><circle cx="60" cy="52" r="6" fill="#0A0A0A"/></svg>
-    </span>
-    Brummer fragen?
-  </button>
-
-  <!-- ===== Scripts (ES modules, deferred by default) ===== -->
-  <script type="module" src="js/main.js"></script>
-</body>
-</html>
+<html lang="de"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact | GRELLWERK</title>
+<meta name="description" content="Eine Idee im Kopf? Der Kontaktweg zur fiktiven Agentur GRELLWERK.">
+<meta property="og:title" content="Contact | GRELLWERK">
+<meta property="og:description" content="Eine Idee im Kopf? Der Kontaktweg zur fiktiven Agentur GRELLWERK.">
+<meta property="og:image" content="https://dgruenewald97-arch.github.io/opus-test/assets/og-image.svg">
+<link rel="canonical" href="https://dgruenewald97-arch.github.io/opus-test/kontakt.html">
+<meta name="theme-color" content="#f3f3ee"><link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="assets/fonts/Anton-Regular.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="stylesheet" href="css/reset.css?v=11">
+<link rel="stylesheet" href="css/tokens.css?v=11">
+<link rel="stylesheet" href="css/base.css?v=11">
+<link rel="stylesheet" href="css/components.css?v=11">
+<link rel="stylesheet" href="css/sections.css?v=11">
+<link rel="stylesheet" href="css/motion.css?v=11">
+<link rel="stylesheet" href="css/art.css?v=11">
+<link rel="stylesheet" href="css/agency.css?v=11">
+<link rel="stylesheet" href="css/studio.css?v=11">
+<link rel="stylesheet" href="css/direction.css?v=11">
+<link rel="stylesheet" href="css/about.css?v=11">
+<link rel="stylesheet" href="css/home.css?v=11">
+<link rel="stylesheet" href="css/editorial.css?v=11">
+</head><body data-page="contact"><a class="skip-link" href="#main">Zum Inhalt springen</a><header class="nav">
+<a class="nav__logo" href="index.html" aria-label="GRELLWERK Startseite">GRELL<span>//</span>WERK<span class="logo-dot">®</span></a>
+<nav class="nav__links" aria-label="Hauptnavigation"><a class="nav__link" href="arbeiten.html">Projects</a><a class="nav__link" href="ueber-uns.html">About</a><a class="nav__link" href="kontakt.html">Contact</a></nav>
+<button class="menu-open" data-menu-open aria-controls="studio-menu" aria-expanded="false" type="button">MENÜ<i aria-hidden="true"></i></button>
+<dialog class="studio-menu" id="studio-menu" aria-label="GRELLWERK Menü"><div class="menu-head"><span>GRELL//WERK®</span><button class="menu-close" data-menu-close type="button" aria-label="Menü schließen">SCHLIESSEN <span aria-hidden="true">×</span></button></div>
+<nav class="menu-primary" aria-label="Menünavigation"><a href="arbeiten.html"><span>PROJECTS<sup>04</sup></span><div class="menu-runner" aria-hidden="true"><div><span>ARBEIT ANSEHEN</span><img src="assets/campaigns/kold-v2-800.webp" alt="" loading="lazy"><span>ARBEIT ANSEHEN</span><img src="assets/campaigns/kold-v2-800.webp" alt="" loading="lazy"><span>ARBEIT ANSEHEN</span><img src="assets/campaigns/kold-v2-800.webp" alt="" loading="lazy"><span>ARBEIT ANSEHEN</span><img src="assets/campaigns/kold-v2-800.webp" alt="" loading="lazy"></div></div></a><a href="ueber-uns.html"><span>ABOUT<sup>12</sup></span><div class="menu-runner" aria-hidden="true"><div><span>CREW KENNENLERNEN</span><img src="assets/campaigns/neon-v2-800.webp" alt="" loading="lazy"><span>CREW KENNENLERNEN</span><img src="assets/campaigns/neon-v2-800.webp" alt="" loading="lazy"><span>CREW KENNENLERNEN</span><img src="assets/campaigns/neon-v2-800.webp" alt="" loading="lazy"><span>CREW KENNENLERNEN</span><img src="assets/campaigns/neon-v2-800.webp" alt="" loading="lazy"></div></div></a><a href="kontakt.html"><span>CONTACT</span><div class="menu-runner" aria-hidden="true"><div><span>EINE IDEE IM KOPF?</span><img src="assets/campaigns/hafer-v2-800.webp" alt="" loading="lazy"><span>EINE IDEE IM KOPF?</span><img src="assets/campaigns/hafer-v2-800.webp" alt="" loading="lazy"><span>EINE IDEE IM KOPF?</span><img src="assets/campaigns/hafer-v2-800.webp" alt="" loading="lazy"><span>EINE IDEE IM KOPF?</span><img src="assets/campaigns/hafer-v2-800.webp" alt="" loading="lazy"></div></div></a></nav>
+<div class="menu-foot"><nav class="menu-extra" aria-label="Ergänzende Navigation"><a href="leistungen.html">Leistungen</a><a href="journal.html">Journal</a><a href="labor.html">Spielwiese</a><a href="labor.html#pakete">Pakete</a><a href="ueber-uns.html#spezialisten">Spezialisten</a><a href="impressum.html">Impressum</a><a href="datenschutz.html">Datenschutz</a></nav><p>GRELLWERK / KI-AGENTURKONZEPT / 2026</p><button id="motion-toggle" class="motion-toggle" type="button" aria-pressed="false">Bewegung pausieren</button></div></dialog>
+<noscript><nav class="nojs-navigation"><a href="arbeiten.html">Projects</a> · <a href="ueber-uns.html">About</a> · <a href="kontakt.html">Contact</a> · <a href="journal.html">Journal</a></nav></noscript>
+</header><main id="main" tabindex="-1" data-page="contact">
+<section class="contact-head"><div class="page-kicker"><span>Contact</span><span>Jede gute Sache beginnt irgendwo.</span></div><h1>WAS HAST<br>DU VOR?</h1><div class="contact-content"><div><p>Eine Idee, die dich nicht loslässt?<br>Ein Problem, das nach Gestaltung ruft?<br>Schreib es auf.</p><a class="contact-mail" href="#contact-form">Briefing vorbereiten ↘</a><p class="fiction-note">GRELLWERK ist eine fiktive Agentur. Dieses Formular erstellt lokal ein Briefing zum Kopieren. Es versendet keine Anfrage und speichert deine Angaben nicht in einer Datenbank.</p></div><form id="contact-form" class="contact-form"><label for="f-name">Wie heißt du?<input id="f-name" name="name" autocomplete="name" required placeholder="Dein Name"></label><label for="f-email">Deine E-Mail<input id="f-email" name="email" type="email" autocomplete="email" required placeholder="du@beispiel.de"></label><label for="f-company">Marke / Unternehmen <span>(optional)</span><input id="f-company" name="company" autocomplete="organization" placeholder="Für wen wird’s laut?"></label><label for="f-msg">Worum geht’s?<textarea id="f-msg" name="message" rows="3" required placeholder="Die kurze Version reicht."></textarea></label><button class="pill" type="submit">Briefing kopieren <span>↗</span></button><p id="form-status" role="status" aria-live="polite"></p></form></div></section></main><footer class="footer">
+<div class="footer-intro"><p>WAS SOLL DEINE MARKE AUSLÖSEN?</p><a href="kontakt.html">LET’S TALK <span>↗</span></a></div>
+<div class="footer-bottom"><a class="footer-brand" href="index.html">GRELL//WERK®</a><nav aria-label="Weitere Informationen"><a href="leistungen.html">Leistungen</a><a href="journal.html">Journal</a><a href="labor.html">Spielwiese</a><a href="impressum.html">Impressum</a><a href="datenschutz.html">Datenschutz</a></nav><p>© 2026 GRELLWERK · Agenturkonzept & freie Arbeiten.</p></div>
+</footer><div class="route-curtain" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><span>GRELL//WERK</span></div><div class="sr-only" id="route-status" role="status" aria-live="polite"></div><script type="module" src="js/main.js?v=11"></script></body></html>

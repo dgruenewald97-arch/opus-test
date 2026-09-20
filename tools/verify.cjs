@@ -6,7 +6,7 @@
 //   node tools/verify.cjs
 //
 // Prüft: JS-Syntax · kaputte Meta-Attribute · rohe <-Zeichen · interne Links/Assets ·
-// Pflicht-Meta · Chrome-Drift (nav/footer/brummer) · Journal/Sitemap-Konsistenz · Build-Smoke.
+// Pflicht-Meta · Chrome-Drift (nav/footer/motion) · Journal/Sitemap-Konsistenz · Build-Smoke.
 
 const fs = require("fs");
 const path = require("path");
@@ -91,7 +91,7 @@ const readRoot = (f) => fs.readFileSync(path.join(root, f), "utf8");
     const refs = [...html.matchAll(/(?:href|src)="([^"]+)"/g)].map((m) => m[1]);
     for (const r of refs) {
       if (/^(https?:|mailto:|tel:|data:|#)/.test(r)) continue; // extern / in-page
-      const target = r.split("#")[0];
+      const target = decodeURIComponent(r.split(/[?#]/)[0]);
       if (!target) continue; // reiner Anker
       if (!exists(target)) {
         e.push(`${f} — toter Verweis: "${r}" (Datei fehlt: ${target})`);
@@ -154,11 +154,11 @@ const readRoot = (f) => fs.readFileSync(path.join(root, f), "utf8");
       e.push(`${f} — Footer weicht von zentraler Chrome ab`);
     }
     // brummer: Guide-Aside + Tab vorhanden
-    if (!/id="guide"/.test(html) || !/id="guide-tab"/.test(html)) {
-      e.push(`${f} — Brummer-Guide (#guide / #guide-tab) fehlt`);
+    if (!/class="route-curtain"/.test(html) || !/id="motion-toggle"/.test(html)) {
+      e.push(`${f} — Gemeinsamer Übergang oder Bewegungsschalter fehlt`);
     }
   }
-  record("Chrome-Drift (nav/footer/brummer)", e);
+  record("Chrome-Drift (nav/footer/motion)", e);
 })();
 
 // --- 7) Journal ↔ Grid ↔ Sitemap konsistent -----------------------------------
@@ -190,6 +190,14 @@ const readRoot = (f) => fs.readFileSync(path.join(root, f), "utf8");
     e.push(`build-standalone.cjs fehlgeschlagen: ${String(err.stderr || err).split("\n")[0]}`);
   }
   record("Build-Smoke (standalone)", e);
+})();
+
+// --- 9) Art Toy content, local dependencies and self-contained export ----------
+(function () {
+  const e=[];
+  try { execFileSync('node',['tools/verify-art.cjs'],{cwd:root,stdio:'pipe'}); }
+  catch(err){e.push(`Art Toy contract: ${String(err.stderr || err).slice(0,500)}`);}
+  record('Studio / lokale Medien / Standalone-Abhängigkeiten',e);
 })();
 
 // --- Report -------------------------------------------------------------------

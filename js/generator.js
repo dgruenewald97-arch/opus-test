@@ -31,14 +31,14 @@ export function initGenerator({ SLOGAN, reducedMotion }) {
       setTimeout(() => { btn.textContent = label; btn.classList.remove("is-copied"); }, 1600);
     };
     if (navigator.clipboard?.writeText) {
-      navigator.clipboard.writeText(text).then(done).catch(done);
+      navigator.clipboard.writeText(text).then(done).catch(() => { btn.textContent = 'Bitte Text markieren'; });
     } else {
       // Fallback ohne Clipboard-API (file://, alte Browser).
       const ta = document.createElement("textarea");
       ta.value = text; ta.setAttribute("readonly", ""); ta.style.position = "absolute";
       ta.style.left = "-9999px"; document.body.appendChild(ta);
-      ta.select(); try { document.execCommand("copy"); } catch (_) {}
-      document.body.removeChild(ta); done();
+      ta.select(); let copied = false; try { copied = document.execCommand("copy"); } catch (_) {}
+      document.body.removeChild(ta); if (copied) done(); else btn.textContent = 'Bitte Text markieren';
     }
   }
 

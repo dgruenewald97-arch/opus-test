@@ -1,0 +1,51 @@
+/* Revision 7: synthetic editorial portrait series and scroll-linked typography. */
+.about-intro{display:block;margin:0;width:auto;padding:0 var(--pad) 110px;background:var(--paper);color:var(--ink)}
+.about-hero{position:relative;height:calc(44vw + 42svh);min-height:100svh;isolation:isolate}
+.about-face-rail{position:absolute;top:13svh;bottom:6vw;left:29%;width:17vw;z-index:0;pointer-events:none}
+.about-face{position:sticky;top:22svh;width:100%;aspect-ratio:3/4;overflow:hidden;border-radius:16px;background:#cbd0d3;margin:0}
+.about-face img{width:100%;height:100%;object-fit:cover;display:block}
+.about-face img[hidden]{display:none}
+.about-face figcaption{position:absolute;bottom:10px;left:10px;color:white;font-size:7px;letter-spacing:.04em}
+.about-wordmark{position:relative;z-index:1;padding-top:37svh;margin:0;text-align:center;font:400 26vw/.81 var(--font-ui);letter-spacing:-.09em;pointer-events:none}
+.about-skip{position:absolute;bottom:18px;right:2%;font-size:11px;letter-spacing:.01em;border-bottom:1px solid;padding-bottom:7px}
+.about-statement{padding:55px 3% 110px 39%}
+.about-statement>p{font:400 clamp(34px,4.9vw,90px)/1.03 var(--font-ui);letter-spacing:-.06em;margin:0 0 38px}
+.about-statement>div{display:grid;grid-template-columns:1fr 1fr;gap:32px;max-width:760px;font-size:clamp(13px,1.15vw,19px);line-height:1.5;letter-spacing:-.015em}
+.about-statement p{margin-top:0}
+.about-practice{display:grid;grid-template-columns:1fr 1.5fr 1fr;gap:45px;padding:30px 0 0;border-top:1px solid var(--line);margin:0 5%}
+.about-practice>span{font-size:11px}.about-practice ul{padding:0;margin:0;list-style:none;font:400 clamp(22px,2.3vw,40px)/1.18 var(--font-ui);letter-spacing:-.04em}.about-practice p{font-size:13px;max-width:275px;margin:0}
+.crew-feature{height:155svh;min-height:0;padding:0;overflow:visible;isolation:isolate;background:#101110;color:#f7f7f2}
+.feature-stage{position:sticky;top:0;height:100svh;min-height:620px;overflow:hidden}
+.feature-label{position:absolute;top:25px;left:var(--pad);right:var(--pad);z-index:4;font-size:11px}
+.feature-portrait{position:absolute;top:12%;height:71%;aspect-ratio:3/4;left:50%;transform:translateX(-50%);margin:0;overflow:hidden;border-radius:22px;z-index:1;background:#bbc1c5}
+.feature-portrait img{width:100%;height:100%;object-fit:cover;display:block}
+.feature-name{top:30%;left:0;display:flex;gap:.15em;font:400 25vw/.9 var(--font-ui);letter-spacing:-.085em;z-index:2;mix-blend-mode:difference;color:white;transform:translateX(-20%);width:max-content;will-change:transform}
+.feature-name>span{display:block}
+.feature-bottom{bottom:28px;font-size:12px;z-index:3}.feature-bottom h2{font:400 18px/1.2 var(--font-ui);letter-spacing:-.03em;margin:0 0 6px}.feature-bottom p{margin:0;max-width:260px}.feature-bottom>a{font-size:12px}
+.agency-team{padding:100px 4vw 95px;scroll-margin-top:30px}
+.team-heading{display:flex;align-items:end;justify-content:space-between;gap:40px}.team-heading h2{font-size:12.5vw;line-height:.95;letter-spacing:-.07em}.team-heading p{font-size:13px;max-width:300px;margin:0 0 8px}.team-filters{margin:40px 0 35px;gap:30px}
+.team-layout{grid-template-columns:1.1fr 1fr;gap:7vw}.team-index button{padding:20px 12px;grid-template-columns:1fr 30px;gap:12px}.team-index .team-name{font:400 4.6vw/.95 var(--font-ui);letter-spacing:-.055em}.team-index small{font-size:12px;margin-top:9px}.team-index .team-number{display:none}
+.team-profile{position:sticky;top:25px}.agent-panel{display:grid;grid-template-columns:1fr;gap:18px}.agent-panel[hidden]{display:none}
+.agent-portrait{width:100%;height:clamp(280px,49svh,680px);margin:0;position:relative;overflow:hidden;background:#c3c8ca;border-radius:15px}
+.agent-portrait img{width:100%;height:100%;object-fit:cover;object-position:50% 0;display:block}
+.agent-portrait figcaption{position:absolute;left:14px;bottom:12px;color:#fff;font-size:9px;letter-spacing:.05em;text-shadow:0 1px 4px #0007}
+.profile-head{min-height:0;display:block}.profile-head h3{font:400 45px/1 var(--font-ui);letter-spacing:-.065em;margin:0}.profile-head p{font-size:10px;margin:0 0 6px}
+.profile-mandate{font-size:19px;line-height:1.2;margin:12px 0 9px;letter-spacing:-.035em}.profile-description{font-size:12px;line-height:1.5;max-width:none;margin:0}
+.profile-more{margin-top:16px;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink)}.profile-more>summary{font-size:11px;padding:12px 0;cursor:pointer;list-style:none;display:flex;justify-content:space-between}.profile-more>summary::-webkit-details-marker{display:none}.profile-more[open]>summary>span{transform:rotate(45deg)}.profile-more>div{padding-bottom:15px}.profile-example{margin-top:0}.profile-delivery{margin-top:15px}.profile-project{font-size:12px}
+.cut-workshop{display:grid;grid-template-columns:1fr 1.2fr;gap:8vw;padding:70px 4vw 100px;background:#e8e9e2;align-items:center}
+.cut-workshop-copy>span{font-size:10px}.cut-workshop-copy h2{font:400 4.8vw/.97 var(--font-ui);letter-spacing:-.07em;margin:30px 0 22px}.cut-workshop-copy p{font-size:14px;max-width:340px}.cut-workshop .cut-proof{position:relative;inset:auto;width:100%;transform:none;box-shadow:none}.cut-workshop .cut-image h2{font-size:3.4vw}.cut-workshop .cut-controls{background:var(--paper)}
+.agency-specialists{padding:85px 4vw 100px}.agency-specialists .fiction-note{max-width:680px}
+.project-alternate{position:absolute;inset:0;clip-path:inset(100% 0 0);transition:clip-path .65s cubic-bezier(.22,1,.36,1)}
+.project-alternate .campaign-image{transform:scale(1.05);transition:transform .85s cubic-bezier(.22,1,.36,1)}
+@media(hover:hover){.elastic-window:hover .project-alternate,.elastic-window:focus-visible .project-alternate{clip-path:inset(0)}.elastic-window:hover .project-alternate .campaign-image,.elastic-window:focus-visible .project-alternate .campaign-image{transform:scale(1)}}
+.no-motion .feature-name{transform:translateX(-20%)!important}.no-motion .crew-feature{height:100svh}.no-motion .project-alternate,.no-motion .project-alternate .campaign-image{transition:none}
+@media(min-width:701px) and (max-height:800px){.agent-panel{gap:13px}.agent-portrait{height:43svh}.profile-head h3{font-size:36px}.profile-mandate{font-size:17px;margin:10px 0 7px}.profile-more{margin-top:12px}}
+@media(min-width:701px) and (max-width:1050px){.team-layout{gap:4vw}.team-index .team-name{font-size:5vw}.team-index button{padding-block:19px}.about-statement{padding-left:30%}.feature-name{font-size:30vw}}
+@media(max-width:700px){
+ .about-intro{padding:0 12px 55px}.about-hero{height:calc(46vw + 50svh);min-height:78svh}.about-face-rail{top:9svh;bottom:9vw;left:24%;width:30vw}.about-face{top:16svh;border-radius:10px}.about-face figcaption{font-size:5px;bottom:6px;left:6px}.about-wordmark{padding-top:31svh;font-size:27vw;line-height:.9;letter-spacing:-.085em}.about-skip{bottom:10px;right:0;font-size:9px}
+ .about-statement{padding:45px 0 55px 10%}.about-statement>p{font-size:9vw;margin-bottom:25px}.about-statement>div{display:block;font-size:14px;line-height:1.5;max-width:420px}.about-statement>div p+p{margin-top:18px}.about-practice{margin:0;grid-template-columns:1fr 1.6fr;gap:20px}.about-practice>span{font-size:9px}.about-practice ul{font-size:21px}.about-practice p{grid-column:2;font-size:12px}
+ .crew-feature{height:135svh}.feature-stage{min-height:560px}.feature-label{top:22px;font-size:9px;gap:16px}.feature-portrait{height:58%;top:18%;max-width:76%;border-radius:16px}.feature-name{top:35%;font-size:42vw;letter-spacing:-.075em}.feature-bottom{bottom:25px;left:14px;right:14px;flex-direction:row;align-items:end;gap:15px}.feature-bottom h2{font-size:15px}.feature-bottom p{font-size:10px;max-width:160px}.feature-bottom>a{font-size:10px;padding:10px 12px}
+ .agency-team{padding:65px 12px 50px}.team-heading{display:block}.team-heading h2{font-size:16vw}.team-heading p{font-size:12px;margin-top:22px;max-width:260px}.team-filters{gap:9px 17px;margin:28px 0 15px}.team-filters button{font-size:11px}.team-layout{display:none}.team-mobile{display:block}.team-mobile details>div{background:transparent;padding-bottom:25px}.team-mobile summary>span:nth-child(2){font-size:11vw}.team-mobile .agent-portrait{height:auto;aspect-ratio:3/4;border-radius:12px;margin:3px 0 22px}.team-mobile .profile-head{float:none;width:auto;min-height:0;margin:0}.team-mobile .profile-head>div:first-child{display:block}.team-mobile .profile-head h3{display:none}.team-mobile .profile-mandate{padding-top:0;min-height:0;font-size:22px;margin-top:13px}.team-mobile .profile-description{padding:0;font-size:13px}.team-mobile .profile-more{margin-top:18px}.team-mobile .profile-more>summary{display:flex;font-size:12px;padding:12px 0}.team-mobile .profile-more>div{padding:0 0 15px}.team-mobile .profile-more>summary>span{font-size:14px;padding:0}
+ .cut-workshop{grid-template-columns:1fr;gap:30px;padding:45px 12px}.cut-workshop-copy h2{font-size:11vw;margin:24px 0 18px}.cut-workshop-copy p{font-size:13px;max-width:320px}.cut-workshop .cut-image h2{font-size:7vw}.agency-specialists{padding:55px 12px 60px}
+}
+@media(prefers-reduced-motion:reduce){.crew-feature{height:100svh}.feature-name{transform:translateX(-20%)!important}.project-alternate,.project-alternate .campaign-image{transition:none}}

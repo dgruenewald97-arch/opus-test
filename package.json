@@ -1,3 +1,9 @@
 {
-  "type": "module"
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "generate": "node tools/generate.cjs && node tools/build-art-site.cjs",
+    "verify": "node tools/verify.cjs",
+    "standalone": "node build-standalone.cjs"
+  }
 }

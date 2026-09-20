@@ -1,225 +1,53 @@
 <!DOCTYPE html>
-<html lang="de">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Arbeiten — Cases | GRELLWERK</title>
-  <meta name="description" content="Echte Zahlen, kein Hochglanz: die Cases von GRELLWERK. Von +312% ROAS bis ausverkauft in 11 Minuten." />
-  <meta property="og:title" content="Arbeiten — Cases | GRELLWERK" />
-  <meta property="og:description" content="Zahlen lügen nicht. Die Cases von GRELLWERK." />
-  <meta property="og:image" content="assets/og-image.svg" />
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
-  <link rel="canonical" href="https://dgruenewald97-arch.github.io/opus-test/arbeiten.html" />
-
-  <!-- Fonts (graceful: system fallbacks defined in tokens.css) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
-
-  <!-- Styles -->
-  <link rel="stylesheet" href="css/reset.css" />
-  <link rel="stylesheet" href="css/tokens.css" />
-  <link rel="stylesheet" href="css/base.css" />
-  <link rel="stylesheet" href="css/components.css" />
-  <link rel="stylesheet" href="css/sections.css" />
-  <link rel="stylesheet" href="css/guide.css" />
-  <link rel="stylesheet" href="css/motion.css" />
-
-  <!-- Importmap for optional CDN ESM libs (enhancement only) -->
-  <script type="importmap">
-  {
-    "imports": {
-      "gsap": "https://cdn.jsdelivr.net/npm/gsap@3.12.5/+esm",
-      "gsap/ScrollTrigger": "https://cdn.jsdelivr.net/npm/gsap@3.12.5/ScrollTrigger/+esm",
-      "lenis": "https://cdn.jsdelivr.net/npm/lenis@1.1.13/+esm"
-    }
-  }
-  </script>
-</head>
-<body>
-  <a class="skip-link" href="#main">Zum Inhalt springen</a>
-  <div class="grain" aria-hidden="true"></div>
-  <div class="cursor" aria-hidden="true"></div>
-
-  <!-- ===== NAV ===== -->
-  <header class="nav">
-    <a class="nav__logo" href="index.html" aria-label="GRELLWERK Startseite">GRELL<b>//</b>WERK</a>
-      <button class="nav__toggle" aria-label="Menü öffnen" aria-controls="nav-menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-    <nav class="nav__links" id="nav-menu" aria-label="Hauptnavigation">
-      <a class="nav__link" href="leistungen.html" data-scramble>Leistungen</a>
-      <a class="nav__link" href="arbeiten.html" aria-current="page" data-scramble>Arbeiten</a>
-      <a class="nav__link" href="ueber-uns.html" data-scramble>Über uns</a>
-      <a class="nav__link" href="journal.html" data-scramble>Journal</a>
-      <a class="nav__link" href="index.html#pakete" data-scramble>Pakete</a>
-      <a class="nav__link" href="kontakt.html" data-scramble>Kontakt</a>
-      <a class="nav__link nav__cta btn" href="kontakt.html">Jetzt buchen</a>
-    </nav>
-  </header>
-
-  <main id="main">
-
-    <!-- ===== PAGE HERO ===== -->
-    <section class="section page-hero" id="arbeiten-hero">
-      <div class="container">
-        <nav class="crumbs" aria-label="Brotkrumen">
-          <a href="index.html">Start</a><span>/</span>Arbeiten
-        </nav>
-        <span class="eyebrow">Zahlen lügen nicht</span>
-        <h1 class="page-hero__headline">Arbeiten</h1>
-        <p class="page-hero__lead">
-          Keine Fake-Mockups, keine geschönten Screenshots. Vier Cases, vier Branchen,
-          ein Prinzip: Lärm, der sich rechnet. Klick rein — jeder erzählt seine eigene
-          Geschichte vom Brief zum Knall.
-        </p>
-      </div>
-    </section>
-
-    <!-- ===== CASE GALLERY ===== -->
-    <section class="section work" id="arbeiten-all" data-guide-step="arbeiten">
-      <div class="container">
-        <span class="eyebrow">Vier Cases</span>
-        <h2 data-reveal>Echte Zahlen</h2>
-        <div class="work__grid">
-          <a class="case magnetic" href="case-kold-brew.html" data-reveal>
-            <span class="case__metric">+312%<br>ROAS</span>
-            <span class="case__client">Kold Brew Co.</span>
-            <p class="case__desc">Von 0 auf Kult: Cold-Brew-Startup in 90 Tagen skaliert, 1,2&nbsp;Mio. Reel-Views.</p>
-            <div class="case__tags"><span class="tag">Performance</span><span class="tag">Social</span></div>
-          </a>
-          <a class="case magnetic" href="case-neontritt.html" data-reveal>
-            <span class="case__metric">11&nbsp;Min</span>
-            <span class="case__client">Neontritt</span>
-            <p class="case__desc">Sneaker-Drop, der den Server killte: 48.000 Anmeldungen, ausverkauft in 11 Minuten.</p>
-            <div class="case__tags"><span class="tag">Kampagne</span><span class="tag">Hype</span></div>
-          </a>
-          <a class="case magnetic" href="case-haferkraft.html" data-reveal>
-            <span class="case__metric">+87%</span>
-            <span class="case__client">Haferkraft</span>
-            <p class="case__desc">Hafermilch-Rebrand: +87% Markenbekanntheit, Listung bei 3 Handelsketten.</p>
-            <div class="case__tags"><span class="tag">Branding</span><span class="tag">Retail</span></div>
-          </a>
-          <a class="case magnetic" href="case-blitzbank.html" data-reveal>
-            <span class="case__metric">−41%<br>CPA</span>
-            <span class="case__client">Blitzbank</span>
-            <p class="case__desc">Fintech-Performance: CPA um 41% gesenkt, 220.000 App-Installs.</p>
-            <div class="case__tags"><span class="tag">Fintech</span><span class="tag">Paid</span></div>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== KUNDEN / LOGO-WALL ===== -->
-    <section class="section clients" id="kunden" data-guide-step="kunden">
-      <div class="container">
-        <span class="eyebrow">Die uns vertrauen</span>
-        <h2 data-reveal>Kunden</h2>
-        <div class="clients__grid" data-reveal>
-          <span class="client">Kold Brew Co.</span>
-          <span class="client">Neontritt</span>
-          <span class="client">Haferkraft</span>
-          <span class="client">Blitzbank</span>
-          <span class="client">Volt&amp;Co</span>
-          <span class="client">Rauschgold</span>
-          <span class="client">Pixelhain</span>
-          <span class="client">Stadtwild</span>
-        </div>
-        <p class="clients__awards" data-reveal>ADC Bronze 2024 · Effie Shortlist 2025 · German Brand Award 2025 · Webby Honoree 2026</p>
-      </div>
-    </section>
-
-    <!-- ===== CTA ===== -->
-    <section class="section cta-band" id="arbeiten-cta">
-      <div class="container">
-        <span class="eyebrow">Dein Case fehlt noch</span>
-        <h2 data-reveal>Lass uns Lärm machen</h2>
-        <div class="cta-band__row" data-reveal>
-          <a class="btn btn--big magnetic" href="kontakt.html">Krach buchen →</a>
-          <a class="btn btn--ghost btn--big magnetic" href="index.html#pakete">Pakete ansehen</a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- ===== FOOTER ===== -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer__top">
-        <div class="footer__logo">GRELL//WERK</div>
-        <div class="footer__col">
-          <strong>Navigation</strong>
-          <a href="leistungen.html">Leistungen</a>
-          <a href="arbeiten.html">Arbeiten</a>
-          <a href="ueber-uns.html">Über uns</a>
-          <a href="journal.html">Journal</a>
-          <a href="index.html#pakete">Pakete</a>
-          <a href="kontakt.html">Kontakt</a>
-        </div>
-        <div class="footer__col">
-          <strong>Kontakt</strong>
-          <span>Lärmstraße 1</span>
-          <span>50667 Köln</span>
-          <span>hallo@grellwerk.de</span>
-        </div>
-        <div class="footer__col">
-          <strong>Legal</strong>
-          <a href="impressum.html">Impressum</a>
-          <a href="datenschutz.html">Datenschutz</a>
-        </div>
-      </div>
-      <div class="marquee marquee--rev" aria-hidden="true" style="border:none; background:transparent; color:var(--acid);">
-        <div class="marquee__track">
-          <span>Lärm der verkauft</span><span>Lärm der verkauft</span><span>Lärm der verkauft</span><span>Lärm der verkauft</span>
-        </div>
-      </div>
-      <div class="footer__bottom">
-        <span>© 2026 GRELLWERK GmbH — fiktive Demo-Agentur</span>
-        <button type="button" id="replay-guide">Guide erneut starten ↻</button>
-      </div>
-    </div>
-  </footer>
-
-  <!-- ===== BRUMMER GUIDE ===== -->
-  <aside class="guide" id="guide" aria-label="Onboarding-Guide Brummer" hidden>
-    <div class="guide__bubble">
-      <span class="guide__step-count" id="guide-count">Schritt 1 / 2</span>
-      <p class="guide__text" id="guide-text" role="status" aria-live="polite">Servus!</p>
-      <div class="guide__controls">
-        <button class="guide__btn guide__btn--primary" id="guide-next" type="button">Weiter →</button>
-        <button class="guide__btn guide__btn--ghost" id="guide-skip" type="button">Überspringen</button>
-      </div>
-    </div>
-    <div class="guide__mascot" id="guide-mascot" aria-hidden="true">
-      <!-- BRUMMER: inline SVG bee/fly -->
-      <svg viewBox="0 0 100 100" role="img">
-        <g class="brummer__wing"><ellipse cx="32" cy="34" rx="14" ry="22" fill="#2D2DFF" opacity="0.6" stroke="#0A0A0A" stroke-width="3"/></g>
-        <g class="brummer__wing" style="animation-delay:-0.09s"><ellipse cx="68" cy="34" rx="14" ry="22" fill="#2D2DFF" opacity="0.6" stroke="#0A0A0A" stroke-width="3"/></g>
-        <g class="brummer__body">
-          <line class="brummer__antenna" x1="40" y1="40" x2="34" y2="22" stroke="#0A0A0A" stroke-width="3"/>
-          <line class="brummer__antenna" x1="60" y1="40" x2="66" y2="22" stroke="#0A0A0A" stroke-width="3" style="animation-delay:-0.6s"/>
-          <circle cx="34" cy="20" r="4" fill="#FF2E63"/>
-          <circle cx="66" cy="20" r="4" fill="#FF2E63"/>
-          <rect x="28" y="40" width="44" height="44" rx="10" fill="#D6FF3B" stroke="#0A0A0A" stroke-width="4"/>
-          <rect x="28" y="58" width="44" height="8" fill="#0A0A0A"/>
-          <rect x="28" y="72" width="44" height="6" fill="#0A0A0A"/>
-          <circle cx="42" cy="52" r="7" fill="#fff" stroke="#0A0A0A" stroke-width="2"/>
-          <circle cx="58" cy="52" r="7" fill="#fff" stroke="#0A0A0A" stroke-width="2"/>
-          <circle class="brummer__pupil" cx="42" cy="52" r="3" fill="#0A0A0A"/>
-          <circle class="brummer__pupil" cx="58" cy="52" r="3" fill="#0A0A0A"/>
-        </g>
-      </svg>
-    </div>
-  </aside>
-
-  <button class="guide-tab" id="guide-tab" type="button" hidden>
-    <span class="guide-tab__dot" aria-hidden="true">
-      <svg viewBox="0 0 100 100"><rect x="20" y="30" width="60" height="55" rx="12" fill="#D6FF3B" stroke="#0A0A0A" stroke-width="6"/><circle cx="40" cy="52" r="6" fill="#0A0A0A"/><circle cx="60" cy="52" r="6" fill="#0A0A0A"/></svg>
-    </span>
-    Brummer fragen?
-  </button>
-
-  <!-- ===== Scripts (ES modules, deferred by default) ===== -->
-  <script type="module" src="js/main.js"></script>
-</body>
-</html>
+<html lang="de"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Projects | GRELLWERK</title>
+<meta name="description" content="Vier eigene Markenwelten. KOLD BREW, NEONTRITT, HAFERKRAFT und BLITZBANK. Freie Konzeptarbeiten von GRELLWERK.">
+<meta property="og:title" content="Projects | GRELLWERK">
+<meta property="og:description" content="Vier eigene Markenwelten. KOLD BREW, NEONTRITT, HAFERKRAFT und BLITZBANK. Freie Konzeptarbeiten von GRELLWERK.">
+<meta property="og:image" content="https://dgruenewald97-arch.github.io/opus-test/assets/og-image.svg">
+<link rel="canonical" href="https://dgruenewald97-arch.github.io/opus-test/arbeiten.html">
+<meta name="theme-color" content="#f3f3ee"><link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="assets/fonts/Anton-Regular.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="stylesheet" href="css/reset.css?v=11">
+<link rel="stylesheet" href="css/tokens.css?v=11">
+<link rel="stylesheet" href="css/base.css?v=11">
+<link rel="stylesheet" href="css/components.css?v=11">
+<link rel="stylesheet" href="css/sections.css?v=11">
+<link rel="stylesheet" href="css/motion.css?v=11">
+<link rel="stylesheet" href="css/art.css?v=11">
+<link rel="stylesheet" href="css/agency.css?v=11">
+<link rel="stylesheet" href="css/studio.css?v=11">
+<link rel="stylesheet" href="css/direction.css?v=11">
+<link rel="stylesheet" href="css/about.css?v=11">
+<link rel="stylesheet" href="css/home.css?v=11">
+<link rel="stylesheet" href="css/editorial.css?v=11">
+</head><body data-page="projects"><a class="skip-link" href="#main">Zum Inhalt springen</a><header class="nav">
+<a class="nav__logo" href="index.html" aria-label="GRELLWERK Startseite">GRELL<span>//</span>WERK<span class="logo-dot">®</span></a>
+<nav class="nav__links" aria-label="Hauptnavigation"><a class="nav__link" href="arbeiten.html">Projects</a><a class="nav__link" href="ueber-uns.html">About</a><a class="nav__link" href="kontakt.html">Contact</a></nav>
+<button class="menu-open" data-menu-open aria-controls="studio-menu" aria-expanded="false" type="button">MENÜ<i aria-hidden="true"></i></button>
+<dialog class="studio-menu" id="studio-menu" aria-label="GRELLWERK Menü"><div class="menu-head"><span>GRELL//WERK®</span><button class="menu-close" data-menu-close type="button" aria-label="Menü schließen">SCHLIESSEN <span aria-hidden="true">×</span></button></div>
+<nav class="menu-primary" aria-label="Menünavigation"><a href="arbeiten.html"><span>PROJECTS<sup>04</sup></span><div class="menu-runner" aria-hidden="true"><div><span>ARBEIT ANSEHEN</span><img src="assets/campaigns/kold-v2-800.webp" alt="" loading="lazy"><span>ARBEIT ANSEHEN</span><img src="assets/campaigns/kold-v2-800.webp" alt="" loading="lazy"><span>ARBEIT ANSEHEN</span><img src="assets/campaigns/kold-v2-800.webp" alt="" loading="lazy"><span>ARBEIT ANSEHEN</span><img src="assets/campaigns/kold-v2-800.webp" alt="" loading="lazy"></div></div></a><a href="ueber-uns.html"><span>ABOUT<sup>12</sup></span><div class="menu-runner" aria-hidden="true"><div><span>CREW KENNENLERNEN</span><img src="assets/campaigns/neon-v2-800.webp" alt="" loading="lazy"><span>CREW KENNENLERNEN</span><img src="assets/campaigns/neon-v2-800.webp" alt="" loading="lazy"><span>CREW KENNENLERNEN</span><img src="assets/campaigns/neon-v2-800.webp" alt="" loading="lazy"><span>CREW KENNENLERNEN</span><img src="assets/campaigns/neon-v2-800.webp" alt="" loading="lazy"></div></div></a><a href="kontakt.html"><span>CONTACT</span><div class="menu-runner" aria-hidden="true"><div><span>EINE IDEE IM KOPF?</span><img src="assets/campaigns/hafer-v2-800.webp" alt="" loading="lazy"><span>EINE IDEE IM KOPF?</span><img src="assets/campaigns/hafer-v2-800.webp" alt="" loading="lazy"><span>EINE IDEE IM KOPF?</span><img src="assets/campaigns/hafer-v2-800.webp" alt="" loading="lazy"><span>EINE IDEE IM KOPF?</span><img src="assets/campaigns/hafer-v2-800.webp" alt="" loading="lazy"></div></div></a></nav>
+<div class="menu-foot"><nav class="menu-extra" aria-label="Ergänzende Navigation"><a href="leistungen.html">Leistungen</a><a href="journal.html">Journal</a><a href="labor.html">Spielwiese</a><a href="labor.html#pakete">Pakete</a><a href="ueber-uns.html#spezialisten">Spezialisten</a><a href="impressum.html">Impressum</a><a href="datenschutz.html">Datenschutz</a></nav><p>GRELLWERK / KI-AGENTURKONZEPT / 2026</p><button id="motion-toggle" class="motion-toggle" type="button" aria-pressed="false">Bewegung pausieren</button></div></dialog>
+<noscript><nav class="nojs-navigation"><a href="arbeiten.html">Projects</a> · <a href="ueber-uns.html">About</a> · <a href="kontakt.html">Contact</a> · <a href="journal.html">Journal</a></nav></noscript>
+</header><main id="main" tabindex="-1" data-page="projects"><section class="work-masthead"><h1>PROJECTS<sup>04</sup></h1><div class="work-lead"><p>Vier Marken.<br>Vier eigene Welten.</p><div><p>Von der ersten Idee bis zum Auftritt auf der Straße. Freie Markenstudien aus dem GRELLWERK-Konzept.</p><button type="button" data-reel-toggle aria-pressed="false">Bewegung pausieren</button></div></div><nav class="work-jump" aria-label="Projekt auswählen"><a href="#projekt-kold">KOLD BREW ↘</a><a href="#projekt-neon">NEONTRITT ↘</a><a href="#projekt-hafer">HAFERKRAFT ↘</a><a href="#projekt-blitz">BLITZBANK ↘</a></nav></section>
+ <section class="work-editorial" aria-label="Unsere Projekte"><article class="work-spread  work-kold" id="projekt-kold" style="--project-accent:#d6ff3b">
+  <div class="work-meta"><span>Branding · Campaign · Digital</span><span>FREIE STUDIE / 2026</span></div>
+  <div class="work-composition"><a class="work-screen" data-work-screen href="case-kold-brew.html" aria-label="KOLD BREW: Projekt ansehen"><img class="" src="assets/motion/coffee-still.webp" data-motion-loop data-motion-src="assets/motion/coffee.gif" data-still="assets/motion/coffee-still.webp" width="640" height="360" alt="" loading="lazy" decoding="async"><div class="work-screen-shade"></div><span class="work-screen-line">EINE KRONE FÜR DIE NACHT.</span><h2>KOLD<br>BREW</h2><span class="work-screen-open">DAS PROJEKT ↗</span></a>
+  <div class="work-design"><a class="work-design-image" href="case-kold-brew.html" aria-label="KOLD BREW: Gestaltung ansehen"><div class="campaign-image" data-image-label="KOLD BREW"><picture><source media="(max-width:700px), (max-width:1000px) and (orientation:portrait)" srcset="assets/campaigns/kold-street-v4-mobile.webp"><img src="assets/campaigns/kold-street-v4-1536.webp" srcset="assets/campaigns/kold-street-v4-800.webp 800w, assets/campaigns/kold-street-v4-1536.webp 1536w" sizes="(max-width:700px) 150vh, 100vw" width="1536" height="864" alt="KOLD BREW Kampagne: schwarze Dose, gelbe Krone und ein nächtlicher Kiosk" loading="lazy" decoding="async"></picture></div><span aria-hidden="true">↗</span></a><h3>Kalt gebraut.<br>Hellwach gedacht.</h3><p>Kaffee für die Stunden, in denen andere schon Schluss machen. Eine Marke zwischen nächtlichem Kiosk, kaltem Asphalt und dem ersten guten Gedanken.</p><a class="editorial-link" href="case-kold-brew.html">Idee & Umsetzung ↗</a></div></div>
+ </article><article class="work-spread is-reversed work-neon" id="projekt-neon" style="--project-accent:#bcff39">
+  <div class="work-meta"><span>Art Direction · Brand · Campaign</span><span>FREIE STUDIE / 2026</span></div>
+  <div class="work-composition"><a class="work-screen" data-work-screen href="case-neontritt.html" aria-label="NEONTRITT: Projekt ansehen"><img class="" src="assets/motion/footwork-still.webp" data-motion-loop data-motion-src="assets/motion/footwork.gif" data-still="assets/motion/footwork-still.webp" width="640" height="360" alt="" loading="lazy" decoding="async"><div class="work-screen-shade"></div><span class="work-screen-line">BEWEGUNG WIRD HALTUNG.</span><h2>NEONTRITT</h2><span class="work-screen-open">DAS PROJEKT ↗</span></a>
+  <div class="work-design"><a class="work-design-image" href="case-neontritt.html" aria-label="NEONTRITT: Gestaltung ansehen"><div class="campaign-image" data-image-label="NEONTRITT"><img src="assets/campaigns/neon-detail-v2-1536.webp" srcset="assets/campaigns/neon-detail-v2-800.webp 800w, assets/campaigns/neon-detail-v2-1536.webp 1536w" sizes="100vw" width="1536" height="1024" alt="NEONTRITT Sneaker auf nassem Asphalt bei Nacht" loading="lazy" decoding="async"></div><span aria-hidden="true">↗</span></a><h3>Die Straße<br>ist dein Laufsteg.</h3><p>Ein Sneaker mit Straßeninstinkt. Schwarz hält sich zurück. Die Sohle übernimmt den Rest.</p><a class="editorial-link" href="case-neontritt.html">Idee & Umsetzung ↗</a></div></div>
+ </article><article class="work-spread  work-hafer" id="projekt-hafer" style="--project-accent:#c1cbb7">
+  <div class="work-meta"><span>Strategy · Packaging · Campaign</span><span>FREIE STUDIE / 2026</span></div>
+  <div class="work-composition"><a class="work-screen" data-work-screen href="case-haferkraft.html" aria-label="HAFERKRAFT: Projekt ansehen"><img class="" src="assets/motion/cream-still.webp" data-motion-loop data-motion-src="assets/motion/cream.gif" data-still="assets/motion/cream-still.webp" width="640" height="360" alt="" loading="lazy" decoding="async"><div class="work-screen-shade"></div><span class="work-screen-line">MORGEN WIRD GUT.</span><h2>HAFER<br>KRAFT</h2><span class="work-screen-open">DAS PROJEKT ↗</span></a>
+  <div class="work-design"><a class="work-design-image" href="case-haferkraft.html" aria-label="HAFERKRAFT: Gestaltung ansehen"><div class="campaign-image" data-image-label="HAFERKRAFT"><img src="assets/campaigns/hafer-v2-1536.webp" srcset="assets/campaigns/hafer-v2-800.webp 800w, assets/campaigns/hafer-v2-1536.webp 1536w" sizes="100vw" width="1536" height="1024" alt="HAFERKRAFT Haferdrink-Verpackungen mit Hafer auf einer hellen Steinfläche" loading="lazy" decoding="async"></div><span aria-hidden="true">↗</span></a><h3>Kleine Körner.<br>Großer Morgen.</h3><p>Haferdrink für den ganz normalen Morgen. Ehrliche Materialien, deutliche Schrift und eine Portion trockener Humor.</p><a class="editorial-link" href="case-haferkraft.html">Idee & Umsetzung ↗</a></div></div>
+ </article><article class="work-spread is-reversed work-blitz" id="projekt-blitz" style="--project-accent:#d6ff3b">
+  <div class="work-meta"><span>Positioning · Identity · Digital</span><span>FREIE STUDIE / 2026</span></div>
+  <div class="work-composition"><a class="work-screen" data-work-screen href="case-blitzbank.html" aria-label="BLITZBANK: Projekt ansehen"><div class="campaign-image" data-image-label="BLITZBANK"><img src="assets/campaigns/blitz-v2-1536.webp" srcset="assets/campaigns/blitz-v2-800.webp 800w, assets/campaigns/blitz-v2-1536.webp 1536w" sizes="(max-width:700px) 150vh, 100vw" width="1536" height="1024" alt="Schwarzer BLITZBANK Schriftzug und gelber Blitz direkt auf rauem Beton" loading="lazy" decoding="async"></div><div class="work-screen-shade"></div><span class="work-screen-line">EIN ZEICHEN. EIN STANDPUNKT.</span><h2 class="sr-only">BLITZ<br>BANK</h2><span class="work-screen-open">DAS PROJEKT ↗</span></a>
+  <div class="work-design"><a class="work-design-image" href="case-blitzbank.html" aria-label="BLITZBANK: Gestaltung ansehen"><div class="campaign-image" data-image-label="BLITZBANK"><img src="assets/campaigns/blitz-detail-v2-1536.webp" srcset="assets/campaigns/blitz-detail-v2-800.webp 800w, assets/campaigns/blitz-detail-v2-1536.webp 1536w" sizes="100vw" width="1536" height="1024" alt="Eine schwarze und eine limettengrüne BLITZBANK Karte als Produktinszenierung" loading="lazy" decoding="async"></div><span aria-hidden="true">↗</span></a><h3>Geld ist ernst.<br>Banking muss es nicht sein.</h3><p>Eine Bankmarke, die ihre Sätze zu Ende bringt. Kurze Worte, ein scharfes Zeichen und ein Auftritt, der auf der Straße funktioniert.</p><a class="editorial-link" href="case-blitzbank.html">Idee & Umsetzung ↗</a></div></div>
+ </article><p class="work-note">Marken und Kampagnen sind fiktiv. Die Filmschnitte sind Bewegungsstudien zur jeweiligen Bildwelt.</p></section><a class="work-to-about" href="ueber-uns.html"><span>DAS STUDIO DAHINTER</span><strong>GUTE ARBEIT.<br>EIGENE KÖPFE. ↗</strong></a></main><footer class="footer">
+<div class="footer-intro"><p>WAS SOLL DEINE MARKE AUSLÖSEN?</p><a href="kontakt.html">LET’S TALK <span>↗</span></a></div>
+<div class="footer-bottom"><a class="footer-brand" href="index.html">GRELL//WERK®</a><nav aria-label="Weitere Informationen"><a href="leistungen.html">Leistungen</a><a href="journal.html">Journal</a><a href="labor.html">Spielwiese</a><a href="impressum.html">Impressum</a><a href="datenschutz.html">Datenschutz</a></nav><p>© 2026 GRELLWERK · Agenturkonzept & freie Arbeiten.</p></div>
+</footer><div class="route-curtain" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><span>GRELL//WERK</span></div><div class="sr-only" id="route-status" role="status" aria-live="polite"></div><script type="module" src="js/main.js?v=11"></script></body></html>

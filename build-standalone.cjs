@@ -1,70 +1,29 @@
-// Bundles the build-less site into ONE self-contained HTML file.
-// All CSS, JS, and the noise SVG are inlined so the page works from file://
-// (e.g. opened directly on a phone) with zero external dependencies.
-const fs = require("fs");
-const path = require("path");
-
-const root = __dirname;
-const read = (p) => fs.readFileSync(path.join(root, p), "utf8");
-
-// --- CSS: concat in load order, inline the noise.svg as a data URI ---
-const cssFiles = [
-  "css/reset.css", "css/tokens.css", "css/base.css", "css/components.css",
-  "css/sections.css", "css/guide.css", "css/motion.css",
-];
-let css = cssFiles.map(read).join("\n");
-const noiseDataUri =
-  "data:image/svg+xml;base64," + Buffer.from(read("assets/noise.svg")).toString("base64");
-css = css.replace(/url\(["']?\.\.\/assets\/noise\.svg["']?\)/g, `url("${noiseDataUri}")`);
-
-// --- JS: strip ES module syntax, concat into one classic script ---
-const stripModule = (src) =>
-  src
-    .replace(/^\s*import[^;]*;\s*$/gm, "")          // drop import lines
-    .replace(/^\s*export\s+/gm, "");                 // drop leading export keywords
-
-const config = stripModule(read("js/config.js"));
-const cursor = stripModule(read("js/cursor.js"));
-const effects = stripModule(read("js/effects.js"));
-const konfigurator = stripModule(read("js/konfigurator.js"));
-const generator = stripModule(read("js/generator.js"));
-const journal = stripModule(read("js/journal.js"));
-const workflow = stripModule(read("js/workflow.js"));
-const scroll = stripModule(read("js/scroll.js"));
-const guide = stripModule(read("js/guide.js"));
-
-// main.js: replace the CDN loader with hard-coded fallbacks (no network needed)
-let main = stripModule(read("js/main.js"))
-  .replace(
-    /const \{ gsap, ScrollTrigger, Lenis \} = await loadEnhancements\(\);/,
-    "const gsap = null, ScrollTrigger = null, Lenis = null; window.__FLAGS = { gsap: false, lenis: false, standalone: true };"
-  );
-
-const js = `(function(){\n${config}\n${cursor}\n${effects}\n${konfigurator}\n${generator}\n${journal}\n${workflow}\n${scroll}\n${guide}\n${main}\n})();`;
-
-// --- Assemble HTML from index.html, swapping in inline style + script ---
-let html = read("index.html");
-
-// Replace the external stylesheet links with one inline <style>
-html = html.replace(
-  /<link rel="stylesheet" href="css\/reset\.css" \/>[\s\S]*?<link rel="stylesheet" href="css\/motion\.css" \/>/,
-  `<style>\n${css}\n</style>`
-);
-
-// Remove the importmap (no CDN modules in standalone)
-html = html.replace(/<script type="importmap">[\s\S]*?<\/script>/, "");
-
-// Replace the module script tag with the inlined classic script
-html = html.replace(
-  /<script type="module" src="js\/main\.js"><\/script>/,
-  `<script>\n${js}\n</script>`
-);
-
-// Favicon/OG point at assets/ which won't exist standalone; harmless if missing,
-// but inline the favicon so the tab icon still works.
-const favDataUri =
-  "data:image/svg+xml;base64," + Buffer.from(read("assets/favicon.svg")).toString("base64");
-html = html.replace(/href="assets\/favicon\.svg"/, `href="${favDataUri}"`);
-
-fs.writeFileSync(path.join(root, "grellwerk-standalone.html"), html);
-console.log("Wrote grellwerk-standalone.html (" + (html.length / 1024).toFixed(1) + " KB)");
+// Self-contained Home preview. The complete multipage experience is served over HTTP.
+const fs=require('fs'),path=require('path');
+const root=__dirname;
+const read=p=>fs.readFileSync(path.join(root,p),'utf8');
+const mime=p=>p.endsWith('.gif')?'image/gif':p.endsWith('.mp4')?'video/mp4':p.endsWith('.svg')?'image/svg+xml':p.endsWith('.webp')?'image/webp':p.endsWith('.ttf')?'font/ttf':'application/javascript';
+const data=p=>'data:'+mime(p)+';base64,'+fs.readFileSync(path.join(root,p)).toString('base64');
+let html=read('index.html');
+let css=['reset','tokens','base','components','sections','motion','art','agency','studio','direction','about','home','editorial'].map(n=>read('css/'+n+'.css')).join('\n');
+css=css.replace(/url\(['"]?\.\.\/(assets\/[^)'"]+)['"]?\)/g,(_,p)=>'url("'+data(p)+'")');
+html=html.replace(/<link rel="stylesheet"[^>]+>/g,'').replace('</head>','<style>'+css+'</style></head>');
+html=html.replace(/<link rel="preload"[^>]+>/g,'');
+html=html.replace(/(src|href|poster|data-motion-src|data-still)="(assets\/[^"]+)"/g,(_,attr,p)=>attr+'="'+data(p)+'"');
+html=html.replace(/\s+srcset="([^"]*)"/g,(_,value)=>value==='assets/campaigns/kold-street-v4-mobile.webp'?' srcset="'+data(value)+'"':'');
+// Each module is stored once; the import map links the original local ESM graph.
+const modules=['js/studio.js','js/reel.js','js/projects.js'];
+const imports={};
+for(const name of modules){
+ let code=read(name);
+ code=code.replace(/(from\s*|import\s*\()(['"])(\.[^'"]+)\2/g,(_,prefix,q,spec)=>{
+  const resolved=path.posix.normalize(path.posix.join(path.posix.dirname(name),spec.split('?')[0]));
+  if(!modules.includes(resolved))throw Error('Unbundled dependency: '+resolved);
+  return prefix+q+'gw/'+resolved+q;
+ });
+ imports['gw/'+name]='data:application/javascript;base64,'+Buffer.from(code).toString('base64');
+}
+html=html.replace('<script type="module" src="js/main.js?v=11"></script>','<script type="importmap">'+JSON.stringify({imports})+'</script><script type="module">import {initStudio} from "gw/js/studio.js";initStudio(document.querySelector("main"));</script>');
+html=html.replace('<body data-page="home">','<body data-page="home"><aside class="standalone-note">Einzeldatei-Vorschau der Startseite. Die vollständige Website startet mit START-PREVIEW.cmd.</aside>');
+fs.writeFileSync(path.join(root,'grellwerk-standalone.html'),html);
+console.log('Wrote grellwerk-standalone.html ('+(Buffer.byteLength(html)/1024/1024).toFixed(1)+' MB, local fonts / images / campaign stage included)');
