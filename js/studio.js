@@ -1,5 +1,5 @@
-import {createReel,createMotionLoops} from './reel.js?v=11';
-import {createProjects} from './projects.js?v=11';
+import {createReel,createMotionLoops} from './reel.js?v=12';
+import {createProjects} from './projects.js?v=12';
 const reduce=matchMedia('(prefers-reduced-motion: reduce)');
 let paused=false,disposePage=()=>{},reel=null,projects=null,loops=null,updateScroll=()=>{};
 try{paused=sessionStorage.getItem('grellwerk-still')==='1';}catch{}
@@ -12,11 +12,25 @@ function syncMotion(){
 }
 function toggleMotion(){paused=!paused;try{sessionStorage.setItem('grellwerk-still',paused?'1':'0');}catch{}syncMotion();}
 const menu=document.querySelector('#studio-menu'),menuButton=document.querySelector('[data-menu-open]');
-menuButton?.addEventListener('click',()=>{menu.showModal();menuButton.setAttribute('aria-expanded','true');reel?.sync();projects?.sync();loops?.sync();});
-export function closeStudioMenu(){if(menu?.open)menu.close();}
-menu?.querySelector('[data-menu-close]')?.addEventListener('click',closeStudioMenu);
-menu?.addEventListener('close',()=>{menuButton?.setAttribute('aria-expanded','false');reel?.sync();projects?.sync();loops?.sync();});
-menu?.addEventListener('click',event=>{if(event.target.closest('a'))closeStudioMenu();});
+let menuAnimation=null;
+function syncMedia(){reel?.sync();projects?.sync();loops?.sync();}
+menuButton?.addEventListener('click',()=>{
+ menuAnimation?.cancel();menu.showModal();menuButton.setAttribute('aria-expanded','true');syncMedia();
+ if(!motionOff())menuAnimation=menu.animate([{opacity:0,transform:'translateY(-12px)'},{opacity:1,transform:'none'}],{duration:220,easing:'cubic-bezier(.22,1,.36,1)'});
+});
+export function closeStudioMenu({immediate=false}={}){
+ if(!menu?.open)return;
+ menuAnimation?.cancel();
+ if(immediate||motionOff()){menu.close();return;}
+ const closing=menu.animate([{opacity:1},{opacity:0}],{duration:120,easing:'ease-out'});
+ menuAnimation=closing;
+ closing.finished.then(()=>{if(menuAnimation===closing){menu.close();menuAnimation=null;}}).catch(()=>{});
+}
+menu?.querySelector('[data-menu-close]')?.addEventListener('click',()=>closeStudioMenu());
+menu?.addEventListener('cancel',event=>{event.preventDefault();closeStudioMenu();});
+menu?.addEventListener('close',()=>{menuButton?.setAttribute('aria-expanded','false');syncMedia();});
+menu?.addEventListener('click',event=>{if(event.target.closest('a'))closeStudioMenu({immediate:true});});
+
 document.querySelector('#motion-toggle')?.addEventListener('click',toggleMotion);
 reduce.addEventListener('change',syncMotion);
 export function initStudio(main){

@@ -154,8 +154,8 @@ const readRoot = (f) => fs.readFileSync(path.join(root, f), "utf8");
       e.push(`${f} — Footer weicht von zentraler Chrome ab`);
     }
     // brummer: Guide-Aside + Tab vorhanden
-    if (!/class="route-curtain"/.test(html) || !/id="motion-toggle"/.test(html)) {
-      e.push(`${f} — Gemeinsamer Übergang oder Bewegungsschalter fehlt`);
+    if (!/class="route-feedback"/.test(html) || !/id="route-status"/.test(html) || !/id="motion-toggle"/.test(html)) {
+      e.push(`${f} — Gemeinsame Lade-/Fehlerrückmeldung oder Bewegungsschalter fehlt`);
     }
   }
   record("Chrome-Drift (nav/footer/motion)", e);

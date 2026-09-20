@@ -1,0 +1,5 @@
+# VISUAL — Art Direction
+
+- **Typografierisiko:** `showcase.cjs` legt Case-Titel über `blitz-v2`; dieses Motiv enthält bereits Wortmarke/Slogan. Neue BLITZ-Szene verbindlich zuordnen. Alle neuen Fotos ohne Collage, UI oder eingebrannte Headlines; Produktschrift erhalten.
+- **Produktkontinuität:** `assets/campaigns/*-detail-v2-800.webp` belegt die Referenzen. KOLD: schwarze Dose/gelbe Krone, Hand am Nachtkiosk; kurze Lichtimpulse. NEON: identisches schwarzes Mesh, helle Besätze, Limettensohle; bodennaher Schritt auf Asphalt, gerichtete Bewegung. HAFER: unveränderte cremefarbene Packung/grüner Verschluss, neutrale Morgenküche; ruhige Gießbewegung. BLITZ: Hand mit schwarzer Referenzkarte, ruhiger strukturierter Beton; statisch, keine Institution oder Finanzversprechen.
+- **Bewegungshierarchie:** `work-view.cjs` und `motion.cjs` setzen coffee/footwork/cream als separate Bühnen. GIFs behalten; Stock ausschließlich atmosphärisch, niemals als Produktbeleg. Neue Fotos ergänzen die Produktidentität. Pause und reduzierte Bewegung müssen Standbilder zeigen. Mobile Ausschnitte dürfen Dose, Schuhspitze, Packungsverschluss und Kartenwortmarke nicht abschneiden.

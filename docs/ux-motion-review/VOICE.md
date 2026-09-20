@@ -1,0 +1,5 @@
+# VOICE · Konzept & Text
+
+- **Labels:** `tools/lib/chrome.cjs` führt konsequent „Projekte“, „Studio“, „Briefing“; Home übernimmt Projekte/Studio. `tools/build-art-site.cjs` nennt die Seitentitel noch „Projects“ und „About — Das Studio“. Titel auf dieselben deutschen Begriffe vereinheitlichen, damit Tab, Navigation und Ziel übereinstimmen.
+- **Fiktion und Reihenfolge:** `tools/content/direction.cjs` kennzeichnet freie Markenstudien, KI-Rollen und menschliche Entscheidungen klar. Im Studio eröffnet jedoch die Porträtserie; „Wir haben zwölf“ verstärkt Personen vor Arbeitsweise. Prozess und Übergaben vor Porträts erläutern, Fiktionskennzeichnung erhalten. Filmhero und GIFs bleiben.
+- **Briefing:** Der Kontaktabschnitt in `tools/build-art-site.cjs` beschreibt bereits lokale Vorschau, Kopieren, freiwillige persönliche Angaben und fehlenden Versand; der Footer bestätigt das. Diese ehrliche Funktionsbeschreibung beibehalten. Bei Folgeänderungen keine Anfrage-, Versand- oder Antwortzusage ergänzen. Die tatsächliche Speicher- und Kopierfunktion ist mit dieser Textprüfung nicht verifiziert.
