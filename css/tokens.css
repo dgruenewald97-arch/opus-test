@@ -1,8 +1,8 @@
 /* GRELLWERK — design tokens */
 :root {
   /* palette */
-  --ink: #0A0A0A;
-  --paper: #F2F0E9;
+  --ink: #151514;
+  --paper: #F3F3EE;
   --acid: #D6FF3B;
   --shock: #FF2E63;
   --electric: #2D2DFF;
@@ -13,9 +13,9 @@
   --fg: var(--ink);
 
   /* typography */
-  --font-display: "Archivo Black", "Impact", "Haettenschweiler", sans-serif;
+  --font-display: "Anton", "Arial Narrow", "Impact", sans-serif;
   --font-ui: "Space Grotesk", system-ui, sans-serif;
-  --font-mono: "JetBrains Mono", "Courier New", monospace;
+  --font-mono: "Space Grotesk", "Courier New", monospace;
 
   /* fluid type scale */
   --step--1: clamp(0.78rem, 0.7rem + 0.4vw, 0.95rem);

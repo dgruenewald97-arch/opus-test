@@ -1,6 +1,6 @@
 name: Verify GRELLWERK
 
-# Hartes Gate: läuft auf jeden Push (außer main, das deployt nur) und auf jede PR.
+# Prüft Feature-Pushes und PRs. main prüft zusätzlich im Pages-Workflow vor dem Deploy.
 # Schlägt verify.cjs fehl, wird die PR rot — die wiederkehrenden Bugs (kaputte Meta,
 # rohe <, tote Links, Chrome-Drift, Journal/Sitemap-Lücken) kommen so nicht nach main.
 on:
@@ -21,4 +21,6 @@ jobs:
           node-version: "22"
 
       - name: Verify-Gate
-        run: node tools/verify.cjs
+        run: |
+          node tools/build-art-site.cjs
+          node tools/verify.cjs

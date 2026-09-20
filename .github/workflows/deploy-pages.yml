@@ -33,6 +33,11 @@ jobs:
           cache: npm
           cache-dependency-path: studio-seide/package-lock.json
 
+      - name: Build and verify GRELLWERK
+        run: |
+          node tools/build-art-site.cjs
+          node tools/verify.cjs
+
       - name: Build STUDIO SEIDE (Vite)
         working-directory: studio-seide
         env:
@@ -43,7 +48,7 @@ jobs:
           npm run build
 
       - name: Assemble Pages site
-        # Homepage = GRELLWERK (build-less, repo root).
+        # Homepage = GRELLWERK (generated static HTML, repo root).
         # STUDIO SEIDE (Vite build) is served under /studio-seide/.
         run: |
           rm -rf _site

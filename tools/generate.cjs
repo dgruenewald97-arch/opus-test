@@ -14,7 +14,7 @@
 
 const fs = require("fs");
 const path = require("path");
-const { NAV, FOOTER, BRUMMER, CATEGORIES, head, BODY_OPEN, SCRIPTS } = require("./lib/chrome.cjs");
+const { NAV, FOOTER, OVERLAYS, CATEGORIES, head, BODY_OPEN, SCRIPTS } = require("./lib/chrome.cjs");
 
 const root = path.join(__dirname, "..");
 const articlesDir = path.join(__dirname, "content", "articles");
@@ -82,7 +82,7 @@ ${BODY_OPEN}
 
 ${NAV}
 
-  <main id="main">
+  <main id="main" tabindex="-1" data-page="legacy">
 
     <!-- ===== ARTICLE HERO ===== -->
     <section class="section page-hero" id="article-hero">
@@ -133,7 +133,7 @@ ${bodyHtml(a.body)}
 
 ${FOOTER}
 
-${BRUMMER}
+${OVERLAYS}
 
 ${SCRIPTS}
 </body>

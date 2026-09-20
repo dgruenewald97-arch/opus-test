@@ -1,0 +1,37 @@
+/* Revision 8: filmed motion, no text inside the background imagery.
+   K72's full-screen/type/inline-film composition is the explicit reference. */
+.manifesto{background:#0e130b;min-height:680px}
+.manifesto-content{padding:100px 18px 14px}
+.manifesto h1{font-size:min(11.5vw,17svh);line-height:.91;padding:0;letter-spacing:-.067em}
+.manifesto-line:nth-child(2){margin-top:.045em}
+.manifesto-line:last-child{margin-top:.04em}
+.manifesto:after{background:linear-gradient(180deg,#05080332 0%,#05080310 45%,#05080375 80%,#050803a0 100%)}
+.reel-fallback>img{width:100%;height:100%;object-fit:cover;object-position:center;filter:none}
+.reel-monitor{width:1.95em;height:.81em;background:#10150e;outline:1px solid #ffffff35}
+.reel-monitor>img,.reel-monitor.is-ready>img{display:block;object-fit:cover;object-position:center}
+.reel-monitor>img[hidden]{display:none}
+.circled-word:after{inset:9% -5% -5%;border-width:1px}
+.manifesto-note{font-size:clamp(13px,1.08vw,17px);width:clamp(260px,25vw,390px);margin:auto 8px 24px auto;text-shadow:0 1px 8px #000}
+.manifesto-note p{text-indent:2.5em;line-height:1.38}
+.manifesto-note>span{margin-top:12px;letter-spacing:.025em}
+.manifesto-ctas{gap:12px;padding-bottom:37px}
+.manifesto-ctas>a{font-size:clamp(45px,7.2vw,116px);padding:6px 30px 12px;border-width:1.5px}
+.manifesto-meta{font-size:9px}.manifesto-meta button{min-height:36px}
+@media(min-width:1700px){.manifesto-content{padding-top:105px}.manifesto h1{font-size:min(11.5vw,17svh)}}
+@media(max-width:1000px){.manifesto-content{padding-top:130px}.manifesto h1{font-size:13.5vw}.manifesto-note{width:320px;max-width:60%;font-size:14px;margin-bottom:40px}.manifesto-ctas>a{font-size:9vw}}
+@media(max-width:700px){
+ .manifesto{min-height:600px}.manifesto-content{padding:123px 12px 14px}
+ .manifesto h1{font-size:14.8vw;line-height:.94;letter-spacing:-.07em}
+ .reel-monitor{width:1.7em;height:.86em}.manifesto-middle{gap:.12em}
+ .manifesto-note{font-size:12px;max-width:290px;width:77%;margin: auto 0 35px auto}
+ .manifesto-note>span{font-size:9px;margin-top:12px}
+ .manifesto-ctas{gap:8px;padding-bottom:44px}.manifesto-ctas>a{font-size:10.5vw;padding:11px 17px 13px}
+ .manifesto-meta{font-size:7px}.manifesto-meta button{font-size:10px}
+ .manifesto:after{background:linear-gradient(180deg,#05080340,#05080308 40%,#050803b0)}
+}
+@media(max-height:700px) and (min-width:701px){.manifesto-content{padding-top:85px}.manifesto h1{font-size:14svh}.manifesto-ctas>a{font-size:10svh}.manifesto-note{margin-bottom:20px}}
+@media(max-height:670px) and (max-width:700px){.manifesto{min-height:560px}.manifesto-content{padding-top:100px}.manifesto-note{font-size:11px;margin-bottom:22px}.manifesto-note>span{display:none}.manifesto-ctas>a{font-size:10vw;padding-inline:14px}.manifesto-meta>span{font-size:6px}}
+
+/* Home is intentionally a single scene. Secondary links remain in the menu. */
+body[data-page=home] .footer{display:none}
+@media(max-width:700px){.manifesto-ctas>a{font-size:10.1vw;padding-inline:13px}}

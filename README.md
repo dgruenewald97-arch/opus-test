@@ -1,97 +1,44 @@
-# GRELLWERK — Brutalist Marketing Agency Website
+# GRELLWERK / Revision 11
 
-Eine fiktive Werbe-/Performance-Agentur als **brutalistische Anti-Design-Website**
-mit dem interaktiven Maskottchen **BRUMMER**.
+20.09.2026. **Lärm, der etwas auslöst.** Die KI-Agenturidee aus dem GitHub-Projekt wird als Marken-, Kampagnen- und Digitalstudio mit klaren Rollen weitergeführt. Das ausgearbeitete Konzept steht in [KONZEPT.md](KONZEPT.md).
 
-> Tagline: **„Lärm, der verkauft."**
+## Vorschau
 
-## Highlights
+START-PREVIEW.cmd startet die vollständige Website lokal. Alternativ: `python tools/preview.py --headless --port 8877`.
 
-- **Brutalist / Anti-Design** — übergroße Typo, Glitch-Effekte, harte Kontraste,
-  asymmetrische Layouts, endlose Marquees, Block-Shadows.
-- **BRUMMER** — SVG-Maskottchen, das minimiert als Tab startet. Öffnet einen
-  Frag-Modus (Chips + freie Texteingabe, Keyword-Matching) und eine optionale
-  Seiten-Tour. Einmaliger Kontakt-Stupser via `sessionStorage` auf der Homepage.
-- **Custom Cursor + magnetische Buttons**, Scramble-Text, Grain-Overlay.
-- **Build-less** — reines HTML + CSS + Vanilla-JS. Keine Installation nötig.
-  CDN-Libs (GSAP, Lenis, Google Fonts) fallen graceful aus.
-- **Mehrseitig** — `index.html` + Unterseiten (`arbeiten.html`, `case-*.html`,
-  `leistungen.html`, `leistung-*.html`, `journal.html`, `journal-*.html`,
-  `ueber-uns.html`, `kontakt.html`, `impressum.html`, `datenschutz.html`).
-- **Journal** mit Kategorie-Filter und Datum/Titel/Kategorie-Sortierung.
-- **Interaktive Tools** — `#konfigurator` (Marken-Konfigurationsrechner) und
-  `#slogan-lab` Krach-Maschine (Slogan-Generator mit Branchen-Erkennung) — alles
-  reine Vanilla-JS-Keyword-Logik, kein Netz.
-- **Accessibility** — `prefers-reduced-motion`, Keyboard-Navigation, Skip-Link,
-  Live-Regions, semantische Landmarks.
+[Home](http://127.0.0.1:8877/index.html?v=11) · [Projects](http://127.0.0.1:8877/arbeiten.html?v=11) · [About](http://127.0.0.1:8877/ueber-uns.html?v=11)
 
-## Struktur
+## Aktueller Aufbau
 
-```
-index.html              # Startseite mit allen Haupt-Sektionen
-*.html                  # Unterseiten (Cases, Leistungen, Journal-Artikel, …)
-css/                    # reset, tokens, base, components, sections, guide, motion
-js/                     # config, cdn, cursor, effects, scroll, guide, konfigurator,
-                        #   generator, journal, main
-assets/                 # noise.svg, favicon.svg, og-image.svg
-tools/                  # Generator + Verify-Gate (Node.js, kein Build nötig für Dev)
-  content/articles/     # Daten-Dateien für Journal-Artikel (*.cjs)
-  lib/                  # figures.cjs, chrome.cjs (Bau-Helfer)
-  generate.cjs          # Artikel aus Daten-Datei rendern
-  verify.cjs            # Verify-Gate (Pflicht vor Push)
-.github/workflows/      # CI: verify.yml + deploy-pages.yml
-studio-seide/           # Nebenprojekt: Friseur-Salon (Vite + React) — separat
-```
+- Ein bildschirmfüllender Hero mit elf Sekunden echtem Film und separater Hochformatfassung. Zwei echte GIF-Loops wechseln in der Überschrift. Beide Aufnahmen sind monochrom mit säuregrünen Lichtern gestaltet. Große Outline-Links führen zu Projects und About.
+- Home besteht ausschließlich aus dem Film-Hero. Projects, About und alle Zusatzseiten sind über Einstiege und Vollbildmenü erreichbar.
+- Projects inszeniert vier Marken in großen, versetzten Bildkompositionen. Drei echte GIFs, scharfe HTML-Wortmarken und eigene Kampagnenmotive bilden die Projektkapitel. Die Filmflächen öffnen sich beim Eintritt in den sichtbaren Bereich; vier Sprunglinks erschließen die Seite.
+- About zeigt AURA und CUT nebeneinander auf Desktop und nacheinander mobil. „Von Kopf zu Kopf“ erklärt die Zusammenarbeit an KOLD BREW mit einem GIF und großen Porträts von VECTOR, PROMPT und SYNTAX. Alle zwölf Rollen, Filter, Profile und CUTs Vorher/Nachher-Demo bleiben erreichbar.
+- Vollbildmenü, fünf gestaffelte Übergangsflächen, Browserhistorie und abbrechbare Bildübernahme beim Case-Einstieg.
+- Pause, reduzierte Bewegung, ruhige Ersatzansicht bei Video- oder GIF-Ausfall und native Links. Film und GIFs pausieren auch bei geöffnetem Menü oder verborgenem Browser-Tab. Die neuen GIFs laden erst im sichtbaren Bereich; außerhalb wechseln sie auf Standbilder.
+- Vorhandene Cases, Leistungen, Journal, Kontaktformular und Spielwiese. Das Formular kopiert ein Briefing und versendet nichts.
 
-Design-Tokens in `css/tokens.css` (`--ink`, `--paper`, `--acid`, `--shock`,
-`--electric`, `--warn`, Schriften, Spacing). Texte, Tour-Schritte und
-Tool-Logik zentral in `js/config.js`.
+GRELLWERK ist eine fiktive Agentur. Die Rollen sind ein Arbeitsmodell; auf dieser Website läuft kein Agenten-Backend. Der Home-Film und die GIFs stammen aus zwei bearbeiteten Mixkit-Stockaufnahmen. Quellen, Lizenz und Schnitt sind in assets/motion/CREDITS.md dokumentiert. Die Personen im Film sind keine Agentenporträts oder behaupteten Kunden. Drei weitere Filmstudien ergänzen Projects, About und die passenden Cases.
 
-## Lokal starten
+Die Prompts und die Herkunft der Porträtserie stehen in [assets/agents/PROMPTS.md](assets/agents/PROMPTS.md). WebP-Exporte liegen in zwei Größen vor.
 
-```bash
-python3 -m http.server 8000
-# → http://localhost:8000
-```
+## Quellen zum Weiterarbeiten
 
-Alternativ `index.html` direkt per `file://` — lokaler Server ist aber zuverlässiger.
+- Home und About-Einstieg: tools/content/direction.cjs; Projects: work-view.cjs; About-Arbeitsweise: agency-story.cjs; GIF-Markup: motion.cjs
+- Cases und Bilder: tools/content/showcase.cjs; Inhalte: site.cjs
+- Rollen: tools/content/agency.cjs; Index/Profile: agency-view.cjs
+- Gemeinsame Hülle: tools/lib/chrome.cjs
+- Hero: css/home.css; Projektstrecken, Case-GIFs und About-Erweiterung: css/editorial.css; Porträts und Rollenindex: css/about.css
+- Interaktionen: js/studio.js, js/reel.js, js/projects.js, js/team.js und js/main.js
 
-## Verify-Gate (vor jedem Push)
+`node tools/build-art-site.cjs` erzeugt die Seiten. `node tools/verify.cjs` prüft neun Gruppen und baut die eingebettete Home-Vorschau grellwerk-standalone.html. Unter Windows kann NODE_OPTIONS=--preserve-symlinks --preserve-symlinks-main erforderlich sein.
 
-```bash
-node tools/verify.cjs
-```
+Die Vorschau sendet Cache-Control: no-store. Auch direkte, unversionierte Seitenaufrufe erhalten damit nach dem Neuladen den aktuellen Stand.
 
-Prüft: Meta-Attribute, rohe `<`-Zeichen, tote interne Links, Pflicht-Meta,
-Chrome-Drift, Journal/Sitemap-Konsistenz, Standalone-Build. Läuft auch in CI.
+## Teamreview und Veröffentlichung
 
-## Standalone-Build
+CUT prüfte die Gestaltung im Browser, VERIFY Funktionen und Prüfablauf, VOICE die Texte. Die behobenen Befunde und Grenzen stehen in [TEAM-REVIEW.md](TEAM-REVIEW.md).
 
-```bash
-node build-standalone.cjs   # → grellwerk-standalone.html (alles in einer Datei)
-```
+Die Veröffentlichung wurde vom Nutzer beauftragt. Feature-Push und Pull Request durchlaufen den Verify-Workflow; `main` baut und prüft GRELLWERK vor dem Pages-Deploy. Die [öffentliche Website](https://dgruenewald97-arch.github.io/opus-test/) zeigt den letzten erfolgreichen Pages-Deploy.
 
-## Journal-Artikel erstellen
-
-1. Daten-Datei anlegen: `tools/content/articles/<slug>.cjs` (Vorlage `_example.cjs`)
-2. Diagramm (optional) aus `tools/lib/figures.cjs` wählen
-3. Seite generieren: `node tools/generate.cjs [slug]`
-4. Karte + Filter-Chip in `journal.html` ergänzen, Sitemap pflegen
-
-Kategorien: `Performance` · `Branding` · `Social` · `Daten` · `Web` · `Meinung`
-
-## Deploy
-
-GitHub Pages baut aus `main` (`deploy-pages.yml`). GRELLWERK im Root,
-Studio Seide unter `/studio-seide/`. Feature-Branches werden nicht deployt.
-
-## Nebenprojekt Studio Seide
-
-```bash
-cd studio-seide && npm run dev   # Vite-Dev-Server
-cd studio-seide && npm run build # Produktions-Build
-```
-
----
-
-> Alle Marken, Cases und Personen sind fiktiv (Demo-Content).
+Ursprünglicher Checkout, früherer Reel-Prototyp und studio-seide bleiben unverändert. Frühere ZIP-Stände sind gesichert.
