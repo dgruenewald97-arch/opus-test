@@ -6,20 +6,20 @@ export function initTeam(main){
   const button=buttons.find(b=>b.dataset.agent===id);if(!button)return;
   const changed=selected!==id;selected=id;
   buttons.forEach(b=>b.setAttribute('aria-pressed',String(b===button)));
-  panels.forEach(p=>{p.hidden=p.id!=='agent-'+id;if(!p.hidden&&changed&&animate&&!document.documentElement.classList.contains('no-motion')){const portrait=p.querySelector('.agent-portrait');portrait.getAnimations().forEach(a=>a.cancel());portrait.animate([{opacity:0,transform:'translateY(8px)'},{opacity:1,transform:'translateY(0)'}],{duration:240,easing:'cubic-bezier(.22,1,.36,1)'});}});
+  panels.forEach(p=>{p.hidden=p.id!=='agent-'+id;if(!p.hidden&&changed&&animate&&!document.documentElement.classList.contains('no-motion')){const portrait=p.querySelector('.agent-portrait');portrait.getAnimations().forEach(a=>a.cancel());portrait.animate([{clipPath:'inset(0 0 100% 0)',transform:'translateY(12px)'},{clipPath:'inset(0)',transform:'translateY(0)'}],{duration:550,easing:'cubic-bezier(.22,1,.36,1)'});}});
   profiles.forEach(p=>p.open=p.dataset.agentMobile===id);
-  if(remember){const url=new URL(location.href);url.searchParams.set('agent',id);url.searchParams.set('team',group);history.replaceState(history.state,'',url.href);dispatchEvent(new Event('grellwerk:statechange'));}
+  if(remember){const url=new URL(location.href);url.searchParams.set('agent',id);url.searchParams.set('team',group);history.replaceState(history.state,'',url.href);}
 
  }
  buttons.forEach(button=>{
-  // Selecting a profile is an intentional click/keyboard action, never incidental hover.
-
+  button.addEventListener('pointerenter',e=>{if(e.pointerType==='mouse')select(button.dataset.agent);});
+  button.addEventListener('focus',()=>select(button.dataset.agent));
   button.addEventListener('click',()=>select(button.dataset.agent,true,true));
   button.addEventListener('keydown',e=>{
    if(!['ArrowUp','ArrowDown','Home','End'].includes(e.key))return;e.preventDefault();
    const visible=buttons.filter(b=>!b.hidden),i=visible.indexOf(button);
    const next=e.key==='Home'?0:e.key==='End'?visible.length-1:(i+(e.key==='ArrowDown'?1:-1)+visible.length)%visible.length;
-   visible[next].focus();select(visible[next].dataset.agent,true,true);
+   visible[next].focus();
   });
  });
  profiles.forEach(p=>p.addEventListener('toggle',()=>{if(p.open&&p.dataset.agentMobile!==selected)select(p.dataset.agentMobile,true,true);}));

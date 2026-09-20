@@ -1,34 +1,32 @@
-# Teamreview / Revision 12
+# Teamreview / Revision 11
 
-20.09.2026. Ziel: durchgängiger Weg vom Filmeinstieg über Projekte und Arbeitsweise zum lokalen Briefing. Alle 30 Agenturrollen sind mit Beiträgen in [docs/ux-motion-review](docs/ux-motion-review) vertreten. Es waren 23 eigenständige Unteragenten plus AURA als Integration beteiligt; 30 Rollen bedeuten hier nicht 30 getrennte laufende Agenten. LINK dokumentiert die Bündelung nach Erreichen des Thread-Limits. Die öffentliche Website bleibt statisch.
+20.09.2026. Drei getrennte Agenten prüften den Stand vor der beauftragten GitHub-Veröffentlichung. Die Website selbst bleibt ein statisches Agenturkonzept ohne Agenten-Backend.
 
-## Umgesetzte Befunde
+## CUT / Gestaltung und Bedienung
 
-- CUT, GRID und VOICE: einheitliche Navigation, stabile Menübeschriftungen, klare primäre Einstiege, Arbeitsweise vor Rollenporträts.
-- MOTION und FRONT: kurze Übergänge, Kapitelmarkierung ohne erzwungenes Scrollen, korrekter Tastaturfokus auch nach einem Seitenwechsel zu einem Anker.
-- SYNTAX und FORM: lokales Briefing mit Vorschau, optionalen persönlichen Angaben, ehrlicher Clipboard-Rückmeldung und manueller Kopiermöglichkeit.
-- WATCHDOG und VERIFY: unterbrechbare Navigation, verspätete Antworten ohne Überschreiben neuer Inhalte, benutzbare Seite auch nach fehlgeschlagener Zurücknavigation.
-- VECTOR, PROMPT und VISUAL: vier neue Produktfotos mit zusammengehöriger Bildsprache je Marke; KOLD bleibt gelb, NEON lime. BLITZ bekommt ein ruhiges Motiv ohne eingebrannte große Überschrift.
-- SPEED: zwei WebP-Größen und passend deklarierte Bildbreiten. Keine behaupteten Lighthouse-Werte.
-- COMPLY: sichtbare KI-Persona-Kennzeichnung auch an Prozessporträts. Keine Rechtsfreigabe behauptet.
-- SCOUT: konkrete Stockquellen und Kandidaten dokumentiert. Vorhandene GIFs bleiben erhalten; neue Kandidaten wurden nicht als Film integriert.
+- Projects-Header überdeckte das Logo auf Mobil. Die volle Headerbreite ist korrigiert und bei 320, 390 und 1440 Pixeln sichtbar nachgeprüft.
+- Auf den hellen HAFERKRAFT- und BLITZBANK-Motiven war die weiße Navigation schlecht lesbar. Ein begrenzter dunkler Verlauf verbessert den Kontrast; beide Motive wurden nachgeprüft.
+- Home ausschließlich Hero, alle vier Projektbühnen, About-Porträts und Rollenlinks, drei Case-GIFs sowie Bewegungspause und Menü/Escape im Browser geprüft.
 
-Weitere Rollenberichte liefern Strategie, Messfragen, Inhalte und Freigabekriterien. Sie sind fachliche Empfehlungen, keine erfundenen Nutzerstudien oder Kampagnendaten. Frühe Einzelberichte beziehen sich teilweise auf einen Zwischenstand; die obige Liste und der finale Prüfstatus beschreiben die Integration.
+## VERIFY / Funktion
 
-## Nachweise
+- Der Skip-Link scrollte, setzte den Tastaturfokus aber nicht auf den Inhalt. Der Hash-Handler fokussiert jetzt `main`; CUT hat Tab → Enter nachgeprüft.
+- Alle neun Gruppen von `node tools/verify.cjs` bestanden. Prüfung von lokalen Referenzen und Groß-/Kleinschreibung für Linux, Modul-Lebenszyklen und Medienersatz ohne weiteren belegten Fehler.
+- Der Pages-Workflow baut und prüft GRELLWERK jetzt vor dem Deploy. Auch Feature-Pushes und Pull Requests führen Build und Verify aus.
 
-- `node tools/build-art-site.cjs`: erfolgreich.
-- `node tools/verify.cjs`: alle neun Gruppen erfolgreich, einschließlich lokaler Referenzen und Standalone-Build.
-- `node tools/verify-ux.cjs`: 16/16 erfolgreich. VERIFY schrieb 13 Tests; AURA ergänzte drei Regressionstests für seitenübergreifenden Ankerfokus, fehlgeschlagene Historiennavigation und Kapitelwechsel nach Rollenwahl.
-- `git diff --check`: erfolgreich. `studio-seide/` ohne Änderungen.
-- Neue generierte Fotos einzeln visuell geprüft; dies ist keine Layoutprüfung der eingebauten Seiten.
+## VOICE / Inhalte
 
-## Offene visuelle Abnahme
+- Sieben Leistungsseiten enthielten erfundene Ergebnisse, Kundenstimmen und technische Kennzahlen. Diese wurden durch Aufgaben, mögliche Liefergegenstände und verlinkte freie Konzeptstudien ersetzt. URLs und Anker blieben erhalten.
+- Root entfernte zusätzlich erfundene Buchungs- und Kundenbehauptungen aus der Spielwiese. Modellpreise sind als Beispiele gekennzeichnet.
+- Die unbestätigte Agentur-E-Mail wurde durch den lokalen Briefing-Einstieg ersetzt. Projekt- und Datenschutzinformationen beschreiben den tatsächlichen statischen Aufbau und GitHub Pages statt einer erfundenen GmbH.
 
-Die bisher veröffentlichte Seite wurde im Browser betrachtet. Die neue lokale Revision konnte wegen der Browserpolicy weder über localhost noch als lokale Datei geladen werden. Die Grenze wurde nicht umgangen. jsdom simuliert Geometrie und Browser-APIs; es bestätigt Zustände, Events und Cleanup, aber keine realen Pixelpositionen, Dialog-Fokusfallen, GIF-Wiedergabe oder Performance.
+## Abschlussprüfung durch Root
 
-Vor Veröffentlichung: Desktop, Tablet und Smartphone; kurze Klickfolgen, Zurück/Vorwärts, Menü/Escape/Tastatur, Rollen-Deep-Links, Pause, reduzierte Bewegung und Medienausfälle im echten Browser prüfen. Insbesondere Hero-Bildausschnitte und sticky Kapitel unter dem mobilen Header ansehen. Der Pull Request bleibt bis zur Abnahme ein Entwurf; kein Merge oder Live-Deploy gehört zu diesem Arbeitsstand.
+- Build und neun Verify-Gruppen nach den Korrekturen erneut erfolgreich.
+- Web-Leistungsseite und Kontakt bei 390 × 844 im Browser geprüft: Texte und neue Titel passen, kein horizontaler Überlauf. Der Briefing-Link scrollt zum Formular. Erfasste Warnungs-/Fehlerlogs leer.
+- Titel der Leistungsseiten von doppelter HTML-Escapierung bereinigt.
+- Versionierte Styles und Module konsistent auf v11 gesetzt. `studio-seide/` ohne Diff.
 
-## Aktualisierte Veröffentlichungsanweisung
+## Grenzen
 
-Der Nutzer hat nach Kenntnis der blockierten lokalen Browserprüfung ausdrücklich „Push und Update die Page“ beauftragt. Veröffentlichung erfolgt auf diese Anweisung nach technischen Gates. Die fehlende visuelle Vorabnahme wird nicht als bestanden ausgegeben; die öffentliche Seite wird nach dem Deploy geprüft. Frühere Entwurfs-/Nichtveröffentlichungsnotizen oben beschreiben den vorangegangenen Plan.
+Keine Prüfung auf einem physischen Smartphone, kein neuer Lighthouse-Lauf und keine vollständige erneute Sichtprüfung aller Journalartikel oder Zusatzfunktionen. Die sichtbare Prüfung ersetzt keine gestalterische Abnahme durch den Nutzer. Die Projektinformationen sind keine rechtliche Prüfung. Die Veröffentlichung ist erst mit erfolgreichem Pages-Deploy abgeschlossen; den Status dokumentieren Pull Request und GitHub Actions.

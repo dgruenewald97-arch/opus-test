@@ -24,8 +24,3 @@ jobs:
         run: |
           node tools/build-art-site.cjs
           node tools/verify.cjs
-
-      - name: Verify UX behavior (isolated test dependency)
-        run: |
-          npm install --prefix ../qa-runtime --no-package-lock --no-audit --no-fund jsdom@26.1.0
-          node tools/verify-ux.cjs
