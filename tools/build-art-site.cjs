@@ -6,6 +6,7 @@ const {NAV,FOOTER,OVERLAYS,head,BODY_OPEN,SCRIPTS}=require('./lib/chrome.cjs');
 const {projects,agents,specialists}=require('./content/site.cjs');
 const {renderAgency}=require('./content/agency-view.cjs');
 const {renderCase}=require('./content/showcase.cjs');
+const {enhanceRetained}=require('./content/interiors.cjs');
 const {renderHome,renderProjects}=require('./content/direction.cjs');
 const nl=s=>s.replace(/\n/g,'<br>');
 const decode=s=>s.replace(/&(?:amp|quot|lt|gt|apos);/g,m=>({'&amp;':'&','&quot;':'"','&lt;':'<','&gt;':'>','&apos;':"'"}[m]));
@@ -34,7 +35,7 @@ for(const file of fs.readdirSync(root).filter(f=>f.endsWith('.html')&&f!=='grell
  if(!main)throw new Error('Missing main: '+file);
  const title=html.match(/<title>(.*?)<\/title>/)?.[1].replace(/\s*\|.*$/,'')||'GRELLWERK';
  const desc=html.match(/name="description"\s+content="([^"]*)"/)?.[1]||title;
- page(file.slice(0,-5),decode(title),decode(desc),'legacy',main[1].replace(/href="index.html#pakete"/g,'href="labor.html#pakete"'));
+ page(file.slice(0,-5),decode(title),decode(desc),'legacy',enhanceRetained(file.slice(0,-5),main[1].replace(/href="index.html#pakete"/g,'href="labor.html#pakete"')));
 }
 let sitemap=fs.readFileSync(path.join(root,'sitemap.xml'),'utf8');
 if(!sitemap.includes('/labor.html'))fs.writeFileSync(path.join(root,'sitemap.xml'),sitemap.replace('</urlset>','<url><loc>https://dgruenewald97-arch.github.io/opus-test/labor.html</loc></url>\n</urlset>'));

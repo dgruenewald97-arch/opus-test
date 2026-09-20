@@ -27,8 +27,8 @@ function head(o) {return `<head>
 <link rel="canonical" href="${CANON_BASE}/${o.slug}.html">
 <meta name="theme-color" content="#f3f3ee"><link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="preload" href="assets/fonts/Anton-Regular.ttf" as="font" type="font/ttf" crossorigin>
-${['reset','tokens','base','components','sections','motion','art','agency','studio','direction','about','home','editorial'].map(n=>`<link rel="stylesheet" href="css/${n}.css?v=11">`).join('\n')}
+${['reset','tokens','base','components','sections','motion','art','agency','studio','direction','about','home','editorial','interiors'].map(n=>`<link rel="stylesheet" href="css/${n}.css?v=12">`).join('\n')}
 </head>`;}
 const BODY_OPEN='<body><a class="skip-link" href="#main">Zum Inhalt springen</a>';
-const SCRIPTS='<script type="module" src="js/main.js?v=11"></script>';
+const SCRIPTS='<script type="module" src="js/main.js?v=12"></script>';
 module.exports={CANON_BASE,NAV,FOOTER,OVERLAYS,CATEGORIES,head,BODY_OPEN,SCRIPTS};
