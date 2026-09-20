@@ -1,5 +1,5 @@
 import { initTeam } from './team.js';
-import { initStudio, closeStudioMenu } from './studio.js?v=11';
+import { initStudio, closeStudioMenu } from './studio.js?v=12';
 import { initKonfigurator } from './konfigurator.js';
 import { initGenerator } from './generator.js';
 import { initJournal } from './journal.js';
@@ -62,7 +62,7 @@ async function animateCurtain(cover){
 async function loadPage(url,signal){
  const key=url.pathname;
  if(cache.has(key))return cache.get(key).cloneNode(true);
- const requestURL=new URL(url);requestURL.searchParams.set('_build',new URL(import.meta.url).searchParams.get('v')||'10');
+ const requestURL=new URL(url);requestURL.searchParams.set('_build',new URL(import.meta.url).searchParams.get('v')||'12');
  const response=await fetch(requestURL.href,{signal,cache:'no-store'});
  if(!response.ok)throw new Error('Page unavailable');
  const doc=new DOMParser().parseFromString(await response.text(),'text/html');

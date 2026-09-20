@@ -1,5 +1,5 @@
-import {createReel,createMotionLoops} from './reel.js?v=11';
-import {createProjects} from './projects.js?v=11';
+import {createReel,createMotionLoops} from './reel.js?v=12';
+import {createProjects} from './projects.js?v=12';
 const reduce=matchMedia('(prefers-reduced-motion: reduce)');
 let paused=false,disposePage=()=>{},reel=null,projects=null,loops=null,updateScroll=()=>{};
 try{paused=sessionStorage.getItem('grellwerk-still')==='1';}catch{}
