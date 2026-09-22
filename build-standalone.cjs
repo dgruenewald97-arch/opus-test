@@ -23,7 +23,7 @@ for(const name of modules){
  });
  imports['gw/'+name]='data:application/javascript;base64,'+Buffer.from(code).toString('base64');
 }
-html=html.replace('<script type="module" src="js/main.js?v=12"></script>','<script type="importmap">'+JSON.stringify({imports})+'</script><script type="module">import {initStudio} from "gw/js/studio.js";initStudio(document.querySelector("main"));</script>');
+html=html.replace('<script type="module" src="js/main.js?v=14"></script>','<script type="importmap">'+JSON.stringify({imports})+'</script><script type="module">import {initStudio} from "gw/js/studio.js";initStudio(document.querySelector("main"));</script>');
 html=html.replace('<body data-page="home">','<body data-page="home"><aside class="standalone-note">Einzeldatei-Vorschau der Startseite. Die vollständige Website startet mit START-PREVIEW.cmd.</aside>');
 fs.writeFileSync(path.join(root,'grellwerk-standalone.html'),html);
 console.log('Wrote grellwerk-standalone.html ('+(Buffer.byteLength(html)/1024/1024).toFixed(1)+' MB, local fonts / images / campaign stage included)');

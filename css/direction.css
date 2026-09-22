@@ -8,7 +8,7 @@
 .menu-open i{width:38px;height:10px;border-block:1px solid;display:block}.menu-open:hover{background:var(--acid);color:var(--ink)}
 body[data-page=home] .nav{position:absolute;background:transparent;color:white}body[data-page=home] .nav__links{visibility:hidden}
 .studio-menu{position:fixed;inset:0;width:100%;max-width:none;height:100dvh;max-height:none;border:0;padding:0;background:var(--ink);color:var(--paper);overflow-y:auto}
-.studio-menu::backdrop{background:#101110}.studio-menu[open]{display:flex;flex-direction:column;animation:none}
+.studio-menu::backdrop{background:transparent}.studio-menu[open]{display:flex;flex-direction:column;animation:none}
 .menu-head{display:flex;justify-content:space-between;align-items:center;height:80px;padding:0 var(--pad);flex-shrink:0}.menu-head>span{font:400 30px var(--font-display)}.menu-close{display:flex;align-items:center;gap:25px;padding:20px 10px;font-size:13px}.menu-close span{font-size:35px;line-height:1}
 .menu-primary{margin:auto 0;width:100%}.menu-primary>a{position:relative;display:block;border-top:1px solid #ffffff55;text-align:center;font:400 clamp(58px,9vw,160px)/1.07 var(--font-ui);letter-spacing:-.065em;padding:4px 0;overflow:hidden}
 .menu-primary>a:last-child{border-bottom:1px solid #ffffff55}.menu-primary>a>span{position:relative;z-index:1;display:block}.menu-primary sup{font-size:13px;letter-spacing:0;vertical-align:top;position:absolute;top:15%;margin-left:10px}

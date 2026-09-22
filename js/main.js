@@ -1,5 +1,5 @@
 import { initTeam } from './team.js';
-import { initStudio, closeStudioMenu } from './studio.js?v=12';
+import { initStudio, closeStudioMenu } from './studio.js?v=14';
 import { initKonfigurator } from './konfigurator.js';
 import { initGenerator } from './generator.js';
 import { initJournal } from './journal.js';
@@ -62,7 +62,7 @@ async function animateCurtain(cover){
 async function loadPage(url,signal){
  const key=url.pathname;
  if(cache.has(key))return cache.get(key).cloneNode(true);
- const requestURL=new URL(url);requestURL.searchParams.set('_build',new URL(import.meta.url).searchParams.get('v')||'12');
+ const requestURL=new URL(url);requestURL.searchParams.set('_build',new URL(import.meta.url).searchParams.get('v')||'14');
  const response=await fetch(requestURL.href,{signal,cache:'no-store'});
  if(!response.ok)throw new Error('Page unavailable');
  const doc=new DOMParser().parseFromString(await response.text(),'text/html');
@@ -171,6 +171,7 @@ document.addEventListener('click',e=>{
  const url=new URL(a.href,location.href);
  if(!isLocalPage(url)||location.protocol==='file:')return;
  if(url.pathname===location.pathname&&url.search===location.search&&!busy){
+  closeStudioMenu();
   if(url.hash){e.preventDefault();history.replaceState({...history.state,scroll:scrollY},'',location.href);history.pushState({scroll:0},'',url.href);scrollDestination(url,{});if(url.hash==='#main')document.querySelector('main').focus({preventScroll:true});}
   else if(!url.hash){e.preventDefault();scrollTo({top:0,behavior:reduce.matches?'instant':'smooth'});}
   return;
