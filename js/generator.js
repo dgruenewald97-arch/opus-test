@@ -19,7 +19,7 @@ export function initGenerator({ SLOGAN, reducedMotion }) {
       ton = btn.getAttribute("data-ton") || "frech";
       tonesEl
         .querySelectorAll(".slogan__tone")
-        .forEach((el) => {el.classList.toggle("is-active", el === btn);el.setAttribute('aria-pressed',String(el===btn));});
+        .forEach((el) => el.classList.toggle("is-active", el === btn));
     });
   });
 
@@ -49,10 +49,10 @@ export function initGenerator({ SLOGAN, reducedMotion }) {
     const badge = document.createElement("p");
     badge.className = "slogan__detected";
     if (category) {
-      badge.textContent = `Textbausteine aus der Kategorie: ${category}`;
+      badge.innerHTML = `Erkannt: <b>${category}</b> — Slogans drauf abgestimmt 🎯`;
     } else {
       badge.classList.add("slogan__detected--miss");
-      badge.textContent = "Allgemeine Textbausteine. Mit einer Branche werden die Vorschläge konkreter.";
+      badge.textContent = "Branche nicht erkannt — generischer Krach. Tipp: nenn deine Branche.";
     }
     out.appendChild(badge);
 
@@ -78,7 +78,7 @@ export function initGenerator({ SLOGAN, reducedMotion }) {
 
   function generate() {
     const result = SLOGAN.generate({ brand: input.value, branche: brancheEl?.value, ton });
-    goBtn.textContent = "Neue Vorschläge ↗";
+    goBtn.textContent = "Nochmal ⚡";
     render(result);
   }
 

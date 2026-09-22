@@ -10,11 +10,11 @@ function renderHome(){return `<section class="manifesto" aria-label="GRELLWERK /
  <div class="manifesto-meta"><span>GRELLWERK® / EIN KI-AGENTURKONZEPT</span><button type="button" data-reel-toggle aria-pressed="false">Bewegung pausieren</button></div></div>
  </section>`;}
 
-function renderAgencyOpening(){return `<section class="studio-collage experience-opening">
- <div class="collage-heading"><p class="eyebrow">About / Eine Crew mit klaren Aufgaben</p><h1 data-enter>12 KÖPFE.<br>EIN STUDIO.</h1></div>
- <div class="collage-work"><p>Eine Idee geht<br>durch viele Hände.</p><a href="#zusammenarbeit" aria-label="Von der Idee zur Kampagne"><img src="assets/campaigns/kold-detail-v2-800.webp" width="800" height="533" alt="KOLD BREW: Produktdetail mit gelber Krone, unser gemeinsames Arbeitsbeispiel" fetchpriority="high"><span>VOM BRIEFING ZUR MARKE ↘</span></a></div>
- <div class="collage-portraits">${[['visual','VISUAL','Art Direction'],['syntax','SYNTAX','Digital']].map(([id,name,role])=>`<a class="collage-small" href="ueber-uns.html?agent=${id}#crew"><figure><img src="assets/agents/${id}-600.webp" width="600" height="800" alt="${name}, fiktive KI-Persona" fetchpriority="high"></figure><span>${name}<small>${role} ↗</small></span></a>`).join('')}</div>
- <a class="collage-lead" href="ueber-uns.html?agent=cut#crew" data-enter><img src="assets/agents/cut-1080.webp" srcset="assets/agents/cut-600.webp 600w, assets/agents/cut-1080.webp 1080w" sizes="(max-width:700px) 100vw, 44vw" width="1080" height="1440" alt="CUT, fiktive KI-Persona mit sichtbaren synthetischen Bauteilen" fetchpriority="high"><span>CUT / Designkritik <b>↗</b></span></a>
- <div class="collage-bottom"><a href="#crew">DIE CREW ENTDECKEN <span>↘</span></a><p>Zwölf fiktive KI-Personas.<br>Menschen geben die Richtung vor.</p></div>
+function renderAgencyOpening(){return `<section class="studio-intro">
+ <div class="studio-intro-heading"><h1>12 KÖPFE.<br>EIN STUDIO.</h1><p>Strategie, Kreation und Code.<br>Eine Crew mit klaren Aufgaben.</p></div>
+ <div class="studio-contact-sheet" aria-label="Fiktive KI-Personas aus der Crew">${[
+ ['aura','AURA','Leitung'],['visual','VISUAL','Art Direction'],['syntax','SYNTAX','Digital'],['cut','CUT','Designkritik']
+ ].map(([id,name,role])=>`<a href="ueber-uns.html?agent=${id}#crew" class="studio-face" data-reveal><figure><img src="assets/agents/${id}-1080.webp" srcset="assets/agents/${id}-600.webp 600w, assets/agents/${id}-1080.webp 1080w" sizes="(max-width:700px) 50vw, 25vw" width="1080" height="1440" alt="${name}, fiktive KI-Persona mit synthetischen Details" fetchpriority="high"></figure><span><strong>${name}</strong><small>${role} ↗</small></span></a>`).join('')}</div>
+ <div class="studio-position"><p>Gute Arbeit entsteht<br>zwischen den Köpfen.</p><div><p>GRELLWERK ist das Konzept einer Agentur mit KI-Crew. Zwölf Rollen entwickeln Strategie, Text, Gestaltung und Code. Jede hat einen Auftrag. Jede gibt ihre Arbeit weiter.</p><p>Menschen setzen das Ziel, beurteilen die Entwürfe und entscheiden, was veröffentlicht wird.</p><a class="editorial-link" href="#crew">Alle zwölf Rollen kennenlernen ↗</a></div></div>
  </section>`;}
 module.exports={renderHome,renderProjects,renderAgencyOpening};
