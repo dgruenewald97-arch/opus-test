@@ -13,7 +13,7 @@ START-PREVIEW.cmd startet die vollständige Website lokal. Alternativ: `python t
 - Ein bildschirmfüllender Hero mit elf Sekunden echtem Film und separater Hochformatfassung. Zwei echte GIF-Loops wechseln in der Überschrift. Beide Aufnahmen sind monochrom mit säuregrünen Lichtern gestaltet. Große Outline-Links führen zu Projects und About.
 - Home besteht ausschließlich aus dem Film-Hero. Projects, About und alle Zusatzseiten sind über Einstiege und Vollbildmenü erreichbar.
 - Projects inszeniert vier Marken in großen, versetzten Bildkompositionen. Drei echte GIFs, scharfe HTML-Wortmarken und eigene Kampagnenmotive bilden die Projektkapitel. Die Filmflächen öffnen sich beim Eintritt in den sichtbaren Bereich; vier Sprunglinks erschließen die Seite.
-- About beginnt mit einer Collage aus drei Porträts und einer Produktaufnahme. „Von Kopf zu Kopf“ erklärt die Zusammenarbeit an KOLD BREW in drei bedienbaren Schritten von VECTOR über PROMPT bis SYNTAX, einschließlich GIF-Ergebnis. Der Desktop-Index zeigt auswählbare Porträts. Alle zwölf Rollen, Filter, Profile und CUTs Vorher/Nachher-Demo bleiben erreichbar.
+- About beginnt mit vier Porträts. „Von Kopf zu Kopf“ erklärt die Zusammenarbeit an KOLD BREW mit einem GIF und einer kompakten Gruppe aus VECTOR, PROMPT und SYNTAX. Der Desktop-Index zeigt auswählbare Porträts. Alle zwölf Rollen, Filter, Profile und CUTs Vorher/Nachher-Demo bleiben erreichbar.
 - Vollbildmenü, fünf gestaffelte Übergangsflächen, Browserhistorie und abbrechbare Bildübernahme beim Case-Einstieg.
 - Pause, reduzierte Bewegung, ruhige Ersatzansicht bei Video- oder GIF-Ausfall und native Links. Film und GIFs pausieren auch bei geöffnetem Menü oder verborgenem Browser-Tab. Die neuen GIFs laden erst im sichtbaren Bereich; außerhalb wechseln sie auf Standbilder.
 - Cases erzählen jede Marke auf dunklen Bildstrecken mit GIFs und Porträt-Credits. Leistungen, Journal, Kontakt und Spielwiese verwenden die gemeinsame Typografie und dezente Konturen. Vorhandene Cases, Leistungen, Journal, Kontaktformular und Spielwiese bleiben erhalten. Das Formular kopiert ein Briefing und versendet nichts.
@@ -43,5 +43,3 @@ Das Teamreview der Revision 11: CUT prüfte die Gestaltung im Browser, VERIFY Fu
 Die Veröffentlichung wurde vom Nutzer beauftragt. Feature-Push und Pull Request durchlaufen den Verify-Workflow; `main` baut und prüft GRELLWERK vor dem Pages-Deploy. Die [öffentliche Website](https://dgruenewald97-arch.github.io/opus-test/) zeigt den letzten erfolgreichen Pages-Deploy.
 
 Ursprünglicher Checkout, früherer Reel-Prototyp und studio-seide bleiben unverändert. Frühere ZIP-Stände sind gesichert.
-
-Revision 13 setzt die Bildentwürfe als native Layouts um: Studiofotografie für Leistungen, Journal und Kontakt; Generator im Einstieg der Spielwiese; animiertes Menü mit durchgehendem Seitenwechsel. Details und Prüfgrenzen: EXPERIENCE-REVIEW.md.
