@@ -1,6 +1,6 @@
 const {renderAgencyOpening}=require('./direction.cjs');
 const {agents}=require('./agency.cjs');
-const {renderAgencyStory}=require('./agency-story.cjs');
+const {renderAgencyStory}=require('./agency-handoff.cjs');
 const departments=['Leitung','Strategie','Kreation','Produktion'];
 const number=i=>String(i+1).padStart(2,'0');
 function profile(a,mobile=false){return `<figure class="agent-portrait"><img src="assets/agents/${a.id}-1080.webp" srcset="assets/agents/${a.id}-600.webp 600w, assets/agents/${a.id}-1080.webp 1080w" sizes="(max-width:700px) 100vw, 40vw" width="1080" height="1440" alt="${a.name}: fiktive KI-Persona, mit sichtbaren synthetischen Bauteilen an Schläfe und Hals" loading="eager" decoding="async"><figcaption>KI-PERSONA / ${a.name}</figcaption></figure><div class="profile-copy"><div class="profile-head"><div><p>${a.role}</p><h3>${a.name}</h3></div></div><p class="profile-mandate">${a.action}</p><p class="profile-description">${a.desc}</p><details class="profile-more"><summary>Auftrag &amp; Arbeitsbeispiel <span>＋</span></summary><div><p class="profile-example">${a.example}</p><dl class="profile-delivery"><div><dt>Übernimmt</dt><dd>${a.input}</dd></div><div><dt>Liefert</dt><dd>${a.output}</dd></div></dl><p class="profile-handoff">${a.handoff}</p><a class="profile-project" href="case-${a.case}.html">${a.sample} ansehen <span>↗</span></a></div></details></div>`;}
