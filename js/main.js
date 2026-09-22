@@ -1,7 +1,7 @@
 import { initTeam } from './team.js';
-import { initStudio, closeStudioMenu } from './studio.js?v=12';
+import { initStudio, closeStudioMenu } from './studio.js?v=13';
 import { initKonfigurator } from './konfigurator.js';
-import { initGenerator } from './generator.js';
+import { initGenerator } from './generator.js?v=13';
 import { initJournal } from './journal.js';
 import { KONFIGURATOR, SLOGAN } from './config.js';
 
@@ -62,7 +62,7 @@ async function animateCurtain(cover){
 async function loadPage(url,signal){
  const key=url.pathname;
  if(cache.has(key))return cache.get(key).cloneNode(true);
- const requestURL=new URL(url);requestURL.searchParams.set('_build',new URL(import.meta.url).searchParams.get('v')||'12');
+ const requestURL=new URL(url);requestURL.searchParams.set('_build',new URL(import.meta.url).searchParams.get('v')||'13');
  const response=await fetch(requestURL.href,{signal,cache:'no-store'});
  if(!response.ok)throw new Error('Page unavailable');
  const doc=new DOMParser().parseFromString(await response.text(),'text/html');
@@ -121,12 +121,16 @@ async function drain(){
  if(busy)return;
  busy=true;
  clearTimeout(scrollTimer);
- closeStudioMenu();
+ document.documentElement.classList.add('route-is-loading');
+ document.querySelector('#studio-menu[open]')?.classList.add('is-routing');
+ document.querySelector('main').setAttribute('aria-busy','true');
  let covered=false;
  try{
   // Fetch and the visual cover start together; only the latest click commits.
   while(pending){
    const request=pending;pending=null;controller=new AbortController();
+   const label=request.url.pathname.split('/').pop();
+   curtain.querySelector('span').textContent=({'arbeiten.html':'PROJECTS','ueber-uns.html':'ABOUT','kontakt.html':'CONTACT','leistungen.html':'LEISTUNGEN','journal.html':'JOURNAL','labor.html':'SPIELWIESE','index.html':'GRELL//WERK'})[label]||'GRELL//WERK';
    const loading=loadPage(request.url,controller.signal);
    loading.catch(()=>{}); // avoid an unhandled rejection while the curtain animates
    const shared=request.options.sharedMedia?.isConnected&&request.options.sharedMedia.querySelector('img')?.naturalWidth&&!reduce.matches&&!document.documentElement.classList.contains('no-motion');
@@ -138,6 +142,7 @@ async function drain(){
     location.assign(request.url.href);return;
    }
    if(pending)continue;
+   await closeStudioMenu({immediate:true});
    const commit=()=>{
    if(pending||request.id!==navigationId)return;
    if(!request.options.pop){
@@ -155,8 +160,10 @@ async function drain(){
   }
  }finally{
   if(covered)await animateCurtain(false);
+  document.documentElement.classList.remove('route-is-loading');
+  document.querySelector('main').removeAttribute('aria-busy');
   busy=false;controller=null;
-  if(pending)drain();
+  if(pending)drain();else document.dispatchEvent(new Event('grellwerk:page-ready'));
  }
 }
 function navigate(url,options={}){
@@ -171,6 +178,7 @@ document.addEventListener('click',e=>{
  const url=new URL(a.href,location.href);
  if(!isLocalPage(url)||location.protocol==='file:')return;
  if(url.pathname===location.pathname&&url.search===location.search&&!busy){
+  closeStudioMenu();
   if(url.hash){e.preventDefault();history.replaceState({...history.state,scroll:scrollY},'',location.href);history.pushState({scroll:0},'',url.href);scrollDestination(url,{});if(url.hash==='#main')document.querySelector('main').focus({preventScroll:true});}
   else if(!url.hash){e.preventDefault();scrollTo({top:0,behavior:reduce.matches?'instant':'smooth'});}
   return;

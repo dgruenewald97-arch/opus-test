@@ -17,6 +17,7 @@ const ids=new Set(agents.map(a=>a.id));
 assert.equal(ids.size,agents.length,'Duplicate primary agent id');
 assert(!specialists.flatMap(([,list])=>list.map(([name])=>name)).some(name=>agents.some(a=>a.name===name)),'Promoted agents must not remain in specialist pool');
 for(const file of fs.readdirSync(root).filter(f=>f.endsWith('.html')&&f!=='grellwerk-standalone.html')){
+ assert(!/[\u00c3\u00c2]|\u00e2\u2020/.test(read(file)), 'Broken UTF-8 text in '+file);
  for(const [,id] of read(file).matchAll(/ueber-uns\.html\?agent=([^&#" ]+)/g))assert(ids.has(id),'Unknown linked agent '+id+' in '+file);
 }
 const about=read('ueber-uns.html');
@@ -47,6 +48,11 @@ for(const name of ['coffee','footwork','cream']){
 }
 assert(!home.includes('id="weiter"')&&!home.includes('home-crew-story'),'Home must contain only its hero');
 assert(about.includes('id="zusammenarbeit"'),'Crew handoffs belong on About');
+for(const id of ['brief','idea','result'])assert(about.includes('aria-controls="handoff-'+id+'"')&&about.includes('id="handoff-'+id+'"'),'Handoff tab has no panel: '+id);
+for(const [file,opening] of [['leistungen.html','opening-service'],['journal.html','opening-journal'],['labor.html','play-opening']]){
+ const html=read(file);assert(html.includes(opening),'New opening missing from '+file);
+ assert.equal((html.match(/<h1\b/g)||[]).length,1,'Duplicate opening after regeneration: '+file);
+}
 for(const p of projects)assert(read('arbeiten.html').includes('id="projekt-'+p.id+'"'),'Missing project chapter '+p.id);
 for(const p of projects.slice(0,3))assert(read('case-'+p.slug+'.html').includes('data-motion-loop'),'Missing case motion '+p.id);
 assert(!home.includes('data-screen-select='),'Retired campaign carousel remains');

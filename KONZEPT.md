@@ -1,6 +1,6 @@
 # GRELLWERK: Lärm, der etwas auslöst.
 
-Revision 10, 20. September 2026.
+Revision 13, 22. September 2026.
 
 GRELLWERK ist ein KI-Agenturkonzept für Markenentwicklung, Kampagnen und digitale Erlebnisse. Die Arbeit entsteht in spezialisierten Rollen. Ein gemeinsames Briefing, eine Leitidee und nachvollziehbare Übergaben halten das Projekt zusammen. Menschen legen Ziele fest und verantworten die Freigabe.
 
@@ -32,9 +32,9 @@ Home bleibt ein einzelner bildschirmfüllender Filmeinstieg. Zwei echte GIFs lau
 
 Projects zeigt vier große Markenwelten. Bewegte Kaffeebohnen, Footwork und Kaffeetexturen ergänzen die eigenen Motive von KOLD BREW, NEONTRITT und HAFERKRAFT. BLITZBANK nutzt seine eigene Plakat- und Kartenwelt. Typografie liegt als HTML über den Filmen. Bilder öffnen sich beim Scrollen; das Layout behält dabei seine Höhe. Jedes Kapitel führt ins passende Case. Dort ergänzen die drei Filmstudien die vorhandenen Motive.
 
-About beginnt mit dem scrollabhängigen Porträtwechsel hinter der Wortmarke. AURA und CUT teilen sich auf Desktop eine Bühne. Danach erklärt „Von Kopf zu Kopf“ anhand von KOLD BREW, wie VECTOR, PROMPT und SYNTAX ihre Arbeit weitergeben. Große Porträts führen zu den passenden Rollen. Der vollständige Rollenindex, 18 Spezialisierungen und die CUT-Demonstration bleiben erhalten.
+About beginnt mit einer Collage aus CUT, VISUAL, SYNTAX und einem Produktdetail. „Von Kopf zu Kopf“ macht die Übergabe von VECTOR über PROMPT zu SYNTAX in drei auswählbaren Schritten nachvollziehbar. Die Schritte sind auch mit Pfeiltasten bedienbar. Der vollständige Rollenindex, 18 Spezialisierungen und die CUT-Demonstration bleiben erhalten.
 
-Das Vollbildmenü und fünf gestaffelte Flächen verbinden die Seiten. Leistungen, Journal, Spielwiese und der vorhandene Kontaktweg bleiben erreichbar.
+Das Vollbildmenü öffnet sich mit gestaffelter Schrift. Beim Seitenwechsel bleibt es bis zur Übernahme durch die Übergangsflächen stehen; der Zielname kündigt den neuen Inhalt an. Leistungen, Journal und Kontakt verbinden große Typografie mit einer eigens erzeugten Studioaufnahme. Die Spielwiese stellt den bedienbaren Generator direkt in den Einstieg. Seine lokalen Textbausteine werden nicht als KI-Anfrage ausgegeben.
 
 ## Grundlage und Grenzen
 
@@ -42,4 +42,4 @@ Die Komposition und Interaktionsprinzipien wurden an den vom Nutzer gelieferten 
 
 Die Home-Aufnahmen stammen von Mixkit und werden unter der dort ausgewiesenen Stock Video Free License bearbeitet eingesetzt. Sie dienen als atmosphärische Filmstudie und sind keine behauptete Kundenkampagne. Quellen und Bearbeitung stehen in assets/motion/CREDITS.md. Pause und reduzierte Bewegung stoppen auch die GIFs über passende Standbilder. Bei fehlenden Videodateien bleibt das Poster sichtbar. Zusätzliche GIFs laden erst bei Sichtbarkeit und wechseln außerhalb des Bildbereichs zurück auf Standbilder.
 
-GRELLWERK bleibt ein fiktives Agenturkonzept. Der ursprüngliche Checkout, der frühere Reel-Prototyp und studio-seide bleiben erhalten. Eine Veröffentlichung gehört nicht zu dieser Revision.
+GRELLWERK bleibt ein fiktives Agenturkonzept. Der ursprüngliche Checkout, der frühere Reel-Prototyp und studio-seide bleiben erhalten. Die Veröffentlichung erfolgt nach Build, Funktionsprüfung und Sichtprüfung im Browser auf der bestehenden GitHub-Pages-Seite.

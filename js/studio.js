@@ -1,5 +1,5 @@
-import {createReel,createMotionLoops} from './reel.js?v=12';
-import {createProjects} from './projects.js?v=12';
+import {createReel,createMotionLoops} from './reel.js?v=13';
+import {createProjects} from './projects.js?v=13';
 const reduce=matchMedia('(prefers-reduced-motion: reduce)');
 let paused=false,disposePage=()=>{},reel=null,projects=null,loops=null,updateScroll=()=>{};
 try{paused=sessionStorage.getItem('grellwerk-still')==='1';}catch{}
@@ -12,11 +12,29 @@ function syncMotion(){
 }
 function toggleMotion(){paused=!paused;try{sessionStorage.setItem('grellwerk-still',paused?'1':'0');}catch{}syncMotion();}
 const menu=document.querySelector('#studio-menu'),menuButton=document.querySelector('[data-menu-open]');
-menuButton?.addEventListener('click',()=>{menu.showModal();menuButton.setAttribute('aria-expanded','true');reel?.sync();projects?.sync();loops?.sync();});
-export function closeStudioMenu(){if(menu?.open)menu.close();}
-menu?.querySelector('[data-menu-close]')?.addEventListener('click',closeStudioMenu);
-menu?.addEventListener('close',()=>{menuButton?.setAttribute('aria-expanded','false');reel?.sync();projects?.sync();loops?.sync();});
-menu?.addEventListener('click',event=>{if(event.target.closest('a'))closeStudioMenu();});
+let menuClosing=null;
+function stopMenuAnimations(){menu?.getAnimations({subtree:true}).forEach(a=>a.cancel());}
+menuButton?.addEventListener('click',()=>{
+ if(menu.open)return;
+ stopMenuAnimations();menu.classList.remove('is-routing');menu.showModal();
+ document.documentElement.classList.add('menu-is-open');menuButton.setAttribute('aria-expanded','true');
+ if(!motionOff()){
+  menu.animate([{clipPath:'inset(0 0 100% 0)'},{clipPath:'inset(0)'}],{duration:580,easing:'cubic-bezier(.22,1,.36,1)'});
+  menu.querySelectorAll('.menu-primary>a>span').forEach((el,i)=>el.animate([{transform:'translateY(110%)',opacity:0},{transform:'translateY(0)',opacity:1}],{duration:620,delay:100+i*65,easing:'cubic-bezier(.22,1,.36,1)',fill:'backwards'}));
+ }
+ reel?.sync();projects?.sync();loops?.sync();
+});
+export function closeStudioMenu({immediate=false}={}){
+ if(!menu?.open)return Promise.resolve();
+ if(immediate||motionOff()){stopMenuAnimations();menu.close();return Promise.resolve();}
+ if(menuClosing)return menuClosing;
+ stopMenuAnimations();
+ menuClosing=menu.animate([{clipPath:'inset(0)'},{clipPath:'inset(0 0 100% 0)'}],{duration:360,easing:'cubic-bezier(.65,0,.25,1)'}).finished.catch(()=>{}).then(()=>{if(menu.open)menu.close();menuClosing=null;});
+ return menuClosing;
+}
+menu?.querySelector('[data-menu-close]')?.addEventListener('click',()=>closeStudioMenu());
+menu?.addEventListener('cancel',e=>{e.preventDefault();closeStudioMenu();});
+menu?.addEventListener('close',()=>{menuButton?.setAttribute('aria-expanded','false');document.documentElement.classList.remove('menu-is-open');menu.classList.remove('is-routing');reel?.sync();projects?.sync();loops?.sync();});
 document.querySelector('#motion-toggle')?.addEventListener('click',toggleMotion);
 reduce.addEventListener('change',syncMotion);
 export function initStudio(main){
@@ -26,6 +44,26 @@ export function initStudio(main){
  loops=createMotionLoops(main,()=>motionOff()||menu?.open);
  main.querySelectorAll('[data-reel-toggle]').forEach(button=>button.addEventListener('click',toggleMotion,{signal}));
  projects=createProjects(main,()=>motionOff()||menu?.open);
+ const enter=()=>{
+  if(motionOff())return;
+  main.querySelectorAll('[data-enter],.case-opening-title h1').forEach((el,i)=>{
+   if(el.getBoundingClientRect().top>innerHeight)return;
+   el.getAnimations().forEach(a=>a.cancel());
+   el.animate([{opacity:0,transform:'translateY(36px)'},{opacity:1,transform:'translateY(0)'}],{duration:780,delay:Math.min(i,3)*65,easing:'cubic-bezier(.22,1,.36,1)',fill:'backwards'});
+  });
+ };
+ document.addEventListener('grellwerk:page-ready',enter,{signal});
+ if(!document.documentElement.classList.contains('route-is-loading'))requestAnimationFrame(()=>{if(main.isConnected)enter();});
+ const handoffTabs=[...main.querySelectorAll('[data-handoff]')];
+ function chooseStep(button){
+  handoffTabs.forEach(tab=>{const active=tab===button;tab.setAttribute('aria-selected',String(active));tab.tabIndex=active?0:-1;});
+  main.querySelectorAll('.handoff-panel').forEach(panel=>{panel.hidden=panel.id!==button.getAttribute('aria-controls');if(!panel.hidden&&!motionOff()){panel.getAnimations().forEach(a=>a.cancel());panel.animate([{opacity:0,transform:'translateY(14px)'},{opacity:1,transform:'translateY(0)'}],{duration:450,easing:'cubic-bezier(.22,1,.36,1)'});}});
+  loops?.sync();
+ }
+ handoffTabs.forEach((button,i)=>{
+  button.addEventListener('click',()=>chooseStep(button),{signal});
+  button.addEventListener('keydown',e=>{if(!['ArrowLeft','ArrowRight','Home','End'].includes(e.key))return;e.preventDefault();const index=e.key==='Home'?0:e.key==='End'?handoffTabs.length-1:(i+(e.key==='ArrowRight'?1:-1)+handoffTabs.length)%handoffTabs.length;handoffTabs[index].focus();chooseStep(handoffTabs[index]);},{signal});
+ });
  const reveal=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in-view');reveal.unobserve(e.target);}}),{threshold:.08});main.querySelectorAll('[data-reveal]').forEach(el=>reveal.observe(el));
  const features=[...main.querySelectorAll('.crew-feature')],agencyImages=[...main.querySelectorAll('[data-agency-frame]')],masthead=main.querySelector('.about-hero');
  updateScroll=()=>{
